@@ -503,7 +503,7 @@ function CustomSideNav() {
                             </li>
 
                             {/* Debug info - remove in production */}
-                            {process.env.NODE_ENV === 'development' && (
+                            {import.meta.env.MODE === 'development' && (
                                 <li style={{ fontSize: '10px', color: '#ccc', marginTop: '20px' }}>
                                     <div>Permissions: {userPermissions?.length || 0}</div>
                                     <div>Features: {Object.keys(features).length}</div>
