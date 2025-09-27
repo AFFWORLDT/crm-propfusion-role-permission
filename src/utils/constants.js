@@ -151,20 +151,6 @@ export const SUPPORT_TABS = [
         fontColor: "#0369a1", // Dark blue
         path: "/support",
     },
-    {
-        id: "ABOUT",
-        label: "About Us",
-        bgColor: "#f0f9ff", // Light blue
-        fontColor: "#0369a1", // Dark blue
-        path: "/about-us",
-    },
-    {
-        id: "USERMANUAL",
-        label: "User Manual",
-        bgColor: "#f0f9ff", // Light blue
-        fontColor: "#0369a1", // Dark blue
-        path: "/user-manual",
-    },
 ];
 
 export const FUSION_MAIL_TABS = [

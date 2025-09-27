@@ -175,27 +175,6 @@ const AffiliateTree = () => {
             {agent.name}
           </h3>
           
-          {/* Wallet Balance */}
-          <div style={{
-            display: 'flex', 
-            alignItems: 'center', 
-            gap: '6px', 
-            background: 'linear-gradient(135deg, #10b981, #059669)', 
-            color: 'white', 
-            padding: '6px 12px', 
-            borderRadius: '20px', 
-            fontSize: '12px', 
-            fontWeight: '600', 
-            margin: '8px auto', 
-            boxShadow: '0 2px 4px rgba(16, 185, 129, 0.3)',
-            width: 'fit-content'
-          }}>
-            <Wallet size={16} style={{color: 'white', width: '16px', height: '16px'}} />
-            <span style={{fontWeight: '700', letterSpacing: '0.5px', color: 'white', fontSize: '12px'}}>
-              AED 99
-            </span>
-          </div>
-          
           {hasChildren && (
             <button
               className="luxury-expand-btn"

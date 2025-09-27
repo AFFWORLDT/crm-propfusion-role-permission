@@ -1,3 +1,19 @@
+/**
+ * About Us Page Component
+ * 
+ * This component displays comprehensive information about PropFusion CRM,
+ * including company mission, services, and contact information.
+ * 
+ * Features:
+ * - Hero section with company branding and call-to-action buttons
+ * - Dynamic content sections for company information
+ * - SEO optimization with Helmet meta tags
+ * - Responsive design with modern styling
+ * - Integration with support tab navigation
+ * 
+ * @component
+ * @returns {JSX.Element} The About Us page component
+ */
 import { Link } from "react-router-dom";
 import SectionTop from "../../../ui/SectionTop";
 import TabBar from "../../../ui/TabBar";
@@ -6,6 +22,11 @@ import styles from "./PAboutUs.module.css";
 import { Helmet } from "react-helmet";
 
 const About = () => {
+    /**
+     * Company information data structure
+     * Contains all the content sections displayed on the About Us page
+     * Each object includes heading, content, and optional anchor links
+     */
     const aboutList = [
         {
             heading: "Our Mission",
@@ -141,6 +162,10 @@ const About = () => {
 
     return (
         <div className="sectionContainer">
+            {/* 
+                Section Top Component with Tab Navigation
+                Provides the page header and navigation tabs for support sections
+            */}
             <SectionTop heading="Support">
                 <TabBar
                     tabs={SUPPORT_TABS}
@@ -151,7 +176,12 @@ const About = () => {
                     }
                 />
             </SectionTop>
+            
             <div className="sectionStyles">
+                {/* 
+                    SEO Meta Tags for better search engine optimization
+                    Includes title, description, and keywords for the About Us page
+                */}
                 <Helmet>
                     <title>About Us | Propfusion Policies</title>
                     <meta
@@ -164,15 +194,19 @@ const About = () => {
                     />
                 </Helmet>
 
-                {/* Main Website Content */}
+                {/* Main Website Content Container */}
                 <div className={styles.websiteContainer}>
-                    {/* Hero Section */}
+                    {/* 
+                        Hero Section - Main banner with company branding
+                        Features gradient background, company title, tagline, and action buttons
+                    */}
                     <section className={styles.heroSection}>
                         <div className={styles.heroContent}>
                             <h1 className={styles.heroTitle}>PROPFUSION CRM</h1>
                             <p className={styles.heroSubtitle}>
                                 Empowering Real Estate Professionals with Cutting-Edge Technology
                             </p>
+                            {/* Action buttons for external links and contact */}
                             <div className={styles.heroButtons}>
                                 <a 
                                     href="https://www.propfusion.com/" 
@@ -192,19 +226,29 @@ const About = () => {
                         </div>
                     </section>
 
-                    {/* Main Content Sections */}
+                    {/* Main Content Sections Container */}
                     <div className={styles.mainContent}>
-                        {/* About Section */}
+                        {/* 
+                            About Section - Company information cards
+                            Displays mission, services, and company details in a responsive grid
+                        */}
                         <section className={styles.aboutSection}>
                             <div className={styles.sectionHeader}>
                                 <h2>About PropFusion</h2>
                                 <div className={styles.divider}></div>
                             </div>
+                            {/* 
+                                Dynamic grid of company information cards
+                                Maps through aboutList array to render each section
+                            */}
                             <div className={styles.aboutGrid}>
                                 {aboutList.slice(0, 4).map((item, index) => (
                                     <div key={index} className={styles.aboutCard}>
+                                        {/* Render heading if available */}
                                         {item.heading && <h3>{item.heading}</h3>}
+                                        {/* Render content if available */}
                                         {item.content && <p>{item.content}</p>}
+                                        {/* Render anchor links if available */}
                                         {item.anchor && item.anchor.length > 0 && (
                                             <div className={styles.cardLinks}>
                                                 {item.anchor.map((AnItem, AnIndex) => (

@@ -26,6 +26,8 @@ function CustomSideNav() {
     // Permission hooks
     const { hasPermission } = usePermissionCheck();
     const propertiesPermission = useManagePermission("properties");
+    // Leads management permissions hook
+    // Provides canView and canManage flags for leads-related functionality
     const leadsPermission = useManagePermission("leads");
     const projectsPermission = useManagePermission("projects");
     const buildingsPermission = useManagePermission("buildings");
@@ -206,10 +208,40 @@ function CustomSideNav() {
                                 </li>
                             )}
 
+                            {/* 
+                                Leads Section Divider
+                                
+                                Visual separator that appears before the leads navigation items
+                                to group them together and separate from other navigation sections.
+                                
+                                Conditional Rendering:
+                                - Only shows when user has leads permissions
+                                - Maintains consistent visual hierarchy in sidebar
+                                
+                                @component Leads Section Divider
+                            */}
                             {(leadsPermission.canView || leadsPermission.canManage) && (
                                 <div className={styles.divider} />
                             )}
 
+                            {/* 
+                                Main Leads Navigation Item
+                                
+                                This is the primary leads management navigation item that provides
+                                access to the main leads dashboard and management interface.
+                                
+                                Features:
+                                - Uses dollar icon to represent lead value/revenue
+                                - Routes to /leads main page
+                                - Only visible to users with leads view or manage permissions
+                                - Serves as the entry point for all leads-related functionality
+                                
+                                Permission Requirements:
+                                - leadsPermission.canView OR leadsPermission.canManage
+                                - Ensures proper access control for leads data
+                                
+                                @component Main Leads Nav Item
+                            */}
                             {(leadsPermission.canView || leadsPermission.canManage) && (
                                 <li>
                                     <NavLink to="/leads">
@@ -237,9 +269,28 @@ function CustomSideNav() {
                             </li>
                             */}
 
-                            {(leadsPermission.canView || leadsPermission.canManage) && (
+                            {/* 
+                                Portal Leads Navigation Item
+                                
+                                This navigation item provides access to portal call leads functionality.
+                                It's conditionally rendered based on user permissions for leads management.
+                                
+                                Features:
+                                - Displays phone icon to represent call-related functionality
+                                - Routes to /leads/portal-calls page
+                                - Visible to users with leads permissions or basic_affiliate permission
+                                - Part of the leads management section in the sidebar
+                                
+                                Permission Requirements:
+                                - leadsPermission.canView OR leadsPermission.canManage OR basic_affiliate
+                                - Ensures authorized users can access portal leads data
+                                
+                                @component Portal Leads Nav Item
+                            */}
+                            {(leadsPermission.canView || leadsPermission.canManage || hasPermission("basic_affiliate")) && (
                                 <li>
                                     <NavLink to="/leads/portal-calls">
+                                        {/* Phone icon representing call/portal functionality */}
                                         <Phone size={15} />
                                         <span>Portal Leads</span>
                                     </NavLink>
@@ -502,13 +553,6 @@ function CustomSideNav() {
                                 </NavLink>
                             </li>
 
-                            {/* Debug info - remove in production */}
-                            {import.meta.env.MODE === 'development' && (
-                                <li style={{ fontSize: '10px', color: '#ccc', marginTop: '20px' }}>
-                                    <div>Permissions: {userPermissions?.length || 0}</div>
-                                    <div>Features: {Object.keys(features).length}</div>
-                                </li>
-                            )}
                         </ul>
                     </div>
                 </nav>

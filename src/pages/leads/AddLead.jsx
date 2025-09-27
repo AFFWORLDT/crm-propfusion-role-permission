@@ -5,6 +5,7 @@ import MultiStepForm from "../../ui/MultiStepForm";
 import SectionTop from "../../ui/SectionTop";
 import PageNotFound from "../PageNotFound";
 import { useNavigate } from "react-router-dom";
+import { useAuth } from "../../context/AuthContext";
 
 function renderStep(step) {
     switch (step) {
@@ -19,6 +20,7 @@ function AddLead() {
     const { hasPermission } = useMyPermissions();
     const { addLead, isPending } = useCreateLead();
     const navigate = useNavigate();
+    const { currentUser } = useAuth();
     function handleFormSubmit(data, handleReset) {
         const newLead = {
             ...data,
@@ -59,7 +61,12 @@ function AddLead() {
                     renderStep={renderStep}
                     onFormSubmit={handleFormSubmit}
                     isSubmitting={isPending}
-                    defaultValues={{}}
+                    defaultValues={{
+                        agent_Id: currentUser ? {
+                            value: currentUser.id,
+                            label: currentUser.name
+                        } : null
+                    }}
                 />
             </section>
         </div>

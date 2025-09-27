@@ -859,7 +859,11 @@ function App() {
                                             />
                                             <Route
                                                 path="portal-calls"
-                                                element={<PortalCalls />}
+                                                element={
+                                                    <RoleGuard permissions={["view_leads", "basic_affiliate"]}>
+                                                        <PortalCalls />
+                                                    </RoleGuard>
+                                                }
                                             />
                                             <Route
                                                 path="whatsapp-leads"
@@ -1025,7 +1029,7 @@ function App() {
                                                 <Route
                                                     path="affiliate-tree"
                                                     element={
-                                                        <RoleGuard permissions={["manage_agent"]}>
+                                                        <RoleGuard permissions={["manage_agent", "basic_affiliate"]}>
                                                             <AffiliateTree />
                                                         </RoleGuard>
                                                     }
@@ -1033,7 +1037,7 @@ function App() {
                                                 <Route
                                                     path="affiliate-wallet"
                                                     element={
-                                                        <RoleGuard permissions={["manage_agent"]}>
+                                                        <RoleGuard permissions={["manage_agent", "basic_affiliate"]}>
                                                             <AffiliateWallet />
                                                         </RoleGuard>
                                                     }
@@ -1041,7 +1045,7 @@ function App() {
                                                 <Route
                                                     path="affiliate"
                                                     element={
-                                                        <RoleGuard permissions={["manage_agent"]}>
+                                                        <RoleGuard permissions={["manage_agent", "basic_affiliate"]}>
                                                             <Affiliate />
                                                         </RoleGuard>
                                                     }

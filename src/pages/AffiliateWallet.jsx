@@ -33,6 +33,7 @@ const AffiliateWallet = () => {
       setError(null);
       
       const response = await axiosInstance.get('/agent/affiliate-earnings');
+      console.log('Affiliate earnings API response:', response.data);
       setEarningsData(response.data);
     } catch (err) {
       console.error('Error fetching earnings data:', err);
@@ -79,6 +80,41 @@ const AffiliateWallet = () => {
         return <Clock size={16} />;
       default:
         return <Users size={16} />;
+    }
+  };
+
+  const getStaffLevelStyle = (staffLevel) => {
+    switch (staffLevel?.toLowerCase()) {
+      case 'diamond':
+        return {
+          backgroundColor: '#e3f2fd',
+          color: '#1976d2',
+          border: '1px solid #1976d2'
+        };
+      case 'gold':
+        return {
+          backgroundColor: '#fff3e0',
+          color: '#f57c00',
+          border: '1px solid #f57c00'
+        };
+      case 'silver':
+        return {
+          backgroundColor: '#f3e5f5',
+          color: '#7b1fa2',
+          border: '1px solid #7b1fa2'
+        };
+      case 'bronze':
+        return {
+          backgroundColor: '#efebe9',
+          color: '#8d6e63',
+          border: '1px solid #8d6e63'
+        };
+      default:
+        return {
+          backgroundColor: '#3b82f6',
+          color: 'white',
+          border: '1px solid #3b82f6'
+        };
     }
   };
 
@@ -239,7 +275,9 @@ const AffiliateWallet = () => {
                       </div>
                     </div>
                     <div className="agents-grid">
-                      {earning.referred_agents.map((agent, agentIndex) => (
+                      {earning.referred_agents.map((agent, agentIndex) => {
+                        console.log('Agent data:', agent);
+                        return (
                         <div key={agent.id} className="referred-agent-card">
                           <div className="referral-connection">
                             <div className="connection-line"></div>
@@ -257,22 +295,34 @@ const AffiliateWallet = () => {
                                   <Clock size={12} />
                                   Joined: {formatDate(agent.created_at)}
                                 </span>
-                                <div 
-                                  className="status-badge"
-                                  style={{ 
-                                    backgroundColor: getStatusColor(agent.state) + '20',
-                                    color: getStatusColor(agent.state),
-                                    border: `1px solid ${getStatusColor(agent.state)}40`
-                                  }}
-                                >
-                                  {getStatusIcon(agent.state)}
-                                  <span>{agent.state}</span>
+                                <div className="agent-badges">
+                                  <div 
+                                    className="status-badge"
+                                    style={{ 
+                                      backgroundColor: getStatusColor(agent.state) + '20',
+                                      color: getStatusColor(agent.state),
+                                      border: `1px solid ${getStatusColor(agent.state)}40`
+                                    }}
+                                  >
+                                    {getStatusIcon(agent.state)}
+                                    <span>{agent.state}</span>
+                                  </div>
+                                  {agent.staff_level && (
+                                    <div 
+                                      className="staff-level-badge"
+                                      style={getStaffLevelStyle(agent.staff_level)}
+                                    >
+                                      <Crown size={12} />
+                                      <span>{agent.staff_level}</span>
+                                    </div>
+                                  )}
                                 </div>
                               </div>
                             </div>
                           </div>
                         </div>
-                      ))}
+                        );
+                      })}
                     </div>
                   </div>
                 )}

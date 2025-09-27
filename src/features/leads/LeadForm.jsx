@@ -20,11 +20,13 @@ import useStaff from "../admin/staff/useStaff";
 import {  useEffect, useState } from "react";
 import { getLocations } from "../../services/apiProperties";
 import {formatLocationsForMetaAds } from "../../utils/utils";
+import { useAuth } from "../../context/AuthContext";
 
 function LeadForm({ leadType }) {
     const [showPopover, setShowPopover] = useState(false);
     const [activePopover, setActivePopover] = useState(null);
     const { data: staffData, isLoading: isStaffLoading } = useStaff();
+    const { currentUser } = useAuth();
 
     const [searchParams] = useSearchParams();
         const no=searchParams.get('no');
@@ -46,6 +48,19 @@ function LeadForm({ leadType }) {
             setValue("phone", no);
         }
     }, [no, setValue]);
+
+    // Automatically set current user as agent
+    useEffect(() => {
+        if (currentUser && staffData && staffData.length > 0) {
+            const currentUserStaff = staffData.find(staff => staff.id === currentUser.id);
+            if (currentUserStaff) {
+                setValue("agent_Id", {
+                    value: currentUserStaff.id,
+                    label: currentUserStaff.name
+                });
+            }
+        }
+    }, [currentUser, staffData, setValue]);
     
     // Convert form data to send only IDs for multi-select fields
     useEffect(() => {

@@ -113,9 +113,9 @@ export const ROUTE_PERMISSIONS = {
     "/hrcalendar": ["manage_calendars"],
     
     // Affiliate
-    "/admin/affiliate": ["manage_agent"],
-    "/admin/affiliate-tree": ["manage_agent"],
-    "/admin/affiliate-wallet": ["manage_agent"],
+    "/admin/affiliate": ["manage_agent", "basic_affiliate"],
+    "/admin/affiliate-tree": ["manage_agent", "basic_affiliate"],
+    "/admin/affiliate-wallet": ["manage_agent", "basic_affiliate"],
     
     // Games
     "/games": [], // No specific permission required
@@ -192,7 +192,7 @@ export const SIDEBAR_PERMISSIONS = {
     calendar: ["manage_calendars"],
     
     // Affiliate
-    affiliate: ["manage_agent"],
+    affiliate: ["manage_agent", "basic_affiliate"],
     
     // FAQ
     faq: ["view_faqs"],

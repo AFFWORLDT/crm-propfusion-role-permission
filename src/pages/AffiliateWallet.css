@@ -551,7 +551,25 @@
   font-weight: 500;
 }
 
+.agent-badges {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
 .status-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: capitalize;
+  padding: 0.25rem 0.75rem;
+  border-radius: 12px;
+  width: fit-content;
+}
+
+.staff-level-badge {
   display: inline-flex;
   align-items: center;
   gap: 0.25rem;

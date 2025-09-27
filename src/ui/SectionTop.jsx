@@ -432,30 +432,34 @@ function SectionTop({ heading, children }) {
                             </Menus.Button>
                         )}
                         
-                        {/* Affiliate Tree - show for all users */}
-                        <Menus.Button
-                            onClick={() => navigate(`/admin/affiliate-tree`)}
-                            icon="/icons/tree.svg"
-                        >
-                            <span>Affiliate Tree</span>
-                        </Menus.Button>
+                        {/* Affiliate Tree - show for users with manage_agent or basic_affiliate permission */}
+                        {(agentPermission.canManage || hasPermission("manage_agent") || hasPermission("basic_affiliate")) && (
+                            <Menus.Button
+                                onClick={() => navigate(`/admin/affiliate-tree`)}
+                                icon="/icons/tree.svg"
+                            >
+                                <span>Affiliate Tree</span>
+                            </Menus.Button>
+                        )}
                         
-                        {/* Other affiliate features - only show if user has manage_agent permission */}
-                        {(agentPermission.canManage || hasPermission("manage_agent")) && (
-                            <>
-                                <Menus.Button
-                                    onClick={() => navigate(`/admin/affiliate-wallet`)}
-                                    icon="/icons/wallet.svg"
-                                >
-                                    <span>Affiliate Wallet</span>
-                                </Menus.Button>
-                                <Menus.Button
-                                    onClick={() => navigate(`/admin/affiliate`)}
-                                    icon="/icons/tree.svg"
-                                >
-                                    <span>QR Code</span>
-                                </Menus.Button>
-                            </>
+                        {/* Affiliate Wallet - show for users with manage_agent or basic_affiliate permission */}
+                        {(agentPermission.canManage || hasPermission("manage_agent") || hasPermission("basic_affiliate")) && (
+                            <Menus.Button
+                                onClick={() => navigate(`/admin/affiliate-wallet`)}
+                                icon="/icons/wallet.svg"
+                            >
+                                <span>Affiliate Wallet</span>
+                            </Menus.Button>
+                        )}
+                        
+                        {/* QR Code - show for users with manage_agent or basic_affiliate permission */}
+                        {(agentPermission.canManage || hasPermission("manage_agent") || hasPermission("basic_affiliate")) && (
+                            <Menus.Button
+                                onClick={() => navigate(`/admin/affiliate`)}
+                                icon="/icons/grid.svg"
+                            >
+                                <span>QR Code</span>
+                            </Menus.Button>
                         )}
                         
                         {(calendarsPermission.canManage || hasPermission("manage_calendars")) && (
@@ -467,12 +471,6 @@ function SectionTop({ heading, children }) {
                             </Menus.Button>
                         )}
                         
-                        <Menus.Button
-                            onClick={() => navigate(`/carrier`)}
-                            icon="/icons/tree.svg"
-                        >
-                            <span>Carrier</span>
-                        </Menus.Button>
 
                         {(settingsPermission.canManage || adminPermissions.canManageSettings) && (
                             <div
@@ -509,64 +507,6 @@ function SectionTop({ heading, children }) {
                             </div>
                         )}
 
-                        <div
-                            style={{
-                                display: "flex",
-                                alignItems: "center",
-                                padding: "1rem 2rem",
-                                cursor: "pointer",
-                            }}
-                            onClick={() => setShowCommandMenu(true)}
-                        >
-                            <img
-                                src="/icons/sparkles.svg"
-                                style={{ width: 18, marginRight: 10 }}
-                                alt="Command Menu"
-                            />
-                            <span
-                                style={{
-                                    fontSize: 13,
-                                    position: "relative",
-                                }}
-                                onMouseEnter={(e) => {
-                                    const tooltip =
-                                        e.currentTarget.querySelector(
-                                            ".tooltip"
-                                        );
-                                    if (tooltip)
-                                        tooltip.style.display = "block";
-                                }}
-                                onMouseLeave={(e) => {
-                                    const tooltip =
-                                        e.currentTarget.querySelector(
-                                            ".tooltip"
-                                        );
-                                    if (tooltip) tooltip.style.display = "none";
-                                }}
-                            >
-                                Command Menu
-                                <div
-                                    className="tooltip"
-                                    style={{
-                                        display: "none",
-                                        position: "absolute",
-                                        top: "100%",
-                                        left: "50%",
-                                        transform: "translateX(-50%)",
-                                        background: "#333",
-                                        color: "white",
-                                        padding: "4px 8px",
-                                        borderRadius: "4px",
-                                        fontSize: "10px",
-                                        whiteSpace: "nowrap",
-                                        zIndex: 1000,
-                                        marginTop: "5px",
-                                    }}
-                                >
-                                    Press {getShortcut()}
-                                </div>
-                            </span>
-                        </div>
                         {(supportPermission.canManage || hasPermission("manage_support")) && (
                             <Menus.Button
                                 onClick={() => navigate(`/support`)}
