@@ -1,0 +1,11 @@
+.btnCreatePdf {
+    position: absolute;
+    top: 2.4rem;
+    left: 2.4rem;
+    z-index: 100;
+
+    padding: 1rem 2rem;
+    background-color: #fff;
+    border: 1px solid var(--clr-neutral-300);
+    border-radius: 0.8rem;
+}

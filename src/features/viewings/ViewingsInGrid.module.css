@@ -1,0 +1,70 @@
+.gridContainer {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 1.5rem;
+    padding: 1.5rem;
+}
+
+.gridItem {
+    border: 1px solid #eee;
+    border-radius: 8px;
+    padding: 1.5rem;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    background-color: #fff;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    min-height: 180px;
+    justify-content: space-between;
+}
+
+.gridItem h3 {
+    margin-top: 0;
+    margin-bottom: 0.8rem;
+    color: #333;
+}
+
+.gridItem p {
+    margin-bottom: 0.6rem;
+    color: #666;
+    font-size: 0.9rem;
+    flex-shrink: 0;
+}
+
+.agentInfo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    position: absolute;
+    bottom: 15px;
+    right: 15px;
+}
+
+.agentAvatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid #fff;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.2);
+}
+
+.agentDetails {
+    display: none;
+}
+
+.agentDetails p {
+    margin: 0;
+    font-size: 0.9rem;
+    color: #333;
+    font-weight: 500;
+}
+
+.loadingRow,
+.noMoreDataRow {
+    grid-column: 1 / -1; /* Span across all columns */
+    text-align: center;
+    padding: 1rem;
+    font-style: italic;
+    color: #888;
+} 

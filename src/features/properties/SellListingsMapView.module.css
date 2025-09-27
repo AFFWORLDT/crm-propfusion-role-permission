@@ -1,0 +1,70 @@
+.sectionStyles {
+  width: 100%;
+}
+
+.mapContainer {
+  height: 100vh;
+  background: #f7f8fa;
+  margin-top:1rem ;
+
+}
+
+.popup {
+  min-width: 200px;
+}
+
+.popupTitle {
+  color: #2563eb;
+  font-size: 1.1em;
+  font-weight: bold;
+}
+
+.popupLocation {
+  color: #444;
+}
+
+.popupType {
+  color: #666;
+}
+
+.popupPrice {
+  color: #111;
+  font-weight: 600;
+}
+
+.agentInfo {
+  margin-top: 0.5em;
+  display: flex;
+  align-items: center;
+  gap: 0.5em;
+}
+
+.agentAvatar {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+}
+
+.agentName {
+  font-size: 0.98em;
+}
+
+.propertyImage {
+  width: 100%;
+  margin-top: 0.5em;
+  border-radius: 8px;
+}
+
+@media (max-width: 900px) {
+  .mapContainer {
+    height: calc(100vh - 70px) !important;
+    top: 70px !important;
+  }
+}
+
+@media (max-width: 600px) {
+  .mapContainer {
+    height: calc(100vh - 56px) !important;
+    top: 56px !important;
+  }
+} 

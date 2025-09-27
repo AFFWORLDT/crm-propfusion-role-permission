@@ -1,0 +1,16 @@
+.staffAvatar {
+    height: 4rem;
+    aspect-ratio: 1 / 1;
+    border-radius: 50%;
+}
+
+.staffLink {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+    transition: color 0.2s ease;
+}
+
+.staffLink:hover {
+    color: #341b80;
+}

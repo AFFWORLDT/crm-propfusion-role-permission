@@ -1,0 +1,80 @@
+.listings h3 {
+    font-size: 2.4rem;
+    font-weight: 600;
+    margin-bottom: 2rem;
+}
+
+.listings button {
+    padding: 1.2rem 2rem;
+    border-radius: 0.6rem;
+    border: 1px solid var(--clr-neutral-300);
+    transition: 0.3s var(--timing-function);
+
+    display: flex;
+    align-items: center;
+    gap: 1.4rem;
+    margin-bottom: 2rem;
+}
+
+.listings button:hover {
+    border-color: var(--clr-primary-200);
+    background-color: var(--clr-primary-100);
+}
+
+.listings button img {
+    border-radius: 0.6rem;
+    height: 3.2rem;
+}
+
+.listingsFlex {
+    display: flex;
+    gap: 2.4rem;
+}
+
+@media screen and (max-width: 480px) {
+    .listingsFlex {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .listingsFlex select {
+        width: 100%;
+    }
+}
+
+/* ListingArea css  */
+/* 
+.AreaListDecoration ul{
+ padding:0;
+ margin:0;
+}
+
+.AreaListDecoration ul li button{
+  color:black;
+  border:0.5px solid black;
+}
+.AreaListDecoration ul li ul li button{
+margin:0;
+background-color:#CCCCFF;
+padding:10px 10px 10px 10px ;
+border: none;
+}
+.AreaListDecoration ul li button:hover{
+    background-color: gray;
+    color:white;
+} */
+/*  */
+/* .ParentStyle h1{
+    color:black;
+    font-family: 'Roboto', sans-serif;
+}
+.AreaListDecoration ul{
+    text-align: center; 
+}
+.AreaListDecoration ul li button{
+    border: 1px solid black;
+    width:150px;
+    height:50px;
+    padding: 10px 10px 10px 10px;
+    margin: 0;
+} */

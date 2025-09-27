@@ -1,0 +1,139 @@
+.loading {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  gap: 0.5rem;
+}
+
+.loadingIcon {
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.error {
+  padding: 2rem;
+  color: #ef4444;
+  text-align: center;
+}
+
+.header {
+  padding: 1rem 2rem;
+  background: #fff;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.03);
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.title {
+  margin: 0;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 1.5rem;
+}
+
+.titleIcon {
+  color: #2563eb;
+}
+
+.controls {
+  margin-top: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.viewButtons {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.viewButton {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 1.2rem;
+  border: none;
+  border-radius: 6px;
+  font-weight: 500;
+  cursor: pointer;
+  background: #eee;
+  color: #333;
+}
+
+.viewButton[data-active="true"] {
+  background: #2563eb;
+  color: #fff;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 2rem;
+  padding: 2rem;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.card {
+  border: 1px solid #eee;
+  border-radius: 14px;
+  padding: 1.5rem;
+  background: #fff;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+  cursor: pointer;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+}
+
+.cardIcon {
+  color: #2563eb;
+  margin-bottom: 0.5rem;
+}
+
+.cardTitle {
+  margin: 0 0 0.5rem 0;
+  font-size: 1.3rem;
+}
+
+.cardLocation {
+  font-size: 1.05em;
+  color: #666;
+}
+
+.cardCoordinates {
+  margin-top: 0.5rem;
+  color: #888;
+  font-size: 0.98em;
+}
+
+.emptyState {
+  padding: 2rem;
+  text-align: center;
+  color: #666;
+}
+
+.loadMore {
+  text-align: center;
+  color: #2563eb;
+  font-weight: 500;
+  margin: 1rem;
+}
+
+.allLoaded {
+  text-align: center;
+  color: #888;
+  font-size: 0.98em;
+  margin-bottom: 1rem;
+} 

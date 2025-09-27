@@ -1,0 +1,186 @@
+.sectionTop,
+.sectionTop h1,
+.rightContainer {
+    display: flex;
+    align-items: center;
+}
+
+.sectionTop {
+    position: fixed;
+    z-index: 10;
+    width: calc(100% - var(--side-nav-width));
+
+    justify-content: space-between;
+    background-color: var(--clr-neutral-50);
+    border-bottom: none;
+}
+
+.sectionTop h1 {
+    font-size: 2.6rem;
+    font-weight: 600;
+    gap: 1.2rem;
+    margin: 0;
+}
+
+.rightContainer {
+    gap: 2.4rem;
+}
+
+.rightContainer img {
+    height: 2.6rem;
+    position: relative;
+    top: 1.5px;
+}
+
+.btnNotification {
+    display: flex;
+    gap: 0.1rem;
+    align-items: center;
+    position: relative;
+}
+
+.btnNotification div {
+    position: absolute;
+    top: -8px;
+    right: -8px;
+    min-width: 18px;
+    height: 18px;
+    padding: 0 4px;
+    background-color: #0066ff;
+    border-radius: 10px;
+    font-weight: 600;
+    font-size: 10px;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+    border: 1.5px solid white;
+    line-height: 1;
+}
+
+.btnSettings {
+    font-size: 1.4rem;
+}
+
+.btnSettings > div {
+    width: 100%;
+    padding: 1.2rem 3rem;
+    white-space: nowrap;
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    cursor: pointer;
+}
+
+.btnSettings:hover > div {
+    background-color: var(--clr-neutral-100);
+}
+
+.btnSettings img {
+    max-width: 2rem;
+    filter: saturate(0);
+
+}
+
+.btnSettings .arrowDown {
+    position: relative;
+    top: -1px;
+    left: -6px;
+    transform: scale(1.2);
+    filter: invert(1);
+    transition: 0.2s linear;
+}
+
+.btnSettings.toggleActive .arrowDown {
+    top: 1px;
+    transform: scale(1.2) rotate(180deg);
+}
+
+.btnSettings ul {
+    margin-left: -2.4rem;
+}
+
+.btnSettings ul li a {
+    display: inline-block;
+    width: 100%;
+    padding: 0.8rem 0 0.8rem 6.4rem;
+    font-size: 1.4rem;
+    font-weight: 500;
+}
+
+.btnSettings ul li:hover {
+    background-color: var(--clr-neutral-100);
+    cursor: pointer;
+}
+
+@media only screen and (max-width: 1200px) {
+    .sectionTop {
+        width: 100%;
+    }
+
+    .sectionTop h1 {
+        font-size: 2.2rem;
+    }
+
+    .rightContainer img {
+        height: 2.4rem;
+    }
+}
+
+/* Tablet devices */
+@media only screen and (max-width: 768px) {
+    .sectionTop h1 {
+        font-size: 2rem;
+    }
+
+    .rightContainer {
+        gap: 1.8rem;
+    }
+
+    .rightContainer img {
+        height: 2.2rem;
+    }
+
+    .btnNotification div {
+        min-width: 16px;
+        height: 16px;
+        font-size: 9px;
+        top: -6px;
+        right: -6px;
+        padding: 0 3px;
+    }
+}
+
+/* Mobile devices */
+@media only screen and (max-width: 480px) {
+    .sectionTop h1 {
+        font-size: 1.8rem;
+        gap: 0.5rem;
+    }
+
+    .rightContainer {
+        gap: 1.2rem;
+    }
+
+    .rightContainer img {
+        height: 2rem;
+    }
+
+    .btnSettings > div {
+        padding: 1rem 2rem;
+    }
+
+    .btnSettings ul li a {
+        padding: 0.8rem 0 0.8rem 4.8rem;
+    }
+
+    .btnNotification div {
+        min-width: 14px;
+        height: 14px;
+        font-size: 8px;
+        top: -5px;
+        right: -5px;
+        padding: 0 2px;
+    }
+}

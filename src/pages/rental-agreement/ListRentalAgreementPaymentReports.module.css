@@ -1,0 +1,46 @@
+.tabContainer {
+  margin-top: 1rem;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.tabList {
+  display: flex;
+  gap: 2rem;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.tabItem {
+  padding: 0.75rem 1rem;
+  cursor: pointer;
+  font-weight: 500;
+  color: #6b7280;
+  position: relative;
+}
+
+.tabItem.active {
+  color: #2563eb;
+}
+
+.tabItem.active::after {
+  content: '';
+  position: absolute;
+  bottom: -1px;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background-color: #2563eb;
+}
+
+.tabContent {
+  padding: 1.5rem 0;
+}
+
+.contentContainer {
+  margin-top: 1.5rem;
+  background-color: white;
+  border-radius: 0.5rem;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  padding: 1.5rem;
+} 

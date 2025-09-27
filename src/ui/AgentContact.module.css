@@ -1,0 +1,50 @@
+.agentContent {
+    margin-top: 3rem;
+    display: flex;
+    align-items: center;
+    gap: 1.6rem;
+}
+
+.agentAvatar {
+    width: 4.8rem;
+    height: 4.8rem;
+    border-radius: 1rem;
+    overflow: hidden;
+}
+
+.agentAvatar img {
+    height: 100%;
+    max-width: 100% !important;
+    object-fit: cover !important;
+}
+
+.agentName {
+    font-weight: 600;
+}
+
+.itemContact {
+    margin-top: 2.8rem;
+    display: flex;
+    gap: 1.2rem;
+    font-weight: 500;
+}
+
+.itemContact a {
+    display: flex;
+    gap: 1rem;
+    padding: 1.2rem 2rem ;
+    background-color: #f1f3f6;
+    border-radius: 1rem;
+}
+
+.itemContact a:hover {
+    background-color: var(--clr-primary-100);
+}
+
+.btnChooseAgent {
+    padding: 1rem 1rem 1rem 0;
+}
+
+.btnChooseAgent img {
+    width: 2rem;
+}

@@ -1,0 +1,344 @@
+.followUpsWrapper {
+    width: 100%;
+}
+
+.customWidth {
+    max-width: 1200px;
+}
+
+.btnAddFollowUp {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0.5rem;
+}
+
+.btnAddFollowUp img {
+    width: 24px;
+    height: 24px;
+}
+
+.followUpForm {
+    padding: 2rem;
+    max-width: 500px;
+    width: 100%;
+}
+
+.followUpForm h3 {
+    margin-bottom: 2rem;
+    font-size: 1.8rem;
+    font-weight: 600;
+}
+
+.followUpFormGrid {
+    display: grid;
+    gap: 1.6rem;
+}
+
+.followUpDateTimeGroup {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.6rem;
+}
+
+.formFieldGroup {
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+}
+
+.formFieldGroup label {
+    font-size: 1.4rem;
+    color: #666;
+}
+
+.formFieldGroup input {
+    padding: 0.8rem;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 1.4rem;
+}
+
+.textareaField {
+    width: 100%;
+    padding: 1rem;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-family: inherit;
+    font-size: 1.4rem;
+    resize: vertical;
+}
+
+.error {
+    color: #e74c3c;
+    font-size: 1.2rem;
+}
+
+.btnSubmit {
+    background-color: #3498db;
+    color: white;
+    border: none;
+    padding: 1rem 2rem;
+    border-radius: 4px;
+    font-size: 1.4rem;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.btnSubmit:hover {
+    background-color: #2980b9;
+}
+
+.btnSubmit:disabled {
+    background-color: #bdc3c7;
+    cursor: not-allowed;
+}
+
+@media screen and (max-width: 768px) {
+    .followUpForm {
+        padding: 1rem;
+        max-width: 100%;
+    }
+
+    .followUpForm h3 {
+        font-size: 1.6rem;
+        margin-bottom: 1.5rem;
+    }
+
+    .followUpDateTimeGroup {
+        grid-template-columns: 1fr;
+        gap: 1.2rem;
+    }
+
+    .formFieldGroup input,
+    .textareaField {
+        font-size: 1.6rem;
+        padding: 1.2rem;
+    }
+
+    .formFieldGroup label {
+        font-size: 1.6rem;
+    }
+
+    .btnSubmit {
+        width: 100%;
+        padding: 1.2rem;
+        font-size: 1.6rem;
+    }
+
+    .error {
+        font-size: 1.4rem;
+    }
+}
+.followUpDateTimeGroup {
+    display: grid;
+       grid-template-columns: repeat(12, 1fr);
+    gap: 1.6rem;
+}
+.followUps {
+    max-width: 51rem;
+    padding: 0 1.2rem;
+    color: #3a3a3a;
+}
+
+.followUps:global(.sectionDiv) {
+    display: flex;
+    flex-direction: column;
+}
+
+.followUpsTop {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 2rem;
+}
+
+.followUps h3 {
+    margin-bottom: 1rem;
+    color: var(--clr-primary-300);
+    font-size: 2.2rem;
+    font-weight: 600;
+
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    white-space: pre;
+}
+
+.followUps h3 img {
+    max-width: 2.8rem;
+    object-fit: fill;
+}
+
+.btnAddFollowUp {
+    width: 8rem;
+    padding: 0.5rem 1rem;
+    border: 1px solid var(--clr-neutral-300);
+    border-radius: 0.5rem;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+}
+
+.btnAddFollowUp img {
+    max-width: 2rem;
+}
+
+.followUpForm {
+    min-width: 40rem;
+}
+
+.followUpForm h3 {
+    font-size: 2.4rem;
+    font-weight: 600;
+    margin-bottom: 2.4rem;
+}
+
+.followUpForm form {
+    display: grid;
+    gap: 2.4rem;
+}
+
+.followUpsContent {
+    max-height: 50rem;
+    overflow: hidden auto;
+
+    display: grid;
+    gap: 2.4rem;
+}
+
+.followUpsContent .emptyMessage {
+    margin-top: 4.8rem;
+    text-align: center;
+}
+.followUpItem {
+    display: grid;
+    gap: 0.5rem;
+    padding: 1.6rem;
+    border-radius: 0.8rem;
+    max-height: none;
+    border: 1px solid var(--clr-neutral-200);
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    overflow: visible;
+}
+
+.followUpItem div:first-of-type {
+    display: flex;
+    gap: 1.2rem;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.followUpItem div:first-of-type img {
+    border-radius: 50%;
+    height: 4rem;
+    width: 4rem;
+    object-fit: cover;
+    flex-shrink: 0;
+}
+
+.followUpItem div:first-of-type h4 {
+    font-size: 1.8rem;
+    font-weight: 600;
+    margin: 0;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.followUpItem div:first-of-type span {
+    margin-left: auto;
+    font-size: 1.2rem;
+    color: #666;
+    flex-shrink: 0;
+}
+
+.followUpItem div:nth-of-type(2) {
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    white-space: pre-wrap;
+}
+
+.followUpItem div:nth-of-type(2) p {
+    margin: 0;
+    line-height: 1.5;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    white-space: pre-wrap;
+}
+
+@media screen and (max-width: 1200px) {
+    .followUps {
+        max-width: 100rem;
+    }
+
+    .followUpForm {
+        min-width: unset;
+    }
+
+    .followUpsContent {
+        grid-template-columns: 1fr 1fr !important;
+        column-gap: 6.4rem;
+    }
+
+    .followUpsContent .emptyMessage {
+        margin-top: unset;
+    }
+}
+
+@media screen and (max-width: 760px) {
+    .followUpsContent {
+        grid-template-columns: 1fr !important;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .followUpItem div:first-of-type {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.8rem;
+    }
+    
+    .followUpItem div:first-of-type span {
+        margin-left: 0;
+        align-self: flex-end;
+    }
+    
+    .followUpItem div:first-of-type h4 {
+        font-size: 1.6rem;
+    }
+    
+    .followUpItem {
+        padding: 1.2rem;
+        gap: 0.8rem;
+    }
+    
+    .followUpItem div:nth-of-type(2) p {
+        font-size: 1.4rem;
+        line-height: 1.5;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .followUpItem {
+        padding: 1rem;
+        gap: 0.6rem;
+    }
+    
+    .followUpItem div:first-of-type img {
+        height: 3.2rem;
+        width: 3.2rem;
+    }
+    
+    .followUpItem div:first-of-type h4 {
+        font-size: 1.4rem;
+    }
+    
+    .followUpItem div:first-of-type span {
+        font-size: 1rem;
+    }
+}

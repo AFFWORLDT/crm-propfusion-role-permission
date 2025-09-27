@@ -1,0 +1,83 @@
+.modalOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.modalContent {
+  background: white;
+  padding: 24px;
+  border-radius: 8px;
+  width: 90%;
+  max-width: 400px;
+}
+
+.modalHeader {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.warningIcon {
+  color: #ef4444;
+  width: 24px;
+  height: 24px;
+}
+
+.modalTitle {
+  color: #1f2937;
+  font-size: 20px;
+  font-weight: 600;
+}
+
+.modalMessage {
+  color: #4b5563;
+  margin-bottom: 24px;
+  line-height: 1.5;
+}
+
+.modalActions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+}
+
+.cancelButton, .deleteButton {
+  padding: 8px 16px;
+  border-radius: 6px;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.cancelButton {
+  background: white;
+  border: 1px solid #d1d5db;
+  color: #374151;
+}
+
+.cancelButton:hover {
+  background: #f3f4f6;
+}
+
+.deleteButton {
+  background: #ef4444;
+  border: none;
+  color: white;
+}
+
+.deleteButton:hover {
+  background: #dc2626;
+}
+
+.deleteButton:disabled, .cancelButton:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+} 

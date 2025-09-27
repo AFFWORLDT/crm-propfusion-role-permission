@@ -1,0 +1,113 @@
+/* LeadsBase.module.css */
+.leadsContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.card {
+    position: relative;
+    padding: 2rem;
+    background: white;
+    display: grid;
+    grid-template-columns: 30rem 1fr;
+    gap: 2.4rem;
+    transition: all 0.3s ease;
+    border-radius: 1.6rem;
+    
+}
+.card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border-radius: 1.6rem;
+    padding: 1.5px;
+    background: linear-gradient(
+      45deg,
+      #FFD700,
+      #FDB931,
+      #E8A955,
+      #FFD700
+    );
+    -webkit-mask: 
+      linear-gradient(#fff 0 0) content-box, 
+      linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    pointer-events: none;
+    opacity: 0.8;
+  }
+
+.card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+}
+
+.propertyInfo,
+.clientInfo {
+    flex: 1;
+    margin-right: 20px;
+}
+
+.propertyInfo:last-child {
+    margin-right: 0;
+}
+
+.title {
+    font-size: 20px;
+    font-weight: bold;
+    color: #333333;
+    margin-bottom: 10px;
+}
+
+.content {
+    margin: 5px 0;
+    font-size: 16px;
+    color: #555555;
+}
+
+
+/* Mobile responsiveness */
+@media (max-width: 768px) {
+    .card {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 15px;
+    }
+
+    .propertyInfo,
+    .clientInfo {
+        margin-right: 0;
+        margin-bottom: 10px;
+        width: 100%;
+    }
+
+    .propertyInfo:last-child {
+        margin-bottom: 0;
+    }
+
+    .title {
+        font-size: 18px;
+    }
+
+    p {
+        font-size: 14px;
+    }
+}
+
+@media (max-width: 480px) {
+    .card {
+        padding: 10px;
+    }
+
+    .title {
+        font-size: 16px;
+    }
+
+    p {
+        font-size: 12px;
+    }
+}

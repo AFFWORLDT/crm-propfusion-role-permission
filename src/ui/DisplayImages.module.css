@@ -1,0 +1,198 @@
+.displayImages {
+    margin-left: 17rem;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+    padding: 1.4rem 2rem;
+    border: 1px solid var(--clr-neutral-200);
+    border-top: none;
+    border-radius: 0.8rem;
+}
+.displayImageContainer.selected {
+    border: 3px solid rgb(255, 231, 15); 
+    position: relative;
+    overflow: hidden;
+    opacity: 1;
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    cursor: pointer;
+  }
+
+  .actions {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .submitButton {
+    padding: 0.5rem 1rem;
+    background-color: var(--clr-primary-300);
+    color: var(--clr-neutral-100);
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    padding: 1rem 2rem;
+    font-weight: 500;
+    border-radius: 0.8rem;
+  }
+  
+  .cancelButton {
+    color: rgb(94, 87, 87);
+    border: none;
+    cursor: pointer;
+    padding: 1rem 2rem;
+    font-weight: 500;
+    border-radius: 0.8rem;
+    border: 1px solid var(--clr-neutral-200);
+  }
+
+.displayImageContainer {
+    position: relative;
+    border-radius: 1rem;
+    overflow: hidden;
+    cursor: grab ;
+    border: 3px solid transparent;
+    
+}
+
+.displayImageContainer :global(.imgContainer) {
+    height: 10rem;
+    width: 10rem;
+    border: 1px solid var(--clr-neutral-200);
+    border-radius: 1rem;
+    display: grid;
+    place-items: center;
+}
+
+.displayImageContainer .imgOperations {
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    gap: 1rem;
+    background: rgba(0, 0, 0, 0.05);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    opacity: 0;
+    transition: 0.3s var(--timing-function);
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.displayImageContainer:hover .imgOperations {
+    opacity: 1;
+}
+
+.displayImageContainer .imgOperations img {
+    height: 2.8rem;
+    width: 2.4rem;
+    filter: saturate(100) invert(100);
+}
+
+.expandedImage {
+    width: 90vw;
+    height: 90vh;
+    border-radius: 1.6rem;
+    border-top-right-radius: 8rem;
+}
+
+@media screen and (max-width: 900px) {
+    .displayImageContainer :global(.imgContainer),
+    .displayImageContainer .imgOperations {
+        border-radius: 0;
+    }
+
+    .displayImageContainer {
+        display: flex;
+    }
+
+    .displayImageContainer .imgOperations {
+        position: static;
+        opacity: 1;
+        width: 4rem;
+        background: rgba(0, 0, 0, 0.4);
+        flex-direction: column;
+    }
+
+    .expandedImage {
+        width: 80vw;
+        height: 60vh;
+    }
+}
+
+@media screen and (max-width: 760px) {
+    .expandedImage {
+        width: 100%;
+        height: 50vw;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .displayImages {
+        margin-left: 0;
+    }
+}
+
+.uploading {
+    position: relative;
+    pointer-events: none;
+    opacity: 0.7;
+}
+
+.uploadOverlay {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: rgba(255, 255, 255, 0.95);
+    padding: 20px 40px;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    z-index: 1000;
+}
+
+.uploadOverlay img {
+    width: 40px;
+    height: 40px;
+    animation: spin 1.5s linear infinite;
+    color: var(--clr-primary-200);
+    filter: invert(45%) sepia(90%) saturate(1000%) hue-rotate(200deg);
+}
+
+.uploadOverlay span {
+    color: var(--clr-primary-200);
+    font-weight: 500;
+    font-size: 16px;
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+/* Improved backdrop style */
+.uploading::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(2px);
+    z-index: 999;
+}

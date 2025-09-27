@@ -1,0 +1,105 @@
+.manage {
+    padding: 1rem 2rem;
+    display: grid;
+    gap: 4.8rem;
+}
+
+.manage img {
+    width: 4rem;
+    height: 4rem;
+    border-radius: 0.8rem;
+}
+
+.manage pre {
+    margin: 0;
+    width: 100%;
+    color: var(--clr-primary-200);
+    font: inherit;
+    font-weight: 500;
+    white-space: pre-wrap;
+}
+
+.manage form {
+    display: grid;
+    gap: 1.6rem;
+    font-weight: 500;
+}
+
+.formTitle,
+.formFlex,
+.formFlex > div {
+    display: flex;
+    gap: 1.2rem;
+    align-items: center;
+}
+
+.formTitle h3 {
+    font-size: 2rem;
+}
+
+.formFlex > div {
+    padding: 1.2rem 2.4rem;
+    background-color: rgba(216, 213, 213, 0.29);
+    border-radius: 0.8rem;
+}
+
+.formFlex button img {
+    max-width: 2.4rem;
+    position: relative;
+    top: 2px;
+}
+
+.formFlex label {
+    min-width: 12rem;
+}
+
+.formFlex input {
+    width: 100%;
+    background-color: var(--clr-neutral-50);
+    font-weight: 400;
+}
+
+.btnFunctionality {
+    border: 1px solid var(--clr-neutral-300);
+    padding: 1rem 1.6rem;
+    border-radius: 0.6rem;
+
+    display: flex;
+    gap: 0.8rem;
+    align-items: center;
+}
+
+.btnFunctionality img {
+    height: 2rem;
+    width: 2rem;
+}
+
+.btnFunctionality:disabled {
+    background-color: var(--clr-neutral-100);
+}
+
+@media screen and (max-width: 760px) {
+    .manage {
+        padding: 1rem;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .formFlex,
+    .formFlex > div {
+        display: grid;
+    }
+
+    .formFlex > div {
+        grid-template-columns: 1fr auto;
+    }
+
+    .formFlex button:has(img) {
+        justify-self: left;
+    }
+
+    .formFlex input,
+    .formFlex button {
+        grid-row: 2;
+    }
+}

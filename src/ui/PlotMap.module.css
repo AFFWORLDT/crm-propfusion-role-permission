@@ -1,0 +1,420 @@
+.mapContainer {
+  position: relative;
+  width: 100%;
+  background: white;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  transition: all 0.3s ease-in-out;
+  /* height: 100vh; */
+}
+
+.mapContainer.expanded {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  /* height: 100vh; */
+  z-index: 9999;
+  border-radius: 0;
+  transform: none;
+}
+
+.expanded .mapHeader {
+  backdrop-filter: blur(8px);
+}
+
+.expanded .mapControlsWrapper {
+  top: 90px;
+}
+
+.mapContainer::after {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: -1;
+
+
+  pointer-events: none;
+}
+
+.mapContainer.expanded::after {
+  z-index: 9998;
+}
+
+.mapHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 24px;
+  background: white;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.mapTitle {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.mapTitle h2 {
+  margin: 0;
+  font-size: 18px;
+  font-weight: 600;
+  color: #1f2937;
+}
+
+.expandButton {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 8px;
+  border-radius: 8px;
+  color: #4b5563;
+  transition: all 0.2s ease;
+}
+
+.expandButton:hover {
+  background: #f3f4f6;
+  color: #1f2937;
+}
+
+.mapControlsWrapper {
+  position: absolute;
+  left: 0;
+  top: 80px;
+  transform: translateX(20px);
+  transition: all 0.3s ease-in-out;
+  z-index: 1;
+}
+
+.mapControlsWrapper.hidden {
+  transform: translateX(-100%);
+  opacity: 0;
+  pointer-events: none;
+}
+
+.mapControls {
+  background: white;
+  border-radius: 12px;
+  width: 250px;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  position: relative;
+}
+
+.toggleButton {
+  position: absolute;
+  right: -32px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: white !important;
+  border: 1px solid #e5e7eb;
+  border-left: none;
+  padding: 8px;
+  border-radius: 0 8px 8px 0;
+  cursor: pointer;
+  box-shadow: 4px 0 6px -1px rgba(0, 0, 0, 0.1);
+  transition: background-color 0.2s ease;
+  color: black !important;
+}
+
+.toggleButton:hover {
+  background: #f3f4f6;
+}
+
+.controlSection {
+  padding: 16px;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.controlSection:last-child {
+  border-bottom: none;
+}
+
+.sectionHeader {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 12px;
+  color: #4b5563;
+  font-weight: 500;
+  font-size: 14px;
+}
+
+.mapTypeSelect {
+  width: 100%;
+  padding: 8px 12px;
+  border-radius: 8px;
+  border: 1px solid #e5e7eb;
+  background-color: white;
+  font-size: 14px;
+  color: #1f2937;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.mapTypeSelect:hover {
+  border-color: #d1d5db;
+}
+
+.layerControls {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.layerToggle {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  cursor: pointer;
+  font-size: 14px;
+  color: #4b5563;
+  padding: 4px 0;
+}
+
+.layerToggle input[type="checkbox"] {
+  display: none;
+}
+
+.switch {
+  position: relative;
+  width: 40px;
+  height: 24px;
+  background-color: #e5e7eb;
+  border-radius: 12px;
+  transition: background-color 0.3s;
+}
+
+.switch:before {
+  content: "";
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  width: 20px;
+  height: 20px;
+  background-color: white;
+  border-radius: 50%;
+  transition: transform 0.3s;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+.layerCheckbox:checked + .switch {
+  background-color: #4CAF50;
+}
+
+.layerCheckbox:checked + .switch:before {
+  transform: translateX(16px);
+}
+
+.infoWindow {
+  padding: 16px;
+  min-width: 200px;
+  max-width: 300px;
+}
+
+.infoWindow h3 {
+  margin: 0 0 8px 0;
+  font-size: 16px;
+  font-weight: 600;
+  color: #1f2937;
+}
+
+.infoWindow p {
+  margin: 0;
+  font-size: 14px;
+  color: #4b5563;
+  line-height: 1.5;
+}
+
+.infoWindow .price {
+  margin-top: 8px;
+  font-weight: 600;
+  color: #2563eb;
+}
+
+.loadingContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 500px;
+  background-color: #f9fafb;
+  border-radius: 12px;
+}
+
+.loadingSpinner {
+  width: 40px;
+  height: 40px;
+  border: 3px solid #f3f4f6;
+  border-top: 3px solid #2563eb;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  margin-bottom: 16px;
+}
+
+.errorContainer {
+  padding: 24px;
+  background-color: #fef2f2;
+  border-radius: 12px;
+  text-align: center;
+}
+
+.errorMessage {
+  color: #dc2626;
+  margin: 0;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+@media (max-width: 640px) {
+  .mapControls {
+    width: 200px;
+  }
+
+  .mapHeader {
+    padding: 12px 16px;
+  }
+
+  .mapTitle h2 {
+    font-size: 16px;
+  }
+
+  .toggleButton {
+    right: -28px;
+    padding: 6px;
+  }
+
+  .mapControlsWrapper {
+    transform: translateX(12px);
+  }
+
+  .controlSection {
+    padding: 12px;
+  }
+
+  .sectionHeader {
+    font-size: 13px;
+  }
+
+  .mapTypeSelect {
+    padding: 6px 10px;
+    font-size: 13px;
+  }
+
+  .layerToggle {
+    font-size: 13px;
+  }
+
+  .switch {
+    width: 36px;
+    height: 22px;
+  }
+
+  .switch:before {
+    width: 18px;
+    height: 18px;
+  }
+
+  .layerCheckbox:checked + .switch:before {
+    transform: translateX(14px);
+  }
+}
+
+/* Dark mode support */
+@media (prefers-color-scheme: dark) {
+  .mapControls {
+    background: #1f2937;
+    border-color: #374151;
+  }
+
+  .toggleButton {
+    background: #1f2937;
+    border-color: #374151;
+    color: #e5e7eb;
+  }
+
+  .toggleButton:hover {
+    background: #374151;
+  }
+
+  .controlSection {
+    border-color: #374151;
+  }
+
+  .sectionHeader {
+    color: #e5e7eb;
+  }
+
+  .mapTypeSelect {
+    background-color: #374151;
+    border-color: #4b5563;
+    color: #e5e7eb;
+  }
+
+  .mapTypeSelect:hover {
+    border-color: #6b7280;
+  }
+
+  .layerToggle {
+    color: #e5e7eb;
+  }
+
+  .switch {
+    background-color: #4b5563;
+  }
+
+  .switch:before {
+    background-color: #e5e7eb;
+  }
+
+  .layerCheckbox:checked + .switch {
+    background-color: #4CAF50;
+  }
+}
+/* In PlotMap.module.css, update/add these styles: */
+
+
+
+.toggleButton {
+  position: absolute;
+  left: 0px;
+  top: 95px;
+  z-index: 2;
+  background: black;
+  border: 1px solid #e5e7eb;
+  padding: 8px;
+  border-radius: 8px;
+  cursor: pointer;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease-in-out;
+  width: 50px;
+}
+
+.toggleButton.toggleButtonHidden {
+  left: 20px;
+}
+
+.toggleButton:hover {
+  background: #ccc;
+}
+
+@media (max-width: 640px) {
+
+  .toggleButton {
+    left: 12px;
+    padding: 6px;
+  }
+  
+  .toggleButton.toggleButtonHidden {
+    left: 12px;
+  }
+}

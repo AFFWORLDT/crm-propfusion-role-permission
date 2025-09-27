@@ -1,0 +1,69 @@
+.floorPlanContainer {
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    margin-bottom: 1rem;
+}
+
+.towerTabs {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 2rem;
+    flex-wrap: wrap;
+}
+
+.towerTab {
+    padding: 0.75rem 1.5rem;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    background: white;
+    cursor: pointer;
+    font-size: 0.9rem;
+    transition: all 0.2s ease;
+}
+
+.towerTab:hover {
+    background: #f8f8f8;
+    border-color: #d0d0d0;
+}
+
+.towerTab.active {
+    background: #007bff;
+    color: white;
+    border-color: #007bff;
+}
+
+@media (max-width: 1024px) {
+    .floorPlanContainer {
+        margin-bottom: 1rem;
+        border: 1px solid #e0e0e0;
+        border-radius: 8px;
+    }
+}
+
+@media (max-width: 768px) {
+    .floorPlanContainer {
+        width: 730px;
+        width: 920px;
+
+    }
+}
+
+@media (max-width: 480px) {
+    .floorPlanContainer {
+        width: 360px;
+        
+    }
+} 
+
+@media (max-width: 360px) {
+    .floorPlanContainer {
+        width: 300px;
+        
+    }
+} 
+
+@media (max-width: 375px) {
+    .floorPlanContainer {
+        width: 320px;
+    }
+} 

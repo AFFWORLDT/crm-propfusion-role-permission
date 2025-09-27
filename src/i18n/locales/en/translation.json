@@ -1,0 +1,61 @@
+{
+  "common": {
+    "dashboard": "Dashboard",
+    "properties": "Properties",
+    "customers": "Customers",
+    "agents": "Agents",
+    "reports": "Reports",
+    "settings": "Settings",
+    "logout": "Logout",
+    "search": "Search",
+    "add": "Add",
+    "edit": "Edit",
+    "delete": "Delete",
+    "save": "Save",
+    "cancel": "Cancel",
+    "loading": "Loading...",
+    "noData": "No data available",
+    "error": "Error occurred"
+  },
+  "property": {
+    "title": "Property Management",
+    "addProperty": "Add Property",
+    "editProperty": "Edit Property",
+    "propertyDetails": "Property Details",
+    "propertyType": "Property Type",
+    "price": "Price",
+    "location": "Location",
+    "status": "Status",
+    "description": "Description"
+  },
+  "customer": {
+    "title": "Customer Management",
+    "addCustomer": "Add Customer",
+    "editCustomer": "Edit Customer",
+    "customerDetails": "Customer Details",
+    "name": "Name",
+    "email": "Email",
+    "phone": "Phone",
+    "address": "Address"
+  },
+  "agent": {
+    "title": "Agent Management",
+    "addAgent": "Add Agent",
+    "editAgent": "Edit Agent",
+    "agentDetails": "Agent Details",
+    "performance": "Performance",
+    "commission": "Commission"
+  },
+  "dashboard": {
+    "sell": "Sell",
+    "rent": "Rent",
+    "projects": "Projects",
+    "listingsDistribution": "Listings Distribution",
+    "totalListings": "Total Listings",
+    "totalLeads": "Total Leads",
+    "leadDistribution": "Lead Distribution",
+    "totalWhatsappLeads": "Total WhatsApp Leads",
+    "activeDevelopers": "Active Developers",
+    "coverageAreas": "Coverage Areas"
+  }
+} 

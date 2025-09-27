@@ -1,0 +1,39 @@
+.vehicleMenus {
+    position: absolute;
+    right: 0;
+    top: -0.8rem;
+}
+
+.vehicleMenus img {
+    max-width: unset;
+}
+
+.ownerInfo {
+    padding: 2rem;
+}
+
+.ownerInfo h3 {
+    font-size: 2.4rem;
+    font-weight: 600;
+    margin-bottom: 3.2rem;
+}
+
+.ownerInfo ul {
+    display: grid;
+    gap: 2rem;
+}
+
+.ownerInfo ul li {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+}
+
+.ownerInfo ul li > span:first-of-type {
+    color: #3a3a3a;
+    font-weight: 400;
+}
+
+.ownerInfo ul li > span:last-of-type {
+    font-weight: 500;
+} 

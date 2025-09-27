@@ -1,0 +1,447 @@
+.earthContainer {
+  position: relative;
+  width: 100%;
+  background: white;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  transition: all 0.3s ease-in-out;
+  height: 100dvh;
+}
+
+.earthContainer.expanded {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  height: 100vh;
+  z-index: 9999;
+  border-radius: 0;
+  transform: none;
+}
+
+.expanded .earthHeader {
+  backdrop-filter: blur(8px);
+}
+
+.expanded .earthControlsWrapper {
+  top: 90px;
+}
+
+.earthContainer::after {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: -1;
+  pointer-events: none;
+}
+
+.earthContainer.expanded::after {
+  z-index: 9998;
+}
+
+.earthHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 24px;
+  background: white;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.earthTitle {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.earthTitle h2 {
+  margin: 0;
+  font-size: 18px;
+  font-weight: 600;
+  color: #1f2937;
+}
+
+.expandButton {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 8px;
+  border-radius: 8px;
+  color: #4b5563;
+  transition: all 0.2s ease;
+}
+
+.expandButton:hover {
+  background: #f3f4f6;
+  color: #1f2937;
+}
+
+.earthControlsWrapper {
+  position: absolute;
+  left: 0;
+  top: 80px;
+  transform: translateX(20px);
+  transition: all 0.3s ease-in-out;
+  z-index: 1;
+}
+
+.earthControlsWrapper.hidden {
+  transform: translateX(-100%);
+  opacity: 0;
+  pointer-events: none;
+}
+
+.earthControls {
+  background: white;
+  border-radius: 12px;
+  width: 280px;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  position: relative;
+}
+
+.controlSection {
+  padding: 16px;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.controlSection:last-child {
+  border-bottom: none;
+}
+
+.sectionHeader {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 12px;
+  color: #4b5563;
+  font-weight: 500;
+  font-size: 14px;
+}
+
+.navigationControls {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.controlButton {
+  background: #f3f4f6;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  padding: 8px;
+  cursor: pointer;
+  color: #4b5563;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.controlButton:hover {
+  background: #e5e7eb;
+  color: #1f2937;
+  border-color: #d1d5db;
+}
+
+.controlButton:active {
+  transform: scale(0.95);
+}
+
+.viewModeSelect {
+  width: 100%;
+  padding: 8px 12px;
+  border-radius: 8px;
+  border: 1px solid #e5e7eb;
+  background-color: white;
+  font-size: 14px;
+  color: #1f2937;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.viewModeSelect:hover {
+  border-color: #d1d5db;
+}
+
+.layerControls {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.layerToggle {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  cursor: pointer;
+  font-size: 14px;
+  color: #4b5563;
+  padding: 4px 0;
+}
+
+.layerToggle input[type="checkbox"] {
+  display: none;
+}
+
+.switch {
+  position: relative;
+  width: 40px;
+  height: 24px;
+  background-color: #e5e7eb;
+  border-radius: 12px;
+  transition: background-color 0.3s;
+}
+
+.switch:before {
+  content: "";
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  width: 20px;
+  height: 20px;
+  background-color: white;
+  border-radius: 50%;
+  transition: transform 0.3s;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+.layerCheckbox:checked + .switch {
+  background-color: #4CAF50;
+}
+
+.layerCheckbox:checked + .switch:before {
+  transform: translateX(16px);
+}
+
+.earthMap {
+  width: 100%;
+  background: #f7f8fa;
+  position: relative;
+}
+
+.infoWindow {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  min-width: 250px;
+  max-width: 350px;
+  z-index: 10;
+  animation: slideIn 0.3s ease-out;
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateX(100%);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.infoHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 20px;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.infoHeader h3 {
+  margin: 0;
+  font-size: 16px;
+  font-weight: 600;
+  color: #1f2937;
+}
+
+.closeButton {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  font-size: 20px;
+  color: #6b7280;
+  padding: 0;
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 4px;
+  transition: all 0.2s ease;
+}
+
+.closeButton:hover {
+  background: #f3f4f6;
+  color: #1f2937;
+}
+
+.infoContent {
+  padding: 16px 20px;
+}
+
+.infoContent p {
+  margin: 0 0 8px 0;
+  font-size: 14px;
+  color: #4b5563;
+  line-height: 1.5;
+}
+
+.infoContent p:last-child {
+  margin-bottom: 0;
+}
+
+.infoContent strong {
+  color: #1f2937;
+  font-weight: 600;
+}
+
+.loadingContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 400px;
+  background: #f7f8fa;
+  border-radius: 16px;
+  gap: 16px;
+}
+
+.loadingSpinner {
+  width: 40px;
+  height: 40px;
+  border: 4px solid #e5e7eb;
+  border-top: 4px solid #3b82f6;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.loadingIcon {
+  color: #3b82f6;
+  animation: pulse 2s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
+}
+
+.errorContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 400px;
+  background: #fef2f2;
+  border-radius: 16px;
+  gap: 16px;
+  padding: 24px;
+  text-align: center;
+}
+
+.errorIcon {
+  color: #ef4444;
+}
+
+.errorContainer h3 {
+  margin: 0;
+  color: #dc2626;
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.errorMessage {
+  color: #7f1d1d;
+  font-size: 14px;
+  line-height: 1.5;
+  margin: 0;
+}
+
+.retryButton {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: #dc2626;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  padding: 12px 20px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.retryButton:hover {
+  background: #b91c1c;
+  transform: translateY(-1px);
+}
+
+.retryButton:active {
+  transform: translateY(0);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .earthControlsWrapper {
+    transform: translateX(0);
+    left: 10px;
+    right: 10px;
+    width: auto;
+  }
+
+  .earthControls {
+    width: 100%;
+  }
+
+  .navigationControls {
+    justify-content: center;
+  }
+
+  .infoWindow {
+    top: 10px;
+    right: 10px;
+    left: 10px;
+    max-width: none;
+  }
+
+  .earthHeader {
+    padding: 12px 16px;
+  }
+
+  .earthTitle h2 {
+    font-size: 16px;
+  }
+}
+
+@media (max-width: 480px) {
+  .controlSection {
+    padding: 12px;
+  }
+
+  .sectionHeader {
+    font-size: 13px;
+  }
+
+  .layerToggle {
+    font-size: 13px;
+  }
+
+  .controlButton {
+    padding: 6px;
+  }
+} 

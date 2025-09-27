@@ -1,0 +1,17 @@
+.toggleItem {
+    -webkit-tap-highlight-color: transparent;
+}
+
+.toggleItem p ~ a {
+    padding-left: 5.6rem;
+}
+
+.arrowDown {
+    margin-left: auto;
+    transform: scale(1.25);
+    transition: 0.2s var(--timing-function);
+}
+
+.arrowDown.arrowActive {
+    transform: rotate(180deg) scale(1.25);
+}

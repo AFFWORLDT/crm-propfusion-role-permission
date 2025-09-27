@@ -1,0 +1,29 @@
+.termsContent h1{
+  text-align: center;
+  font-size: 40;
+  padding: 25px  25px;
+  
+}
+.termsContent h3{
+  font-size: 22px;
+  color:black;
+  font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif
+}
+.termsContent p{
+  font-size: 18px;
+  color: black;
+  font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif 
+}
+.termsContent ul{
+  text-decoration: dashed;
+}
+.termsContent ul li{
+  list-style-type: circle;
+  font-size: 18px;
+  color: black;
+  font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif 
+}
+.termsContent ul li a{
+ border-bottom: 1px solid blue;
+ color:blue;
+}

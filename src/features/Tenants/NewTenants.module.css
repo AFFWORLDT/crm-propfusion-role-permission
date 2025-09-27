@@ -1,0 +1,374 @@
+/* Card Styles */
+.card {
+  background: white;
+  border-radius: 12px;
+  padding: 2rem;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  margin-bottom: 0;
+  width: 100%;
+  transition: all 0.3s ease;
+  border: 1px solid #e5e7eb;
+  height: fit-content;
+}
+
+.card:hover {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  transform: translateY(-2px);
+  border-color: #cbd5e1;
+}
+
+.cardHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.25rem;
+  padding-bottom: 0.75rem;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.cardTitle {
+  font-size: 1.4rem;
+  font-weight: 600;
+  color: #111827;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  line-height: 1.4;
+}
+
+.id {
+  color: #6b7280;
+  font-size: 1rem;
+  font-weight: 500;
+  background: #f3f4f6;
+  padding: 0.125rem 0.5rem;
+  border-radius: 6px;
+}
+
+.actions {
+  display: flex;
+  gap: 0.375rem;
+}
+
+.actionButton {
+  background: none;
+  border: none;
+  padding: 0.5rem;
+  cursor: pointer;
+  border-radius: 6px;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 36px;
+  height: 36px;
+}
+
+.actionButton:hover {
+  background-color: #f3f4f6;
+  transform: scale(1.05);
+}
+
+.viewIcon {
+  color: #3b82f6;
+}
+
+.editIcon {
+  color: #f59e0b;
+}
+
+.deleteIcon {
+  color: #ef4444;
+}
+
+.cardContent {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.infoRow {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 1rem;
+}
+
+.infoItem {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem;
+  background: #f8fafc;
+  border-radius: 8px;
+  transition: all 0.2s ease;
+  border: 1px solid #f1f5f9;
+}
+
+.infoItem:hover {
+  background: #f1f5f9;
+  border-color: #e2e8f0;
+}
+
+.iconWrapper {
+  background-color: #ffffff;
+  padding: 0.75rem;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.icon {
+  color: #6b7280;
+  width: 20px;
+  height: 20px;
+}
+
+.infoContent {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  min-width: 0;
+}
+
+.infoContent label {
+  color: #6b7280;
+  font-size: 1rem;
+  font-weight: 500;
+  text-transform: none;
+  letter-spacing: normal;
+}
+
+.infoContent span {
+  color: #111827;
+  font-size: 1.4rem;
+  font-weight: 500;
+  word-break: break-word;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+  gap: 1.5rem;
+  padding: 1.5rem;
+  width: 100%;
+  max-width: 100%;
+}
+
+/* Large Screens - 4 columns */
+@media (min-width: 1600px) {
+  .grid {
+    grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
+    gap: 2rem;
+    padding: 2rem;
+  }
+}
+
+/* Desktop - 3 columns */
+@media (min-width: 1200px) and (max-width: 1599px) {
+  .grid {
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+    gap: 1.5rem;
+    padding: 1.5rem;
+  }
+}
+
+/* Medium Desktop - 2 columns */
+@media (min-width: 900px) and (max-width: 1199px) {
+  .grid {
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 1.25rem;
+    padding: 1.25rem;
+  }
+  
+  .infoRow {
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  }
+}
+
+/* Tablet */
+@media (min-width: 640px) and (max-width: 899px) {
+  .grid {
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 1rem;
+    padding: 1rem;
+  }
+  
+  .card {
+    padding: 1.25rem;
+  }
+  
+  .infoRow {
+    grid-template-columns: 1fr 1fr;
+    gap: 0.75rem;
+  }
+}
+
+/* Mobile Styles */
+@media (max-width: 639px) {
+  .card {
+    padding: 1rem;
+    border-radius: 8px;
+  }
+
+  .cardHeader {
+    margin-bottom: 1rem;
+    padding-bottom: 0.75rem;
+  }
+
+  .cardTitle {
+    font-size: 1.2rem;
+    gap: 0.375rem;
+  }
+
+  .infoRow {
+    grid-template-columns: 1fr;
+    gap: 0.75rem;
+  }
+
+  .infoItem {
+    padding: 0.75rem;
+  }
+
+  .grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+    padding: 1rem;
+  }
+  
+  .actions {
+    gap: 0.25rem;
+  }
+  
+  .actionButton {
+    padding: 0.375rem;
+    min-width: 32px;
+    height: 32px;
+  }
+}
+
+/* Loading and error states */
+.loadingCard, .error, .empty {
+  padding: 2rem;
+  text-align: center;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  border: 1px solid #e5e7eb;
+  margin: 1.5rem;
+}
+
+.error {
+  color: #dc2626;
+  background: #fef2f2;
+  border-color: #fecaca;
+}
+
+.empty {
+  color: #6b7280;
+  background: #f9fafb;
+  border-color: #f3f4f6;
+}
+
+.sendButton {
+  background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+  color: white;
+  border: none;
+  padding: 0.5rem;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 36px;
+  height: 36px;
+  box-shadow: 0 2px 4px rgba(16, 185, 129, 0.2);
+}
+
+.sendButton:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 8px rgba(16, 185, 129, 0.3);
+}
+
+.sendButton:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none;
+}
+
+/* Sentinel element for intersection observer */
+.sentinel {
+  height: 20px;
+  width: 100%;
+  margin: 1rem 0;
+}
+
+/* Bottom loader styles */
+.bottomLoader {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  padding: 2rem;
+  color: #6b7280;
+  font-size: 1.2rem;
+}
+
+.spinner {
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* No more data styles */
+.noMoreData {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  margin: 1rem;
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  color: #64748b;
+  font-size: 1.2rem;
+  text-align: center;
+}
+
+.noMoreData p {
+  margin: 0;
+  font-weight: 500;
+}
+
+/* Loading container styles */
+.loaderContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 4rem 2rem;
+  min-height: 300px;
+}
+
+.noData {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 4rem 2rem;
+  color: #6b7280;
+  font-size: 1.4rem;
+  text-align: center;
+  background: #f9fafb;
+  border-radius: 12px;
+  border: 1px solid #e5e7eb;
+  margin: 1.5rem;
+}

@@ -1,0 +1,139 @@
+.followUpsWrapper {
+    width: 100%;
+}
+
+.customWidth {
+    max-width: 1200px;
+}
+
+.followUpsTop {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1rem;
+}
+
+.btnAddFollowUp {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0.5rem;
+}
+
+.btnAddFollowUp img {
+    width: 24px;
+    height: 24px;
+}
+
+.followUpForm {
+    padding: 2rem;
+    max-width: 500px;
+    width: 100%;
+}
+
+.followUpForm h3 {
+    margin-bottom: 2rem;
+    font-size: 1.8rem;
+    font-weight: 600;
+}
+
+.followUpFormGrid {
+    display: grid;
+    gap: 1.6rem;
+}
+
+.followUpDateTimeGroup {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.6rem;
+}
+
+.formFieldGroup {
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+}
+
+.formFieldGroup label {
+    font-size: 1.4rem;
+    color: #666;
+}
+
+.formFieldGroup input {
+    padding: 0.8rem;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 1.4rem;
+}
+
+.textareaField {
+    width: 100%;
+    padding: 1rem;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-family: inherit;
+    font-size: 1.4rem;
+    resize: vertical;
+}
+
+.error {
+    color: #e74c3c;
+    font-size: 1.2rem;
+}
+
+.btnSubmit {
+    background-color: #3498db;
+    color: white;
+    border: none;
+    padding: 1rem 2rem;
+    border-radius: 4px;
+    font-size: 1.4rem;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.btnSubmit:hover {
+    background-color: #2980b9;
+}
+
+.btnSubmit:disabled {
+    background-color: #bdc3c7;
+    cursor: not-allowed;
+}
+
+@media screen and (max-width: 768px) {
+    .followUpForm {
+        padding: 1rem;
+        max-width: 100%;
+    }
+
+    .followUpForm h3 {
+        font-size: 1.6rem;
+        margin-bottom: 1.5rem;
+    }
+
+    .followUpDateTimeGroup {
+        grid-template-columns: 1fr;
+        gap: 1.2rem;
+    }
+
+    .formFieldGroup input,
+    .textareaField {
+        font-size: 1.6rem;
+        padding: 1.2rem;
+    }
+
+    .formFieldGroup label {
+        font-size: 1.6rem;
+    }
+
+    .btnSubmit {
+        width: 100%;
+        padding: 1.2rem;
+        font-size: 1.6rem;
+    }
+
+    .error {
+        font-size: 1.4rem;
+    }
+}

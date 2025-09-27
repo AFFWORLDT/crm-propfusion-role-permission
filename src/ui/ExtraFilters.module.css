@@ -1,0 +1,137 @@
+.extraFilters {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    justify-content: space-between; /* Added to create space between filters and controls */
+    flex-wrap: wrap; /* Allow wrapping on small screens */
+}
+
+.filterButtons {
+    display: flex;
+    gap: 2rem;
+    align-items: center;
+    flex-wrap: wrap; /* Allow wrapping of buttons on small screens */
+    font-size: 1.4rem;
+}
+
+.btnActive,
+.btnInactive {
+    padding: 0.8rem 1.5rem;
+    font-weight: 600;
+    border-radius: 0.7rem;
+    color: #000;
+}
+
+.activeStatusBtn {
+    background-color: var(--clr-primary-100);
+    color: var(--clr-primary-400);
+}
+
+.viewControls {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+    flex-wrap: wrap; /* Allow wrapping of buttons on small screens */
+    justify-content: flex-start; /* Ensure the view controls align properly */
+}
+
+.btnSort,
+.btnView {
+    display: flex;
+    align-items: center;
+    padding: 1rem 2rem;
+    font-weight: 500;
+    border-radius: 0.8rem;
+    color: var(--clr-neutral-300);
+    cursor: pointer;
+}
+.btnAdd {
+    display: flex;
+    align-items: center;
+    padding: 1rem 2rem;
+    font-weight: 500;
+    border-radius: 0.8rem;
+    color: var(--clr-neutral-300);
+    cursor: pointer;
+    background-color: var(--clr-primary-300);
+    color: var(--clr-neutral-100);
+}
+.btnAdd:hover {
+    scale: 1.05;
+    animation: fadeIn 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
+}
+
+.btnSort:hover,
+.btnView:hover {
+    background-color: var(--clr-primary-100);
+    color: var(--clr-primary-300);
+}
+
+.activeView {
+    background-color: var(--clr-primary-100);
+    color: var(--clr-primary-300);
+}
+
+/* Add styles for the icons within buttons */
+.btnSort img,
+.btnView img {
+    width: 20px;
+    height: 20px;
+}
+
+/* Optional: Add transition for smooth hover effects */
+.btnView,
+.btnSort {
+    transition: all 0.2s ease-in-out;
+}
+
+/* Mobile responsiveness */
+@media (max-width: 768px) {
+    .extraFilters {
+        flex-direction: flex; /* Stack the filters and controls vertically */
+        align-items: center; /* Align to the left */
+        justify-content: center;
+    }
+
+    .filterButtons {
+        justify-content: flex-start; /* Align filter buttons to the left */
+    }
+
+    .viewControls {
+        justify-content: flex-start; /* Align view controls to the left */
+    }
+
+    .btnSort,
+    .btnView {
+        padding: 0.8rem 1.5rem; /* Adjust padding for mobile */
+    }
+
+    .btnSort img,
+    .btnView img {
+        width: 18px; /* Slightly reduce icon size for smaller screens */
+        height: 18px;
+    }
+    .btnActive {
+        padding: 0.8rem 1rem;
+    }
+    .btnAdd {
+        padding: 0.8rem 1rem;
+        font-size: 1.2rem;
+        font-weight: 500;
+        border-radius: 0.8rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .btnSort,
+    .btnView {
+        padding: 0.6rem 1rem; /* Adjust padding further for very small screens */
+    }
+
+    .btnSort img,
+    .btnView img {
+        width: 16px; /* Further reduce icon size */
+        height: 16px;
+    }
+}

@@ -1,0 +1,11 @@
+{
+  "rewrites": [
+    {
+      "source": "/(.*)",
+      "destination": "/"
+    }
+  ],
+  "env": {
+    "VITE_GOOGLE_MAPS_API_KEY": "AIzaSyCuk4slyXMzBAh1XocahaRnpkp_2sueWas"
+  }
+}

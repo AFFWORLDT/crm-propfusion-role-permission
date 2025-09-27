@@ -1,0 +1,114 @@
+.formContainer {
+    border-radius: 18px;
+    max-width: 420px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.formContainer h1 {
+    font-size: 2rem;
+    font-weight: 700;
+    color: #2d2d6a;
+    margin-bottom: 1.5rem;
+    text-align: center;
+}
+
+.formContainer label {
+    font-weight: 600;
+    color: #2d2d6a;
+    margin-bottom: 0.5rem;
+    display: block;
+}
+
+input, .formContainer input, .formContainer select {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    border-radius: 10px;
+    border: 1.5px solid #e0e0e0;
+    font-size: 1rem;
+    margin-bottom: 0.5rem;
+    background: #f8f8ff;
+    transition: border 0.2s;
+}
+
+input:focus {
+    border: 1.5px solid #4f8cff;
+    outline: none;
+}
+
+.fileUploadBox {
+    border: 2px dashed #b3b3e6;
+    border-radius: 12px;
+    padding: 1.5rem;
+    text-align: center;
+    background: #f4f6ff;
+    cursor: pointer;
+    transition: border 0.2s, background 0.2s;
+    margin-bottom: 0.5rem;
+}
+
+.fileUploadBox:hover {
+    border: 2px solid #4f8cff;
+    background: #eaf1ff;
+}
+
+.buttonContainer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+    margin-top: 1.5rem;
+}
+
+.button {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: linear-gradient(90deg, #4f8cff 0%, #6f6fff 100%);
+    color: #fff;
+    border: none;
+    border-radius: 10px;
+    padding: 0.75rem 1.5rem;
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    box-shadow: 0 2px 8px rgba(60, 60, 120, 0.08);
+    transition: background 0.2s, box-shadow 0.2s;
+}
+
+.button:hover {
+    background: linear-gradient(90deg, #6f6fff 0%, #4f8cff 100%);
+    box-shadow: 0 4px 16px rgba(60, 60, 120, 0.12);
+}
+
+.buttonIcon {
+    width: 20px !important;
+    height: 20px !important;
+}
+
+.buttonText {
+    white-space: nowrap;
+    font-weight: 500;
+    color: #fff;
+}
+
+.errorText {
+    color: #ff4d4f;
+    font-size: 0.92rem;
+    margin-top: -0.3rem;
+    margin-bottom: 0.5rem;
+    display: block;
+}
+
+@media (max-width: 600px) {
+    .formContainer {
+        padding: 1rem 0.5rem;
+        max-width: 98vw;
+    }
+    .buttonContainer {
+        flex-direction: column;
+        gap: 0.7rem;
+    }
+}

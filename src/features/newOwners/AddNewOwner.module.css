@@ -1,0 +1,257 @@
+/* AddOwner.module.css */
+.formWrapper {
+  background: white;
+  border-radius: 1rem;
+  width: 100%;
+}
+
+
+
+.formGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.inputGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.inputGroup label {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-weight: 500;
+  color: hsl(240 5.9% 10%);
+  font-size: 1.6rem;
+}
+
+.inputGroup input,
+.inputGroup select,
+.inputGroup textarea {
+  padding: 1.25rem 1rem;
+  border: 1px solid hsl(240 5.9% 90%);
+  border-radius: 0.75rem;
+  font-size: 1.6rem;
+  line-height: 1.5;
+  transition: all 0.2s ease;
+  background: white;
+  width: 100%;
+}
+
+.inputGroup input:hover,
+.inputGroup select:hover,
+.inputGroup textarea:hover {
+  border-color: hsl(240 5.9% 80%);
+}
+
+.inputGroup input:focus,
+.inputGroup select:focus,
+.inputGroup textarea:focus {
+  outline: none;
+  border-color: hsl(240 5.9% 60%);
+  box-shadow: 0 0 0 2px hsl(240 5.9% 90%);
+}
+
+.inputGroup input::placeholder,
+.inputGroup textarea::placeholder {
+  color: hsl(240 3.8% 46.1%);
+  font-size: 1.5rem;
+}
+
+.inputGroup textarea {
+  resize: vertical;
+  min-height: 100px;
+}
+
+.formActions {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 1rem;
+  gap: 1rem;
+}
+
+.submitButton {
+  padding: 1rem 2rem;
+  background-color: hsl(240 5.9% 10%);
+  color: white;
+  border: none;
+  border-radius: 0.75rem;
+  font-weight: 500;
+  font-size: 1.5rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  min-width: 140px;
+}
+
+.submitButton:hover {
+  background-color: hsl(240 5.9% 20%);
+}
+
+.submitButton:active {
+  transform: scale(0.98);
+}
+
+.modalHeading {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.5rem;
+  border-bottom: 1px solid hsl(240 5.9% 90%);
+  margin-bottom: 1rem;
+}
+
+.modalHeading h2 {
+  font-weight: 600;
+  color: hsl(240 5.9% 10%);
+  margin: 0;
+}
+
+.closeButton {
+  background: transparent;
+  border: none;
+  color: hsl(240 3.8% 46.1%);
+  cursor: pointer;
+  padding: 0.5rem;
+  border-radius: 0.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+}
+
+.closeButton:hover {
+  background: hsl(240 5.9% 96%);
+  color: hsl(240 5.9% 10%);
+}
+
+.cancelButton {
+  background-color: hsl(240 5.9% 96%);
+  color: hsl(240 5.9% 10%);
+}
+
+.cancelButton:hover {
+  background-color: hsl(240 5.9% 90%);
+}
+
+.profileImageContainer {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 3rem;
+}
+
+.profileImageWrapper {
+  position: relative;
+  width: 140px;
+  height: 140px;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 2px solid hsl(240 5.9% 90%);
+  background: hsl(240 5.9% 96%);
+}
+
+.profileImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.profileImagePlaceholder {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: hsl(240 5.9% 96%);
+  color: hsl(240 3.8% 46.1%);
+}
+
+.fileInputLabel {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: hsla(240, 5.9%, 10%, 0.8);
+  color: white;
+  padding: 0.75rem;
+  text-align: center;
+  cursor: pointer;
+  transition: background-color 0.2s;
+  font-size: 0.875rem;
+}
+
+.fileInputLabel:hover {
+  background: hsla(240, 5.9%, 10%, 0.9);
+}
+
+.fileInput {
+  display: none;
+}
+
+.error {
+  color: hsl(0 84.2% 60.2%);
+  font-size: 0.875rem;
+  margin-top: 0.25rem;
+}
+
+@media (max-width: 768px) {
+
+
+  .formGrid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  .formActions {
+    flex-direction: column;
+  }
+
+  .submitButton {
+    width: 100%;
+    max-width: none;
+  }
+
+  .modalHeading {
+    font-size: 1.25rem;
+    padding: 1rem 1rem 0;
+  }
+
+  .profileImageWrapper {
+    width: 120px;
+    height: 120px;
+  }
+}
+
+.fullWidth {
+  grid-column: 1 / -1;
+  width: 100%;
+}
+
+.loadingContainer,
+.errorContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 200px;
+  text-align: center;
+  padding: 2rem;
+}
+
+.loader {
+  border: 3px solid hsl(240 5.9% 90%);
+  border-radius: 50%;
+  border-top: 3px solid hsl(240 5.9% 10%);
+  width: 24px;
+  height: 24px;
+  animation: spin 1s linear infinite;
+  margin-bottom: 1rem;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+} 

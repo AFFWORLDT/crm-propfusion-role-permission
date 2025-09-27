@@ -1,0 +1,401 @@
+/* Agent Leads Report Styles */
+.dashboardForPropertyReportHeader {
+    font-size: 1.8rem;
+    font-weight: 800;
+    color: #4a4a4a;
+    margin-bottom: 2rem;
+}
+
+.dashboardForPropertyReport {
+  display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+    gap: 2rem;
+    padding: 2rem;
+    margin: 0 auto;
+    background: linear-gradient(135deg, #e5e5e5 0%, #f9fbff 100%);
+    border-radius: 24px;
+  margin-bottom: 2rem;
+}
+
+.dashboardGroup {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.searchSection {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+    margin-bottom: 2rem;
+    padding: 1rem 2rem;
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.searchWrapper {
+    position: relative;
+    flex: 1;
+    max-width: 400px;
+}
+
+.searchIcon {
+    position: absolute;
+    left: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+  color: #64748b;
+    z-index: 1;
+}
+
+.searchInput {
+  width: 100%;
+    padding: 12px 12px 12px 40px;
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+    font-size: 14px;
+  outline: none;
+    transition: border-color 0.2s;
+}
+
+.searchInput:focus {
+    border-color: #6366f1;
+    box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.1);
+}
+
+.resultsInfo {
+    color: #64748b;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.agentsGrid {
+  display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+    gap: 2rem;
+    padding: 0 2rem;
+}
+
+.agentCard {
+    background: white;
+    border-radius: 16px;
+    padding: 1.5rem;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+    border: 1px solid #f1f5f9;
+}
+
+.agentCard:hover {
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+    transform: translateY(-2px);
+}
+
+.agentHeader {
+  display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 1rem;
+}
+
+.agentInfo {
+  display: flex;
+  align-items: center;
+    gap: 1rem;
+    flex: 1;
+}
+
+.avatarWrapper {
+    position: relative;
+}
+
+.avatar {
+    width: 60px;
+    height: 60px;
+  border-radius: 50%;
+  object-fit: cover;
+    border: 3px solid #f1f5f9;
+}
+
+.avatarPlaceholder {
+    width: 60px;
+    height: 60px;
+  border-radius: 50%;
+    background: linear-gradient(135deg, #6366f1, #8b5cf6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+    color: white;
+    font-size: 24px;
+  font-weight: 600;
+    border: 3px solid #f1f5f9;
+}
+
+.agentDetails {
+    flex: 1;
+}
+
+.agentName {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: #1e293b;
+    margin: 0 0 0.25rem 0;
+}
+
+.agentEmail {
+    font-size: 0.9rem;
+    color: #64748b;
+    margin: 0 0 0.5rem 0;
+}
+
+.leadCount {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.leadBadge {
+    background: linear-gradient(135deg, #10b981, #059669);
+    color: white;
+    padding: 0.25rem 0.75rem;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 600;
+}
+
+.viewDetailsBtn {
+    background: #6366f1;
+    color: white;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 8px;
+    font-size: 0.85rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    white-space: nowrap;
+}
+
+.viewDetailsBtn:hover {
+    background: #5855eb;
+    transform: translateY(-1px);
+}
+
+.agentDetailsExpanded {
+    border-top: 1px solid #e2e8f0;
+    padding-top: 1.5rem;
+    margin-top: 1rem;
+}
+
+.chartsGrid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+}
+
+.chartCard {
+    background: #f8fafc;
+    border-radius: 12px;
+  padding: 1rem;
+    border: 1px solid #e2e8f0;
+}
+
+.chartCard h4 {
+    font-size: 1rem;
+    font-weight: 600;
+    color: #374151;
+    margin: 0 0 1rem 0;
+    text-align: center;
+}
+
+.emptyState {
+    grid-column: 1 / -1;
+    text-align: center;
+    padding: 4rem 2rem;
+    background: white;
+    border-radius: 16px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.emptyStateIcon {
+    color: #9ca3af;
+    margin-bottom: 1rem;
+}
+
+.emptyStateTitle {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: #374151;
+    margin: 0 0 0.5rem 0;
+}
+
+.emptyStateText {
+    color: #6b7280;
+    font-size: 0.95rem;
+}
+
+.loaderContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 60vh;
+    gap: 2rem;
+}
+
+.loader {
+  display: flex;
+    gap: 0.8rem;
+}
+
+.circle {
+    width: 1.5rem;
+    height: 1.5rem;
+  border-radius: 50%;
+    background: #6366f1;
+    animation: bounce 0.5s alternate infinite;
+}
+
+.circle:nth-child(2) {
+    animation-delay: 0.1s;
+    background: #4ecdc4;
+}
+
+.circle:nth-child(3) {
+    animation-delay: 0.2s;
+    background: #96c93d;
+}
+
+.circle:nth-child(4) {
+    animation-delay: 0.3s;
+    background: #ff6b6b;
+}
+
+@keyframes bounce {
+    to {
+        transform: translateY(-1rem);
+    }
+}
+
+.loaderText {
+    font-size: 1.2rem;
+    color: #6366f1;
+  font-weight: 500;
+    animation: fadeInOut 1.5s ease-in-out infinite;
+}
+
+@keyframes fadeInOut {
+    0%, 100% {
+        opacity: 0.5;
+    }
+    50% {
+        opacity: 1;
+    }
+}
+
+.errorContainer {
+  display: flex;
+    justify-content: center;
+  align-items: center;
+    min-height: 40vh;
+}
+
+.errorMessage {
+    background: #fef2f2;
+    border: 1px solid #fecaca;
+    color: #dc2626;
+    padding: 2rem;
+    border-radius: 12px;
+    text-align: center;
+    max-width: 500px;
+}
+
+.errorMessage h3 {
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin: 0 0 1rem 0;
+}
+
+.errorMessage p {
+    margin: 0;
+    line-height: 1.5;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .dashboardForPropertyReport {
+    grid-template-columns: 1fr;
+        padding: 1.5rem;
+        gap: 1.5rem;
+}
+
+    .searchSection {
+    flex-direction: column;
+    gap: 1rem;
+        align-items: stretch;
+    }
+
+    .searchWrapper {
+        max-width: none;
+    }
+
+    .agentsGrid {
+    grid-template-columns: 1fr;
+        padding: 0 1rem;
+        gap: 1.5rem;
+    }
+
+    .agentHeader {
+        flex-direction: column;
+        gap: 1rem;
+        align-items: stretch;
+    }
+
+    .viewDetailsBtn {
+        align-self: flex-end;
+    }
+
+    .chartsGrid {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+
+    .agentCard {
+        padding: 1rem;
+  }
+  
+  .avatar, .avatarPlaceholder {
+        width: 50px;
+        height: 50px;
+        font-size: 20px;
+    }
+}
+
+@media (max-width: 480px) {
+    .dashboardForPropertyReportHeader {
+        font-size: 1.5rem;
+        margin-bottom: 1.5rem;
+    }
+
+    .searchSection {
+        padding: 1rem;
+    }
+
+    .agentsGrid {
+        padding: 0 0.5rem;
+    }
+
+    .agentCard {
+        padding: 1rem;
+  }
+  
+  .agentName {
+    font-size: 1.1rem;
+  }
+  
+  .agentEmail {
+        font-size: 0.85rem;
+  }
+} 

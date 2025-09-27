@@ -1,0 +1,493 @@
+.gridContainer {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.sectionContainer {
+    padding: 1rem;
+}
+
+.sectionStyles {
+    margin-top: 2rem;
+}
+
+.listingFlexRow {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+}
+
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+}
+
+.modalContent {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    max-width: 90%;
+    height: 90%;
+}
+
+.fullImage {
+    max-width: 100%;
+    max-height: 100%;
+    border-radius: 10px;
+    object-fit: contain;
+}
+
+.closeButton {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: rgba(255, 255, 255, 0.8);
+    border: none;
+    border-radius: 50%;
+    padding: 5px 10px;
+    cursor: pointer;
+    font-size: 20px;
+}
+
+.listingItem {
+    display: grid;
+    gap: 2.8rem;
+}
+
+.listingItem h3 {
+    margin-bottom: 1rem;
+    color: var(--clr-primary-300);
+    font-size: 1.8rem;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    white-space: pre;
+}
+
+.listingFlexRow {
+    display: flex;
+    gap: 2.8rem;
+    width: 100%;
+}
+
+.listingFlexRow > * {
+    flex-grow: 1;
+}
+
+.details,
+.description,
+.floorPlan,
+.paymentPlan {
+    max-width: 100rem;
+    padding: 0 1.2rem;
+    color: #3a3a3a;
+}
+
+.details img,
+.description img,
+.floorPlan h3,
+.paymentPlan h3 {
+    max-width: 2.8rem;
+    object-fit: fill;
+}
+
+.details ul {
+    max-width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.6rem 2rem;
+}
+
+.details ul li {
+    font-size: 1.4rem;
+    padding-bottom: 0.8rem;
+}
+
+.details ul li span:first-of-type {
+    color: #565e59;
+}
+
+.details ul li span:last-of-type {
+    color: #3a3a3a;
+    font-weight: 500;
+}
+
+.nestedList {
+    margin-top: 0.8rem;
+    margin-left: 1.5rem;
+    display: grid !important;
+    grid-template-columns: 1fr !important;
+    gap: 0.8rem !important;
+    border-left: 2px solid var(--clr-primary-100);
+    padding-left: 1.2rem;
+}
+
+.photoGrid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.vehiclePhoto {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.vehiclePhoto:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 12px rgba(0, 0, 0, 0.15);
+}
+
+.comments {
+    margin-top: 1rem;
+    white-space: pre-line;
+    line-height: 1.6;
+    color: #3a3a3a;
+    background-color: #f9f9f9;
+    padding: 1.5rem;
+    border-radius: 8px;
+    border-left: 4px solid var(--clr-primary-300);
+}
+
+.description {
+    white-space: pre-line;
+}
+
+.floorSelect {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+}
+
+.floorSelect button {
+    padding: 1rem 2rem;
+    font-weight: 500;
+    border-radius: 0.8rem;
+    cursor: pointer;
+}
+
+.floorSelect button.active {
+    background-color: var(--clr-primary-100);
+}
+
+.floorContainer {
+    display: grid;
+    grid-template-columns: 1fr 25rem;
+    align-items: center;
+    gap: 4.8rem;
+}
+
+.floorContainer :global(.imgContainer) {
+    height: 35rem;
+    border: 1px solid #c8c8c8;
+    border-radius: 1.2rem;
+    overflow: hidden;
+    cursor: pointer;
+}
+
+@keyframes imgLazyLoad {
+    from {
+        opacity: 1;
+    }
+    to {
+        opacity: 0.2;
+    }
+}
+
+.imgLazyLoad {
+    background: linear-gradient(
+        to right,
+        rgb(200, 200, 200, 0.4),
+        rgb(200, 200, 200, 0.1)
+    );
+    animation: imgLazyLoad 2s infinite var(--timing-function) reverse;
+}
+
+.floorContent {
+    font-size: 1.8rem;
+    font-weight: 500;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.paymentPlan {
+    font-size: 1.8rem;
+}
+
+.paymentPlan ul {
+    max-width: 70rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem 12.4rem;
+}
+
+.paymentPlan ul li span:first-of-type {
+    color: #565e59;
+}
+
+.paymentPlan ul li span:last-of-type {
+    color: #3a3a3a;
+    font-weight: 500;
+}
+
+/* Add styles for inspection status indicators */
+.inspectionStatus {
+    display: inline-block;
+    padding: 0.2rem 0.6rem;
+    border-radius: 4px;
+    font-size: 1.3rem;
+    font-weight: 500;
+}
+
+.statusPerfect {
+    background-color: #e6f7e6;
+    color: #2e7d32;
+}
+
+.statusGood {
+    background-color: #e3f2fd;
+    color: #1976d2;
+}
+
+.statusAverage {
+    background-color: #fff8e1;
+    color: #f57c00;
+}
+
+.statusPoor {
+    background-color: #ffebee;
+    color: #d32f2f;
+}
+
+.statusNeedsReplacement {
+    background-color: #fce4ec;
+    color: #c2185b;
+}
+
+/* Add styles for section headers */
+.details h3 {
+    position: relative;
+    padding-bottom: 1rem;
+    margin-bottom: 2rem;
+}
+
+.details h3::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 50px;
+    height: 3px;
+    background-color: var(--clr-primary-300);
+}
+
+/* Add styles for inspection sections */
+.sectionDiv {
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    padding: 1.5rem;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.sectionDiv:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* Add styles for inspection items */
+.details ul li:not(:last-child)::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 1px;
+    background-color: #f0f0f0;
+}
+
+@media only screen and (min-width: 1200px) {
+    .gridContainer {
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    }
+}
+
+@media only screen and (min-width: 1600px) {
+    .gridContainer {
+        grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    }
+}
+
+@media only screen and (max-width: 1200px) {
+    .listingFlexRow {
+        flex-direction: column;
+    }
+}
+
+@media only screen and (max-width: 760px) {
+    .details ul {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+    
+    .sectionDiv {
+        padding: 1.5rem;
+    }
+    
+    .photoGrid {
+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    }
+
+    .floorSelect {
+        gap: 1.2rem;
+    }
+
+    .floorContainer {
+        grid-template-columns: 1fr;
+        gap: 2.4rem;
+    }
+
+    .floorContent {
+        flex-direction: row;
+        justify-content: space-evenly;
+    }
+
+    .paymentPlan ul {
+        gap: 2rem;
+    }
+}
+
+@media only screen and (max-width: 480px) {
+    .paymentPlan ul {
+        grid-template-columns: 1fr;
+    }
+}
+
+.pdfSection {
+    background: #fff;
+    border-radius: 1.2rem;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.04);
+    padding: 2rem 2rem 2.5rem 2rem;
+    margin-top: 2.5rem;
+    margin-bottom: 2.5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.pdfHeading {
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: #1a7f5a;
+    margin-bottom: 1.6rem;
+    text-align: center;
+}
+
+.pdfViewerWrapper {
+    width: 100%;
+    max-width: 1000px;
+    display: flex;
+    justify-content: center;
+}
+
+.pdfViewer {
+    width: 100%;
+    min-height: 60vh;
+    max-height: 70vh;
+    border: none;
+    border-radius: 1rem;
+    box-shadow: 0 2px 16px rgba(0,0,0,0.08);
+    background: #fff;
+    display: block;
+}
+
+/* Map Section Styles */
+.mapSection {
+    max-width: 100rem;
+    padding: 0 1.2rem;
+    color: #3a3a3a;
+}
+
+.mapSection h3 {
+    margin-bottom: 1.5rem;
+    color: var(--clr-primary-300);
+    font-size: 1.8rem;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+}
+
+.mapContainer {
+    width: 100%;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    border: 1px solid rgba(226, 232, 240, 0.6);
+}
+
+.mapContainer iframe {
+    display: block;
+    width: 100%;
+    height: 500px;
+    border: none;
+}
+
+.placeholderMap {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 500px;
+    background: #f8fafc;
+    border: 2px dashed #cbd5e1;
+    border-radius: 12px;
+    color: #64748b;
+    font-size: 1rem;
+}
+
+@media only screen and (max-width: 760px) {
+    .mapSection {
+        padding: 0 1rem;
+    }
+    
+    .mapContainer iframe {
+        height: 250px;
+    }
+}
+
+@media only screen and (max-width: 480px) {
+    .mapContainer iframe {
+        height: 200px;
+    }
+}
+
+@media only screen and (max-width: 900px) {
+    .pdfViewerWrapper {
+        max-width: 100vw;
+        padding: 0 0.5rem;
+    }
+    .pdfViewer {
+        min-height: 40vh;
+        max-height: 50vh;
+    }
+}

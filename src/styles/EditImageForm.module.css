@@ -1,0 +1,16 @@
+.editImageForm {
+}
+
+.editImageForm h3 {
+    font-size: 2.4rem;
+    font-weight: 600;
+}
+
+.editImageForm p {
+    font-size: 1.8rem;
+    margin: 2.8rem 0 1.6rem;
+}
+
+.editImageForm input {
+    width: 100%;
+}

@@ -1,0 +1,1303 @@
+.reportsSection {
+  padding: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.sectionHeader {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 2rem;
+  padding-bottom: 1rem;
+  border-bottom: 2px solid #e5e7eb;
+}
+
+.headerIcon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 64px;
+  height: 64px;
+  background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+  border-radius: 16px;
+  color: white;
+}
+
+.headerContent h2 {
+  margin: 0 0 0.5rem 0;
+  font-size: 2rem;
+  font-weight: 700;
+  color: #1f2937;
+}
+
+.headerContent p {
+  margin: 0;
+  color: #6b7280;
+  font-size: 1.1rem;
+  line-height: 1.6;
+}
+
+.tabNavigation {
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: 2rem;
+  border-bottom: 1px solid #e5e7eb;
+  overflow-x: auto;
+  padding-bottom: 1px;
+}
+
+.tabButton {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.5rem;
+  background: #f9fafb;
+  border: 1px solid #e5e7eb;
+  border-bottom: none;
+  border-radius: 8px 8px 0 0;
+  color: #6b7280;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  white-space: nowrap;
+}
+
+.tabButton:hover {
+  background: #f3f4f6;
+  color: #374151;
+}
+
+.tabButton.active {
+  background: white;
+  color: #1f2937;
+  border-color: #d1d5db;
+  box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.tabContent {
+  background: white;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.tabPanel {
+  padding: 2rem;
+}
+
+/* Overview Tab */
+.overviewTab {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.overviewGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1.5rem;
+}
+
+.overviewCard {
+  padding: 1.5rem;
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  transition: all 0.2s ease;
+}
+
+.overviewCard:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.cardIcon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+  border-radius: 12px;
+  color: white;
+  margin-bottom: 1rem;
+}
+
+.overviewCard h3 {
+  margin: 0 0 0.5rem 0;
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #1f2937;
+}
+
+.overviewCard p {
+  margin: 0 0 1rem 0;
+  color: #6b7280;
+  line-height: 1.5;
+}
+
+.cardFeatures {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.cardFeatures span {
+  padding: 0.25rem 0.75rem;
+  background: white;
+  border: 1px solid #d1d5db;
+  border-radius: 20px;
+  font-size: 0.875rem;
+  color: #374151;
+}
+
+.reportFeatures h3 {
+  margin: 0 0 1rem 0;
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #1f2937;
+}
+
+.featuresGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1rem;
+}
+
+.featureItem {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 1rem;
+  background: white;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+}
+
+.featureItem svg {
+  color: #10b981;
+  flex-shrink: 0;
+}
+
+.quickStats h3 {
+  margin: 0 0 1rem 0;
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #1f2937;
+}
+
+.statsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1rem;
+}
+
+.statCard {
+  padding: 1.5rem;
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.statIcon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+  border-radius: 12px;
+  color: white;
+  flex-shrink: 0;
+}
+
+.statContent {
+  flex: 1;
+}
+
+.statNumber {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #10b981;
+  margin-bottom: 0.25rem;
+}
+
+.statLabel {
+  color: #6b7280;
+  font-size: 0.875rem;
+  margin-bottom: 0.25rem;
+}
+
+.statChange {
+  font-size: 0.875rem;
+  font-weight: 500;
+}
+
+.statChange.positive {
+  color: #059669;
+}
+
+.statChange.negative {
+  color: #dc2626;
+}
+
+/* Sales Tab */
+.salesTab {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.salesOverview h3 {
+  margin: 0 0 0.5rem 0;
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #1f2937;
+}
+
+.salesOverview p {
+  margin: 0;
+  color: #6b7280;
+}
+
+.reportFilters h4 {
+  margin: 0 0 1rem 0;
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #1f2937;
+}
+
+.filterGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1rem;
+}
+
+.filterGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.filterGroup label {
+  font-weight: 500;
+  color: #374151;
+}
+
+.filterGroup select {
+  padding: 0.75rem;
+  border: 1px solid #d1d5db;
+  border-radius: 6px;
+  font-size: 1rem;
+  transition: border-color 0.2s ease;
+}
+
+.filterGroup select:focus {
+  outline: none;
+  border-color: #10b981;
+  box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.1);
+}
+
+.salesMetrics h4 {
+  margin: 0 0 1rem 0;
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #1f2937;
+}
+
+.metricsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1rem;
+}
+
+.metricCard {
+  padding: 1.5rem;
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  text-align: center;
+}
+
+.metricCard h5 {
+  margin: 0 0 0.5rem 0;
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: #1f2937;
+}
+
+.metricValue {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #10b981;
+  margin-bottom: 0.5rem;
+}
+
+.metricLabel {
+  color: #6b7280;
+  font-size: 0.875rem;
+  margin-bottom: 0.5rem;
+}
+
+.metricChange {
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: #059669;
+}
+
+.metricChange.negative {
+  color: #dc2626;
+}
+
+.salesBreakdown h4 {
+  margin: 0 0 1rem 0;
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #1f2937;
+}
+
+.breakdownGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+  gap: 1.5rem;
+}
+
+.breakdownCard {
+  padding: 1.5rem;
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+}
+
+.breakdownCard h5 {
+  margin: 0 0 1rem 0;
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: #1f2937;
+}
+
+.chartPlaceholder {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 120px;
+  background: white;
+  border: 1px solid #e5e7eb;
+  border-radius: 6px;
+  margin-bottom: 1rem;
+  color: #6b7280;
+  gap: 0.5rem;
+}
+
+.breakdownList {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.breakdownItem {
+  display: flex;
+  justify-content: space-between;
+  padding: 0.5rem 0;
+  border-bottom: 1px solid #f1f5f9;
+}
+
+.breakdownItem:last-child {
+  border-bottom: none;
+}
+
+.breakdownItem span:first-child {
+  font-weight: 500;
+  color: #374151;
+}
+
+.breakdownItem span:last-child {
+  color: #6b7280;
+}
+
+.reportActions {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  padding-top: 1rem;
+  border-top: 1px solid #e5e7eb;
+}
+
+.generateBtn,
+.exportBtn,
+.shareBtn {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.5rem;
+  border: none;
+  border-radius: 6px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.generateBtn {
+  background: #10b981;
+  color: white;
+}
+
+.generateBtn:hover {
+  background: #059669;
+}
+
+.exportBtn {
+  background: #6b7280;
+  color: white;
+}
+
+.exportBtn:hover {
+  background: #4b5563;
+}
+
+.shareBtn {
+  background: #3b82f6;
+  color: white;
+}
+
+.shareBtn:hover {
+  background: #2563eb;
+}
+
+/* Rental Tab */
+.rentalTab {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.rentalOverview h3 {
+  margin: 0 0 0.5rem 0;
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #1f2937;
+}
+
+.rentalOverview p {
+  margin: 0;
+  color: #6b7280;
+}
+
+.rentalMetrics h4 {
+  margin: 0 0 1rem 0;
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #1f2937;
+}
+
+.rentalAnalysis h4 {
+  margin: 0 0 1rem 0;
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #1f2937;
+}
+
+.analysisGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+  gap: 1.5rem;
+}
+
+.analysisCard {
+  padding: 1.5rem;
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+}
+
+.analysisCard h5 {
+  margin: 0 0 1rem 0;
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: #1f2937;
+}
+
+.performanceList,
+.trendList {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.performanceItem,
+.trendItem {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.75rem;
+  background: white;
+  border: 1px solid #e5e7eb;
+  border-radius: 6px;
+}
+
+.areaName,
+.trendLabel {
+  font-weight: 500;
+  color: #374151;
+}
+
+.areaStats,
+.trendValue {
+  color: #6b7280;
+  font-size: 0.875rem;
+}
+
+.trendValue.positive {
+  color: #059669;
+  font-weight: 500;
+}
+
+.trendValue.negative {
+  color: #dc2626;
+  font-weight: 500;
+}
+
+/* Leads Tab */
+.leadsTab {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.leadsOverview h3 {
+  margin: 0 0 0.5rem 0;
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #1f2937;
+}
+
+.leadsOverview p {
+  margin: 0;
+  color: #6b7280;
+}
+
+.leadMetrics h4 {
+  margin: 0 0 1rem 0;
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #1f2937;
+}
+
+.leadSources h4 {
+  margin: 0 0 1rem 0;
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #1f2937;
+}
+
+.sourcesGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1rem;
+}
+
+.sourceCard {
+  padding: 1.5rem;
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+}
+
+.sourceCard h5 {
+  margin: 0 0 1rem 0;
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: #1f2937;
+}
+
+.sourceStats {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.sourceMetric {
+  display: flex;
+  justify-content: space-between;
+  padding: 0.5rem 0;
+  border-bottom: 1px solid #f1f5f9;
+}
+
+.sourceMetric:last-child {
+  border-bottom: none;
+}
+
+.sourceMetric span:first-child {
+  font-weight: 500;
+  color: #374151;
+}
+
+.sourceMetric span:last-child {
+  color: #6b7280;
+}
+
+/* Performance Tab */
+.performanceTab {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.performanceOverview h3 {
+  margin: 0 0 0.5rem 0;
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #1f2937;
+}
+
+.performanceOverview p {
+  margin: 0;
+  color: #6b7280;
+}
+
+.agentPerformance h4 {
+  margin: 0 0 1rem 0;
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #1f2937;
+}
+
+.agentGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 1rem;
+}
+
+.agentCard {
+  padding: 1.5rem;
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  position: relative;
+}
+
+.agentCard.top {
+  border-color: #fbbf24;
+  background: #fffbeb;
+}
+
+.agentRank {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  width: 32px;
+  height: 32px;
+  background: #10b981;
+  color: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+  font-size: 0.875rem;
+}
+
+.agentCard.top .agentRank {
+  background: #f59e0b;
+}
+
+.agentInfo {
+  margin-bottom: 1rem;
+}
+
+.agentName {
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: #1f2937;
+  margin-bottom: 0.25rem;
+}
+
+.agentRole {
+  color: #6b7280;
+  font-size: 0.875rem;
+}
+
+.agentStats {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.statItem {
+  display: flex;
+  justify-content: space-between;
+  padding: 0.5rem 0;
+  border-bottom: 1px solid #f1f5f9;
+}
+
+.statItem:last-child {
+  border-bottom: none;
+}
+
+.statItem span:first-child {
+  color: #6b7280;
+  font-size: 0.875rem;
+}
+
+.statItem span:last-child {
+  font-weight: 600;
+  color: #1f2937;
+}
+
+.teamMetrics h4 {
+  margin: 0 0 1rem 0;
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #1f2937;
+}
+
+.teamGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+  gap: 1.5rem;
+}
+
+.teamCard {
+  padding: 1.5rem;
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+}
+
+.teamCard h5 {
+  margin: 0 0 1rem 0;
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: #1f2937;
+}
+
+.teamStats {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.teamMetric {
+  display: flex;
+  justify-content: space-between;
+  padding: 0.5rem 0;
+  border-bottom: 1px solid #f1f5f9;
+}
+
+.teamMetric:last-child {
+  border-bottom: none;
+}
+
+.teamMetric span:first-child {
+  color: #6b7280;
+  font-size: 0.875rem;
+}
+
+.teamMetric span:last-child {
+  font-weight: 600;
+  color: #1f2937;
+}
+
+.trendChart {
+  height: 200px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Custom Tab */
+.customTab {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.customOverview h3 {
+  margin: 0 0 0.5rem 0;
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #1f2937;
+}
+
+.customOverview p {
+  margin: 0;
+  color: #6b7280;
+}
+
+.reportBuilder h4 {
+  margin: 0 0 1rem 0;
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #1f2937;
+}
+
+.builderGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1.5rem;
+}
+
+.builderSection {
+  padding: 1.5rem;
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+}
+
+.builderSection h5 {
+  margin: 0 0 1rem 0;
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: #1f2937;
+}
+
+.dataSourceOptions,
+.metricsOptions,
+.timeOptions,
+.visualizationOptions {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.dataSourceOptions label,
+.metricsOptions label,
+.timeOptions label,
+.visualizationOptions label {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  cursor: pointer;
+  padding: 0.5rem;
+  border-radius: 6px;
+  transition: background-color 0.2s ease;
+}
+
+.dataSourceOptions label:hover,
+.metricsOptions label:hover,
+.timeOptions label:hover,
+.visualizationOptions label:hover {
+  background: #f1f5f9;
+}
+
+.dataSourceOptions input[type="radio"],
+.timeOptions input[type="radio"],
+.visualizationOptions input[type="radio"] {
+  width: 18px;
+  height: 18px;
+  accent-color: #10b981;
+}
+
+.metricsOptions input[type="checkbox"] {
+  width: 18px;
+  height: 18px;
+  accent-color: #10b981;
+}
+
+.customActions {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  padding-top: 1rem;
+  border-top: 1px solid #e5e7eb;
+}
+
+.previewBtn,
+.generateBtn,
+.saveBtn {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.5rem;
+  border: none;
+  border-radius: 6px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.previewBtn {
+  background: #3b82f6;
+  color: white;
+}
+
+.previewBtn:hover {
+  background: #2563eb;
+}
+
+.generateBtn {
+  background: #10b981;
+  color: white;
+}
+
+.generateBtn:hover {
+  background: #059669;
+}
+
+.saveBtn {
+  background: #6b7280;
+  color: white;
+}
+
+.saveBtn:hover {
+  background: #4b5563;
+}
+
+/* Scheduling Tab */
+.schedulingTab {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.schedulingOverview h3 {
+  margin: 0 0 0.5rem 0;
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #1f2937;
+}
+
+.schedulingOverview p {
+  margin: 0;
+  color: #6b7280;
+}
+
+.scheduledReports h4 {
+  margin: 0 0 1rem 0;
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #1f2937;
+}
+
+.scheduleGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+  gap: 1rem;
+}
+
+.scheduleCard {
+  padding: 1.5rem;
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+}
+
+.scheduleHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.scheduleHeader h5 {
+  margin: 0;
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: #1f2937;
+}
+
+.scheduleStatus {
+  padding: 0.25rem 0.75rem;
+  border-radius: 20px;
+  font-size: 0.875rem;
+  font-weight: 500;
+}
+
+.scheduleStatus.active {
+  background: #d1fae5;
+  color: #065f46;
+}
+
+.scheduleStatus.paused {
+  background: #fef3c7;
+  color: #92400e;
+}
+
+.scheduleDetails {
+  margin-bottom: 1rem;
+}
+
+.scheduleDetail {
+  display: flex;
+  justify-content: space-between;
+  padding: 0.5rem 0;
+  border-bottom: 1px solid #f1f5f9;
+}
+
+.scheduleDetail:last-child {
+  border-bottom: none;
+}
+
+.scheduleDetail span:first-child {
+  font-weight: 500;
+  color: #374151;
+}
+
+.scheduleDetail span:last-child {
+  color: #6b7280;
+}
+
+.scheduleActions {
+  display: flex;
+  gap: 0.75rem;
+}
+
+.editBtn,
+.pauseBtn,
+.resumeBtn,
+.deleteBtn {
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 6px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.editBtn {
+  background: #6b7280;
+  color: white;
+}
+
+.editBtn:hover {
+  background: #4b5563;
+}
+
+.pauseBtn {
+  background: #f59e0b;
+  color: white;
+}
+
+.pauseBtn:hover {
+  background: #d97706;
+}
+
+.resumeBtn {
+  background: #10b981;
+  color: white;
+}
+
+.resumeBtn:hover {
+  background: #059669;
+}
+
+.deleteBtn {
+  background: #ef4444;
+  color: white;
+}
+
+.deleteBtn:hover {
+  background: #dc2626;
+}
+
+.createSchedule h4 {
+  margin: 0 0 1rem 0;
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #1f2937;
+}
+
+.scheduleForm {
+  padding: 1.5rem;
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+}
+
+.formRow {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.formGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.formGroup label {
+  font-weight: 500;
+  color: #374151;
+}
+
+.formGroup input,
+.formGroup select {
+  padding: 0.75rem;
+  border: 1px solid #d1d5db;
+  border-radius: 6px;
+  font-size: 1rem;
+  transition: border-color 0.2s ease;
+}
+
+.formGroup input:focus,
+.formGroup select:focus {
+  outline: none;
+  border-color: #10b981;
+  box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.1);
+}
+
+.formActions {
+  display: flex;
+  gap: 1rem;
+  justify-content: flex-end;
+  padding-top: 1rem;
+  border-top: 1px solid #e5e7eb;
+}
+
+.createBtn,
+.cancelBtn {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.5rem;
+  border: none;
+  border-radius: 6px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.createBtn {
+  background: #10b981;
+  color: white;
+}
+
+.createBtn:hover {
+  background: #059669;
+}
+
+.cancelBtn {
+  background: #f3f4f6;
+  color: #374151;
+  border: 1px solid #d1d5db;
+}
+
+.cancelBtn:hover {
+  background: #e5e7eb;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .reportsSection {
+    padding: 1rem;
+  }
+
+  .sectionHeader {
+    flex-direction: column;
+    text-align: center;
+    gap: 1rem;
+  }
+
+  .headerIcon {
+    width: 48px;
+    height: 48px;
+  }
+
+  .headerContent h2 {
+    font-size: 1.5rem;
+  }
+
+  .tabNavigation {
+    flex-wrap: wrap;
+  }
+
+  .tabButton {
+    flex: 1;
+    min-width: 120px;
+  }
+
+  .tabPanel {
+    padding: 1rem;
+  }
+
+  .overviewGrid,
+  .featuresGrid,
+  .statsGrid,
+  .filterGrid,
+  .metricsGrid,
+  .breakdownGrid,
+  .analysisGrid,
+  .sourcesGrid,
+  .agentGrid,
+  .teamGrid,
+  .builderGrid,
+  .scheduleGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .statCard {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .reportActions,
+  .customActions,
+  .formActions {
+    flex-direction: column;
+  }
+
+  .generateBtn,
+  .exportBtn,
+  .shareBtn,
+  .previewBtn,
+  .saveBtn,
+  .createBtn,
+  .cancelBtn {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .scheduleActions {
+    flex-direction: column;
+  }
+
+  .editBtn,
+  .pauseBtn,
+  .resumeBtn,
+  .deleteBtn {
+    width: 100%;
+    justify-content: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .reportsSection {
+    padding: 0.5rem;
+  }
+
+  .tabPanel {
+    padding: 0.5rem;
+  }
+
+  .overviewCard,
+  .metricCard,
+  .breakdownCard,
+  .analysisCard,
+  .sourceCard,
+  .agentCard,
+  .teamCard,
+  .builderSection,
+  .scheduleCard,
+  .scheduleForm {
+    padding: 1rem;
+  }
+
+  .cardFeatures {
+    flex-direction: column;
+  }
+
+  .cardFeatures span {
+    text-align: center;
+  }
+
+  .formRow {
+    grid-template-columns: 1fr;
+  }
+}

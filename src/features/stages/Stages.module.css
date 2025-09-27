@@ -1,0 +1,33 @@
+.tags {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 2rem;
+}
+
+.btnTag {
+    padding: 0.6rem 2rem;
+    font-weight: 500;
+    border-radius: 0.8rem;
+    border: 1px solid;
+}
+
+.btnTag:first-of-type {
+    border-color: var(--clr-primary-300);
+}
+
+.btnActiveTag {
+    background-color: var(--clr-primary-100);
+}
+
+.btnAddTag {
+    height: 4rem;
+    padding: 0 1rem;
+    border-radius: 0.8rem;
+    background-color: var(--clr-neutral-100);
+}
+
+.btnAddTag img {
+    width: 2rem;
+    height: 2rem;
+}

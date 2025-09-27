@@ -1,0 +1,105 @@
+.watermarkForm {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2.8rem;
+}
+
+.watermarkFormContainer form {
+    display: grid;
+    gap: 3.2rem;
+}
+
+.watermarkFormContainer form > div {
+    display: flex;
+    gap: 1.6rem 2.8rem;
+    align-items: center;
+}
+
+.watermarkFormContainer form > div > span {
+    width: 20rem;
+    font-size: 2rem;
+    font-weight: 600;
+}
+
+.inputRadio > div {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 1.4rem 2rem;
+}
+
+.inputRadio > div > div {
+    display: flex;
+    gap: 0.8rem;
+}
+
+.inputRadio input {
+    position: relative;
+    top: 1px;
+    height: 1.6rem;
+    width: 1.6rem;
+}
+
+.inputRange input {
+    flex-grow: 1;
+}
+
+.inputFile input {
+    margin-top: 1.2rem;
+}
+
+.inputFile :global(.imgContainer) {
+    border: 1px solid var(--clr-neutral-300);
+    border-radius: 1.6rem;
+    width: 20rem;
+    height: 15rem;
+}
+
+.watermarkPreview {
+    padding: 1.6rem;
+    border-radius: 1.6rem;
+    background: url("/images/watermark-bg.webp") no-repeat center center;
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 1%;
+    position: relative;
+    overflow: hidden;
+}
+
+.watermarkPreview img {
+    width: auto;
+    height: 100%;
+    object-fit: contain;
+    max-width: 98%;
+    max-height: 98%;
+}
+
+.watermarkForm :global(.btnsContainer) {
+    margin-top: 1rem;
+}
+
+@media screen and (max-width: 1300px) {
+    .watermarkForm {
+        grid-template-columns: 1fr;
+    }
+
+    .watermarkPreview {
+        grid-row: 1;
+    }
+}
+
+@media screen and (max-width: 760px) {
+    .watermarkFormContainer form > div:not(:global(.btnsContainer)) {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .inputRadio > div {
+        gap: 1.4rem;
+    }
+
+    .inputRadio > div > div {
+        gap: 0.6rem;
+    }
+}

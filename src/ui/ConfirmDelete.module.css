@@ -1,0 +1,20 @@
+.confirmDelete {
+    max-width: 40rem;
+
+    display: grid;
+    gap: 0.4rem;
+}
+
+.confirmDelete h3 {
+    margin-bottom: 1.2rem;
+    font-size: 2.8rem;
+    font-weight: 600;
+    color: #1f2937;
+}
+
+.confirmDeleteForAgent {
+    max-width: 40rem;
+    height: 39rem;
+    display: grid;
+    gap: 0.4rem;
+}

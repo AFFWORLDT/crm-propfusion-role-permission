@@ -1,0 +1,8 @@
+.selectStage {
+    padding: 0.6rem 1.2rem;
+    font-weight: 500;
+    border-radius: 0.8rem;
+    border: 1px solid;
+    cursor: pointer;
+    background-color: transparent;
+}

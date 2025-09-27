@@ -1,0 +1,66 @@
+.tabContainer {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    align-items: start;
+    gap: 4.8rem;
+}
+
+.tabContainer ul {
+    margin: 0;
+    color: var(--clr-neutral-300);
+    font-weight: 500;
+    text-align: center;
+    border-right: 3px solid var(--clr-neutral-200);
+
+    display: grid;
+    gap: 1.2rem;
+}
+
+.tabContainer ul li {
+    position: relative;
+    padding: 0 1rem;
+}
+
+.tabContainer ul li button {
+    width: 100%;
+    padding: 1.4rem 4rem;
+    border-radius: 0.6rem;
+}
+
+.activeTab::after {
+    content: "";
+    position: absolute;
+    right: -3px;
+    top: 0;
+    height: 100%;
+    width: 3px;
+    background-color: #007aff;
+    border-radius: 10px;
+}
+
+.activeTab button {
+    background-color: rgba(0, 122, 255, 0.1);
+    color: #007aff;
+}
+
+.tabDetails {
+    padding: 2.4rem;
+}
+
+@media screen and (max-width: 760px) {
+    .tabContainer {
+        gap: 0rem;
+    }
+
+    .tabContainer ul {
+        padding-left: 0;
+    }
+
+    .tabContainer ul li {
+        padding-left: 0;
+    }
+
+    .tabContainer ul li button {
+        padding: 1rem;
+    }
+}

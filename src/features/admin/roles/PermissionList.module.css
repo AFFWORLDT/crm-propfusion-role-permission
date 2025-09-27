@@ -1,0 +1,167 @@
+.wrapper {
+    width: 100%;
+    position: relative;
+    display: grid;
+    grid-template-columns: 8fr 4fr;
+    gap: 1.5rem;
+}
+
+.mainContent {
+    width: 100%;
+}
+
+.sideContent {
+    position: sticky;
+    top: 6rem;
+    height: fit-content;
+    background: white;
+    padding: 1rem;
+    border-radius: 0.75rem;
+    box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+    border: 1px solid hsl(220 13% 91%);
+}
+
+.categorySection {
+    margin-bottom: 2rem;
+    background: #ffffff;
+    border-radius: 0.75rem;
+    border: 1px solid hsl(220 13% 91%);
+}
+
+.categoryHeader {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 1.25rem 1.5rem;
+    border-bottom: 1px solid hsl(220 13% 91%);
+}
+
+.categoryIcon {
+    width: 1.5rem;
+    height: 1.5rem;
+    color: hsl(220 13% 91%);
+}
+
+.categoryTitle {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: hsl(240 10% 3.9%);
+    line-height: 1.5;
+    margin: 0;
+}
+
+.permissionGrid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(27rem, 1fr));
+    gap: 0.75rem;
+    padding: 1.25rem;
+    background: hsl(0 0% 100%);
+}
+
+.permissionItem {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.75rem;
+    border-radius: 0.5rem;
+    background: hsl(0 0% 100%);
+    border: 1px solid hsl(220 13% 91%);
+    transition: all 150ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.permissionItem:hover {
+    background: hsl(220 13% 91% / 0.1);
+}
+
+.checkbox {
+    width: 1rem;
+    height: 1rem;
+    border-radius: 0.25rem;
+    border: 1px solid hsl(220 13% 91%);
+    background: hsl(0 0% 100%);
+    cursor: pointer;
+}
+
+.checkbox:checked {
+    background: hsl(220.9 39.3% 11%);
+    border-color: hsl(220.9 39.3% 11%);
+}
+
+.label {
+    font-size: 1.2rem;
+    line-height: 1.25rem;
+    user-select: none;
+    cursor: pointer;
+}
+
+.buttonContainer {
+    position: sticky;
+    top: 6rem;
+    z-index: 10;
+    width: 100%;
+margin-bottom: 1.3rem;
+}
+
+.buttonCard {
+    background: white;
+    padding: 1rem;
+    border-radius: 0.75rem;
+    box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+    border: 1px solid hsl(220 13% 91%);
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    gap: 1rem;
+}
+
+.submitButton {
+    background: hsl(220.9 39.3% 11%);
+    color: hsl(0 0% 100%);
+    padding: 0.75rem 1.5rem;
+    border-radius: 0.5rem;
+    font-size: 0.875rem;
+    font-weight: 500;
+    transition: all 150ms cubic-bezier(0.4, 0, 0.2, 1);
+    border: none;
+    cursor: pointer;
+}
+
+.submitButton:hover {
+    background: hsl(220.9 39.3% 8%);
+}
+
+.submitButton:disabled {
+    background: hsl(220 13% 91%);
+    cursor: not-allowed;
+    opacity: 0.5;
+}
+
+.resetButton {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: hsl(220 13% 91% / 0.2);
+    color: hsl(220.9 39.3% 11%);
+    padding: 0.75rem 1.5rem;
+    border-radius: 0.5rem;
+    font-size: 0.875rem;
+    font-weight: 500;
+    transition: all 150ms cubic-bezier(0.4, 0, 0.2, 1);
+    border: 1px solid hsl(220 13% 91%);
+    cursor: pointer;
+}
+
+.resetButton:hover {
+    background: hsl(220 13% 91% / 0.3);
+}
+
+@media (max-width: 1024px) {
+    .wrapper {
+        grid-template-columns: 1fr;
+    }
+    
+    .sideContent {
+        position: relative;
+        top: 0;
+    }
+} 

@@ -1,0 +1,31 @@
+.pageNotFound {
+    background-color: var(--clr-neutral-100);
+    min-height: 100svh;
+    display: grid;
+    place-items: center;
+    padding: 0 2rem;
+}
+
+.pageNotFoundContainer {
+    padding: 4.8rem;
+    background-color: var(--clr-neutral-50);
+    border-radius: 1.2rem;
+    font-weight: 500;
+    box-shadow: var(--shadow);
+
+    display: grid;
+    gap: 1.6rem;
+    justify-items: center;
+}
+
+.pageNotFoundContainer p {
+    font-size: 2.4rem;
+}
+
+.pageNotFoundContainer button {
+    padding: 1.2rem 2.4rem;
+    background-color: var(--clr-primary-300);
+    font-size: 1.8rem;
+    color: var(--clr-neutral-50);
+    border-radius: 0.8rem;
+}

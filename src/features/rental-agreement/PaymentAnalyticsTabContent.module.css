@@ -1,0 +1,179 @@
+.analyticsGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2rem;
+  margin: 2rem 0;
+}
+
+.cardTitle {
+  font-size: 2.2rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+}
+
+
+.card {
+  background: #f8fafc; /* Shadcn muted background */
+  border-radius: 0.75rem; /* 12px */
+  border: 1px solid #e5e7eb; /* Shadcn border-muted */
+  padding: 2rem 1.5rem;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  box-shadow: none; /* Remove heavy shadow */
+  transition: box-shadow 0.2s;
+}
+
+.statusList {
+  margin-top: 1rem;
+}
+
+.statusRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.75rem 0.5rem;
+  font-size: 1.75rem; /* 28px, even bigger */
+  font-weight: 500;
+  color: #64748b; /* Shadcn text-muted-foreground */
+  border-radius: 0.5rem;
+  transition: background 0.15s;
+}
+.statusRow:hover {
+  background: #f1f5f9; /* Shadcn hover-muted */
+}
+
+.completed {
+  color: #16a34a; /* Shadcn success */
+  font-weight: 700;
+  font-size: 1.75rem;
+}
+
+.pending {
+  color: #eab308; /* Shadcn warning */
+  font-weight: 700;
+  font-size: 1.75rem;
+}
+
+.overdue {
+  color: #dc2626; /* Shadcn destructive */
+  font-weight: 700;
+  font-size: 1.75rem;
+}
+
+.monthlyRevenueList {
+  margin-top: 1rem;
+}
+
+.monthlyRevenueRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.75rem 0.5rem;
+  font-size: 1.5rem; /* 24px, even bigger */
+  color: #64748b; /* Shadcn text-muted-foreground */
+  border-radius: 0.5rem;
+  transition: background 0.15s;
+}
+.monthlyRevenueRow:hover {
+  background: #f1f5f9;
+}
+
+.amount {
+  font-weight: 700;
+  color: #16a34a; /* Shadcn success */
+  font-size: 1.75rem;
+}
+
+.upcomingPaymentsTable {
+  font-size: 1.6rem;
+}
+.upcomingPaymentsHeader {
+  font-size: 1.3rem;
+  font-weight: 700;
+}
+.upcomingPaymentsCell {
+  font-size: 1.6rem;
+}
+.upcomingPaymentsStatus {
+  font-size: 1.6rem;
+  font-weight: 800;
+}
+.upcomingPaymentsTitle {
+  font-size: 2rem;
+  font-weight: 800;
+  margin-bottom: 2rem;
+}
+
+/* Responsive styles */
+@media (max-width: 900px) {
+  .analyticsGrid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+    margin: 1.5rem 0;
+  }
+  .cardTitle {
+    font-size: 1.8rem;
+  }
+  .card {
+    padding: 1.5rem 1rem;
+  }
+  .statusRow,
+  .completed,
+  .pending,
+  .overdue {
+    font-size: 1.4rem;
+  }
+  .monthlyRevenueRow {
+    font-size: 1.2rem;
+  }
+  .amount {
+    font-size: 1.4rem;
+  }
+}
+
+@media (max-width: 600px) {
+  .analyticsGrid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+    margin: 1rem 0;
+  }
+  .cardTitle {
+    font-size: 1.4rem;
+    margin-bottom: 0.5rem;
+  }
+  .card {
+    padding: 1.5rem 0.5rem;
+    border-radius: 0.5rem;
+  }
+  .statusRow,
+  .completed,
+  .pending,
+  .overdue {
+    font-size: 1.2rem;
+    padding: 0.5rem 0.25rem;
+  }
+  .monthlyRevenueRow {
+    font-size: 1rem;
+    padding: 0.5rem 0.25rem;
+  }
+  .amount {
+    font-size: 1.4rem;
+  }
+  .upcomingPaymentsTable {
+    font-size: 1.2rem;
+  }
+  .upcomingPaymentsHeader {
+    font-size: 1.05rem;
+  }
+  .upcomingPaymentsCell {
+    font-size: 1.2rem;
+  }
+  .upcomingPaymentsStatus {
+    font-size: 1.2rem;
+  }
+  .upcomingPaymentsTitle {
+    font-size: 1.3rem;
+    margin-bottom: 1rem;
+  }
+}

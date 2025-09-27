@@ -1,0 +1,718 @@
+
+
+  VITE v5.3.4  ready in 1191 ms
+
+  ➜  Local:   http://localhost:5173/
+  ➜  Network: use --host to expose
+  ➜  press h + enter to show help
+4:47:10 PM [vite] warning: 
+/Users/affworld/Desktop/ddd/COSMOSLIVING/COSMOSLIVING/crm-propfusion/src/context/AuthContext.jsx
+  56:8  warning  React Hook useEffect has a missing dependency: 'logout'. Either include it or remove the dependency array  react-hooks/exhaustive-deps
+
+✖ 1 problem (0 errors, 1 warning)
+
+  Plugin: vite-plugin-eslint
+  File: /Users/affworld/Desktop/ddd/COSMOSLIVING/COSMOSLIVING/crm-propfusion/src/context/AuthContext.jsx
+4:47:10 PM [vite] warning: 
+/Users/affworld/Desktop/ddd/COSMOSLIVING/COSMOSLIVING/crm-propfusion/src/pages/Dashboard.jsx
+    1:21  warning  'useRef' is defined but never used                              no-unused-vars
+    6:8   warning  'PieChartSection' is defined but never used                     no-unused-vars
+    9:5   warning  'Activity' is defined but never used                            no-unused-vars
+   10:5   warning  'BarChart2' is defined but never used                           no-unused-vars
+   11:5   warning  'Phone' is defined but never used                               no-unused-vars
+   12:5   warning  'Users' is defined but never used                               no-unused-vars
+   13:5   warning  'Map' is defined but never used                                 no-unused-vars
+   14:5   warning  'Building2' is defined but never used                           no-unused-vars
+   15:5   warning  'Home' is defined but never used                                no-unused-vars
+   16:5   warning  'DollarSign' is defined but never used                          no-unused-vars
+   17:5   warning  'Download' is defined but never used                            no-unused-vars
+   22:5   warning  'LineChart' is defined but never used                           no-unused-vars
+   23:5   warning  'Line' is defined but never used                                no-unused-vars
+   24:5   warning  'XAxis' is defined but never used                               no-unused-vars
+   25:5   warning  'YAxis' is defined but never used                               no-unused-vars
+   26:5   warning  'CartesianGrid' is defined but never used                       no-unused-vars
+   27:5   warning  'Tooltip' is defined but never used                             no-unused-vars
+   28:5   warning  'ResponsiveContainer' is defined but never used                 no-unused-vars
+   29:5   warning  'Legend' is defined but never used                              no-unused-vars
+   30:5   warning  'BarChart' is defined but never used                            no-unused-vars
+   31:5   warning  'Bar' is defined but never used                                 no-unused-vars
+   34:8   warning  'ReactApexChart' is defined but never used                      no-unused-vars
+   35:10  warning  'CSVLink' is defined but never used                             no-unused-vars
+   54:7   warning  'LeadSourceSection' is assigned a value but never used          no-unused-vars
+   57:7   warning  'LeadStatusSection' is assigned a value but never used          no-unused-vars
+   61:10  warning  'DashboardCard' is defined but never used                       no-unused-vars
+   90:10  warning  'DashboardChartCard' is defined but never used                  no-unused-vars
+   99:10  warning  'PropertyStatesCard' is defined but never used                  no-unused-vars
+  130:12  warning  'showPercentage' is assigned a value but never used             no-unused-vars
+  130:28  warning  'setShowPercentage' is assigned a value but never used          no-unused-vars
+  407:11  warning  'leadSourceDistribution' is assigned a value but never used     no-unused-vars
+  417:11  warning  'leadStatusDistribution' is assigned a value but never used     no-unused-vars
+  440:11  warning  'LeadAgentTypeDistribution' is assigned a value but never used  no-unused-vars
+  606:7   warning  'styled' is assigned a value but never used                     no-unused-vars
+
+✖ 34 problems (0 errors, 34 warnings)
+
+  Plugin: vite-plugin-eslint
+  File: /Users/affworld/Desktop/ddd/COSMOSLIVING/COSMOSLIVING/crm-propfusion/src/pages/Dashboard.jsx
+4:47:10 PM [vite] warning: 
+/Users/affworld/Desktop/ddd/COSMOSLIVING/COSMOSLIVING/crm-propfusion/src/pages/leads/WhatsappLeads.jsx
+  63:11  warning  'currentTab' is assigned a value but never used  no-unused-vars
+
+✖ 1 problem (0 errors, 1 warning)
+
+  Plugin: vite-plugin-eslint
+  File: /Users/affworld/Desktop/ddd/COSMOSLIVING/COSMOSLIVING/crm-propfusion/src/pages/leads/WhatsappLeads.jsx
+4:47:10 PM [vite] warning: 
+/Users/affworld/Desktop/ddd/COSMOSLIVING/COSMOSLIVING/crm-propfusion/src/pages/properties/sell/NewSellProperty.jsx
+  18:108  warning  'Scale' is defined but never used  no-unused-vars
+
+✖ 1 problem (0 errors, 1 warning)
+
+  Plugin: vite-plugin-eslint
+  File: /Users/affworld/Desktop/ddd/COSMOSLIVING/COSMOSLIVING/crm-propfusion/src/pages/properties/sell/NewSellProperty.jsx
+4:47:10 PM [vite] warning: 
+/Users/affworld/Desktop/ddd/COSMOSLIVING/COSMOSLIVING/crm-propfusion/src/pages/properties/EditProperty.jsx
+  58:8  warning  React Hook useEffect has missing dependencies: 'propertyData' and 'setImages'. Either include them or remove the dependency array  react-hooks/exhaustive-deps
+
+✖ 1 problem (0 errors, 1 warning)
+
+  Plugin: vite-plugin-eslint
+  File: /Users/affworld/Desktop/ddd/COSMOSLIVING/COSMOSLIVING/crm-propfusion/src/pages/properties/EditProperty.jsx
+4:47:10 PM [vite] warning: 
+/Users/affworld/Desktop/ddd/COSMOSLIVING/COSMOSLIVING/crm-propfusion/src/pages/admin/TeamsTree.jsx
+  33:11  warning  'toggleTheme' is assigned a value but never used                                                                   no-unused-vars
+  96:8   warning  React Hook useEffect has a missing dependency: 'fetchTeamsData'. Either include it or remove the dependency array  react-hooks/exhaustive-deps
+
+✖ 2 problems (0 errors, 2 warnings)
+
+  Plugin: vite-plugin-eslint
+  File: /Users/affworld/Desktop/ddd/COSMOSLIVING/COSMOSLIVING/crm-propfusion/src/pages/admin/TeamsTree.jsx
+4:47:10 PM [vite] warning: 
+/Users/affworld/Desktop/ddd/COSMOSLIVING/COSMOSLIVING/crm-propfusion/src/pages/admin/Teams.jsx
+  13:11  warning  'navigate' is assigned a value but never used  no-unused-vars
+
+✖ 1 problem (0 errors, 1 warning)
+
+  Plugin: vite-plugin-eslint
+  File: /Users/affworld/Desktop/ddd/COSMOSLIVING/COSMOSLIVING/crm-propfusion/src/pages/admin/Teams.jsx
+4:47:10 PM [vite] warning: 
+/Users/affworld/Desktop/ddd/COSMOSLIVING/COSMOSLIVING/crm-propfusion/src/features/properties/RentProperty.jsx
+  50:9  warning  'fetchNextPage' is assigned a value but never used  no-unused-vars
+  51:9  warning  'hasNextPage' is assigned a value but never used    no-unused-vars
+
+✖ 2 problems (0 errors, 2 warnings)
+
+  Plugin: vite-plugin-eslint
+  File: /Users/affworld/Desktop/ddd/COSMOSLIVING/COSMOSLIVING/crm-propfusion/src/features/properties/RentProperty.jsx
+4:47:10 PM [vite] warning: 
+/Users/affworld/Desktop/ddd/COSMOSLIVING/COSMOSLIVING/crm-propfusion/src/pages/Notifications.jsx
+  1:10  warning  'useCallback' is defined but never used  no-unused-vars
+  2:10  warning  'useNavigate' is defined but never used  no-unused-vars
+
+✖ 2 problems (0 errors, 2 warnings)
+
+  Plugin: vite-plugin-eslint
+  File: /Users/affworld/Desktop/ddd/COSMOSLIVING/COSMOSLIVING/crm-propfusion/src/pages/Notifications.jsx
+4:47:10 PM [vite] warning: 
+/Users/affworld/Desktop/ddd/COSMOSLIVING/COSMOSLIVING/crm-propfusion/src/pages/Contract/TenancyContracts.jsx
+  160:8  warning  React Hook useCallback has a missing dependency: 'pdfUrl'. Either include it or remove the dependency array  react-hooks/exhaustive-deps
+
+✖ 1 problem (0 errors, 1 warning)
+
+  Plugin: vite-plugin-eslint
+  File: /Users/affworld/Desktop/ddd/COSMOSLIVING/COSMOSLIVING/crm-propfusion/src/pages/Contract/TenancyContracts.jsx
+4:47:10 PM [vite] warning: 
+/Users/affworld/Desktop/ddd/COSMOSLIVING/COSMOSLIVING/crm-propfusion/src/pages/Contract/LeaseContract.jsx
+  80:4  warning  React Hook useEffect has a missing dependency: 'updatePDFPreview'. Either include it or remove the dependency array  react-hooks/exhaustive-deps
+
+✖ 1 problem (0 errors, 1 warning)
+
+  Plugin: vite-plugin-eslint
+  File: /Users/affworld/Desktop/ddd/COSMOSLIVING/COSMOSLIVING/crm-propfusion/src/pages/Contract/LeaseContract.jsx
+4:47:10 PM [vite] warning: 
+/Users/affworld/Desktop/ddd/COSMOSLIVING/COSMOSLIVING/crm-propfusion/src/pages/Contract/PropertyView.jsx
+  82:4  warning  React Hook useEffect has a missing dependency: 'updatePDFPreview'. Either include it or remove the dependency array  react-hooks/exhaustive-deps
+
+✖ 1 problem (0 errors, 1 warning)
+
+  Plugin: vite-plugin-eslint
+  File: /Users/affworld/Desktop/ddd/COSMOSLIVING/COSMOSLIVING/crm-propfusion/src/pages/Contract/PropertyView.jsx
+4:47:10 PM [vite] warning: 
+/Users/affworld/Desktop/ddd/COSMOSLIVING/COSMOSLIVING/crm-propfusion/src/pages/database/DataBase.jsx
+  2:8  warning  'useCustomers' is defined but never used  no-unused-vars
+
+✖ 1 problem (0 errors, 1 warning)
+
+  Plugin: vite-plugin-eslint
+  File: /Users/affworld/Desktop/ddd/COSMOSLIVING/COSMOSLIVING/crm-propfusion/src/pages/database/DataBase.jsx
+4:47:10 PM [vite] warning: 
+/Users/affworld/Desktop/ddd/COSMOSLIVING/COSMOSLIVING/crm-propfusion/src/utils/constants.js
+  1:10  warning  'getBuildNameList' is defined but never used  no-unused-vars
+
+✖ 1 problem (0 errors, 1 warning)
+
+  Plugin: vite-plugin-eslint
+  File: /Users/affworld/Desktop/ddd/COSMOSLIVING/COSMOSLIVING/crm-propfusion/src/utils/constants.js
+4:47:10 PM [vite] warning: 
+/Users/affworld/Desktop/ddd/COSMOSLIVING/COSMOSLIVING/crm-propfusion/src/api/whatsappLogs.js
+  211:65  warning  'type' is assigned a value but never used  no-unused-vars
+
+✖ 1 problem (0 errors, 1 warning)
+
+  Plugin: vite-plugin-eslint
+  File: /Users/affworld/Desktop/ddd/COSMOSLIVING/COSMOSLIVING/crm-propfusion/src/api/whatsappLogs.js
+4:47:11 PM [vite] warning: 
+/Users/affworld/Desktop/ddd/COSMOSLIVING/COSMOSLIVING/crm-propfusion/src/features/notifications/useNotifications.js
+   7:11  warning  'queryClient' is assigned a value but never used  no-unused-vars
+  23:9   warning  'isError' is assigned a value but never used      no-unused-vars
+  24:9   warning  'status' is assigned a value but never used       no-unused-vars
+
+✖ 3 problems (0 errors, 3 warnings)
+
+  Plugin: vite-plugin-eslint
+  File: /Users/affworld/Desktop/ddd/COSMOSLIVING/COSMOSLIVING/crm-propfusion/src/features/notifications/useNotifications.js
+4:47:11 PM [vite] warning: 
+/Users/affworld/Desktop/ddd/COSMOSLIVING/COSMOSLIVING/crm-propfusion/src/pages/Contract/Owner.jsx
+  79:4  warning  React Hook useEffect has a missing dependency: 'updatePDFPreview'. Either include it or remove the dependency array  react-hooks/exhaustive-deps
+
+✖ 1 problem (0 errors, 1 warning)
+
+  Plugin: vite-plugin-eslint
+  File: /Users/affworld/Desktop/ddd/COSMOSLIVING/COSMOSLIVING/crm-propfusion/src/pages/Contract/Owner.jsx
+4:47:11 PM [vite] warning: 
+/Users/affworld/Desktop/ddd/COSMOSLIVING/COSMOSLIVING/crm-propfusion/src/pages/Contract/AgreementTable.jsx
+   16:23  warning  'id' is defined but never used                                                                                          no-unused-vars
+   97:6   warning  React Hook React.useEffect has a missing dependency: 'fetchNextPage'. Either include it or remove the dependency array  react-hooks/exhaustive-deps
+  140:9   warning  'handleEdit' is assigned a value but never used                                                                         no-unused-vars
+
+✖ 3 problems (0 errors, 3 warnings)
+
+  Plugin: vite-plugin-eslint
+  File: /Users/affworld/Desktop/ddd/COSMOSLIVING/COSMOSLIVING/crm-propfusion/src/pages/Contract/AgreementTable.jsx
+4:47:11 PM [vite] warning: 
+/Users/affworld/Desktop/ddd/COSMOSLIVING/COSMOSLIVING/crm-propfusion/src/pages/Whatsapp.jsx
+  1:20  warning  'useEffect' is defined but never used  no-unused-vars
+
+✖ 1 problem (0 errors, 1 warning)
+
+  Plugin: vite-plugin-eslint
+  File: /Users/affworld/Desktop/ddd/COSMOSLIVING/COSMOSLIVING/crm-propfusion/src/pages/Whatsapp.jsx
+4:47:11 PM [vite] warning: 
+/Users/affworld/Desktop/ddd/COSMOSLIVING/COSMOSLIVING/crm-propfusion/src/features/feed/AgentFeed.jsx
+  24:12  warning  'isUploading' is assigned a value but never used  no-unused-vars
+
+✖ 1 problem (0 errors, 1 warning)
+
+  Plugin: vite-plugin-eslint
+  File: /Users/affworld/Desktop/ddd/COSMOSLIVING/COSMOSLIVING/crm-propfusion/src/features/feed/AgentFeed.jsx
+4:47:11 PM [vite] warning: 
+/Users/affworld/Desktop/ddd/COSMOSLIVING/COSMOSLIVING/crm-propfusion/src/pages/building/DetailPage.jsx
+   60:12  warning  'editStates' is assigned a value but never used                                                                                           no-unused-vars
+  136:8   warning  React Hook useEffect has a missing dependency: 'buildingData'. Either include it or remove the dependency array                           react-hooks/exhaus
+  136:8   warning  React Hook useEffect has a missing dependency: 'buildingData'. Either include it or remove the dependency array                           react-hooks/exhaustive-deps
+  136:9   warning  React Hook useEffect has a complex expression in the dependency array. Extract it to a separate variable so it can be statically checked  react-hooks/exhaus
+  136:9   warning  React Hook useEffect has a complex expression in the dependency array. Extract it to a separate variable so it can be statically checked  react-hooks/exhaustive-deps
+
+✖ 3 problems (0 errors, 3 warnings)
+
+  Plugin: vite-plugin-eslint
+  File: /Users/affworld/Desktop/ddd/COSMOSLIVING/COSMOSLIVING/crm-propfusion/src/pages/building/DetailPage.jsx
+4:47:11 PM [vite] warning: 
+/Users/affworld/Desktop/ddd/COSMOSLIVING/COSMOSLIVING/crm-propfusion/src/pages/Transactions.jsx
+  3:50  warning  'Dropdown' is defined but never used     no-unused-vars
+  4:18  warning  'FaEllipsisV' is defined but never used  no-unused-vars
+
+✖ 2 problems (0 errors, 2 warnings)
+
+  Plugin: vite-plugin-eslint
+  File: /Users/affworld/Desktop/ddd/COSMOSLIVING/COSMOSLIVING/crm-propfusion/src/pages/Transactions.jsx
+4:47:11 PM [vite] warning: 
+/Users/affworld/Desktop/ddd/COSMOSLIVING/COSMOSLIVING/crm-propfusion/src/pages/vehicles/Vehicles.jsx
+  18:10  warning  'LISTINGS_TABS_TYPE_OPTIONS_LIGHT' is defined but never used  no-unused-vars
+
+✖ 1 problem (0 errors, 1 warning)
+
+  Plugin: vite-plugin-eslint
+  File: /Users/affworld/Desktop/ddd/COSMOSLIVING/COSMOSLIVING/crm-propfusion/src/pages/vehicles/Vehicles.jsx
+4:47:11 PM [vite] warning: 
+/Users/affworld/Desktop/ddd/COSMOSLIVING/COSMOSLIVING/crm-propfusion/src/pages/rental-agreement/RentalAgreementDetails.jsx
+  304:32  warning  'e' is defined but never used  no-unused-vars
+
+✖ 1 problem (0 errors, 1 warning)
+
+  Plugin: vite-plugin-eslint
+  File: /Users/affworld/Desktop/ddd/COSMOSLIVING/COSMOSLIVING/crm-propfusion/src/pages/rental-agreement/RentalAgreementDetails.jsx
+4:47:11 PM [vite] warning: 
+/Users/affworld/Desktop/ddd/COSMOSLIVING/COSMOSLIVING/crm-propfusion/src/features/rental-agreement/useUploadReceipt.js
+  16:21  warning  'data' is defined but never used  no-unused-vars
+
+✖ 1 problem (0 errors, 1 warning)
+
+  Plugin: vite-plugin-eslint
+  File: /Users/affworld/Desktop/ddd/COSMOSLIVING/COSMOSLIVING/crm-propfusion/src/features/rental-agreement/useUploadReceipt.js
+4:47:11 PM [vite] warning: 
+/Users/affworld/Desktop/ddd/COSMOSLIVING/COSMOSLIVING/crm-propfusion/src/pages/vehicles/NewVehicleDetails.jsx
+  13:8   warning  'Button' is defined but never used              no-unused-vars
+  17:11  warning  'navigate' is assigned a value but never used   no-unused-vars
+  19:26  warning  'isPending' is assigned a value but never used  no-unused-vars
+  52:14  warning  'handleChangeAgent' is defined but never used   no-unused-vars
+
+✖ 4 problems (0 errors, 4 warnings)
+
+  Plugin: vite-plugin-eslint
+  File: /Users/affworld/Desktop/ddd/COSMOSLIVING/COSMOSLIVING/crm-propfusion/src/pages/vehicles/NewVehicleDetails.jsx
+4:47:11 PM [vite] warning: 
+/Users/affworld/Desktop/ddd/COSMOSLIVING/COSMOSLIVING/crm-propfusion/src/features/vehicles/EditNewVehicle.jsx
+   34:21  warning  'useState' is defined but never used                                                                                                            no-unused-va
+   34:21  warning  'useState' is defined but never used                                                                                                            no-unused-vars
+   93:8   warning  React Hook useEffect has missing dependencies: 'data?.obd_report?.file_url' and 'setImage'. Either include them or remove the dependency array  react-hooks/
+   93:8   warning  React Hook useEffect has missing dependencies: 'data?.obd_report?.file_url' and 'setImage'. Either include them or remove the dependency array  react-hooks/exhaustive-deps
+  127:8   warning  React Hook useEffect has a missing dependency: 'setImages'. Either include it or remove the dependency array                                    react-hooks/
+  127:8   warning  React Hook useEffect has a missing dependency: 'setImages'. Either include it or remove the dependency array                                    react-hooks/exhaustive-deps
+
+✖ 3 problems (0 errors, 3 warnings)
+
+  Plugin: vite-plugin-eslint
+  File: /Users/affworld/Desktop/ddd/COSMOSLIVING/COSMOSLIVING/crm-propfusion/src/features/vehicles/EditNewVehicle.jsx
+4:47:11 PM [vite] warning: 
+/Users/affworld/Desktop/ddd/COSMOSLIVING/COSMOSLIVING/crm-propfusion/src/pages/vehicles/VehicleReport.jsx
+  184:11  warning  'getStatusIcon' is assigned a value but never used  no-unused-vars
+
+✖ 1 problem (0 errors, 1 warning)
+
+  Plugin: vite-plugin-eslint
+  File: /Users/affworld/Desktop/ddd/COSMOSLIVING/COSMOSLIVING/crm-propfusion/src/pages/vehicles/VehicleReport.jsx
+4:47:12 PM [vite] warning: 
+/Users/affworld/Desktop/ddd/COSMOSLIVING/COSMOSLIVING/crm-propfusion/src/pages/AgentLeads.jsx
+  10:5  warning  'Form' is defined but never used         no-unused-vars
+  14:5  warning  'ButtonGroup' is defined but never used  no-unused-vars
+  15:5  warning  'Button' is defined but never used       no-unused-vars
+
+✖ 3 problems (0 errors, 3 warnings)
+
+  Plugin: vite-plugin-eslint
+  File: /Users/affworld/Desktop/ddd/COSMOSLIVING/COSMOSLIVING/crm-propfusion/src/pages/AgentLeads.jsx
+4:47:12 PM [vite] warning: 
+/Users/affworld/Desktop/ddd/COSMOSLIVING/COSMOSLIVING/crm-propfusion/src/pages/DeveloperDocuments.jsx
+  23:12  warning  'selectedFiles' is assigned a value but never used  no-unused-vars
+  26:46  warning  'error' is assigned a value but never used          no-unused-vars
+
+✖ 2 problems (0 errors, 2 warnings)
+
+  Plugin: vite-plugin-eslint
+  File: /Users/affworld/Desktop/ddd/COSMOSLIVING/COSMOSLIVING/crm-propfusion/src/pages/DeveloperDocuments.jsx
+4:47:12 PM [vite] warning: 
+/Users/affworld/Desktop/ddd/COSMOSLIVING/COSMOSLIVING/crm-propfusion/src/pages/AgentProperties.jsx
+   5:5  warning  'Table' is defined but never used  no-unused-vars
+  16:5  warning  'Badge' is defined but never used  no-unused-vars
+
+✖ 2 problems (0 errors, 2 warnings)
+
+  Plugin: vite-plugin-eslint
+  File: /Users/affworld/Desktop/ddd/COSMOSLIVING/COSMOSLIVING/crm-propfusion/src/pages/AgentProperties.jsx
+4:47:12 PM [vite] warning: 
+/Users/affworld/Desktop/ddd/COSMOSLIVING/COSMOSLIVING/crm-propfusion/src/features/developers/DeveloperInteractive.jsx
+  21:12  warning  'hoveredDev' is assigned a value but never used  no-unused-vars
+
+✖ 1 problem (0 errors, 1 warning)
+
+  Plugin: vite-plugin-eslint
+  File: /Users/affworld/Desktop/ddd/COSMOSLIVING/COSMOSLIVING/crm-propfusion/src/features/developers/DeveloperInteractive.jsx
+4:47:12 PM [vite] warning: 
+/Users/affworld/Desktop/ddd/COSMOSLIVING/COSMOSLIVING/crm-propfusion/src/features/areas/AreaInteractive.jsx
+   7:10  warning  'Eye' is defined but never used                   no-unused-vars
+  21:12  warning  'hoveredArea' is assigned a value but never used  no-unused-vars
+
+✖ 2 problems (0 errors, 2 warnings)
+
+  Plugin: vite-plugin-eslint
+  File: /Users/affworld/Desktop/ddd/COSMOSLIVING/COSMOSLIVING/crm-propfusion/src/features/areas/AreaInteractive.jsx
+4:47:12 PM [vite] warning: 
+/Users/affworld/Desktop/ddd/COSMOSLIVING/COSMOSLIVING/crm-propfusion/src/components/LoadingSpinner.jsx
+  1:8  warning  'React' is defined but never used  no-unused-vars
+
+✖ 1 problem (0 errors, 1 warning)
+
+  Plugin: vite-plugin-eslint
+  File: /Users/affworld/Desktop/ddd/COSMOSLIVING/COSMOSLIVING/crm-propfusion/src/components/LoadingSpinner.jsx
+4:47:12 PM [vite] warning: 
+/Users/affworld/Desktop/ddd/COSMOSLIVING/COSMOSLIVING/crm-propfusion/src/components/StatusBadge.jsx
+  1:8  warning  'React' is defined but never used  no-unused-vars
+
+✖ 1 problem (0 errors, 1 warning)
+
+  Plugin: vite-plugin-eslint
+  File: /Users/affworld/Desktop/ddd/COSMOSLIVING/COSMOSLIVING/crm-propfusion/src/components/StatusBadge.jsx
+4:47:12 PM [vite] warning: 
+/Users/affworld/Desktop/ddd/COSMOSLIVING/COSMOSLIVING/crm-propfusion/src/features/leads/whatsappLeads/WhatsappLeadsCard.jsx
+   5:10  warning  'useState' is defined but never used                no-unused-vars
+   6:10  warning  'Calendar' is defined but never used                no-unused-vars
+  33:14  warning  'handleNavigateProperty' is defined but never used  no-unused-vars
+
+✖ 3 problems (0 errors, 3 warnings)
+
+  Plugin: vite-plugin-eslint
+  File: /Users/affworld/Desktop/ddd/COSMOSLIVING/COSMOSLIVING/crm-propfusion/src/features/leads/whatsappLeads/WhatsappLeadsCard.jsx
+4:47:12 PM [vite] warning: 
+/Users/affworld/Desktop/ddd/COSMOSLIVING/COSMOSLIVING/crm-propfusion/src/features/admin/staff/ViewToggle.jsx
+  1:10  warning  'useState' is defined but never used  no-unused-vars
+
+✖ 1 problem (0 errors, 1 warning)
+
+  Plugin: vite-plugin-eslint
+  File: /Users/affworld/Desktop/ddd/COSMOSLIVING/COSMOSLIVING/crm-propfusion/src/features/admin/staff/ViewToggle.jsx
+4:47:12 PM [vite] warning: 
+/Users/affworld/Desktop/ddd/COSMOSLIVING/COSMOSLIVING/crm-propfusion/src/ui/MultiStepForm.jsx
+  580:8  warning  React Hook useEffect has missing dependencies: 'imageUrl' and 'setImage'. Either include them or remove the dependency array  react-hooks/exhaustive-deps
+
+✖ 1 problem (0 errors, 1 warning)
+
+  Plugin: vite-plugin-eslint
+  File: /Users/affworld/Desktop/ddd/COSMOSLIVING/COSMOSLIVING/crm-propfusion/src/ui/MultiStepForm.jsx
+4:47:12 PM [vite] warning: 
+/Users/affworld/Desktop/ddd/COSMOSLIVING/COSMOSLIVING/crm-propfusion/src/features/leads/LeadForm.jsx
+  40:7  warning  React Hook useEffect has a missing dependency: 'setValue'. Either include it or remove the dependency array  react-hooks/exhaustive-deps
+
+✖ 1 problem (0 errors, 1 warning)
+
+  Plugin: vite-plugin-eslint
+  File: /Users/affworld/Desktop/ddd/COSMOSLIVING/COSMOSLIVING/crm-propfusion/src/features/leads/LeadForm.jsx
+4:47:12 PM [vite] warning: 
+/Users/affworld/Desktop/ddd/COSMOSLIVING/COSMOSLIVING/crm-propfusion/src/features/leads/LeadMessage.jsx
+  1:8  warning  'React' is defined but never used  no-unused-vars
+
+✖ 1 problem (0 errors, 1 warning)
+
+  Plugin: vite-plugin-eslint
+  File: /Users/affworld/Desktop/ddd/COSMOSLIVING/COSMOSLIVING/crm-propfusion/src/features/leads/LeadMessage.jsx
+4:47:12 PM [vite] warning: 
+/Users/affworld/Desktop/ddd/COSMOSLIVING/COSMOSLIVING/crm-propfusion/src/features/leads/PrefredPropert.jsx
+  1:8   warning  'React' is defined but never used  no-unused-vars
+  4:28  warning  'Home' is defined but never used   no-unused-vars
+
+✖ 2 problems (0 errors, 2 warnings)
+
+  Plugin: vite-plugin-eslint
+  File: /Users/affworld/Desktop/ddd/COSMOSLIVING/COSMOSLIVING/crm-propfusion/src/features/leads/PrefredPropert.jsx
+4:47:12 PM [vite] warning: 
+/Users/affworld/Desktop/ddd/COSMOSLIVING/COSMOSLIVING/crm-propfusion/src/features/properties/NewPropertyInTable.jsx
+  44:5   warning  'totalSize' is defined but never used                  no-unused-vars
+  46:5   warning  'fetchNextPage' is defined but never used              no-unused-vars
+  47:5   warning  'hasNextPage' is defined but never used                no-unused-vars
+  53:27  warning  'setLoadingStates' is assigned a value but never used  no-unused-vars
+
+✖ 4 problems (0 errors, 4 warnings)
+
+  Plugin: vite-plugin-eslint
+  File: /Users/affworld/Desktop/ddd/COSMOSLIVING/COSMOSLIVING/crm-propfusion/src/features/properties/NewPropertyInTable.jsx
+4:47:12 PM [vite] warning: 
+/Users/affworld/Desktop/ddd/COSMOSLIVING/COSMOSLIVING/crm-propfusion/src/features/properties/NewPropertiesFilter.jsx
+   17:10  warning  'getNewPropertiesByBuildingId' is defined but never used  no-unused-vars
+   18:10  warning  'useSearchParams' is defined but never used               no-unused-vars
+   67:32  warning  'onFilterResults' is defined but never used               no-unused-vars
+  204:5   warning  'agentOptions' is defined but never used                  no-unused-vars
+  205:5   warning  'isAgentLoading' is defined but never used                no-unused-vars
+
+✖ 5 problems (0 errors, 5 warnings)
+
+  Plugin: vite-plugin-eslint
+  File: /Users/affworld/Desktop/ddd/COSMOSLIVING/COSMOSLIVING/crm-propfusion/src/features/properties/NewPropertiesFilter.jsx
+4:47:12 PM [vite] warning: 
+/Users/affworld/Desktop/ddd/COSMOSLIVING/COSMOSLIVING/crm-propfusion/src/features/properties/RentPropertyInteractive.jsx
+  13:63  warning  'Tag' is defined but never used                      no-unused-vars
+  13:68  warning  'DollarSign' is defined but never used               no-unused-vars
+  27:11  warning  'propertyStatus' is assigned a value but never used  no-unused-vars
+
+✖ 3 problems (0 errors, 3 warnings)
+
+  Plugin: vite-plugin-eslint
+  File: /Users/affworld/Desktop/ddd/COSMOSLIVING/COSMOSLIVING/crm-propfusion/src/features/properties/RentPropertyInteractive.jsx
+4:47:12 PM [vite] warning: 
+/Users/affworld/Desktop/ddd/COSMOSLIVING/COSMOSLIVING/crm-propfusion/src/pages/leads/LeadsBaseTable.jsx
+  118:19  warning  'allDetails' is assigned a value but never used  no-unused-vars
+  176:11  warning  'handleSort' is assigned a value but never used  no-unused-vars
+
+✖ 2 problems (0 errors, 2 warnings)
+
+  Plugin: vite-plugin-eslint
+  File: /Users/affworld/Desktop/ddd/COSMOSLIVING/COSMOSLIVING/crm-propfusion/src/pages/leads/LeadsBaseTable.jsx
+4:47:12 PM [vite] warning: 
+/Users/affworld/Desktop/ddd/COSMOSLIVING/COSMOSLIVING/crm-propfusion/src/features/properties/SellPropertyInteractive.jsx
+  39:11  warning  'propertyStatus' is assigned a value but never used  no-unused-vars
+
+✖ 1 problem (0 errors, 1 warning)
+
+  Plugin: vite-plugin-eslint
+  File: /Users/affworld/Desktop/ddd/COSMOSLIVING/COSMOSLIVING/crm-propfusion/src/features/properties/SellPropertyInteractive.jsx
+4:47:12 PM [vite] warning: 
+/Users/affworld/Desktop/ddd/COSMOSLIVING/COSMOSLIVING/crm-propfusion/src/features/newProjects/NewProjectsInteractive.jsx
+  32:12  warning  'hoveredProject' is assigned a value but never used  no-unused-vars
+
+✖ 1 problem (0 errors, 1 warning)
+
+  Plugin: vite-plugin-eslint
+  File: /Users/affworld/Desktop/ddd/COSMOSLIVING/COSMOSLIVING/crm-propfusion/src/features/newProjects/NewProjectsInteractive.jsx
+4:47:12 PM [vite] warning: 
+/Users/affworld/Desktop/ddd/COSMOSLIVING/COSMOSLIVING/crm-propfusion/src/features/newProjects/NewProjectsFilter.jsx
+  1:31  warning  'BUILD_NAME_OPTIONS' is defined but never used  no-unused-vars
+
+✖ 1 problem (0 errors, 1 warning)
+
+  Plugin: vite-plugin-eslint
+  File: /Users/affworld/Desktop/ddd/COSMOSLIVING/COSMOSLIVING/crm-propfusion/src/features/newProjects/NewProjectsFilter.jsx
+4:47:12 PM [vite] warning: 
+/Users/affworld/Desktop/ddd/COSMOSLIVING/COSMOSLIVING/crm-propfusion/src/features/notifications/NotificationList.jsx
+  31:11  warning  'debouncedFetch' is assigned a value but never used  no-unused-vars
+
+✖ 1 problem (0 errors, 1 warning)
+
+  Plugin: vite-plugin-eslint
+  File: /Users/affworld/Desktop/ddd/COSMOSLIVING/COSMOSLIVING/crm-propfusion/src/features/notifications/NotificationList.jsx
+4:47:12 PM [vite] warning: 
+/Users/affworld/Desktop/ddd/COSMOSLIVING/COSMOSLIVING/crm-propfusion/src/features/SmtpSetting/ListData.jsx
+  6:3  warning  'Check' is defined but never used  no-unused-vars
+  7:3  warning  'X' is defined but never used      no-unused-vars
+
+✖ 2 problems (0 errors, 2 warnings)
+
+  Plugin: vite-plugin-eslint
+  File: /Users/affworld/Desktop/ddd/COSMOSLIVING/COSMOSLIVING/crm-propfusion/src/features/SmtpSetting/ListData.jsx
+4:47:12 PM [vite] warning: 
+/Users/affworld/Desktop/ddd/COSMOSLIVING/COSMOSLIVING/crm-propfusion/src/features/Owner/NewOwner.jsx
+  86:14  warning  'handleNavigate' is defined but never used  no-unused-vars
+
+✖ 1 problem (0 errors, 1 warning)
+
+  Plugin: vite-plugin-eslint
+  File: /Users/affworld/Desktop/ddd/COSMOSLIVING/COSMOSLIVING/crm-propfusion/src/features/Owner/NewOwner.jsx
+4:47:12 PM [vite] warning: 
+/Users/affworld/Desktop/ddd/COSMOSLIVING/COSMOSLIVING/crm-propfusion/src/features/Tenants/TenantTableView.jsx
+   6:5  warning  'Building2' is defined but never used  no-unused-vars
+   9:5  warning  'FileText' is defined but never used   no-unused-vars
+  12:5  warning  'Calendar' is defined but never used   no-unused-vars
+
+✖ 3 problems (0 errors, 3 warnings)
+
+  Plugin: vite-plugin-eslint
+  File: /Users/affworld/Desktop/ddd/COSMOSLIVING/COSMOSLIVING/crm-propfusion/src/features/Tenants/TenantTableView.jsx
+4:47:12 PM [vite] warning: 
+/Users/affworld/Desktop/ddd/COSMOSLIVING/COSMOSLIVING/crm-propfusion/src/features/admin/general/StageInterFace.jsx
+  16:12  warning  'isDragging' is assigned a value but never used  no-unused-vars
+
+✖ 1 problem (0 errors, 1 warning)
+
+  Plugin: vite-plugin-eslint
+  File: /Users/affworld/Desktop/ddd/COSMOSLIVING/COSMOSLIVING/crm-propfusion/src/features/admin/general/StageInterFace.jsx
+4:47:12 PM [vite] warning: 
+/Users/affworld/Desktop/ddd/COSMOSLIVING/COSMOSLIVING/crm-propfusion/src/features/building/StepPortals.jsx
+  4:8   warning  'AmenitiesList' is defined but never used              no-unused-vars
+  7:12  warning  'watch' is assigned a value but never used             no-unused-vars
+  7:19  warning  'setValue' is assigned a value but never used          no-unused-vars
+  8:11  warning  'amenitiesOptions' is assigned a value but never used  no-unused-vars
+
+✖ 4 problems (0 errors, 4 warnings)
+
+  Plugin: vite-plugin-eslint
+  File: /Users/affworld/Desktop/ddd/COSMOSLIVING/COSMOSLIVING/crm-propfusion/src/features/building/StepPortals.jsx
+4:47:12 PM [vite] warning: 
+/Users/affworld/Desktop/ddd/COSMOSLIVING/COSMOSLIVING/crm-propfusion/src/components/WhatsApp/ConversationSidebar.jsx
+  2:18  warning  'formatDistanceToNow' is defined but never used  no-unused-vars
+
+✖ 1 problem (0 errors, 1 warning)
+
+  Plugin: vite-plugin-eslint
+  File: /Users/affworld/Desktop/ddd/COSMOSLIVING/COSMOSLIVING/crm-propfusion/src/components/WhatsApp/ConversationSidebar.jsx
+4:47:12 PM [vite] warning: 
+/Users/affworld/Desktop/ddd/COSMOSLIVING/COSMOSLIVING/crm-propfusion/src/features/building/TableViewBuilding.jsx
+  9:12  warning  'selectedItem' is assigned a value but never used  no-unused-vars
+
+✖ 1 problem (0 errors, 1 warning)
+
+  Plugin: vite-plugin-eslint
+  File: /Users/affworld/Desktop/ddd/COSMOSLIVING/COSMOSLIVING/crm-propfusion/src/features/building/TableViewBuilding.jsx
+4:47:13 PM [vite] warning: 
+/Users/affworld/Desktop/ddd/COSMOSLIVING/COSMOSLIVING/crm-propfusion/src/features/watchmen/AddWatchmenForm.jsx
+  33:6  warning  React Hook useEffect has a missing dependency: 'avatarPreview'. Either include it or remove the dependency array  react-hooks/exhaustive-deps
+
+✖ 1 problem (0 errors, 1 warning)
+
+  Plugin: vite-plugin-eslint
+  File: /Users/affworld/Desktop/ddd/COSMOSLIVING/COSMOSLIVING/crm-propfusion/src/features/watchmen/AddWatchmenForm.jsx
+4:47:13 PM [vite] warning: 
+/Users/affworld/Desktop/ddd/COSMOSLIVING/COSMOSLIVING/crm-propfusion/src/components/WhatsApp/ChatWindow.jsx
+  29:9  warning  'formatMessageTime' is assigned a value but never used  no-unused-vars
+
+✖ 1 problem (0 errors, 1 warning)
+
+  Plugin: vite-plugin-eslint
+  File: /Users/affworld/Desktop/ddd/COSMOSLIVING/COSMOSLIVING/crm-propfusion/src/components/WhatsApp/ChatWindow.jsx
+4:47:13 PM [vite] warning: 
+/Users/affworld/Desktop/ddd/COSMOSLIVING/COSMOSLIVING/crm-propfusion/src/services/apiKpi.js
+  6:10  warning  'error' is defined but never used  no-unused-vars
+  7:8   warning  'toast' is defined but never used  no-unused-vars
+
+✖ 2 problems (0 errors, 2 warnings)
+
+  Plugin: vite-plugin-eslint
+  File: /Users/affworld/Desktop/ddd/COSMOSLIVING/COSMOSLIVING/crm-propfusion/src/services/apiKpi.js
+4:47:13 PM [vite] warning: 
+/Users/affworld/Desktop/ddd/COSMOSLIVING/COSMOSLIVING/crm-propfusion/src/features/vehicles/StepBasicInfo.jsx
+  1:25  warning  'useMultiStepForm' is defined but never used  no-unused-vars
+
+✖ 1 problem (0 errors, 1 warning)
+
+  Plugin: vite-plugin-eslint
+  File: /Users/affworld/Desktop/ddd/COSMOSLIVING/COSMOSLIVING/crm-propfusion/src/features/vehicles/StepBasicInfo.jsx
+4:47:13 PM [vite] warning: 
+/Users/affworld/Desktop/ddd/COSMOSLIVING/COSMOSLIVING/crm-propfusion/src/features/vehicles/Vehicles.jsx
+  11:5  warning  'fetchNextPage' is defined but never used  no-unused-vars
+  12:5  warning  'hasNextPage' is defined but never used    no-unused-vars
+
+✖ 2 problems (0 errors, 2 warnings)
+
+  Plugin: vite-plugin-eslint
+  File: /Users/affworld/Desktop/ddd/COSMOSLIVING/COSMOSLIVING/crm-propfusion/src/features/vehicles/Vehicles.jsx
+4:47:13 PM [vite] warning: 
+/Users/affworld/Desktop/ddd/COSMOSLIVING/COSMOSLIVING/crm-propfusion/src/features/vehicles/VehicleTop.jsx
+  14:19  warning  'allData' is assigned a value but never used         no-unused-vars
+  21:14  warning  'openRemoveLocationModal' is defined but never used  no-unused-vars
+
+✖ 2 problems (0 errors, 2 warnings)
+
+  Plugin: vite-plugin-eslint
+  File: /Users/affworld/Desktop/ddd/COSMOSLIVING/COSMOSLIVING/crm-propfusion/src/features/vehicles/VehicleTop.jsx
+4:47:13 PM [vite] warning: 
+/Users/affworld/Desktop/ddd/COSMOSLIVING/COSMOSLIVING/crm-propfusion/src/pages/building/BuildingReportsTable.jsx
+    5:5   warning  'Calendar' is defined but never used                      no-unused-vars
+    6:5   warning  'CreditCard' is defined but never used                    no-unused-vars
+    9:5   warning  'ExternalLink' is defined but never used                  no-unused-vars
+   10:5   warning  'MapPin' is defined but never used                        no-unused-vars
+   11:5   warning  'User' is defined but never used                          no-unused-vars
+   16:8   warning  'Table' is defined but never used                         no-unused-vars
+   26:10  warning  'getContractYears' is defined but never used              no-unused-vars
+  104:11  warning  'handleBuildingClick' is assigned a value but never used  no-unused-vars
+
+✖ 8 problems (0 errors, 8 warnings)
+
+  Plugin: vite-plugin-eslint
+  File: /Users/affworld/Desktop/ddd/COSMOSLIVING/COSMOSLIVING/crm-propfusion/src/pages/building/BuildingReportsTable.jsx
+4:47:13 PM [vite] warning: 
+/Users/affworld/Desktop/ddd/COSMOSLIVING/COSMOSLIVING/crm-propfusion/src/features/rental-agreement/RentalAgreementsReport.jsx
+  217:11  warning  'totalBuildings' is assigned a value but never used   no-unused-vars
+  219:11  warning  'overduePayments' is assigned a value but never used  no-unused-vars
+
+✖ 2 problems (0 errors, 2 warnings)
+
+  Plugin: vite-plugin-eslint
+  File: /Users/affworld/Desktop/ddd/COSMOSLIVING/COSMOSLIVING/crm-propfusion/src/features/rental-agreement/RentalAgreementsReport.jsx
+4:47:13 PM [vite] warning: 
+/Users/affworld/Desktop/ddd/COSMOSLIVING/COSMOSLIVING/crm-propfusion/src/features/kpi/KpiSubmissionFilter.jsx
+  24:25  warning  'agentOptions' is defined but never used    no-unused-vars
+  24:39  warning  'isAgentLoading' is defined but never used  no-unused-vars
+
+✖ 2 problems (0 errors, 2 warnings)
+
+  Plugin: vite-plugin-eslint
+  File: /Users/affworld/Desktop/ddd/COSMOSLIVING/COSMOSLIVING/crm-propfusion/src/features/kpi/KpiSubmissionFilter.jsx
+4:47:13 PM [vite] warning: 
+/Users/affworld/Desktop/ddd/COSMOSLIVING/COSMOSLIVING/crm-propfusion/src/features/viewings/ViewingFrom.jsx
+  80:8  warning  React Hook useEffect has a missing dependency: 'propertyId'. Either include it or remove the dependency array  react-hooks/exhaustive-deps
+
+✖ 1 problem (0 errors, 1 warning)
+
+  Plugin: vite-plugin-eslint
+  File: /Users/affworld/Desktop/ddd/COSMOSLIVING/COSMOSLIVING/crm-propfusion/src/features/viewings/ViewingFrom.jsx
+4:47:13 PM [vite] warning: 
+/Users/affworld/Desktop/ddd/COSMOSLIVING/COSMOSLIVING/crm-propfusion/src/features/buildings/useBuildingChequePayments.js
+  2:10  warning  'updateRentalAgreement' is defined but never used  no-unused-vars
+
+✖ 1 problem (0 errors, 1 warning)
+
+  Plugin: vite-plugin-eslint
+  File: /Users/affworld/Desktop/ddd/COSMOSLIVING/COSMOSLIVING/crm-propfusion/src/features/buildings/useBuildingChequePayments.js
+4:47:13 PM [vite] warning: 
+/Users/affworld/Desktop/ddd/COSMOSLIVING/COSMOSLIVING/crm-propfusion/src/features/properties/Aminities.jsx
+  1:8  warning  'React' is defined but never used  no-unused-vars
+
+✖ 1 problem (0 errors, 1 warning)
+
+  Plugin: vite-plugin-eslint
+  File: /Users/affworld/Desktop/ddd/COSMOSLIVING/COSMOSLIVING/crm-propfusion/src/features/properties/Aminities.jsx
+4:47:13 PM [vite] warning: 
+/Users/affworld/Desktop/ddd/COSMOSLIVING/COSMOSLIVING/crm-propfusion/src/features/admin/teams/TeamForm.jsx
+  43:8  warning  React Hook useEffect has a missing dependency: 'BACKEND_URL'. Either include it or remove the dependency array  react-hooks/exhaustive-deps
+
+✖ 1 problem (0 errors, 1 warning)
+
+  Plugin: vite-plugin-eslint
+  File: /Users/affworld/Desktop/ddd/COSMOSLIVING/COSMOSLIVING/crm-propfusion/src/features/admin/teams/TeamForm.jsx
+4:47:13 PM [vite] warning: 
+/Users/affworld/Desktop/ddd/COSMOSLIVING/COSMOSLIVING/crm-propfusion/src/features/building/DisplayDocs.jsx
+  11:39  warning  'iconAction' is defined but never used          no-unused-vars
+  15:13  warning  'getValues' is assigned a value but never used  no-unused-vars
+  15:24  warning  'setValue' is assigned a value but never used   no-unused-vars
+  15:34  warning  'watch' is assigned a value but never used      no-unused-vars
+  36:27  warning  'key' is defined but never used                 no-unused-vars
+  40:27  warning  'key' is defined but never used                 no-unused-vars
+
+✖ 6 problems (0 errors, 6 warnings)
+
+  Plugin: vite-plugin-eslint
+  File: /Users/affworld/Desktop/ddd/COSMOSLIVING/COSMOSLIVING/crm-propfusion/src/features/building/DisplayDocs.jsx
+4:47:13 PM [vite] warning: 
+/Users/affworld/Desktop/ddd/COSMOSLIVING/COSMOSLIVING/crm-propfusion/src/features/manufacturer/ManufacturRow.jsx
+   4:7  warning  'countStyle' is assigned a value but never used       no-unused-vars
+  15:7  warning  'countHoverStyle' is assigned a value but never used  no-unused-vars
+
+✖ 2 problems (0 errors, 2 warnings)
+
+  Plugin: vite-plugin-eslint
+  File: /Users/affworld/Desktop/ddd/COSMOSLIVING/COSMOSLIVING/crm-propfusion/src/features/manufacturer/ManufacturRow.jsx
+4:47:13 PM [vite] warning: 
+/Users/affworld/Desktop/ddd/COSMOSLIVING/COSMOSLIVING/crm-propfusion/src/features/rental-agreement/RentalAgreementForm.jsx
+  78:27  warning  React Hook useCallback received a function whose dependencies are unknown. Pass an inline function instead  react-hooks/exhaustive-deps
+
+✖ 1 problem (0 errors, 1 warning)
+
+  Plugin: vite-plugin-eslint
+  File: /Users/affworld/Desktop/ddd/COSMOSLIVING/COSMOSLIVING/crm-propfusion/src/features/rental-agreement/RentalAgreementForm.jsx
+4:47:16 PM [vite] warning: 
+/Users/affworld/Desktop/ddd/COSMOSLIVING/COSMOSLIVING/crm-propfusion/src/components/dashboard/charts/PieChart.jsx
+  5:32  warning  'title' is defined but never used                no-unused-vars
+  5:51  warning  'showToggle' is assigned a value but never used  no-unused-vars
+
+✖ 2 problems (0 errors, 2 warnings)
+
+  Plugin: vite-plugin-eslint
+  File: /Users/affworld/Desktop/ddd/COSMOSLIVING/COSMOSLIVING/crm-propfusion/src/components/dashboard/charts/PieChart.jsx
+5:08:07 PM [vite] hmr update /src/App.jsx
+5:08:07 PM [vite] warning: 
+/Users/affworld/Desktop/ddd/COSMOSLIVING/COSMOSLIVING/crm-propfusion/src/pages/Locations.jsx
+  1:8  warning  'React' is defined but never used  no-unused-vars
+
+✖ 1 problem (0 errors, 1 warning)
+
+  Plugin: vite-plugin-eslint
+  File: /Users/affworld/Desktop/ddd/COSMOSLIVING/COSMOSLIVING/crm-propfusion/src/pages/Locations.jsx
+5:08:07 PM [vite] Internal server error: Failed to resolve import "@mui/material" from "src/pages/Locations.jsx". Does the file exist?
+  Plugin: vite:import-analysis
+  File: /Users/affworld/Desktop/ddd/COSMOSLIVING/COSMOSLIVING/crm-propfusion/src/pages/Locations.jsx:19:7
+  34 |    Pagination,
+  35 |    InputAdornment
+  36 |  } from "@mui/material";
+     |          ^
+  37 |  import SearchIcon from "@mui/icons-material/Search";
+  38 |  import LocationOnIcon from "@mui/icons-material/LocationOn";
+      at TransformPluginContext._formatError (file:///Users/affworld/Desktop/ddd/COSMOSLIVING/COSMOSLIVING/crm-propfusion/node_modules/vite/dist/node/chunks/dep-D8YhmIY-.js:49
+      at TransformPluginContext._formatError (file:///Users/affworld/Desktop/ddd/COSMOSLIVING/COSMOSLIVING/crm-propfusion/node_modules/vite/dist/node/chunks/dep-D8YhmIY-.js:49748:41)
+      at TransformPluginContext.error (file:///Users/affworld/Desktop/ddd/COSMOSLIVING/COSMOSLIVING/crm-propfusion/node_modules/vite/dist/node/chunks/dep-D8YhmIY-.js:49743:16)
+      at normalizeUrl (file:///Users/affworld/Desktop/ddd/COSMOSLIVING/COSMOSLIVING/crm-propfusion/node_modules/vite/dist/node/chunks/dep-D8YhmIY-.js:64333:23)
+      at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+      at async file:///Users/affworld/Desktop/ddd/COSMOSLIVING/COSMOSLIVING/crm-propfusion/node_modules/vite/dist/node/chunks/dep-D8YhmIY-.js:64465:39
+      at async Promise.all (index 5)
+      at async TransformPluginContext.transform (file:///Users/affworld/Desktop/ddd/COSMOSLIVING/COSMOSLIVING/crm-propfusion/node_modules/vite/dist/node/chunks/dep-D8YhmIY-.js
+      at async TransformPluginContext.transform (file:///Users/affworld/Desktop/ddd/COSMOSLIVING/COSMOSLIVING/crm-propfusion/node_modules/vite/dist/node/chunks/dep-D8YhmIY-.js:64392:7)
+      at async PluginContainer.transform (file:///Users/affworld/Desktop/ddd/COSMOSLIVING/COSMOSLIVING/crm-propfusion/node_modules/vite/dist/node/chunks/dep-D8YhmIY-.js:49589:
+      at async PluginContainer.transform (file:///Users/affworld/Desktop/ddd/COSMOSLIVING/COSMOSLIVING/crm-propfusion/node_modules/vite/dist/node/chunks/dep-D8YhmIY-.js:49589:18)
+      at async loadAndTransform (file:///Users/affworld/Desktop/ddd/COSMOSLIVING/COSMOSLIVING/crm-propfusion/node_modules/vite/dist/node/chunks/dep-D8YhmIY-.js:52411:27)
+5:08:07 PM [vite] Pre-transform error: Failed to resolve import "@mui/material" from "src/pages/Locations.jsx". Does the file exist?

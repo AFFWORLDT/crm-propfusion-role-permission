@@ -1,0 +1,123 @@
+/* Form UI Styles - Modern & Beautiful
+––––––––––––––––––––––––––––––––––––––––––––––––––– */
+.sectionContainer {
+  margin: 0 auto;
+  padding: 2.5rem;
+  background: linear-gradient(135deg, #EEF2FF 0%, #FAFAFA 100%);
+}
+
+.sectionStyles {
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 20px;
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.06);
+  padding: 2.5rem;
+  margin-top: 1.8rem;
+  border: 1px solid rgba(226, 232, 240, 0.9);
+  backdrop-filter: blur(15px);
+}
+
+/* Form Grid Layout
+––––––––––––––––––––––––––––––––––––––––––––––––––– */
+.form {
+  width: 100%;
+}
+
+.formGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2rem;
+  margin-bottom: 2.5rem;
+}
+
+.inputGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+}
+
+/* Beautiful Form Elements
+––––––––––––––––––––––––––––––––––––––––––––––––––– */
+.label {
+  color: #374151;
+  font-size: 0.95rem;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+}
+
+.input {
+  width: 100%;
+  padding: 1rem 1.2rem;
+  border: 2px solid #E5E7EB;
+  border-radius: 14px;
+  font-size: 0.95rem;
+  transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+  background: #F9FAFB;
+}
+
+.input:hover {
+  border-color: #D1D5DB;
+  background: #ffffff;
+}
+
+.input:focus {
+  outline: none;
+  border-color: #6366F1;
+  box-shadow: 0 0 0 4px rgba(99, 102, 241, 0.12);
+  background: #ffffff;
+}
+
+.input::placeholder {
+  color: #9CA3AF;
+  font-size: 0.95rem;
+}
+
+/* Modern Button Design
+––––––––––––––––––––––––––––––––––––––––––––––––––– */
+.buttonContainer {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 2.5rem;
+}
+
+.submitButton {
+  background: linear-gradient(135deg, #6366F1 0%, #4F46E5 100%);
+  color: white;
+  padding: 1rem 2.5rem;
+  border-radius: 14px;
+  font-weight: 600;
+  font-size: 0.95rem;
+  border: none;
+  cursor: pointer;
+  transition: all 0.35s ease;
+  box-shadow: 0 6px 16px rgba(99, 102, 241, 0.25);
+  letter-spacing: 0.03em;
+}
+
+.submitButton:hover {
+  background: linear-gradient(135deg, #4F46E5 0%, #4338CA 100%);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(99, 102, 241, 0.3);
+}
+
+.submitButton:active {
+  transform: translateY(1px);
+  box-shadow: 0 4px 12px rgba(99, 102, 241, 0.2);
+}
+
+/* Responsive Design
+––––––––––––––––––––––––––––––––––––––––––––––––––– */
+@media (max-width: 768px) {
+  .formGrid {
+    grid-template-columns: 1fr;
+    gap: 1.8rem;
+  }
+  
+  .sectionContainer {
+    padding: 1.5rem;
+  }
+  
+  .sectionStyles {
+    padding: 1.8rem;
+    border-radius: 16px;
+  }
+}

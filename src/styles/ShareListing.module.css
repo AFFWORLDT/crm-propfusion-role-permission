@@ -1,0 +1,644 @@
+.shareListing {
+    position: relative;
+    margin: 0 auto;
+    max-width: 1600px;
+    padding: 0 2.4rem 2.4rem;
+}
+
+.shareListingBg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 62rem;
+    background: url("/share-page/bg.webp");
+    background-size: cover;
+    background-position: center 70%;
+}
+
+.shareListingContent {
+    position: relative;
+    margin: 0 auto;
+    max-width: 1300px;
+    padding-top: 10rem;
+}
+
+.shareListingContent > div:not(:first-child) {
+    background-color: #fff;
+    padding: 3rem;
+    border-radius: 2.4rem;
+    margin-top: 3rem;
+}
+
+.shareListingContent h3 {
+    margin-bottom: 2rem;
+    font-size: 2rem;
+    font-weight: 600;
+
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.shareListingContent h3 div {
+    position: relative;
+    top: -1px;
+    height: 1.4rem;
+    width: 1.4rem;
+    background-color: var(--clr-primary-200);
+    border-radius: 50%;
+}
+
+/*******************/
+/* Listing Header */
+/*******************/
+
+.listingHeader {
+    margin-bottom: 6rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 4.8rem;
+}
+
+.logo {
+    padding: 2rem 3rem;
+    border-radius: 2.4rem;
+    background-color: rgba(255, 255, 255, 0.5);
+    backdrop-filter: blur(8px);
+
+    display: flex;
+    gap: 1.6rem;
+    align-items: center;
+}
+
+.logo img {
+    width: 18rem;
+    height: 18rem;
+    border-radius: 50%;
+}
+
+.logo h2 {
+    font-size: 3.6rem;
+    font-weight: 700;
+}
+
+.userDetails {
+    padding: 3.4rem;
+    background-color: rgba(255, 255, 255, 0.5);
+    backdrop-filter: blur(8px);
+    border-radius: 2.4rem;
+
+    display: flex;
+    align-items: center;
+    gap: 3.4rem;
+}
+
+.userDetails > img {
+    height: 9rem;
+    border-radius: 1.2rem;
+}
+
+.userDetailsContent {
+    display: grid;
+    gap: 1rem;
+}
+
+.userDetailsContent h2 {
+    font-size: 2.6rem;
+    font-weight: 700;
+}
+
+.userDetailsContent > div {
+    font-size: 1.8rem;
+    display: flex;
+    align-items: center;
+    gap: 1.2rem;
+}
+
+.userDetailsContent img {
+    width: 2.4rem;
+    filter: brightness(85%);
+}
+
+/*****************/
+/* Listing Hero */
+/*****************/
+
+.listingHero {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 2.4rem;
+}
+
+.imagesGrid {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    gap: 1rem;
+    height: 40rem;
+    border-radius: 2rem;
+    overflow: hidden;
+}
+
+.imagesGrid div {
+    border-radius: 1.6rem;
+    overflow: hidden;
+}
+
+.imagesGrid img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* First image takes 2 rows */
+.imagesGrid div:nth-child(1) {
+    grid-row: span 2;
+}
+
+/* Other images fill remaining grid */
+.imagesGrid div:nth-child(2),
+.imagesGrid div:nth-child(3),
+.imagesGrid div:nth-child(4) {
+    /* Default grid positioning */
+}
+
+.mainImage {
+    border-radius: 2rem;
+    overflow: hidden;
+    height: 40rem;
+    margin-bottom: 2rem;
+}
+
+.mainImage .imgContainer {
+    width: 100%;
+    height: 100%;
+}
+
+.mainImage img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.imageGallery {
+    background-color: #fff;
+    padding: 3rem;
+    border-radius: 2.4rem;
+    margin-top: 3rem;
+}
+
+.imageGallery h3 {
+    margin-bottom: 2rem;
+    font-size: 2rem;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.imageGallery h3 div {
+    position: relative;
+    top: -1px;
+    height: 1.4rem;
+    width: 1.4rem;
+    background-color: var(--clr-primary-200);
+    border-radius: 50%;
+}
+
+.listingHeroContent {
+    padding: 0.8rem 0;
+    display: grid;
+    gap: 1rem;
+}
+
+.listingHeroContent h1 {
+    font-size: 3rem;
+    font-weight: 700;
+}
+
+.price span:first-child {
+    font-size: 3.6rem;
+    font-weight: 700;
+}
+
+.price span:last-child {
+    font-size: 1.8rem;
+    margin-left: 0.8rem;
+}
+
+.listingHeroContent ul {
+    padding: 0 1rem;
+    display: grid;
+    gap: 2rem;
+}
+
+.listingHeroContent li {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1.6rem;
+}
+
+.listingHeroContent li > span {
+    font-weight: 500;
+}
+
+.listingHeroContent li > div {
+    display: flex;
+    gap: 0.4rem;
+    align-items: center;
+}
+
+.listingHeroContent li img {
+    max-width: 2.4rem;
+}
+
+/*****************/
+/* Listing Info */
+/*****************/
+
+.listingInfo ul {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3.2rem 6.4rem;
+}
+
+.listingInfo ul li {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+}
+
+.listingInfo ul li span:first-of-type {
+    color: #565e59;
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+}
+
+.listingInfo ul li span:first-of-type img {
+    width: 20px;
+    height: 20px;
+    object-fit: contain;
+}
+
+.listingInfo ul li span:last-of-type {
+    color: #3a3a3a;
+    font-weight: 500;
+}
+
+/**********************/
+/* Listing Amenities */
+/**********************/
+
+.amenitiesContainer {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 1rem;
+}
+
+.amenity {
+    padding: 1.4rem;
+    border: 1px solid var(--clr-neutral-100);
+    border-radius: 1.2rem;
+    text-align: center;
+
+    display: grid;
+    justify-items: center;
+    gap: 1.4rem;
+}
+
+.amenity div {
+    padding: 2rem;
+    border-radius: 50%;
+    background-color: #f4f4f4;
+    font-weight: 500;
+}
+
+/************************/
+/* Listing Description */
+/************************/
+
+.listingDescription {
+    white-space: pre-line;
+}
+
+.listingDescription p {
+    font-size: 1.8rem;
+    max-width: 100rem;
+}
+
+/************************/
+/* Listing Payment Plan */
+/************************/
+
+.listingPaymentPlan ul {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 3rem;
+}
+
+.listingPaymentPlan ul li {
+    position: relative;
+    padding: 5rem 3rem 3rem;
+    background-color: #f4f4f4;
+    border-radius: 1.2rem;
+
+    display: grid;
+    gap: 2rem;
+}
+
+.listingPaymentPlan ul li img {
+    position: absolute;
+    top: 3rem;
+    right: 3rem;
+
+    width: 3rem;
+    height: 3rem;
+}
+
+.listingPaymentPlan ul li span:first-of-type {
+    font-size: 5rem;
+    font-weight: 700;
+}
+
+.listingPaymentPlan ul li span:last-of-type {
+    font-size: 1.8rem;
+    text-transform: capitalize;
+}
+
+.listingPaymentPlan {
+    margin-top: 2rem;
+    padding: 2rem;
+    background-color: #fff;
+    border-radius: 10px;
+}
+
+.listingPaymentPlan h3 {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 2rem;
+}
+
+.listingPaymentPlan h3 div {
+    width: 5px;
+    height: 25px;
+    background-color: var(--color-primary);
+    border-radius: 5px;
+}
+
+.paymentPlanSection {
+    padding: 1.5rem;
+    background-color: #f8f9fa;
+    border-radius: 8px;
+}
+
+.paymentPlanSection:last-child {
+    margin-bottom: 0;
+}
+
+.paymentPlanHeader {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1rem;
+}
+
+.paymentPlanHeader h4 {
+    font-size: 1.2rem;
+    color: var(--color-primary);
+    margin: 0;
+}
+
+.activeStatus {
+    background-color: #28a745;
+    color: white;
+    padding: 0.25rem 0.75rem;
+    border-radius: 20px;
+    font-size: 0.8rem;
+}
+
+.planDescription {
+    color: #6c757d;
+    margin-bottom: 1.5rem;
+    font-size: 0.9rem;
+    line-height: 1.5;
+}
+
+.planDetails {
+    display: flex;
+    gap: 2rem;
+    margin-bottom: 1.5rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid #dee2e6;
+}
+
+.planInfo {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+}
+
+.planInfo span:first-child {
+    color: #6c757d;
+    font-size: 0.9rem;
+}
+
+.planInfo span:last-child {
+    color: #212529;
+    font-weight: 500;
+}
+
+.installmentSections {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.installmentSection {
+    background-color: white;
+    padding: 1.25rem;
+    border-radius: 8px;
+    border: 1px solid #dee2e6;
+}
+
+.installmentSection h5 {
+    color: var(--color-primary);
+    margin-bottom: 1rem;
+    font-size: 1.5rem;
+}
+
+.installmentDetails {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.installmentDetails div {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.installmentDetails span:first-child {
+    color: #6c757d;
+    font-size: 1.5rem;
+}
+
+.installmentDetails span:last-child {
+    color: #212529;
+    font-weight: 600;
+}
+
+.totalSection {
+    background-color: var(--color-primary);
+    color: white;
+    padding: 1.25rem;
+    border-radius: 8px;
+    margin-top: 1.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.totalSection h5 {
+    margin: 0;
+    font-size: 1rem;
+}
+
+.totalAmount {
+    font-size: 1.25rem;
+    font-weight: 600;
+}
+
+/**********************/
+/* Listing Floor Plan */
+/**********************/
+
+.floorPlanContainer {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3.6rem 3rem;
+}
+
+.floorPlanItem > :global(.imgContainer) {
+    height: 35rem;
+    border-radius: 1.2rem;
+    border: 1px solid var(--clr-neutral-100);
+}
+
+.floorPlanContent {
+    margin-top: 1.4rem;
+    padding: 0 0.6rem;
+    display: grid;
+    gap: 1.2rem;
+}
+
+.floorPlanContent span:first-of-type {
+    font-size: 2.4rem;
+    font-weight: 700;
+}
+
+.floorPlanContent span:last-of-type {
+    font-size: 1.8rem;
+}
+
+/*****************/
+/* Media Queries */
+/*****************/
+
+@media screen and (max-width: 900px) {
+    .shareListingContent {
+        padding-top: 10rem;
+    }
+
+    .listingHeader {
+        flex-direction: column;
+    }
+
+    .logo {
+        flex-direction: column;
+    }
+
+    .logo img {
+        width: 14rem;
+        height: 14rem;
+    }
+
+    .userDetails {
+        width: 100%;
+        justify-content: space-evenly;
+    }
+
+    .listingHero {
+        grid-template-columns: 1fr;
+    }
+
+    .listingHeroContent {
+        gap: 2rem;
+    }
+
+    .listingHeroContent ul {
+        padding: 1rem;
+    }
+
+    .amenitiesContainer {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    .listingPaymentPlan ul {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .logo h2 {
+        font-size: 3rem;
+    }
+
+    .logo img {
+        width: 10rem;
+        height: 10rem;
+    }
+
+    .userDetails {
+        padding: 2.4rem;
+        gap: 2.4rem;
+    }
+
+    .userDetails > img {
+        height: 6rem;
+    }
+
+    .userDetailsContent h2 {
+        font-size: 2.2rem;
+    }
+
+    .userDetailsContent > div {
+        font-size: 1.6rem;
+    }
+
+    .listingInfo ul {
+        grid-template-columns: 1fr;
+    }
+
+    .amenitiesContainer {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .listingPaymentPlan ul {
+        grid-template-columns: 1fr;
+    }
+
+    .floorPlanContainer {
+        grid-template-columns: 1fr;
+    }
+
+    .floorPlanItem > :global(.imgContainer) {
+        height: 30rem;
+    }
+}

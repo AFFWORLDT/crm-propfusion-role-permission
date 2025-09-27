@@ -1,0 +1,713 @@
+.profile {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 3rem;
+    min-height: calc(100vh - 200px);
+    align-items: start;
+}
+
+.profile .profileContainer {
+    display: grid;
+    grid-template-rows: auto 1fr;
+    gap: 2.4rem;
+    height: fit-content;
+}
+
+.profile .profileContainer form {
+    padding: 2rem;
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+    border: 1px solid #e2e8f0;
+}
+
+.profileTabs {
+    display: flex;
+    gap: 1.2rem;
+    background: white;
+    padding: 0.8rem;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+    border: 1px solid #e2e8f0;
+}
+
+.profileTabs button {
+    height: fit-content;
+    padding: 1.2rem 2.4rem;
+    border-radius: 8px;
+    border: none;
+    background: transparent;
+    color: #64748b;
+    font-weight: 500;
+    font-size: 1.4rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    flex: 1;
+}
+
+.profileTabs button:hover {
+    background-color: #f1f5f9;
+    color: #334155;
+}
+
+.profileTabs button.activeProfileTab {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    font-weight: 600;
+    box-shadow: 0 2px 8px rgba(102, 126, 234, 0.3);
+}
+
+.profileDetails {
+    display: grid;
+    justify-items: center;
+    gap: 2.4rem;
+    background: white;
+    padding: 3rem;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+    border: 1px solid #e2e8f0;
+    height: fit-content;
+    position: sticky;
+    top: 2rem;
+}
+
+.avatar {
+    width: 14rem;
+    height: 14rem;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 4px solid #f1f5f9;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+}
+
+.avatar:hover {
+    transform: scale(1.02);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+}
+
+.avatarContainer {
+    position: relative;
+    display: inline-block;
+}
+
+.uploadButton {
+    position: absolute;
+    bottom: 0.5rem;
+    right: 0.5rem;
+    width: 3.2rem;
+    height: 3.2rem;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    border: 3px solid white;
+    border-radius: 50%;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    padding: 0;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 8px rgba(102, 126, 234, 0.3);
+}
+
+.uploadButton:hover {
+    transform: scale(1.1);
+    box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
+}
+
+/* Avatar Verification Badge */
+.avatarBadge {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 3rem;
+    height: 3rem;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 3px solid white;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.avatarBadge.verified {
+    background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+}
+
+.avatarBadge.unverified {
+    background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
+}
+
+.avatarBadge:hover {
+    transform: scale(1.1);
+}
+
+.avatarBadge.verified:hover {
+    box-shadow: 0 4px 12px rgba(16, 185, 129, 0.4);
+}
+
+.avatarBadge.unverified:hover {
+    box-shadow: 0 4px 12px rgba(239, 68, 68, 0.4);
+}
+
+.uploadOverlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.uploadOverlay svg {
+    color: white;
+}
+
+.avatarContainer:hover .uploadOverlay {
+    opacity: 1;
+}
+
+.profileDetails h3 {
+    font-weight: 600;
+    font-size: 2.6rem;
+    color: #1e293b;
+    margin: 0;
+    text-align: center;
+}
+
+/* Verification Badge Styles */
+.verificationBadge {
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.verificationBadge.verified {
+    filter: drop-shadow(0 2px 4px rgba(29, 161, 242, 0.3));
+}
+
+.verificationBadge.unverified {
+    filter: drop-shadow(0 2px 4px rgba(239, 68, 68, 0.3));
+}
+
+.verificationBadge:hover {
+    transform: scale(1.1);
+}
+
+.verificationBadge.verified:hover {
+    filter: drop-shadow(0 4px 8px rgba(29, 161, 242, 0.4));
+}
+
+.verificationBadge.unverified:hover {
+    filter: drop-shadow(0 4px 8px rgba(239, 68, 68, 0.4));
+}
+
+.profileDetails ul {
+    width: 100%;
+    padding: 0;
+    display: grid;
+    gap: 2rem;
+    margin: 0;
+}
+
+.profileDetails ul li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.5rem;
+    background: #f8fafc;
+    border-radius: 10px;
+    border: 1px solid #e2e8f0;
+    transition: all 0.2s ease;
+}
+
+.profileDetails ul li:hover {
+    background: #f1f5f9;
+    transform: translateY(-1px);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+.profileDetails ul li p {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+    font-weight: 600;
+    margin: 0;
+    color: #475569;
+    font-size: 1.4rem;
+}
+
+.profileDetails ul li > span {
+    text-align: right;
+    color: #1e293b;
+    font-weight: 500;
+    font-size: 1.4rem;
+}
+
+
+.profileActions {
+    display: flex;
+    flex-direction: column;
+    gap: 1.6rem;
+    width: 100%;
+    align-items: center;
+}
+
+.portfolioButton {
+    padding: 1.4rem 2.8rem;
+    border-radius: 10px;
+    background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+    color: white;
+    border: none;
+    cursor: pointer;
+    font-size: 1.5rem;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    width: 100%;
+    max-width: 280px;
+    text-align: center;
+    box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3);
+}
+
+.portfolioButton:hover:not(:disabled) {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(16, 185, 129, 0.4);
+}
+
+.portfolioButton:disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
+}
+
+.portfolioButton.loading {
+    position: relative;
+    cursor: not-allowed;
+}
+
+.profileDetails ul img {
+    width: 2rem;
+    height: 2rem;
+}
+
+.modalOverlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.cropModal {
+    background: white;
+    padding: 2rem;
+    border-radius: 8px;
+    max-width: 90%;
+    width: 500px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.cropModal h3 {
+    margin-bottom: 1rem;
+    text-align: center;
+}
+
+.modalActions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+.cancelButton,
+.saveButton {
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    border: none;
+    cursor: pointer;
+    font-weight: 500;
+    transition: all 0.2s;
+}
+
+.cancelButton {
+    background-color: #e2e8f0;
+    color: #4a5568;
+}
+
+.cancelButton:hover {
+    background-color: #cbd5e0;
+}
+
+.saveButton {
+    background-color: #4299e1;
+    color: white;
+}
+
+.saveButton:hover {
+    background-color: #3182ce;
+}
+
+
+
+/* Video Section Styles */
+.videoSection {
+    width: 100%;
+    margin-top: 0;
+    padding: 2.4rem;
+    border: 1px solid #e2e8f0;
+    border-radius: 12px;
+    background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+}
+
+.videoHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 2rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid #e2e8f0;
+}
+
+.videoHeader h4 {
+    margin: 0;
+    font-size: 1.8rem;
+    font-weight: 600;
+    color: #1e293b;
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+}
+
+.videoHeader h4::before {
+    content: "🎥";
+    font-size: 2rem;
+}
+
+.uploadVideoButton {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.8rem 1.2rem;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 1.4rem;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 4px rgba(102, 126, 234, 0.2);
+}
+
+.uploadVideoButton:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(102, 126, 234, 0.3);
+}
+
+.videoContainer {
+    position: relative;
+    border-radius: 8px;
+    overflow: hidden;
+    background: #000;
+    width: 100%;
+}
+
+.videoPlayer {
+    width: 100%;
+    max-height: 200px;
+    border-radius: 8px;
+    background-color: #000;
+}
+
+.deleteVideoButton {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    width: 32px;
+    height: 32px;
+    background: rgba(239, 68, 68, 0.9);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s ease;
+    backdrop-filter: blur(4px);
+}
+
+.deleteVideoButton:hover {
+    background: rgba(239, 68, 68, 1);
+    transform: scale(1.1);
+}
+
+.noVideoState {
+    text-align: center;
+    padding: 4rem 2rem;
+    color: #64748b;
+    width: 100%;
+    background: white;
+    border-radius: 10px;
+    border: 2px dashed #cbd5e1;
+}
+
+.noVideoState p {
+    margin: 0 0 0.8rem 0;
+    font-size: 1.6rem;
+    font-weight: 600;
+    color: #475569;
+}
+
+.noVideoState small {
+    font-size: 1.3rem;
+    opacity: 0.8;
+    color: #64748b;
+}
+
+@media screen and (max-width: 1300px) {
+    .profile {
+        grid-template-columns: 1fr;
+        gap: 3rem;
+    }
+
+    .profileDetails {
+        grid-row: 1;
+        max-height: none;
+        position: static;
+        padding: 2.4rem;
+    }
+
+    .profileDetails ul {
+        max-width: 50rem;
+        margin: 0 auto;
+    }
+
+    .avatar {
+        width: 12rem;
+        height: 12rem;
+    }
+
+    .videoSection {
+        margin-top: 0;
+        padding: 2rem;
+    }
+
+    .profile .profileContainer form {
+        padding: 2.4rem;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .profile {
+        gap: 2.4rem;
+    }
+
+    .profileContainer {
+        gap: 2rem;
+    }
+
+    .profileTabs {
+        flex-direction: column;
+        gap: 0.8rem;
+        padding: 1rem;
+    }
+
+    .profileTabs button {
+        padding: 1.2rem 1.8rem;
+        width: 100%;
+        text-align: center;
+        font-size: 1.3rem;
+    }
+
+    .profileDetails {
+        padding: 2rem;
+        gap: 2rem;
+    }
+
+    .profile .profileContainer form {
+        padding: 2rem;
+    }
+
+    .videoSection {
+        margin-top: 0;
+        padding: 2rem;
+    }
+
+    .videoHeader {
+        flex-direction: column;
+        gap: 1.5rem;
+        align-items: stretch;
+        padding-bottom: 1.5rem;
+    }
+
+    .videoHeader h4 {
+        text-align: center;
+        font-size: 1.6rem;
+    }
+
+    .uploadVideoButton {
+        width: 100%;
+        justify-content: center;
+        padding: 1.2rem 2rem;
+    }
+
+    .avatar {
+        width: 11rem;
+        height: 11rem;
+    }
+
+    .profileDetails ul {
+        gap: 1.6rem;
+    }
+
+    .profileDetails ul li {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.8rem;
+        padding: 1.2rem;
+    }
+
+    .profileDetails ul li > span {
+        text-align: left;
+        font-weight: 500;
+        color: #1e293b;
+    }
+
+    .profileDetails h3 {
+        font-size: 2.2rem;
+    }
+
+    .portfolioButton {
+        font-size: 1.4rem;
+        padding: 1.2rem 2.4rem;
+    }
+
+    .paymentDetails {
+        margin-top: 2rem;
+        padding: 1.5rem;
+    }
+
+    .paymentDetails h4 {
+        font-size: 1.4rem;
+    }
+
+    .paymentItem {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1rem;
+        padding: 1rem;
+    }
+
+    .paymentLabel {
+        gap: 0.6rem;
+    }
+
+    .paymentValue {
+        text-align: left;
+        width: 100%;
+    }
+
+    .salaryAmount,
+    .commissionRate {
+        font-size: 1.3rem;
+        padding: 0.3rem 0.6rem;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .profile {
+        gap: 2rem;
+    }
+
+    .videoSection {
+        margin-top: 0;
+        padding: 1.5rem;
+    }
+
+    .profileDetails {
+        padding: 1.5rem;
+        gap: 1.8rem;
+    }
+
+    .profile .profileContainer form {
+        padding: 1.5rem;
+    }
+
+    .profileTabs {
+        padding: 0.8rem;
+    }
+
+    .profileTabs button {
+        padding: 1rem 1.4rem;
+        font-size: 1.2rem;
+    }
+
+    .avatar {
+        width: 9rem;
+        height: 9rem;
+    }
+
+    .uploadButton {
+        width: 2.8rem;
+        height: 2.8rem;
+    }
+
+    .profileDetails h3 {
+        font-size: 2rem;
+    }
+
+    .profileDetails ul li {
+        padding: 1rem;
+    }
+
+    .videoHeader h4 {
+        font-size: 1.5rem;
+    }
+
+    .noVideoState {
+        padding: 3rem 1.5rem;
+    }
+
+    .portfolioButton {
+        font-size: 1.3rem;
+        padding: 1rem 2rem;
+    }
+
+    .paymentDetails {
+        margin-top: 1.5rem;
+        padding: 1rem;
+    }
+
+    .paymentDetails h4 {
+        font-size: 1.3rem;
+        margin-bottom: 1rem;
+    }
+
+    .paymentItem {
+        padding: 0.8rem;
+    }
+
+    .paymentLabel {
+        font-size: 1.3rem;
+    }
+
+    .paymentLabel img {
+        width: 1.6rem;
+        height: 1.6rem;
+    }
+}

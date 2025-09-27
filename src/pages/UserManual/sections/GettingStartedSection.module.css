@@ -1,0 +1,1065 @@
+/* Getting Started Section */
+.gettingStartedSection {
+  padding: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Section Header */
+.sectionHeader {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+  padding: 2rem;
+  background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+  border-radius: 16px;
+  border: 1px solid #e2e8f0;
+}
+
+.headerIcon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 64px;
+  height: 64px;
+  background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+  color: white;
+  border-radius: 16px;
+  flex-shrink: 0;
+}
+
+.headerContent h2 {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #1e293b;
+  margin: 0 0 0.5rem 0;
+}
+
+.headerContent p {
+  color: #64748b;
+  font-size: 1.125rem;
+  margin: 0;
+  line-height: 1.6;
+}
+
+/* Tab Navigation */
+.tabNavigation {
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: 2rem;
+  overflow-x: auto;
+  padding-bottom: 0.5rem;
+}
+
+.tabButton {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.5rem;
+  background: white;
+  border: 2px solid #e2e8f0;
+  border-radius: 8px;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: #64748b;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.tabButton:hover {
+  border-color: #cbd5e1;
+  background: #f8fafc;
+}
+
+.tabButton.active {
+  background: #10b981;
+  border-color: #10b981;
+  color: white;
+}
+
+.tabButton svg {
+  width: 18px;
+  height: 18px;
+}
+
+/* Tab Content */
+.tabContent {
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+}
+
+.tabPanel {
+  padding: 2rem;
+}
+
+/* Overview Tab */
+.overviewTab {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.overviewGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1.5rem;
+}
+
+.overviewCard {
+  background: #f8fafc;
+  padding: 1.5rem;
+  border-radius: 12px;
+  border: 1px solid #e2e8f0;
+  text-align: center;
+  transition: all 0.2s ease;
+}
+
+.overviewCard:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+}
+
+.cardIcon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 64px;
+  height: 64px;
+  background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
+  color: white;
+  border-radius: 16px;
+  margin: 0 auto 1rem auto;
+}
+
+.overviewCard h3 {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #1e293b;
+  margin: 0 0 0.75rem 0;
+}
+
+.overviewCard p {
+  color: #64748b;
+  font-size: 0.875rem;
+  line-height: 1.5;
+  margin: 0 0 1rem 0;
+}
+
+.cardFeatures {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  justify-content: center;
+}
+
+.cardFeatures span {
+  background: #e0f2fe;
+  color: #0369a1;
+  padding: 0.25rem 0.5rem;
+  border-radius: 6px;
+  font-size: 0.75rem;
+  font-weight: 500;
+}
+
+/* Quick Start */
+.quickStart {
+  background: #f0fdf4;
+  padding: 2rem;
+  border-radius: 12px;
+  border: 1px solid #bbf7d0;
+}
+
+.quickStart h3 {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #166534;
+  margin: 0 0 1.5rem 0;
+  text-align: center;
+}
+
+.quickStartSteps {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.quickStep {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+}
+
+.stepNumber {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  background: #10b981;
+  color: white;
+  border-radius: 50%;
+  font-weight: 600;
+  font-size: 0.875rem;
+  flex-shrink: 0;
+}
+
+.stepContent h4 {
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: #166534;
+  margin: 0 0 0.5rem 0;
+}
+
+.stepContent p {
+  color: #374151;
+  font-size: 0.875rem;
+  margin: 0;
+  line-height: 1.5;
+}
+
+/* Setup Tab */
+.setupTab {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.setupGuide h3 {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #1e293b;
+  margin: 0 0 1.5rem 0;
+}
+
+.setupPhase {
+  margin-bottom: 2rem;
+}
+
+.setupPhase h4 {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #374151;
+  margin: 0 0 1rem 0;
+  padding: 0.75rem 1rem;
+  background: #f8fafc;
+  border-radius: 8px;
+  border-left: 4px solid #10b981;
+}
+
+.setupSteps {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  margin-left: 1rem;
+}
+
+.setupStep {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  color: #374151;
+  font-size: 0.875rem;
+}
+
+.setupStep svg {
+  color: #10b981;
+  flex-shrink: 0;
+}
+
+/* Setup Checklist */
+.setupChecklist {
+  background: #f8fafc;
+  padding: 1.5rem;
+  border-radius: 12px;
+  border: 1px solid #e2e8f0;
+}
+
+.setupChecklist h4 {
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: #1e293b;
+  margin: 0 0 1rem 0;
+}
+
+.checklistItems {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.checklistItem {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  cursor: pointer;
+  color: #374151;
+  font-size: 0.875rem;
+}
+
+.checklistItem input[type="checkbox"] {
+  width: 18px;
+  height: 18px;
+  accent-color: #10b981;
+}
+
+/* Navigation Tab */
+.navigationTab {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.navigationOverview {
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+.navigationOverview h3 {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #1e293b;
+  margin: 0 0 0.5rem 0;
+}
+
+.navigationOverview p {
+  color: #64748b;
+  font-size: 1rem;
+  margin: 0;
+}
+
+.navigationGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+  gap: 2rem;
+}
+
+.navSection h4 {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #1e293b;
+  margin: 0 0 1rem 0;
+  padding-bottom: 0.5rem;
+  border-bottom: 2px solid #e2e8f0;
+}
+
+.navItems {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.navItem {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 0.75rem;
+  background: #f8fafc;
+  border-radius: 8px;
+  color: #374151;
+  font-size: 0.875rem;
+}
+
+.navIcon {
+  font-size: 1.25rem;
+  flex-shrink: 0;
+}
+
+/* Navigation Tips */
+.navigationTips {
+  background: #fef3c7;
+  padding: 1.5rem;
+  border-radius: 12px;
+  border: 1px solid #fbbf24;
+}
+
+.navigationTips h4 {
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: #92400e;
+  margin: 0 0 1rem 0;
+}
+
+.tipsList {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.tip {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  color: #92400e;
+  font-size: 0.875rem;
+}
+
+.tip svg {
+  color: #f59e0b;
+  flex-shrink: 0;
+}
+
+/* First Steps Tab */
+.firstStepsTab {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.firstStepsHeader {
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+.firstStepsHeader h3 {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #1e293b;
+  margin: 0 0 0.5rem 0;
+}
+
+.firstStepsHeader p {
+  color: #64748b;
+  font-size: 1rem;
+  margin: 0;
+}
+
+.stepsContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.step {
+  background: #f8fafc;
+  border-radius: 12px;
+  border: 1px solid #e2e8f0;
+  overflow: hidden;
+}
+
+.stepHeader {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1.5rem;
+  background: #e0f2fe;
+  border-bottom: 1px solid #bae6fd;
+}
+
+.stepNumber {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  background: #0369a1;
+  color: white;
+  border-radius: 50%;
+  font-weight: 600;
+  font-size: 1rem;
+}
+
+.stepHeader h4 {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #0369a1;
+  margin: 0;
+}
+
+.stepContent {
+  padding: 1.5rem;
+}
+
+.stepContent p {
+  color: #374151;
+  font-size: 0.875rem;
+  margin: 0 0 1rem 0;
+  line-height: 1.5;
+}
+
+.stepContent ul {
+  margin: 0 0 1rem 0;
+  padding-left: 1.5rem;
+}
+
+.stepContent li {
+  color: #374151;
+  font-size: 0.875rem;
+  margin-bottom: 0.5rem;
+  line-height: 1.5;
+}
+
+.stepTime {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: #64748b;
+  font-size: 0.75rem;
+  font-style: italic;
+}
+
+.stepTime svg {
+  color: #64748b;
+}
+
+/* Completion Reward */
+.completionReward {
+  background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
+  padding: 2rem;
+  border-radius: 12px;
+  border: 1px solid #fbbf24;
+  text-align: center;
+}
+
+.completionReward h4 {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #92400e;
+  margin: 0 0 1rem 0;
+}
+
+.completionReward p {
+  color: #92400e;
+  font-size: 1rem;
+  margin: 0 0 1.5rem 0;
+  line-height: 1.5;
+}
+
+.nextSteps h5 {
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: #92400e;
+  margin: 0 0 0.75rem 0;
+}
+
+.nextSteps ul {
+  margin: 0;
+  padding-left: 1.5rem;
+  text-align: left;
+}
+
+.nextSteps li {
+  color: #92400e;
+  font-size: 0.875rem;
+  margin-bottom: 0.5rem;
+}
+
+/* Quick Tour Tab */
+.quickTourTab {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.tourHeader {
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+.tourHeader h3 {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #1e293b;
+  margin: 0 0 0.5rem 0;
+}
+
+.tourHeader p {
+  color: #64748b;
+  font-size: 1rem;
+  margin: 0;
+}
+
+.tourSections {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.tourSection {
+  background: #f8fafc;
+  padding: 1.5rem;
+  border-radius: 12px;
+  border: 1px solid #e2e8f0;
+}
+
+.tourSection h4 {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #1e293b;
+  margin: 0 0 1rem 0;
+}
+
+.tourContent p {
+  color: #374151;
+  font-size: 0.875rem;
+  margin: 0 0 1rem 0;
+  line-height: 1.5;
+}
+
+.tourContent ul {
+  margin: 0 0 1rem 0;
+  padding-left: 1.5rem;
+}
+
+.tourContent li {
+  color: #374151;
+  font-size: 0.875rem;
+  margin-bottom: 0.5rem;
+  line-height: 1.5;
+}
+
+.tourTip {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: #fef3c7;
+  padding: 0.75rem;
+  border-radius: 8px;
+  border: 1px solid #fbbf24;
+}
+
+.tourTip svg {
+  color: #f59e0b;
+  flex-shrink: 0;
+}
+
+.tourTip span {
+  color: #92400e;
+  font-size: 0.875rem;
+  font-style: italic;
+}
+
+/* Tour Actions */
+.tourActions {
+  text-align: center;
+  background: #f0fdf4;
+  padding: 2rem;
+  border-radius: 12px;
+  border: 1px solid #bbf7d0;
+}
+
+.tourActions h4 {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #166534;
+  margin: 0 0 1.5rem 0;
+}
+
+.tourButtons {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.tourBtn {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.5rem;
+  background: #10b981;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 0.875rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.tourBtn:hover {
+  background: #059669;
+  transform: translateY(-1px);
+}
+
+/* Best Practices Tab */
+.bestPracticesTab {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.practicesHeader {
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+.practicesHeader h3 {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #1e293b;
+  margin: 0 0 0.5rem 0;
+}
+
+.practicesHeader p {
+  color: #64748b;
+  font-size: 1rem;
+  margin: 0;
+}
+
+.practicesGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1.5rem;
+}
+
+.practiceCard {
+  background: #f8fafc;
+  padding: 1.5rem;
+  border-radius: 12px;
+  border: 1px solid #e2e8f0;
+  transition: all 0.2s ease;
+}
+
+.practiceCard:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+}
+
+.practiceIcon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  background: linear-gradient(135deg, #8b5cf6 0%, #7c3aed 100%);
+  color: white;
+  border-radius: 12px;
+  margin-bottom: 1rem;
+}
+
+.practiceCard h4 {
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: #1e293b;
+  margin: 0 0 1rem 0;
+}
+
+.practiceCard ul {
+  margin: 0;
+  padding-left: 1.5rem;
+}
+
+.practiceCard li {
+  color: #374151;
+  font-size: 0.875rem;
+  margin-bottom: 0.5rem;
+  line-height: 1.5;
+}
+
+/* Practice Tips */
+.practiceTips {
+  background: #f0fdf4;
+  padding: 1.5rem;
+  border-radius: 12px;
+  border: 1px solid #bbf7d0;
+}
+
+.practiceTips h4 {
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: #166534;
+  margin: 0 0 1rem 0;
+}
+
+.tipsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1rem;
+}
+
+.tip {
+  background: white;
+  padding: 1rem;
+  border-radius: 8px;
+  border: 1px solid #bbf7d0;
+}
+
+.tip h5 {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #166534;
+  margin: 0 0 0.5rem 0;
+}
+
+.tip p {
+  color: #374151;
+  font-size: 0.875rem;
+  margin: 0;
+  line-height: 1.5;
+}
+
+/* Support Tab */
+.supportTab {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.supportHeader {
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+.supportHeader h3 {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #1e293b;
+  margin: 0 0 0.5rem 0;
+}
+
+.supportHeader p {
+  color: #64748b;
+  font-size: 1rem;
+  margin: 0;
+}
+
+.supportOptions {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1.5rem;
+}
+
+.supportCard {
+  background: #f8fafc;
+  padding: 1.5rem;
+  border-radius: 12px;
+  border: 1px solid #e2e8f0;
+  text-align: center;
+  transition: all 0.2s ease;
+}
+
+.supportCard:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+}
+
+.supportIcon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 64px;
+  height: 64px;
+  background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+  color: white;
+  border-radius: 16px;
+  margin: 0 auto 1rem auto;
+}
+
+.supportCard h4 {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #1e293b;
+  margin: 0 0 0.75rem 0;
+}
+
+.supportCard p {
+  color: #64748b;
+  font-size: 0.875rem;
+  margin: 0 0 1rem 0;
+  line-height: 1.5;
+}
+
+.supportCard ul {
+  margin: 0 0 1.5rem 0;
+  padding-left: 1.5rem;
+  text-align: left;
+}
+
+.supportCard li {
+  color: #374151;
+  font-size: 0.875rem;
+  margin-bottom: 0.5rem;
+  line-height: 1.5;
+}
+
+.supportBtn {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.5rem;
+  background: #f59e0b;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 0.875rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  margin: 0 auto;
+}
+
+.supportBtn:hover {
+  background: #d97706;
+  transform: translateY(-1px);
+}
+
+/* Support Resources */
+.supportResources {
+  background: #f0fdf4;
+  padding: 1.5rem;
+  border-radius: 12px;
+  border: 1px solid #bbf7d0;
+}
+
+.supportResources h4 {
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: #166534;
+  margin: 0 0 1rem 0;
+}
+
+.resourcesGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1rem;
+}
+
+.resource {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  background: white;
+  padding: 1rem;
+  border-radius: 8px;
+  border: 1px solid #bbf7d0;
+  color: #166534;
+  font-size: 0.875rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.resource:hover {
+  background: #f0fdf4;
+  transform: translateY(-1px);
+}
+
+.resource svg {
+  color: #10b981;
+  flex-shrink: 0;
+}
+
+/* Emergency Contact */
+.emergencyContact {
+  background: #fef2f2;
+  padding: 1.5rem;
+  border-radius: 12px;
+  border: 1px solid #fecaca;
+  text-align: center;
+}
+
+.emergencyContact h4 {
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: #dc2626;
+  margin: 0 0 0.75rem 0;
+}
+
+.emergencyContact p {
+  color: #991b1b;
+  font-size: 0.875rem;
+  margin: 0 0 1rem 0;
+}
+
+.emergencyInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.emergencyItem {
+  color: #991b1b;
+  font-size: 0.875rem;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .gettingStartedSection {
+    padding: 1rem;
+  }
+
+  .sectionHeader {
+    flex-direction: column;
+    text-align: center;
+    padding: 1.5rem;
+  }
+
+  .tabNavigation {
+    justify-content: flex-start;
+  }
+
+  .tabPanel {
+    padding: 1.5rem;
+  }
+
+  .overviewGrid,
+  .practicesGrid,
+  .supportOptions {
+    grid-template-columns: 1fr;
+  }
+
+  .navigationGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .tourButtons {
+    flex-direction: column;
+  }
+
+  .tourBtn {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .resourcesGrid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 480px) {
+  .sectionHeader {
+    padding: 1rem;
+  }
+
+  .headerIcon {
+    width: 48px;
+    height: 48px;
+  }
+
+  .headerContent h2 {
+    font-size: 1.5rem;
+  }
+
+  .tabButton {
+    padding: 0.5rem 1rem;
+    font-size: 0.75rem;
+  }
+
+  .tabPanel {
+    padding: 1rem;
+  }
+
+  .overviewCard,
+  .practiceCard,
+  .supportCard {
+    padding: 1rem;
+  }
+
+  .stepHeader,
+  .stepContent {
+    padding: 1rem;
+  }
+
+  .setupPhase h4 {
+    padding: 0.5rem 0.75rem;
+  }
+
+  .setupSteps {
+    margin-left: 0.5rem;
+  }
+}

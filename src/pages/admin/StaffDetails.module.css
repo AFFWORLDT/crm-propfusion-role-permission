@@ -1,0 +1,801 @@
+.staffDetails {
+    padding: 2rem;
+    background-color: hsl(0 0% 100%);
+    min-height: calc(100vh - 200px);
+}
+
+.profileSection {
+    text-align: center;
+    margin-bottom: 3rem;
+    padding: 2rem;
+    background: hsl(0 0% 100%);
+    border-radius: 0.75rem;
+    box-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
+}
+
+.avatar {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 1rem;
+    border: 4px solid hsl(0 0% 100%);
+    box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+}
+
+.role {
+    color: hsl(215.4 16.3% 46.9%);
+    font-size: 1.1rem;
+    margin-top: 0.5rem;
+    font-weight: 500;
+}
+
+.detailsGrid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.detailCard {
+    background: hsl(0 0% 100%);
+    padding: 1.5rem;
+    border-radius: 0.75rem;
+    box-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
+    border: 1px solid hsl(214.3 31.8% 91.4%);
+}
+
+.detailCard h3 {
+    color: hsl(222.2 84% 4.9%);
+    margin-bottom: 1.5rem;
+    font-size: 1.1rem;
+    font-weight: 600;
+    border-bottom: 1px solid hsl(214.3 31.8% 91.4%);
+    padding-bottom: 0.75rem;
+}
+
+.detailCardHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.5rem;
+    border-bottom: 1px solid hsl(214.3 31.8% 91.4%);
+    padding-bottom: 0.75rem;
+}
+
+.detailCardHeader h3 {
+    margin-bottom: 0;
+    border-bottom: none;
+    padding-bottom: 0;
+}
+
+.editButton {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.75rem 1.25rem;
+    background-color: hsl(210 40% 96.1%);
+    border: 1px solid hsl(214.3 31.8% 91.4%);
+    border-radius: 6px;
+    color: hsl(215.4 16.3% 46.9%);
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    font-size: 1rem;
+}
+
+.editButton:hover:not(:disabled) {
+    background-color: hsl(210 40% 90%);
+    transform: translateY(-1px);
+    box-shadow: 0 2px 4px -1px rgb(0 0 0 / 0.1);
+}
+
+.editButton:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    transform: none;
+}
+
+.editActions {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.saveButton {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.75rem 1.25rem;
+    background-color: hsl(142.1 76.2% 36.3%);
+    border: 1px solid hsl(142.1 76.2% 36.3%);
+    border-radius: 6px;
+    color: hsl(0 0% 100%);
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    font-size: 1rem;
+}
+
+.saveButton:hover:not(:disabled) {
+    background-color: hsl(142.1 76.2% 30%);
+    transform: translateY(-1px);
+    box-shadow: 0 2px 4px -1px rgb(0 0 0 / 0.1);
+}
+
+.saveButton:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    transform: none;
+}
+
+.cancelButton {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.75rem 1.25rem;
+    background-color: hsl(0 84.2% 60.2%);
+    border: 1px solid hsl(0 84.2% 60.2%);
+    border-radius: 6px;
+    color: hsl(0 0% 100%);
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    font-size: 1rem;
+}
+
+.cancelButton:hover:not(:disabled) {
+    background-color: hsl(0 84.2% 50%);
+    transform: translateY(-1px);
+    box-shadow: 0 2px 4px -1px rgb(0 0 0 / 0.1);
+}
+
+.cancelButton:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    transform: none;
+}
+
+.editInput {
+    padding: 0.75rem 1rem;
+    border: 1px solid hsl(214.3 31.8% 91.4%);
+    border-radius: 6px;
+    font-size: 1rem;
+    color: hsl(222.2 84% 4.9%);
+    background-color: hsl(0 0% 100%);
+    transition: all 0.2s ease;
+    min-width: 150px;
+}
+
+.editInput:focus {
+    outline: none;
+    border-color: hsl(210 40% 50%);
+    box-shadow: 0 0 0 3px hsl(210 40% 95%);
+}
+
+.editInput:disabled {
+    background-color: hsl(210 40% 96.1%);
+    color: hsl(215.4 16.3% 46.9%);
+    cursor: not-allowed;
+}
+
+.detailCardContent {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.detailRow {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.75rem 0;
+    border-bottom: 1px solid hsl(214.3 31.8% 91.4%);
+}
+
+.detailRow:last-child {
+    border-bottom: none;
+}
+
+.detailLabel {
+    color: hsl(215.4 16.3% 46.9%);
+    font-weight: 500;
+}
+
+.detailValue {
+    color: hsl(222.2 84% 4.9%);
+    font-weight: 500;
+}
+
+.dateValue {
+    color: hsl(222.2 84% 4.9%);
+    font-weight: 500;
+    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+}
+
+.statusIndicator {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0.5rem;
+}
+
+.status {
+    padding: 0.25rem 0.75rem;
+    border-radius: 9999px;
+    font-weight: 500;
+    text-transform: uppercase;
+    font-size: 0.75rem;
+    letter-spacing: 0.025em;
+}
+
+.active {
+    background-color: hsl(142.1 76.2% 36.3%);
+    color: hsl(0 0% 100%);
+}
+
+.inactive {
+    background-color: hsl(0 84.2% 60.2%);
+    color: hsl(0 0% 100%);
+}
+
+.badge {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.25rem 0.75rem;
+    border-radius: 9999px;
+    font-size: 0.75rem;
+    font-weight: 500;
+    background-color: hsl(210 40% 96.1%);
+    color: hsl(215.4 16.3% 46.9%);
+    margin: 0.25rem;
+}
+
+.languageBadge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.25rem 0.75rem;
+    border-radius: 9999px;
+    font-size: 0.75rem;
+    font-weight: 500;
+    background-color: hsl(210 40% 96.1%);
+    color: hsl(215.4 16.3% 46.9%);
+    margin: 0.25rem;
+}
+
+.verificationBadge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.25rem 0.75rem;
+    border-radius: 9999px;
+    font-size: 0.75rem;
+    font-weight: 500;
+    background-color: hsl(142.1 76.2% 36.3%);
+    color: hsl(0 0% 100%);
+}
+
+.notificationToggle {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.25rem 0.75rem;
+    border-radius: 9999px;
+    font-size: 0.75rem;
+    font-weight: 500;
+    background-color: hsl(210 40% 96.1%);
+    color: hsl(215.4 16.3% 46.9%);
+}
+
+.nationalityInfo {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.nationalityFlag {
+    width: 20px;
+    height: 15px;
+    border-radius: 2px;
+    object-fit: cover;
+    border: 1px solid hsl(214.3 31.8% 91.4%);
+}
+
+.emptyState {
+    color: hsl(215.4 16.3% 46.9%);
+    font-style: italic;
+    padding: 1rem;
+    text-align: center;
+    background-color: hsl(210 40% 96.1%);
+    border-radius: 0.5rem;
+    border: 1px dashed hsl(214.3 31.8% 91.4%);
+    font-size: 0.875rem;
+}
+
+.fullWidthCard {
+    grid-column: 1 / -1;
+}
+
+.documentsContainer {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    padding: 0.5rem;
+    width: 100%;
+}
+
+.documentLink {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    text-decoration: none;
+    color: inherit;
+    flex: 1;
+}
+
+.documentItem {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.5rem;
+    border: 1px solid #e2e8f0;
+    border-radius: 0.375rem;
+    margin-bottom: 0.5rem;
+}
+
+.documentItem:hover {
+    background-color: hsl(210 40% 90%);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+}
+
+.documentItem i {
+    color: hsl(215.4 16.3% 46.9%);
+    font-size: 1.2rem;
+}
+
+.documentItem span {
+    font-size: 0.9rem;
+    color: hsl(215.4 16.3% 46.9%);
+    font-weight: 500;
+}
+
+.documentHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.5rem;
+    border-bottom: 1px solid hsl(214.3 31.8% 91.4%);
+    padding-bottom: 0.75rem;
+}
+
+.documentHeader h3 {
+    margin-bottom: 0;
+    border-bottom: none;
+    padding-bottom: 0;
+}
+
+.uploadButton {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem 1rem;
+    background-color: hsl(210 40% 96.1%);
+    border: 1px solid hsl(214.3 31.8% 91.4%);
+    border-radius: 6px;
+    color: hsl(215.4 16.3% 46.9%);
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.uploadButton:hover {
+    background-color: hsl(210 40% 90%);
+    transform: translateY(-1px);
+    box-shadow: 0 2px 4px -1px rgb(0 0 0 / 0.1);
+}
+
+.uploadButton i {
+    font-size: 1rem;
+}
+
+.uploadButton span {
+    font-size: 0.875rem;
+}
+
+.deleteButton {
+    background: none;
+    border: none;
+    padding: 0.5rem;
+    cursor: pointer;
+    color: hsl(0 84.2% 60.2%);
+    border-radius: 0.375rem;
+    transition: all 0.2s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.deleteButton:hover {
+    background-color: hsl(0 84.2% 95%);
+    color: hsl(0 84.2% 50%);
+}
+
+.deleteButton:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.deleteButton i {
+    font-size: 1rem;
+}
+
+.imageContainer {
+    position: relative;
+    width: 150px;
+    height: 150px;
+    border-radius: 8px;
+    overflow: hidden;
+    margin-right: 1rem;
+}
+
+.documentImage {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 8px;
+}
+
+.viewFullButton {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(0, 0, 0, 0.7);
+    color: white;
+    text-align: center;
+    padding: 4px;
+    font-size: 12px;
+    text-decoration: none;
+    transition: background 0.3s;
+}
+
+.viewFullButton:hover {
+    background: rgba(0, 0, 0, 0.9);
+} 
+
+/* VideoPlayer.module.css */
+
+.videoCard {
+  padding: 24px;
+  border-radius: 16px;
+
+}
+
+.videoWrapper {
+  margin-top: 20px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.videoContainer {
+  position: relative;
+  display: block;
+  border: 3px solid transparent;
+  border-radius: 20px;
+  padding: 12px;
+  background: linear-gradient(145deg, #1a1a1a, #2d2d2d);
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  max-width: 800px;
+  width: 100%;
+  overflow: hidden;
+}
+
+.videoContainer::before {
+  content: '';
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  right: -2px;
+  bottom: -2px;
+  background: linear-gradient(45deg, #3b82f6, #8b5cf6, #06b6d4, #10b981);
+  border-radius: 20px;
+  z-index: -1;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+.videoContainer:hover::before {
+  opacity: 1;
+}
+
+.videoContainer:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+}
+
+.videoHolder {
+  position: relative;
+  width: 100%;
+  border-radius: 12px;
+  overflow: hidden;
+  background: #000;
+  aspect-ratio: 16/9;
+}
+
+.videoPlayer {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 12px;
+  display: block;
+  background: #000;
+}
+
+.videoPlayer::-webkit-media-controls-panel {
+  background: linear-gradient(to bottom, transparent, rgba(0, 0, 0, 0.8));
+}
+
+.removeButton {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  background: linear-gradient(135deg, #ef4444, #dc2626);
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  backdrop-filter: blur(8px);
+  z-index: 15;
+  box-shadow: 0 4px 12px rgba(239, 68, 68, 0.4);
+}
+
+.removeButton:hover:not(:disabled) {
+  background: linear-gradient(135deg, #dc2626, #b91c1c);
+  transform: scale(1.1);
+  box-shadow: 0 6px 16px rgba(239, 68, 68, 0.6);
+}
+
+.removeButton:disabled {
+  background: linear-gradient(135deg, #9ca3af, #6b7280);
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: 0 2px 6px rgba(156, 163, 175, 0.3);
+}
+
+.removeButton:active:not(:disabled) {
+  transform: scale(0.95);
+}
+
+/* Loading state */
+.videoContainer.loading {
+  opacity: 0.7;
+  pointer-events: none;
+}
+
+.videoContainer.loading::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 24px;
+  height: 24px;
+  margin: -12px 0 0 -12px;
+  border: 3px solid #f3f4f6;
+  border-top: 3px solid #3b82f6;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  z-index: 20;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .videoCard {
+    padding: 20px;
+  }
+  
+  .videoHolder {
+    aspect-ratio: 4/3;
+  }
+  
+  .removeButton {
+    width: 36px;
+    height: 36px;
+    top: 12px;
+    right: 12px;
+  }
+}
+
+@media (max-width: 480px) {
+  .videoCard {
+    padding: 16px;
+    margin: 8px;
+  }
+  
+  .videoContainer {
+    padding: 8px;
+  }
+  
+  .videoHolder {
+    aspect-ratio: 1/1;
+  }
+  
+  .removeButton {
+    width: 32px;
+    height: 32px;
+    top: 8px;
+    right: 8px;
+  }
+}
+
+/* KYC Toggle Styles */
+.kycToggleContainer {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    padding: 0.25rem 0;
+}
+
+.kycToggle {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.375rem 0.75rem;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    background: rgba(255, 255, 255, 0.8);
+    border: 1px solid transparent;
+    backdrop-filter: blur(8px);
+}
+
+.kycToggle:hover:not(.loading) {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+}
+
+.kycToggle.verified {
+    background: linear-gradient(135deg, #dcfce7, #bbf7d0);
+    border-color: #16a34a;
+}
+
+.kycToggle.unverified {
+    background: linear-gradient(135deg, #fef2f2, #fecaca);
+    border-color: #dc2626;
+}
+
+.kycToggle.loading {
+    opacity: 0.7;
+    cursor: not-allowed;
+    transform: none;
+}
+
+.toggleTrack {
+    position: relative;
+    width: 48px;
+    height: 26px;
+    background-color: #e5e7eb;
+    border-radius: 13px;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.kycToggle.verified .toggleTrack {
+    background: linear-gradient(135deg, #22c55e, #16a34a);
+    box-shadow: 0 0 20px rgba(34, 197, 94, 0.3);
+}
+
+.kycToggle.unverified .toggleTrack {
+    background: linear-gradient(135deg, #ef4444, #dc2626);
+    box-shadow: 0 0 20px rgba(239, 68, 68, 0.3);
+}
+
+.toggleThumb {
+    position: absolute;
+    top: 2px;
+    left: 2px;
+    width: 22px;
+    height: 22px;
+    background: linear-gradient(135deg, #ffffff, #f8fafc);
+    border-radius: 50%;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15), 0 0 0 1px rgba(255, 255, 255, 0.1);
+}
+
+.kycToggle.verified .toggleThumb {
+    transform: translateX(22px);
+    background: linear-gradient(135deg, #ffffff, #f0fdf4);
+}
+
+.kycToggle.unverified .toggleThumb {
+    background: linear-gradient(135deg, #ffffff, #fef2f2);
+}
+
+.loadingSpinner {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 14px;
+    height: 14px;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    border-top: 2px solid #ffffff;
+    border-radius: 50%;
+    animation: spin 0.8s linear infinite;
+}
+
+.toggleStatus {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.toggleLabel {
+    font-size: 0.875rem;
+    font-weight: 600;
+    letter-spacing: 0.025em;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+}
+
+.kycToggle.verified .toggleLabel {
+    color: #16a34a;
+    text-shadow: 0 1px 2px rgba(22, 163, 74, 0.1);
+}
+
+.kycToggle.unverified .toggleLabel {
+    color: #dc2626;
+    text-shadow: 0 1px 2px rgba(220, 38, 38, 0.1);
+}
+
+.kycToggle.loading .toggleLabel {
+    color: #6b7280;
+}
+
+@keyframes spin {
+    0% { transform: translate(-50%, -50%) rotate(0deg); }
+    100% { transform: translate(-50%, -50%) rotate(360deg); }
+}
+
+/* Responsive adjustments for KYC toggle */
+@media (max-width: 768px) {
+    .kycToggleContainer {
+        justify-content: center;
+    }
+    
+    .kycToggle {
+        padding: 0.5rem 1rem;
+        gap: 1rem;
+    }
+    
+    .toggleTrack {
+        width: 44px;
+        height: 24px;
+    }
+    
+    .toggleThumb {
+        width: 20px;
+        height: 20px;
+    }
+    
+    .kycToggle.verified .toggleThumb {
+        transform: translateX(20px);
+    }
+    
+    .toggleLabel {
+        font-size: 0.8125rem;
+    }
+}

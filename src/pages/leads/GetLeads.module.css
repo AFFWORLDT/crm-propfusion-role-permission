@@ -1,0 +1,145 @@
+.sectionDiv {
+  background-color: var(--clr-neutral-50);
+  border-radius: 2rem;
+
+    
+  }
+  
+  .leadLogsTop {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+  }
+  
+  .leadLogsTop h3 {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin: 0;
+    font-size: 1.8rem;
+    color: var(--clr-primary-400);
+  }
+  
+  .leadLogsTop img {
+    width: 24px;
+    height: 24px;
+  }
+  
+  .logsContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    max-height: 50rem;
+    overflow: hidden auto;
+  }
+  
+  .logItem {
+    background: #f8f9fa;
+    border-radius: 8px;
+    padding: 16px;
+    transition: all 0.2s ease;
+  }
+  
+  .logItem:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+  
+  .leadHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 12px;
+  }
+  
+  .userInfo {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  
+  .name {
+    font-weight: 600;
+    color: #2c3e50;
+  }
+  
+  .nationality {
+    color: #666;
+    font-size: 0.9rem;
+  }
+  
+  .date {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    color: #666;
+    font-size: 0.9rem;
+  }
+  
+  .contactInfo {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-bottom: 12px;
+  }
+  
+  .infoItem {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: #555;
+  }
+  
+  .areaInfo {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: #555;
+    margin-bottom: 12px;
+  }
+  
+  .icon {
+    width: 16px;
+    height: 16px;
+    color: #666;
+  }
+  
+  .tags {
+    display: flex;
+    gap: 8px;
+    margin-top: 12px;
+  }
+  
+  .tag {
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-size: 0.8rem;
+    font-weight: 500;
+  }
+  
+  .active {
+    background: #e3f2fd;
+    color: #1976d2;
+  }
+  
+  .inactive {
+    background: #ffebee;
+    color: #d32f2f;
+  }
+  
+  .sell {
+    background: #e8f5e9;
+    color: #2e7d32;
+  }
+  
+  .rent {
+    background: #fff3e0;
+    color: #ef6c00;
+  }
+  
+  .noLogs {
+    text-align: center;
+    color: #777;
+    font-size: 1.8rem;
+  }

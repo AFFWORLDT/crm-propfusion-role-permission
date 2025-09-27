@@ -1,0 +1,95 @@
+/* Toggle Item Style */
+.toggleItem {
+    position: relative; /* Ensure it's relatively positioned for dropdown calculations */
+    padding: 1rem 2rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 1.2rem;
+    user-select: none;
+    transition: background-color 0.3s ease-in-out;
+}
+
+.toggleItem:hover {
+    background-color: var(--clr-primary-400);
+    color: white;
+}
+
+.toggleItem img {
+    /* filter: invert(100%); */
+}
+
+/* Arrow Styling */
+.arrowDown {
+    margin-left: auto;
+    transform: scale(1.25);
+    transition: transform 0.2s ease-in-out;
+}
+
+.arrowDown.arrowActive {
+    transform: rotate(180deg) scale(1.25); /* Rotates the arrow when active */
+}
+
+/* Dropdown Container */
+.dropdown {
+    position: absolute;
+    background-color: white;
+    width: 150px;
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+    padding: 10px;
+    z-index: 1000;
+    transition: opacity 0.2s ease-in-out;
+    opacity: 0; /* Initially hidden */
+    visibility: hidden;
+    border-radius: 20px;
+}
+
+.dropdown.active {
+    opacity: 1; /* Shows the dropdown when active */
+    visibility: visible;
+}
+
+/* Dropdown Items */
+.dropdown a {
+    display: flex;
+    align-items: center;
+    padding: 5px 5px;
+    color: black;
+    text-decoration: none;
+    font-size: 15px;
+    transition: background-color 0.2s ease-in-out;
+}
+
+.dropdown a:hover {
+    background-color: var(--clr-primary-100);
+}
+
+/* Adjust the dot icon */
+.dropdown a img {
+    margin-right: 8px;
+    width: 12px;
+    height: 12px;
+}
+@media only screen and (max-width: 450px) {
+    .dropdown {
+        position: absolute;
+        background-color: white;
+        width: 100px;
+        box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+        padding: 10px;
+        z-index: 1000;
+        transition: opacity 0.2s ease-in-out;
+        opacity: 0; /* Initially hidden */
+        visibility: hidden;
+        border-radius: 8px;
+    }
+    .dropdown a {
+        display: flex;
+        align-items: center;
+        padding: 5px 5px;
+        color: black;
+        text-decoration: none;
+        font-size: 10px;
+        transition: background-color 0.2s ease-in-out;
+    }
+}

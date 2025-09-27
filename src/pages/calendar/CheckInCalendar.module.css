@@ -1,0 +1,1757 @@
+.container {
+  padding: 0px 10px;
+  background-color: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  margin: 0 auto;
+}
+
+.controls {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  margin-top: 80px;
+  padding: 10px 0;
+}
+
+@media (max-width: 768px) {
+  .controls {
+    flex-direction: column;
+    gap: 15px;
+    align-items: flex-start;
+  }
+}
+
+.viewControls {
+  display: flex;
+  gap: 8px;
+  background: #ffffff;
+  padding: 8px;
+  border-radius: 8px;
+  border: 1px solid #e5e7eb;
+}
+
+@media (max-width: 480px) {
+  .viewControls {
+    flex-wrap: wrap;
+    width: 100%;
+  }
+}
+
+.viewButton {
+  padding: 8px 16px;
+  border: 1px solid #e5e7eb;
+  border-radius: 6px;
+  background-color: #ffffff;
+  color: #4b5563;
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.viewButton:hover {
+  background-color: #f9fafb;
+  border-color: #d1d5db;
+}
+
+.activeView {
+  background-color: #f3f4f6;
+  color: #111827;
+  border-color: #d1d5db;
+  font-weight: 600;
+}
+
+.activeView:hover {
+  background-color: #f3f4f6;
+}
+
+.dateControls {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+@media (max-width: 480px) {
+  .dateControls {
+    width: 100%;
+    justify-content: space-between;
+  }
+}
+
+.navButton {
+  background: transparent;
+  border: none;
+  font-size: 1.2em;
+  padding: 8px 16px;
+  cursor: pointer;
+  color: #4985e0;
+  transition: background-color 0.1s ease;
+}
+
+.navButton:hover {
+  background: rgba(73, 133, 224, 0.1);
+  border-radius: 4px;
+}
+
+.currentDate {
+  margin: 0;
+  font-size: 1.2rem;
+  font-weight: 600;
+  min-width: 200px;
+  text-align: center;
+}
+
+@media (max-width: 480px) {
+  .currentDate {
+    min-width: auto;
+    font-size: 1rem;
+  }
+}
+
+.todayButton {
+  padding: 8px 16px;
+  border: 1px solid #e5e7eb;
+  border-radius: 6px;
+  background-color: #ffffff;
+  color: #4b5563;
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.todayButton:hover {
+  background-color: #f9fafb;
+  border-color: #d1d5db;
+}
+
+.actionButtons {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 20px;
+  padding: 12px;
+  background: #ffffff;
+  border-radius: 8px;
+  border: 1px solid #e5e7eb;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+}
+
+@media (max-width: 480px) {
+  .actionButtons {
+    flex-wrap: wrap;
+    width: 100%;
+    padding: 8px;
+  }
+  
+  .actionButtons button {
+    flex: 1;
+    min-width: 120px;
+  }
+}
+
+.actionButton {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 6px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  font-size: 13px;
+  letter-spacing: 0.3px;
+  position: relative;
+  overflow: hidden;
+}
+
+.actionButton:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  transform: none !important;
+}
+
+.actionButton:not(:disabled):hover {
+  transform: translateY(-1px);
+}
+
+.actionButton:not(:disabled):active {
+  transform: translateY(0);
+}
+
+.checkinButton {
+  background: #10b981;
+  color: white;
+}
+
+.checkinButton:not(:disabled):hover {
+  background: #059669;
+}
+
+.checkoutButton {
+  background: #ef4444;
+  color: white;
+}
+
+.checkoutButton:not(:disabled):hover {
+  background: #dc2626;
+}
+
+.calendarGrid {
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 0;
+  border: 1px solid #e0e0e0;
+  border-radius: 4px;
+  background-color: white;
+}
+
+.eventContent {
+  flex: 1;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  cursor: pointer;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 4px;
+  z-index: 10;
+  min-height: 24px;
+}
+
+.leaveTypeContainer {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  z-index: 10;
+} 
+
+@media (max-width: 768px) {
+  .calendarGrid.weekView {
+    grid-template-columns: 1fr;
+  }
+}
+
+.weekView {
+  grid-template-columns: repeat(7, 1fr);
+}
+
+.dayView {
+  grid-template-columns: 1fr;
+}
+
+.dayCell {
+  border-right: 1px solid #e0e0e0;
+  border-bottom: 1px solid #e0e0e0;
+  position: relative;
+  padding: 8px;
+  overflow: visible;
+  aspect-ratio: 1 / 1;
+  min-height: 100px;
+  box-sizing: border-box;
+}
+
+@media (max-width: 768px) {
+  .dayCell {
+    min-height: 80px;
+  }
+}
+
+/* Remove all hover effects that change background color */
+.dayCell:hover {
+  border-color: #e0e0e0;
+}
+
+.today {
+  background-color: #f0f7ff;
+}
+
+/* Fix today and selected combination */
+.today.selected {
+  background-color: rgba(73, 133, 224, 0.15);
+}
+
+.otherMonth {
+  opacity: 0.5;
+}
+
+.dayNumber {
+  font-weight: 600;
+  display: block;
+  margin-bottom: 4px;
+}
+
+.eventContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  position: relative;
+}
+
+.event {
+  position: relative;
+  height: 24px;
+  margin: 1px 0;
+  border-radius: 3px;
+  overflow: visible;
+}
+
+.event:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.eventDeleteBtn {
+  background: transparent;
+  border: none;
+  color: #666;
+  cursor: pointer;
+  padding: 2px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0.7;
+  transition: all 0.2s;
+  margin-left: 4px;
+}
+
+.event:hover .eventDeleteBtn {
+  opacity: 1;
+}
+
+.eventDeleteBtn:hover {
+  background-color: rgba(244, 67, 54, 0.1);
+  color: #f44336;
+}
+
+.checkinEvent {
+  background-color: #e8f5e9;
+  color: #2e7d32;
+}
+
+.checkoutEvent {
+  background-color: #ffebee;
+  color: #c62828;
+}
+
+.summary {
+  margin-top: 20px;
+  padding: 20px;
+  background-color: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  border: 1px solid #edf2f7;
+}
+
+.summaryHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.summaryHeader h3 {
+  margin: 0;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #2d3748;
+}
+
+.summaryStatus {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.activeStatus {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 12px;
+  background-color: #f0fdf4;
+  color: #15803d;
+  border-radius: 6px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  border: 1px solid #86efac;
+}
+
+.inactiveStatus {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 12px;
+  background-color: #fffbeb;
+  color: #d97706;
+  border-radius: 6px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  border: 1px solid #fcd34d;
+}
+
+.summaryContent {
+  background: #f8fafc;
+  border-radius: 8px;
+  padding: 16px;
+  margin-top: 12px;
+}
+
+.checkStatus {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.statusItem {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px;
+  background: #ffffff;
+  border-radius: 8px;
+  border: 1px solid #edf2f7;
+}
+
+.statusLabel {
+  color: #64748b;
+  font-size: 1rem !important;
+  font-weight: 500;
+}
+
+.statusValue {
+  color: #1e293b;
+  font-weight: 600;
+  font-size: 1rem !important;
+}
+
+.noCheckin {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  padding: 24px;
+  text-align: center;
+  background: #ffffff;
+  border-radius: 8px;
+  border: 1px solid #edf2f7;
+}
+
+.noCheckin p {
+  margin: 0;
+  color: #64748b;
+  font-size: 0.95rem;
+}
+
+.noCheckin .checkinButton {
+  padding: 8px 16px;
+  background-color: #4d94ff;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.noCheckin .checkinButton:hover {
+  background-color: #357abd;
+  transform: translateY(-1px);
+}
+
+@media (max-width: 480px) {
+  .summary {
+    padding: 16px;
+  }
+
+  .summaryHeader {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+
+  .statusItem {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+}
+
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.modalContent {
+  background-color: #ffffff;
+  padding: 20px;
+  border-radius: 8px;
+  width: 90%;
+  max-width: 500px;
+  max-height: 90vh;
+  overflow-y: auto;
+}
+
+.modalContent h3 {
+  margin-top: 0;
+  margin-bottom: 20px;
+}
+
+.modalContent form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.formInput {
+  width: 100%;
+  padding: 8px 12px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  margin-bottom: 12px;
+  font-size: 14px;
+}
+
+.dateInputs {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+
+.dateInputs label {
+  display: block;
+  margin-bottom: 4px;
+  font-size: 14px;
+  color: #666;
+}
+
+.formTextarea {
+  min-height: 100px;
+  resize: vertical;
+}
+
+.locationField {
+  display: flex;
+  gap: 10px;
+}
+
+@media (max-width: 480px) {
+  .locationField {
+    flex-direction: column;
+  }
+}
+
+.locationButton {
+  padding: 8px 12px;
+  background-color: #4d94ff;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.modalButtons {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+@media (max-width: 480px) {
+  .modalButtons {
+    flex-direction: column-reverse;
+  }
+  
+  .modalButtons button {
+    width: 100%;
+  }
+}
+
+.submitButton {
+  padding: 8px 16px;
+  background-color: #4d94ff;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.cancelButton {
+  padding: 8px 16px;
+  background-color: #f5f5f5;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.loading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 200px;
+  font-size: 1.2rem;
+  color: #757575;
+}
+
+.leaveEvent {
+  background-color: #fff3e0;
+  color: #e65100;
+  border-left: 4px solid #ff9800 !important;
+}
+
+.requestEvent {
+  background-color: #98fb98;
+  color: #000;
+}
+
+.reportEvent {
+  background-color: #87ceeb;
+  color: #000;
+}
+
+.selected {
+  background-color: rgba(73, 133, 224, 0.1);
+  border: 2px solid #4985e0;
+}
+
+.moreEvents {
+    font-size: 0.8em;
+    color: #666;
+    text-align: center;
+    background: #f0f0f0;
+    border-radius: 4px;
+    padding: 2px;
+    margin-top: 2px;
+}
+
+.leaveEventWrapper {
+    padding: 4px 8px;
+}
+
+.pendingApproval {
+    border-style: dashed;
+    border-width: 1px;
+    border-color: #ff9800;
+}
+
+.leaveTitle {
+    color: white;
+    font-weight: 500;
+    font-size: 0.75rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 100%;
+    display: inline-block;
+    margin: 0;
+    padding: 0 4px;
+    line-height: 24px;
+    text-shadow: 0 0 1px rgba(0, 0, 0, 0.2);
+    background-color: transparent;
+}
+
+.leaveType {
+    font-size: 0.75em;
+    color: #666;
+    text-transform: capitalize;
+    background-color: rgba(255, 152, 0, 0.1);
+    padding: 1px 4px;
+    border-radius: 3px;
+    margin-right: 4px;
+}
+
+.pendingBadge {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background-color: #ff9800;
+    color: white;
+    margin-left: auto;
+}
+
+.approvalButtons {
+  display: flex;
+  margin-left: 5px;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.eventActionBtn {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 3px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s;
+}
+
+.approveBtn {
+  color: #4caf50;
+}
+
+.approveBtn:hover {
+  background-color: rgba(76, 175, 80, 0.1);
+}
+
+.rejectBtn {
+  color: #f44336;
+}
+
+.rejectBtn:hover {
+  background-color: rgba(244, 67, 54, 0.1);
+}
+
+.loadingOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(255, 255, 255, 0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.loadingSpinner {
+  background-color: white;
+  padding: 20px 40px;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.spinnerIcon {
+  animation: spin 1s linear infinite;
+  margin-bottom: 10px;
+  color: #4d94ff;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.calendarLayout {
+    display: grid;
+    grid-template-columns: 1fr 320px;
+    gap: 24px;
+}
+
+.calendarMain {
+    min-width: 0;
+    background: #fff;
+    border-radius: 8px;
+    padding: 20px;
+}
+
+.sidePanel {
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    height: calc(100vh - 180px);
+    position: sticky;
+    top: 100px;
+    display: flex;
+    flex-direction: column;
+    border: 1px solid #edf2f7;
+}
+
+.sidePanelHeader {
+    padding: 20px;
+    border-bottom: 1px solid #edf2f7;
+    background: #fafbfc;
+    border-radius: 12px 12px 0 0;
+}
+
+.sidePanelHeader h3 {
+    margin: 0;
+    color: #2d3748;
+    font-size: 1.1rem;
+    font-weight: 600;
+}
+
+.eventCount {
+    font-size: 0.85rem;
+    color: #718096;
+    margin-top: 4px;
+    display: block;
+}
+
+.sidePanelEvents {
+    padding: 16px;
+    overflow-y: auto;
+    flex-grow: 1;
+}
+
+.sidePanelEvent {
+    padding: 16px;
+    border-radius: 8px;
+    margin-bottom: 16px;
+    background: #ffffff;
+    border: 1px solid #edf2f7;
+    transition: all 0.1s ease;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+
+.sidePanelEvent:hover {
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    transform: translateY(-1px);
+}
+
+.eventTime {
+    font-size: 0.85rem;
+    color: #64748b;
+    font-weight: 500;
+    background: #f8fafc;
+    padding: 2px 8px;
+    border-radius: 4px;
+    white-space: nowrap;
+}
+
+.eventHeader {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.eventTitleRow {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+.eventTitle {
+    font-weight: 600;
+    color: #1a202c;
+    font-size: 0.95rem;
+    line-height: 1.4;
+}
+
+.eventDescription {
+    margin: 8px 0;
+    font-size: 0.9rem;
+    color: #4a5568;
+}
+
+.eventStatus {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 0.8rem;
+    margin-top: 12px;
+}
+
+.eventTypeContainer {
+    display: flex;
+    gap: 8px;
+    margin: 8px 0;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.eventTypeBadge {
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-size: 0.75rem;
+    font-weight: 500;
+    text-transform: capitalize;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.leaveTypeBadge {
+    background-color: #f3f4f6;
+    color: #4b5563;
+    border: 1px solid #d1d5db;
+}
+
+.annualBadge {
+    background-color: #e6fffa;
+    color: #0d9488;
+    border: 1px solid #5eead4;
+}
+
+.sickBadge {
+    background-color: #fef2f2;
+    color: #dc2626;
+    border: 1px solid #fca5a5;
+}
+
+.unpaidBadge {
+    background-color: #f3f4f6;
+    color: #6b7280;
+    border: 1px solid #d1d5db;
+}
+
+.maternityBadge {
+    background-color: #fdf4ff;
+    color: #c026d3;
+    border: 1px solid #f5d0fe;
+}
+
+.paternityBadge {
+    background-color: #f0f9ff;
+    color: #0284c7;
+    border: 1px solid #bae6fd;
+}
+
+.bereavementBadge {
+    background-color: #f4f4f5;
+    color: #52525b;
+    border: 1px solid #d4d4d8;
+}
+
+.otherBadge {
+    background-color: #f8fafc;
+    color: #64748b;
+    border: 1px solid #cbd5e1;
+}
+
+.statusBadge {
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-size: 0.75rem;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.pendingStatus {
+    background-color: #fffbeb;
+    color: #d97706;
+    border: 1px solid #fcd34d;
+}
+
+.approvedStatus {
+    background-color: #f0fdf4;
+    color: #15803d;
+    border: 1px solid #86efac;
+}
+
+.rejectedStatus {
+    background-color: #fef2f2;
+    color: #dc2626;
+    border: 1px solid #fca5a5;
+}
+
+.eventActions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 8px;
+    margin-top: 12px;
+    padding-top: 12px;
+    border-top: 1px solid #edf2f7;
+}
+
+.noEvents {
+    color: #718096;
+    text-align: center;
+    padding: 32px 16px;
+    font-style: italic;
+    background: #f8fafc;
+    border-radius: 8px;
+    margin: 16px;
+    border: 1px dashed #e2e8f0;
+}
+
+.eventActionBtn {
+    padding: 6px;
+    border-radius: 6px;
+    transition: all 0.2s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.approveBtn {
+    color: #48bb78;
+}
+
+.approveBtn:hover {
+    background-color: rgba(72, 187, 120, 0.1);
+}
+
+.rejectBtn {
+    color: #e53e3e;
+}
+
+.rejectBtn:hover {
+    background-color: rgba(229, 62, 62, 0.1);
+}
+
+.eventDeleteBtn {
+    padding: 6px;
+    border-radius: 6px;
+    color: #e53e3e;
+    transition: all 0.2s ease;
+}
+
+.eventDeleteBtn:hover {
+    background-color: rgba(229, 62, 62, 0.1);
+}
+
+@media (max-width: 1280px) {
+    .calendarLayout {
+        grid-template-columns: 1fr 280px;
+    }
+}
+
+@media (max-width: 1024px) {
+    .calendarLayout {
+        grid-template-columns: 1fr;
+    }
+
+    .sidePanel {
+        height: auto;
+        position: static;
+        margin-bottom: 24px;
+        max-height: 500px;
+    }
+}
+
+@media (max-width: 640px) {
+    .sidePanelHeader {
+        padding: 16px;
+    }
+
+    .sidePanelEvent {
+        padding: 12px;
+    }
+
+    .eventActions {
+        flex-wrap: wrap;
+    }
+}
+
+.headerContent {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+.headerButtons {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+}
+
+.resetViewBtn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #f5f5f5;
+    color: #666;
+    border: none;
+    border-radius: 50%;
+    width: 36px;
+    height: 36px;
+    cursor: pointer;
+    transition: background-color 0.1s ease, transform 0.1s ease;
+}
+
+.resetViewBtn:hover {
+    background-color: #e0e0e0;
+    transform: rotate(45deg);
+}
+
+.addEventBtn {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    background-color: #4985e0;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 8px 12px;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.1s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.addEventBtn:hover {
+    background-color: #3b6fc7;
+}
+
+/* Simplify animations to reduce flickering */
+.addEventBtn svg {
+    transition: transform 0.1s ease;
+}
+
+.addEventBtn:hover svg {
+    transform: rotate(90deg);
+}
+
+/* Remove pulsing animation */
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.1);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+/* Remove this animation that might cause flickering */
+.addEventBtn:not(:hover) svg {
+    animation: none;
+}
+
+/* Remove shine effect */
+.addEventBtn::before {
+    display: none;
+}
+
+/* Remove before/after pseudo-elements on multi-day events */
+.firstDayEvent::after, .lastDayEvent::before {
+    display: none;
+}
+
+/* Simplify all transitions */
+.actionButtons button,
+.modalButtons button,
+.eventDeleteBtn,
+.eventActionBtn,
+.approveBtn,
+.rejectBtn {
+    transition: background-color 0.1s ease;
+}
+
+.creatorInfo {
+    margin: 12px 0;
+    padding: 8px;
+    background-color: #f8fafc;
+    border-radius: 6px;
+    border: 1px solid #e2e8f0;
+}
+
+.creatorHeader {
+    font-size: 0.75rem;
+    color: #718096;
+    margin-bottom: 4px;
+}
+
+.creatorDetails {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.creatorAvatar {
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.creatorName {
+    font-size: 0.875rem;
+    color: #2d3748;
+    font-weight: 500;
+}
+
+/* Enhance the multi-day event display to look more like Google Calendar */
+.firstDayEvent {
+  margin-right: -1px !important;
+  border-top-right-radius: 0 !important;
+  border-bottom-right-radius: 0 !important;
+  position: relative;
+  z-index: 5;
+  overflow: visible !important;
+}
+
+.middleDayEvent {
+  margin-left: -1px !important;
+  margin-right: -1px !important;
+  border-radius: 0 !important;
+  border-left: none !important;
+  position: relative;
+  z-index: 4;
+  overflow: visible !important;
+}
+
+.lastDayEvent {
+  margin-left: -1px !important;
+  border-top-left-radius: 0 !important;
+  border-bottom-left-radius: 0 !important;
+  border-left: none !important;
+  position: relative;
+  z-index: 4;
+  overflow: visible !important;
+}
+
+.event.middleDayEvent, 
+.event.lastDayEvent {
+  background-color: transparent !important;
+}
+
+/* Ensure continuation line properly extends beyond cell boundaries */
+.continuationLine {
+  height: 24px !important;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: calc(100% + 2px) !important;
+  left: -1px;
+  right: 0;
+  opacity: 1;
+  z-index: 1;
+  border-radius: 0;
+}
+
+/* Fix the continuation connections with overlapping elements */
+.event.firstDayEvent::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: -2px;
+  width: 2px;
+  background-color: inherit;
+  z-index: 6;
+}
+
+.event.middleDayEvent::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: -2px;
+  width: 2px;
+  background-color: inherit;
+  z-index: 6;
+}
+
+.event.middleDayEvent::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: -2px;
+  width: 2px;
+  background-color: inherit;
+  z-index: 6;
+}
+
+.event.lastDayEvent::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: -2px;
+  width: 2px;
+  background-color: inherit;
+  z-index: 6;
+}
+
+/* Make event cells better aligned */
+.eventContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  position: relative;
+}
+
+/* Ensure events have consistent height */
+.event {
+  position: relative;
+  height: 24px;
+  margin: 1px 0;
+  border-radius: 3px;
+  overflow: visible;
+}
+
+/* Improve event display for middle and last days */
+.middleDayEvent .continuationLine, 
+.lastDayEvent .continuationLine {
+  position: absolute;
+  top: 0;
+  left: -1px;
+  width: calc(100% + 2px) !important;
+  height: 100% !important;
+}
+
+.addEventDayButton {
+  position: absolute;
+  bottom: 5px;
+  right: 5px;
+  width: 22px;
+  height: 22px;
+  background-color: #4d94ff;
+  color: white;
+  border: none;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  opacity: 0;
+  transition: opacity 0.1s ease, transform 0.1s ease;
+  padding: 0;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.dayCell:hover .addEventDayButton {
+  opacity: 0.9;
+}
+
+.addEventDayButton:hover {
+  opacity: 1;
+  transform: scale(1.1);
+}
+
+.continuationLine {
+  width: 100%;
+  height: 8px;
+  border-radius: 2px;
+  position: relative;
+  margin: 4px 0;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+/* Add a small indicator to show continuation */
+.continuationLine::after {
+  content: '⋯'; /* horizontal ellipsis */
+  position: absolute;
+  right: 5px;
+  top: -8px;
+  font-size: 12px;
+  color: inherit;
+  opacity: 0.8;
+}
+
+/* Color-coded event types */
+.leaveEvent[data-leave-type="annual"] {
+    background-color: rgba(13, 148, 136, 0.2); /* teal with transparency */
+    border-left: 3px solid #0d9488;
+}
+
+.leaveEvent[data-leave-type="sick"] {
+    background-color: rgba(220, 38, 38, 0.2); /* red with transparency */
+    border-left: 3px solid #dc2626;
+}
+
+.leaveEvent[data-leave-type="unpaid"] {
+    background-color: rgba(107, 114, 128, 0.2); /* gray with transparency */
+    border-left: 3px solid #6b7280;
+}
+
+.leaveEvent[data-leave-type="maternity"] {
+    background-color: rgba(192, 38, 211, 0.2); /* purple with transparency */
+    border-left: 3px solid #c026d3;
+}
+
+.leaveEvent[data-leave-type="paternity"] {
+    background-color: rgba(2, 132, 199, 0.2); /* blue with transparency */
+    border-left: 3px solid #0284c7;
+}
+
+.leaveEvent[data-leave-type="bereavement"] {
+    background-color: rgba(82, 82, 91, 0.2); /* dark gray with transparency */
+    border-left: 3px solid #52525b;
+}
+
+.leaveEvent[data-leave-type="other"] {
+    background-color: rgba(100, 116, 139, 0.2); /* slate with transparency */
+    border-left: 3px solid #64748b;
+}
+
+/* Additional styling for Google Calendar-like multi-day events */
+/* Further enhance multi-day events to look like Google Calendar */
+.leaveEvent {
+    border-left: 4px solid #ff9800 !important;
+}
+
+/* Color override for different leave types */
+.leaveEvent[data-leave-type="annual"] {
+    border-left-color: #0d9488 !important;
+}
+
+.leaveEvent[data-leave-type="sick"] {
+    border-left-color: #dc2626 !important;
+}
+
+.leaveEvent[data-leave-type="unpaid"] {
+    border-left-color: #6b7280 !important;
+}
+
+.leaveEvent[data-leave-type="maternity"] {
+    border-left-color: #c026d3 !important;
+}
+
+.leaveEvent[data-leave-type="paternity"] {
+    border-left-color: #0284c7 !important;
+}
+
+.leaveEvent[data-leave-type="bereavement"] {
+    border-left-color: #52525b !important;
+}
+
+.leaveEvent[data-leave-type="other"] {
+    border-left-color: #64748b !important;
+}
+
+/* Styling for the continuous event bar - like in the example */
+.continuationLine {
+    background-color: #4d94ff;
+    height: 24px !important;
+    margin: 2px 0;
+    border-radius: 0;
+}
+
+/* Google Calendar styled events */
+.middleDayEvent .continuationLine,
+.lastDayEvent .continuationLine {
+    height: 24px !important;
+}
+
+/* Ensure consistent height of event items */
+.event {
+    min-height: 28px;
+    display: flex;
+    align-items: center;
+}
+
+/* Override the background for multi-day leave events */
+.event.middleDayEvent.leaveEvent,
+.event.lastDayEvent.leaveEvent {
+    background-color: transparent !important;
+}
+
+/* Simpler styling for multi-day events - closer to Google Calendar */
+.middleDayEvent,
+.lastDayEvent {
+    border: none !important;
+    background: none !important;
+    margin: 0 !important;
+}
+
+/* Fixed styles for a true Google Calendar-like experience */
+/* Fixed styles to match the image the user provided */
+.calendarGrid {
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 0;
+  border: 1px solid #e0e0e0;
+  border-radius: 4px;
+  background-color: white;
+}
+
+/* Clean borders for day cells */
+.dayCell {
+  border-right: 1px solid #e0e0e0;
+  border-bottom: 1px solid #e0e0e0;
+  position: relative;
+  padding: 8px;
+  overflow: visible;
+  aspect-ratio: 1 / 1;
+  min-height: 100px;
+  box-sizing: border-box;
+}
+
+@media (max-width: 768px) {
+  .dayCell {
+    min-height: 80px;
+  }
+}
+
+/* Styles for different event types - solid colors like in the image */
+.event {
+  margin: 2px 0;
+  border-radius: 3px;
+  position: relative;
+  min-height: 24px;
+}
+
+/* Blue continuous bar color to match the image */
+.continuationLine {
+  background-color: #1a73e8 !important; /* Google Calendar blue */
+    height: 24px !important;
+    border-radius: 3px;
+    position: absolute;
+  left: -8px; /* Extend beyond cell padding */
+  right: -8px; /* Extend beyond cell padding */
+  width: calc(100% + 16px) !important; /* Full cell width + padding */
+  display: flex;
+  align-items: center;
+  color: white;
+  font-size: 12px;
+  font-weight: 500;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  z-index: 5;
+  padding-left: 8px;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.1);
+}
+
+/* Only show title on first day, hide on continuation days */
+.middleDayEvent .continuationLine, 
+.lastDayEvent .continuationLine {
+  padding-left: 0;
+}
+
+.middleDayEvent .leaveTitle,
+.lastDayEvent .leaveTitle {
+  display: none;
+}
+
+.leaveTitle {
+  color: white;
+  font-weight: 500;
+  font-size: 0.75rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 100%;
+  display: inline-block;
+  margin: 0;
+  padding: 0 4px;
+  line-height: 24px;
+  text-shadow: 0 0 1px rgba(0, 0, 0, 0.2);
+  background-color: transparent;
+}
+
+/* Red event styling to match the image */
+.event.leaveEvent[data-leave-type="sick"] .continuationLine {
+  background-color: #e94235 !important; /* Red for sick leave */
+}
+
+/* Green event styling to match the image */
+.event.leaveEvent[data-leave-type="annual"] .continuationLine {
+  background-color: #34a853 !important; /* Green for annual leave */
+}
+
+/* Perfect event continuity */
+.middleDayEvent.event, 
+.lastDayEvent.event {
+  background: transparent !important;
+  border: none !important;
+  padding: 0 !important;
+}
+
+/* Fix for first day of multi-day events */
+.firstDayEvent {
+  position: relative;
+  border-radius: 3px 0 0 3px !important;
+  z-index: 5;
+}
+
+/* Fix for last day of multi-day events */
+.lastDayEvent {
+  position: relative;
+  border-radius: 0 3px 3px 0 !important;
+  z-index: 4;
+}
+
+/* Fix for middle days of multi-day events */
+.middleDayEvent {
+  position: relative;
+  border-radius: 0 !important;
+  z-index: 4;
+}
+
+/* Style the event wrappers properly */
+.leaveEventWrapper {
+    padding: 4px 8px;
+}
+
+/* Fix for multi-day event wrappers */
+.leaveEventWrapper.middleDayEvent,
+.leaveEventWrapper.lastDayEvent {
+    padding: 0 !important;
+  background: transparent !important;
+    border: none !important;
+}
+
+/* Override colors for different leave types */
+.leaveEvent[data-leave-type="default"] .continuationLine {
+  background-color: #1a73e8 !important; /* Google Calendar blue */
+}
+
+/* Perfect event continuity - fix for event borders between cells */
+.middleDayEvent .continuationLine,
+.lastDayEvent .continuationLine {
+  left: -9px; /* Adjust to cover cell borders */
+  width: calc(100% + 18px) !important; /* Adjust to cover cell borders */
+}
+
+/* Multi-day event styling */
+.firstDayEvent {
+  margin-right: 0 !important;
+  border-top-right-radius: 0 !important;
+  border-bottom-right-radius: 0 !important;
+  position: relative;
+  z-index: 5;
+}
+
+.middleDayEvent {
+  border-radius: 0 !important;
+  margin-left: 0 !important;
+  margin-right: 0 !important;
+  border-left: none !important;
+  position: relative;
+  z-index: 4;
+}
+
+.lastDayEvent {
+  border-top-left-radius: 0 !important;
+  border-bottom-left-radius: 0 !important;
+  margin-left: 0 !important;
+  border-left: none !important;
+  position: relative;
+  z-index: 4;
+}
+
+.continuationLine {
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  opacity: 0.8;
+  z-index: 1;
+}
+
+/* Google Calendar-like styling for multi-day events */
+.event.middleDayEvent::before,
+.event.lastDayEvent::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: -2px; /* Adjust for cell margin */
+  width: 3px;
+  background-color: inherit;
+  z-index: 3;
+}
+
+.event.firstDayEvent::after,
+.event.middleDayEvent::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: -2px; /* Adjust for cell margin */
+  width: 3px;
+  background-color: inherit;
+  z-index: 3;
+}
+
+/* Google Calendar-like styling */
+.leaveEventWrapper {
+  position: relative;
+  height: 24px;
+  overflow: visible;
+  margin: 1px 0;
+}
+
+.eventContent {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  padding: 0 6px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  position: relative;
+  z-index: 2;
+}
+
+/* For leave events styling */
+.leaveTitle {
+  font-size: 11px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  flex: 1;
+}
+
+.leaveTypeContainer {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.leaveType {
+  font-size: 10px;
+  padding: 1px 4px;
+  border-radius: 2px;
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+.pendingBadge {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Ensure event connections look seamless */
+.event {
+  position: relative;
+  margin: 1px 2px;
+  padding: 2px 4px;
+  font-size: 12px;
+  border-radius: 3px;
+  height: 24px;
+  overflow: hidden;
+  background-color: #4285f4;
+  color: white;
+  border-left: 3px solid rgba(0, 0, 0, 0.1);
+}
+
+.leaveEvent {
+  background-color: #4285f4;
+}
+
+/* Color variations for leave types */
+.event[data-leave-type="annual"] {
+  background-color: #0d9488;
+}
+
+.event[data-leave-type="sick"] {
+  background-color: #dc2626;
+}
+
+.event[data-leave-type="unpaid"] {
+  background-color: #6b7280;
+}

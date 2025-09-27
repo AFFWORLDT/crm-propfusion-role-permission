@@ -1,0 +1,195 @@
+.tableContainer {
+    width: 100%;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch; /* For smooth scrolling on iOS */
+    position: relative;
+}
+
+.listingsTable {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    font-size: clamp(0.875rem, 1.5vw, 1.3rem);
+    min-width: 1024px; /* Ensure table doesn't shrink too much */
+    table-layout: fixed; /* For better column width control */
+}
+
+.listingsTable th,
+.listingsTable td {
+    padding: clamp(0.75rem, 1.5vw, 1.25rem) clamp(0.5rem, 1.5vw, 1rem);
+    text-align: left;
+    border-bottom: 1px solid #e5e7eb;
+}
+
+.listingsTable th {
+    font-weight: 600;
+    color: #1f2937;
+    background-color: #f8fafc;
+    position: sticky;
+    top: 0;
+    transition: background-color 0.2s ease;
+    white-space: nowrap;
+    letter-spacing: 0.025em;
+}
+
+.listingsTable td {
+    color: #4b5563;
+    vertical-align: middle;
+    line-height: 1.5;
+}
+
+.listingItem {
+    transition: all 0.2s ease-in-out;
+}
+
+.listingItem:hover {
+    background-color: #f8fafc;
+    transform: translateY(-1px);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.imgContainer {
+    width: clamp(50px, 6vw, 70px);
+    height: clamp(50px, 6vw, 70px);
+    overflow: hidden;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+    border: 2px solid #f1f5f9;
+}
+
+.imgContainer:hover {
+    transform: scale(1.05);
+    border-color: #e2e8f0;
+}
+
+.imgContainer img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.listingItem h3 {
+    font-size: clamp(0.95rem, 1.5vw, 1.05rem);
+    font-weight: 600;
+    color: #111827;
+    cursor: pointer;
+    margin-bottom: 0.25rem;
+    transition: color 0.2s ease;
+}
+
+.listingItem h3:hover {
+    color: #2563eb;
+}
+
+.listingType {
+    font-size: clamp(0.825rem, 1.25vw, 0.9rem);
+    color: #6b7280;
+    background-color: #f3f4f6;
+    padding: 0.25rem 0.75rem;
+    border-radius: 9999px;
+    display: inline-block;
+}
+
+.price {
+    font-size: clamp(0.95rem, 1.5vw, 1.05rem);
+    font-weight: 600;
+    color: #111827;
+    margin: 0;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+}
+
+.price span:last-child {
+    font-size: clamp(0.825rem, 1.25vw, 0.9rem);
+    font-weight: normal;
+    color: #6b7280;
+}
+
+.actionBtn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0.25rem;
+    background-color: #3b82f6;
+    color: white;
+    border: none;
+    padding: clamp(0.4rem, 1.5vw, 0.6rem) clamp(0.8rem, 2vw, 1rem);
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: clamp(0.825rem, 1.25vw, 0.9rem);
+    transition: all 0.2s ease-in-out;
+    position: relative;
+    font-weight: 500;
+    min-width: 80px;
+}
+
+.actionBtn:hover {
+    background-color: #2563eb;
+    transform: translateY(-1px);
+    box-shadow: 0 2px 4px rgba(37, 99, 235, 0.2);
+}
+
+.actionBtn:active {
+    transform: translateY(0);
+}
+
+.actionBtn:disabled {
+    background-color: #e5e7eb;
+    cursor: not-allowed;
+    transform: none;
+    box-shadow: none;
+    color: #9ca3af;
+}
+
+.actionBtn .spinner {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+@media (max-width: 768px) {
+    .listingsTableContainer {
+        margin: 0.75rem -1rem; /* Negative margin to extend to edges */
+        border-radius: 0; /* Remove border radius on mobile */
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+    }
+    
+    .listingsTable {
+        min-width: 1024px; /* Keep minimum width on mobile */
+    }
+
+    .actionBtn {
+        width: 100%;
+        margin: 0.25rem 0;
+        min-width: 60px; /* Smaller minimum width on mobile */
+    }
+
+    /* Optimize column widths for mobile */
+    .listingsTable th,
+    .listingsTable td {
+        padding: 0.75rem 0.5rem;
+        white-space: nowrap; /* Prevent text wrapping */
+    }
+
+    .imgContainer {
+        width: 40px; /* Smaller images on mobile */
+        height: 40px;
+    }
+}
+
+/* Improve scrollbar visibility on mobile */
+@media (hover: none) {
+    .listingsTableContainer::-webkit-scrollbar {
+        height: 4px; /* Thinner scrollbar on touch devices */
+    }
+    
+    .listingsTableContainer::-webkit-scrollbar-thumb {
+        background: #64748b; /* Darker color for better visibility */
+    }
+}

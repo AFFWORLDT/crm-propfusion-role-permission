@@ -1,0 +1,9 @@
+.projectMenus {
+    position: absolute;
+    right: 0;
+    top: -0.5rem;
+}
+
+.projectMenus img {
+    max-width: unset;
+}

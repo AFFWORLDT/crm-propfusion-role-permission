@@ -1,0 +1,177 @@
+/* Main Layout */
+.dashboardForPropertyReportHeader {
+    font-size: 1.875rem;
+    font-weight: 700;
+    color: #1f2937;
+    margin-bottom: 2rem;
+    padding: 0 1.5rem;
+}
+
+.dashboardForPropertyReport {
+    padding: 0 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.dashboardGroup {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+/* Charts Section */
+.chartsSection {
+    padding: 0 1.5rem;
+}
+
+.chartsRow {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.chartCard {
+    background: #ffffff;
+    border: 1px solid #e5e7eb;
+    border-radius: 12px;
+    padding: 1.5rem;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    transition: all 0.2s ease;
+}
+
+.chartCard:hover {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    border-color: #d1d5db;
+}
+
+.chartCard h4 {
+    font-size: 1.125rem;
+    font-weight: 600;
+    color: #374151;
+    margin: 0 0 1rem 0;
+    text-align: center;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid #f3f4f6;
+}
+
+/* Loader */
+.loaderContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 400px;
+    padding: 2rem;
+}
+
+.loader {
+    display: flex;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+}
+
+.circle {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: #3b82f6;
+    animation: bounce 1.4s ease-in-out infinite both;
+}
+
+.circle:nth-child(1) { animation-delay: -0.32s; }
+.circle:nth-child(2) { animation-delay: -0.16s; }
+.circle:nth-child(3) { animation-delay: 0s; }
+.circle:nth-child(4) { animation-delay: 0.16s; }
+
+@keyframes bounce {
+    0%, 80%, 100% {
+        transform: scale(0);
+    }
+    40% {
+        transform: scale(1);
+    }
+}
+
+.loaderText {
+    color: #6b7280;
+    font-size: 0.875rem;
+    font-weight: 500;
+}
+
+/* Error State */
+.errorContainer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 400px;
+    padding: 2rem;
+}
+
+.errorMessage {
+    text-align: center;
+    max-width: 500px;
+}
+
+.errorMessage h3 {
+    color: #dc2626;
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin: 0 0 1rem 0;
+}
+
+.errorMessage p {
+    color: #6b7280;
+    font-size: 0.875rem;
+    margin: 0;
+    line-height: 1.5;
+}
+
+/* Responsive Design */
+@media (max-width: 1200px) {
+    .chartsRow {
+        grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    }
+}
+
+@media (max-width: 768px) {
+    .dashboardForPropertyReportHeader {
+        font-size: 1.5rem;
+        padding: 0 1rem;
+    }
+
+    .dashboardForPropertyReport {
+        padding: 0 1rem;
+    }
+
+    .chartsSection {
+        padding: 0 1rem;
+    }
+
+    .chartsRow {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+
+    .chartCard {
+        padding: 1rem;
+    }
+
+    .chartCard h4 {
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .dashboardGroup {
+        grid-template-columns: 1fr;
+    }
+
+    .chartCard {
+        padding: 0.75rem;
+    }
+
+    .chartCard h4 {
+        font-size: 0.875rem;
+    }
+}

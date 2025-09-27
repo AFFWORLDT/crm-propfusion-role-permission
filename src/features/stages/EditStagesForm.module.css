@@ -1,0 +1,66 @@
+.editTagsForm h3 {
+    margin-bottom: 4rem;
+    font-weight: 600;
+    font-size: 2.4rem;
+}
+
+.editTagsForm form {
+    min-width: 36rem;
+    padding: 0.4rem;
+    max-height: 70svh;
+    overflow-y: auto;
+
+    display: grid;
+    justify-items: center;
+    gap: 1rem;
+}
+
+.tagInputContainer {
+    width: 100%;
+    display: grid;
+    grid-template-columns: auto 1fr 4.8rem;
+    gap: 1rem;
+}
+
+.tagInputContainer input[type="text"] {
+    padding: 1.2rem;
+    width: 100%;
+}
+
+.tagInputContainer img {
+    padding: 1.2rem;
+    height: 100%;
+    width: 100%;
+    border-radius: 0.6rem;
+    background-color: var(--clr-neutral-100);
+}
+
+.editTagsForm .btnAddNewTag {
+    margin: 2rem 0;
+    padding: 0.8rem 1.6rem;
+    border: 1px solid var(--clr-neutral-200);
+    border-radius: 0.6rem;
+
+    display: flex;
+    gap: 0.4rem;
+    align-items: center;
+}
+
+.editTagsForm .btnAddNewTag img {
+    position: relative;
+    top: -1px;
+    height: 2rem;
+    width: 2rem;
+}
+
+.tagInputContainer input[type="color"] {
+    cursor: pointer;
+    height: 100%;
+    padding: 1rem;
+}
+
+@media screen and (max-width: 760px) {
+    .editTagsForm form {
+        min-width: unset;
+    }
+}

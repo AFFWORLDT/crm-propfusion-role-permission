@@ -1,0 +1,456 @@
+@import url("./styles/customReactDatepicker.css");
+* {
+    scroll-behavior: smooth;
+}
+
+:root {
+    --ff-primary: "Inter", sans-serif;
+
+    --clr-primary-100: hsl(212, 93%, 95%);
+    --clr-primary-200: #0080ff;
+    --clr-primary-300: #020079;
+    --clr-primary-400: #010051;
+
+    --clr-neutral-50: #fff;
+    --clr-neutral-100: #f3f4f6;
+    --clr-neutral-150: #dbdbdb;
+    --clr-neutral-200: #cbcbcb;
+    --clr-neutral-300: #606266;
+    --clr-neutral-400: rgba(0, 0, 0, 0.85);
+
+    --timing-function: cubic-bezier(0.46, 0.03, 0.52, 0.96);
+
+    --shadow: rgba(100, 100, 111, 0.15) 0px 7px 29px 0px;
+
+    --side-nav-width: 10rem;
+}
+
+/*****************/
+/* Reset default */
+/*****************/
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+    font-size: 62.5%;
+}
+
+body {
+    font-family: var(--ff-primary);
+    font-size: 1.6rem;
+    overflow-x: hidden;
+    background-color: var(--clr-neutral-100);
+    color: var(--clr-neutral-400);
+}
+
+h1,
+h2,
+h3 {
+    font-weight: normal;
+    line-height: 1.4;
+}
+
+p {
+    line-height: 1.6;
+}
+
+input,
+select,
+textarea {
+    outline: transparent;
+    border: none;
+    font: inherit;
+    background-color: var(--clr-neutral-1z00);
+    border-radius: 0.8rem;
+    padding: 1.2rem 1rem;
+    border: 1px solid #e0e3e2;
+}
+
+input[type="range"] {
+    padding: unset;
+    cursor: grab;
+}
+
+input[type="radio"] {
+    cursor: pointer;
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+    outline: 1px solid var(--clr-neutral-300);
+}
+
+input[type="range"]:focus,
+input[type="radio"]:focus {
+    outline: auto;
+}
+
+input::file-selector-button {
+    font: inherit;
+    padding: 0.8rem 1.2rem;
+    margin-right: 1.2rem;
+    border-radius: 0.8rem;
+    border: none;
+    color: var(--clr-neutral-50);
+    background-color: var(--clr-primary-300);
+    cursor: pointer;
+    transition:
+        color 0.2s,
+        background-color 0.2s;
+}
+
+input::file-selector-button:hover {
+    background-color: var(--clr-primary-400);
+}
+
+label {
+    color: var(--clr-neutral-300);
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.menu-hamburger,
+ul,
+button {
+    -webkit-tap-highlight-color: transparent;
+}
+
+ul {
+    list-style: none;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+    cursor: pointer;
+    height: fit-content;
+}
+
+button {
+    background-color: transparent;
+    outline: transparent;
+    border: none;
+    font: inherit;
+    color: inherit;
+    cursor: pointer;
+}
+
+button:disabled {
+    cursor: not-allowed;
+}
+/* Modern Minimal Scrollbar Style */
+
+::-webkit-scrollbar {
+    width: 2px !important; /* Thinner scrollbar */
+    height: 2px !important;
+}
+
+::-webkit-scrollbar-track {
+    background: transparent; /* Clean look with transparent track */
+    border-radius: 8px;
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: rgba(0, 0, 0, 0.2); /* Subtle semi-transparent thumb */
+    border-radius: 8px;
+    transition: background-color 0.2s ease;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background-color: rgba(0, 0, 0, 0.3); /* Slightly darker on hover */
+}
+
+/* Firefox Scrollbar */
+* {
+    scrollbar-width: thin !important;
+    scrollbar-color: rgba(0, 0, 0, 0.2) transparent !important;
+}
+
+/* Hide scrollbar class */
+.hide-scrollbar {
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+}
+
+.hide-scrollbar::-webkit-scrollbar {
+    display: none;  /* Chrome, Safari and Opera */
+}
+
+/*****************/
+/* Global Styles */
+/*****************/
+
+.flex-between-wrap {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+}
+.image-adjuster {
+   border: 0.6rem solid #ffde0a;
+}
+.image-adjuster-2 {
+    border: 0.3rem solid #ffde0a !important;
+ }
+
+.imgContainer {
+    overflow: hidden;
+}
+
+.imgContainer img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.sectionContainer {
+    overflow: auto;
+}
+
+.sectionStyles {
+    padding: 7.4rem 2rem 2.4rem;
+    /* overflow: hidden; */
+}
+
+.sectionDiv {
+    background-color: var(--clr-neutral-50);
+    padding: 3.2rem;
+    border-radius: 2rem;
+    box-shadow: var(--shadow);
+
+    display: grid;
+    gap: 2.4rem;
+}
+
+.sectionDiv2 {
+    /* background-color: var(--clr-neutral-50); */
+    padding: 3.2rem;
+    border-radius: 2rem;
+    box-shadow: var(--shadow);
+
+    display: grid;
+    gap: 2.4rem;
+}
+
+/* For filter form */
+.filterForm {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+}
+
+.filterForm .btnReset {
+    background-color: var(--clr-neutral-100);
+    border-radius: 0.8rem;
+    padding: 1rem 2rem;
+    color: var(--clr-neutral-400);
+}
+
+.filterForm .btnReset {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    border: 1px solid var(--clr-neutral-200);
+}
+
+div:has(> .filterModalContainer) {
+    overflow-y: visible;
+}
+
+.filterModalContainer {
+    padding: 4.8rem 1.6rem 2.4rem;
+    display: grid;
+    gap: 2rem;
+}
+
+.btnExtraFilters {
+    flex-shrink: 0;
+    display: grid;
+    place-items: center;
+    width: 4.8rem;
+    padding: 1.2rem;
+    background-color: var(--clr-neutral-50);
+    border-radius: 0.8rem;
+    border: 1px solid var(--clr-neutral-200);
+}
+
+/* For buttons */
+
+.btnNormalSmall,
+.btnNormalLarge {
+    border-radius: 0.8rem;
+    border: 1.5px solid var(--clr-neutral-400);
+    font-weight: 500;
+}
+
+.btnNormalSmall {
+    padding: 0.6rem 1.6rem;
+    font-size: 1.6rem;
+}
+
+.btnNormalLarge {
+    padding: 1.2rem 2.4rem;
+    font-size: 1.8rem;
+}
+
+.btnNormalSmall:disabled,
+.btnNormalLarge:disabled {
+    background-color: unset;
+}
+
+.btnsContainer {
+    grid-column: 1/-1;
+    justify-self: end;
+
+    margin-top: 2rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.6rem !important;
+}
+
+.btnFormNormal,
+.btnSubmit,
+.btnDelete {
+    padding: 0.8rem 1.6rem;
+    border-radius: 0.6rem;
+}
+
+.btnFormNormal {
+    border: 1px solid var(--clr-neutral-200);
+}
+
+.btnFormNormal:disabled {
+    background-color: unset;
+}
+
+.btnSubmit {
+    border: 1px solid var(--clr-primary-300);
+    background-color: var(--clr-primary-300);
+    color: var(--clr-neutral-50);
+}
+
+.btnSubmit:hover,
+.btnSubmit:disabled {
+    background-color: var(--clr-primary-400);
+}
+
+.btnDelete {
+    border: 1px solid #cb1919;
+    background-color: #cb1919;
+    color: var(--clr-neutral-50);
+}
+
+.btnDelete:hover,
+.btnDelete:disabled {
+    background-color: #a81616 !important;
+}
+
+.btnsTableRow {
+    display: flex;
+    gap: 1.6rem;
+}
+
+.btnsTableRow button {
+    padding: 0.6rem 1.2rem;
+    border-radius: 0.8rem;
+    border: 1px solid var(--clr-neutral-400);
+
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+}
+
+.btnsTableRow button:disabled {
+    background-color: unset;
+}
+
+.btnsTableRow img {
+    height: 2.4rem;
+    position: relative;
+    top: -2px;
+}
+
+.btnsTableRow .btnDeleteRow {
+    border-color: #cb1919;
+    color: #cb1919;
+}
+
+.btnsTableRow .btnDeleteRow img {
+    top: -1px;
+}
+
+/* For react-image-gallery */
+
+.propertyImageGallery div {
+    height: 100%;
+    border-radius: 1.2rem;
+}
+.image-gallery-slide .image-gallery-image {
+    height: 100%;
+    object-fit: cover;
+}
+
+/**************/
+/* Responsive */
+/**************/
+
+@media screen and (max-width: 1000px) {
+    html {
+        font-size: 55%;
+    }
+
+    .sectionStyles {
+        padding: 9rem 2rem 2rem;
+    }
+
+    .filterForm {
+        gap: 1rem;
+    }
+}
+
+@media screen and (max-width: 760px) {
+    .sectionDiv {
+        padding: 2rem;
+    }
+
+    .filterForm input,
+    .filterForm select {
+        flex-grow: 1;
+        
+    }
+
+    .filterModalContainer {
+        padding: 0rem 0rem ;
+        display: grid;
+        gap: 1rem;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .btnSubmit:hover,
+    .btnDelete:hover {
+        background-color: var(--clr-primary-300);
+    }
+
+    input,
+    select,
+    textarea {
+        outline: transparent;
+        border: none;
+        font: inherit;
+        background-color: var(--clr-neutral-1z00);
+        border-radius: 0.8rem;
+        padding: 1.2rem 1rem;
+        border: 1px solid #e0e3e2;
+    }
+}

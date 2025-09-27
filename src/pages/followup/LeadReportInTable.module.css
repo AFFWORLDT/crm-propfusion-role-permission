@@ -1,0 +1,435 @@
+.container {
+    padding: 2rem;
+    background-color: #f8f9fa;
+    min-height: 100vh;
+}
+
+.header {
+    margin-bottom: 2rem;
+}
+
+.header h2 {
+    font-size: 2.4rem;
+    font-weight: 600;
+    color: #1a1a1a;
+    margin-bottom: 0.5rem;
+}
+
+.header p {
+    color: #6b7280;
+    font-size: 1.4rem;
+    margin: 0;
+}
+
+.loading {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 20rem;
+    font-size: 1.6rem;
+    color: #6b7280;
+}
+
+/* Client Info Column */
+.clientInfo {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+}
+
+.clientName {
+    font-weight: 600;
+    color: #1a1a1a;
+    font-size: 1.4rem;
+    line-height: 1.4;
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+}
+
+.clientPhone {
+    color: #6b7280;
+    font-size: 1.3rem;
+    line-height: 1.4;
+}
+
+.clientEmail {
+    color: #9ca3af;
+    font-size: 1.2rem;
+}
+
+.emailIcon {
+    width: 16px;
+    height: 16px;
+    opacity: 0.8;
+}
+
+/* Agent Column */
+.agent {
+    padding: 8px;
+}
+
+.agentInfo {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 12px;
+}
+
+.agentAvatar {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    object-fit: cover;
+    flex-shrink: 0;
+}
+
+.agentName {
+    font-size: 14px;
+    color: #374151;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.agentEmail {
+    font-size: 1.2rem;
+    color: #6b7280;
+}
+
+/* Created Column */
+.created {
+    font-size: 1.3rem;
+    color: #374151;
+    font-weight: 500;
+}
+
+/* Location Column */
+.location {
+    font-size: 1.3rem;
+    color: #374151;
+    font-weight: 500;
+}
+
+/* Property Type Column */
+.propertyType {
+    font-size: 1.3rem;
+    color: #374151;
+    font-weight: 500;
+}
+
+/* Next Follow-up Column */
+.nextFollowup {
+    padding: 0.875rem;
+    border-radius: 0.899rem;
+    background-color: #e3fdf0;
+    border: 1px solid #025e0a;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+    transition: all 0.2s ease;
+}
+
+.nextFollowup:hover {
+    border-color: #d1d5db;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+
+.nextFollowupContent {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.followupDate {
+    font-weight: 600;
+    color: #111827;
+    font-size: 1.4rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    letter-spacing: -0.01em;
+}
+
+.followupDate::before {
+    content: '';
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    background-color: #10B981;
+    border-radius: 50%;
+}
+
+.followupTime {
+    color: #4B5563;
+    font-size: 1.4rem;
+    margin-left: 1.25rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.followupTime svg {
+    width: 16px;
+    height: 16px;
+}
+
+.notSet {
+    color: #DC2626;
+    font-weight: 500;
+    padding: 0.625rem 0.875rem;
+    background-color: #FEF2F2;
+    border: 1px solid #ffa6a6;
+    border-radius: 0.899rem;
+    display: inline-flex;
+    align-items: center;
+    font-size: 1.2rem;
+    gap: 0.5rem;
+    width: 100%;
+}
+
+.notSet svg {
+    width: 16px;
+    height: 16px;
+}
+
+/* Priority Badges */
+.priority {
+    display: flex;
+    justify-content: flex-start;
+}
+
+.priorityBadge {
+    padding: 0.4rem 0.8rem;
+    border-radius: 1.2rem;
+    font-size: 1.2rem;
+    font-weight: 600;
+    text-align: center;
+    min-width: 6rem;
+    display: inline-block;
+}
+
+.priorityHigh {
+    background-color: #fee2e2;
+    color: #dc2626;
+}
+
+.priorityMedium {
+    background-color: #fef3c7;
+    color: #d97706;
+}
+
+.priorityLow {
+    background-color: #dcfce7;
+    color: #16a34a;
+}
+
+/* Stage Badges */
+.stage {
+    display: flex;
+    justify-content: flex-start;
+}
+
+.stageBadge {
+    padding: 0.4rem 0.8rem;
+    border-radius: 1.2rem;
+    font-size: 1.2rem;
+    font-weight: 600;
+    text-align: center;
+    min-width: 7rem;
+    display: inline-block;
+}
+
+.stageNew {
+    background-color: #e0e7ff;
+    color: #3730a3;
+}
+
+.stageInterested {
+    background-color: #fef3c7;
+    color: #d97706;
+}
+
+.stageContacted {
+    background-color: #fecaca;
+    color: #dc2626;
+}
+
+.stageProposal {
+    background-color: #dbeafe;
+    color: #1d4ed8;
+}
+
+.stageNegotiation {
+    background-color: #dcfce7;
+    color: #16a34a;
+}
+
+/* Status Badges */
+.status {
+    display: flex;
+    justify-content: flex-start;
+}
+
+.statusBadge {
+    padding: 0.4rem 0.8rem;
+    border-radius: 1.2rem;
+    font-size: 1.2rem;
+    font-weight: 600;
+    text-align: center;
+    min-width: 6rem;
+    display: inline-block;
+    white-space: nowrap;
+}
+
+/* Actions Column */
+.actions {
+    display: flex;
+    gap: 0.8rem;
+    justify-content: flex-start;
+}
+
+.actionButton {
+    background: none;
+    border: 1px solid #d1d5db;
+    border-radius: 0.6rem;
+    padding: 0.6rem;
+    cursor: pointer;
+    font-size: 1.4rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 3.2rem;
+    height: 3.2rem;
+    transition: all 0.2s ease;
+}
+
+.actionButton:hover {
+    background-color: #f3f4f6;
+    border-color: #9ca3af;
+    transform: translateY(-1px);
+}
+
+.actionButton:active {
+    transform: translateY(0);
+}
+
+.action {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.viewButton {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0.5rem;
+    border-radius: 0.375rem;
+    color: #4b5563;
+    transition: all 0.2s ease;
+}
+
+.viewButton:hover {
+    background-color: #f3f4f6;
+    color: #1f2937;
+}
+
+/* Footer */
+.footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 2rem;
+    padding: 1.5rem 0;
+    border-top: 1px solid #e5e7eb;
+}
+
+.footer p {
+    color: #6b7280;
+    font-size: 1.4rem;
+    margin: 0;
+}
+
+.loadMoreButton {
+    background-color: #4f46e5;
+    color: white;
+    border: none;
+    padding: 1rem 2rem;
+    border-radius: 0.8rem;
+    font-size: 1.4rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.loadMoreButton:hover {
+    background-color: #4338ca;
+}
+
+.loadMoreButton:disabled {
+    background-color: #9ca3af;
+    cursor: not-allowed;
+}
+
+/* Responsive Design */
+@media (max-width: 1200px) {
+    .container {
+        padding: 1.5rem;
+    }
+    
+    .clientName {
+        font-size: 1.3rem;
+    }
+    
+    .clientPhone {
+        font-size: 1.2rem;
+    }
+    
+    .location, .propertyType, .created {
+        font-size: 1.2rem;
+    }
+    
+    .actions {
+        flex-direction: column;
+        gap: 0.4rem;
+    }
+    
+    .actionButton {
+        width: 2.8rem;
+        height: 2.8rem;
+        font-size: 1.2rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .container {
+        padding: 1rem;
+    }
+    
+    .header h2 {
+        font-size: 2rem;
+    }
+    
+    .header p {
+        font-size: 1.3rem;
+    }
+    
+    .priorityBadge,
+    .stageBadge,
+    .statusBadge {
+        font-size: 1.1rem;
+        padding: 0.3rem 0.6rem;
+        min-width: 5rem;
+    }
+    
+    .nextFollowup {
+        font-size: 1.2rem;
+    }
+    
+    .clientName {
+        font-size: 1.2rem;
+    }
+    
+    .clientPhone, .clientEmail {
+        font-size: 1.1rem;
+    }
+} 

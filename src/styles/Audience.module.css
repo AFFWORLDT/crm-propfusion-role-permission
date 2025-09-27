@@ -1,0 +1,1010 @@
+.container {
+  background-color: white;
+  border-radius: 16px;
+  padding: 32px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 32px;
+  padding-bottom: 24px;
+  border-bottom: 2px solid #f0f0f0;
+}
+
+.header h1 {
+  font-size: 28px;
+  font-weight: 700;
+  background: linear-gradient(45deg, #020079, #0066ff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+} 
+.buttonGroup {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.createButton {
+  display: flex;
+  align-items: center;
+  padding: 12px 24px;
+  border-radius: 12px;
+  font-weight: 600;
+  font-size: 15px;
+  transition: all 0.3s ease;
+  background: linear-gradient(45deg, #020079, #0066ff);
+  color: white;
+  box-shadow: 0 4px 15px rgba(2, 0, 121, 0.2);
+}
+
+.createButton:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(2, 0, 121, 0.3);
+}
+
+.createSimpleButton {
+  background: linear-gradient(45deg, #00875A, #00C853);
+  box-shadow: 0 4px 15px rgba(0, 200, 83, 0.2);
+}
+
+.createSimpleButton:hover {
+  box-shadow: 0 6px 20px rgba(0, 200, 83, 0.3);
+}
+
+.tableContainer {
+  background: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.04);
+  overflow: auto;
+  margin: 24px 0;
+}
+
+.table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+}
+
+.table th {
+  background: #f8f9ff;
+  padding: 16px 24px;
+  font-weight: 600;
+  color: #1a1a1a;
+  font-size: 15px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.table td {
+  padding: 16px 24px;
+  border-bottom: 1px solid #f0f0f0;
+  color: #4a4a4a;
+  font-size: 15px;
+  vertical-align: middle;
+}
+
+.table tr:last-child td {
+  border-bottom: none;
+}
+
+.table tr:hover {
+  background-color: #f8f9ff;
+  transition: background-color 0.2s ease;
+}
+
+.actionCell {
+  white-space: nowrap;
+  width: 1%;
+  text-align: right;
+  
+}
+
+.editButton,
+.deleteButton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px 16px;
+  border-radius: 8px;
+  margin: 0 2px;
+  font-size: 14px;
+  font-weight: 600;
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  min-width: 100px;
+}
+
+.editButton {
+  background: linear-gradient(45deg, #2196F3, #1976D2);
+  color: white;
+  box-shadow: 0 4px 15px rgba(33, 150, 243, 0.2);
+}
+
+.editButton:hover {
+  background: linear-gradient(45deg, #1976D2, #1565C0);
+  box-shadow: 0 6px 20px rgba(33, 150, 243, 0.3);
+  transform: translateY(-1px);
+}
+
+.deleteButton {
+  background: linear-gradient(45deg, #FF5252, #f44336);
+  color: white;
+  box-shadow: 0 4px 15px rgba(244, 67, 54, 0.2);
+}
+
+.deleteButton:hover {
+  background: linear-gradient(45deg, #f44336, #d32f2f);
+  box-shadow: 0 6px 20px rgba(244, 67, 54, 0.3);
+  transform: translateY(-1px);
+}
+
+
+
+.modalOverlay {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(4px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  padding: 1rem;
+  animation: overlayShow 150ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.modal {
+  background: white;
+  border-radius: 24px;
+  box-shadow: 
+      0 10px 25px -5px rgba(0, 0, 0, 0.1),
+      0 8px 10px -6px rgba(0, 0, 0, 0.1);
+  padding: 2rem;
+  position: relative;
+  animation: contentShow 150ms cubic-bezier(0.16, 1, 0.3, 1);
+
+}
+
+.formGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.formGroup label {
+  font-size: 14px;
+  font-weight: 500;
+  color: #64748b;
+  margin-left: 4px;
+}
+
+.formGroup input {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  padding: 10px 14px;
+  transition: all 0.2s ease;
+  background: white;
+}
+
+.formGroup input:focus {
+  border-color: #020079;
+  box-shadow: 0 0 0 4px rgba(2, 0, 121, 0.1);
+}
+
+/* Add these styles to your existing Audience.module.css file */
+
+.labelWithIcon {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-weight: 500;
+  color: #374151;
+}
+
+
+.helperText {
+  font-size: 0.875rem;
+  color: #6b7280;
+  margin-top: 0.25rem;
+  margin-bottom: 0.5rem;
+}
+
+.emailInputWrapper {
+  position: relative;
+  margin-bottom: 1rem;
+}
+
+.emailTextarea {
+  width: 500px;
+  min-height: 100px;
+  padding: 0.75rem;
+  color: #1f2937;
+  background-color: white;
+  border: 1px solid #e5e7eb;
+  border-radius: 0.375rem;
+  resize: vertical;
+  transition: all 0.2s ease;
+}
+
+.emailTextarea:focus {
+  outline: none;
+  border-color: #3b82f6;
+  box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.1);
+}
+
+.emailTextarea:disabled {
+  background-color: #f3f4f6;
+  cursor: not-allowed;
+}
+
+.emailContainer {
+ height: 20vh;
+ overflow: scroll;
+  padding: 0.75rem;
+  background-color: #f9fafb;
+  border: 1px dashed #e5e7eb;
+  border-radius: 0.375rem;
+  margin-bottom: 0.5rem;
+  width: 500px;
+}
+
+.emailTags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.emptyMessage {
+  width: 100%;
+  text-align: center;
+  color: #9ca3af;
+  font-size: 0.875rem;
+  padding: 0.5rem;
+}
+
+.emailTag {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.375rem 0.75rem;
+  background-color: #eff6ff;
+  border: 1px solid #dbeafe;
+  border-radius: 9999px;
+  transition: all 0.2s ease;
+}
+
+.emailTag:hover {
+  background-color: #dbeafe;
+}
+
+.emailText {
+  font-size: 0.875rem;
+  color: #1d4ed8;
+}
+
+.removeButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.25rem;
+  border-radius: 9999px;
+  opacity: 0;
+  transition: all 0.2s ease;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.removeButton:disabled {
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+
+.emailTag:hover .removeButton {
+  opacity: 1;
+}
+
+.removeButton:hover:not(:disabled) {
+  background-color: #bfdbfe;
+}
+
+.removeIcon {
+  width: 0.75rem;
+  height: 0.75rem;
+  color: #1d4ed8;
+}
+
+.emailFooter {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 0.5rem;
+  padding: 0 0.25rem;
+}
+
+.emailCount {
+  font-size: 0.875rem;
+  color: #6b7280;
+}
+
+.clearButton {
+  font-size: 0.875rem;
+  color: #ef4444;
+  background: none;
+  border: none;
+  padding: 0.25rem 0.5rem;
+  cursor: pointer;
+  transition: color 0.2s ease;
+}
+
+.clearButton:hover:not(:disabled) {
+  color: #dc2626;
+}
+
+.clearButton:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.modalButtons {
+  display: flex;
+  justify-content: flex-end;
+  gap: 16px;
+  margin-top: 32px;
+}
+
+.submitButton {
+  padding: 12px 24px;
+  border-radius: 10px;
+  font-weight: 600;
+  font-size: 15px;
+  transition: all 0.3s ease;
+  background: linear-gradient(45deg, #00875A, #00C853);
+  color: white;
+  box-shadow: 0 4px 15px rgba(0, 200, 83, 0.2);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.submitButton:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+.cancelButton {
+  padding: 12px 24px;
+  border-radius: 10px;
+  font-weight: 600;
+  font-size: 15px;
+  transition: all 0.3s ease;
+  background: white;
+  color: #64748b;
+  border: 1px solid #e2e8f0;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.cancelButton:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+.spinner {
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  from {
+      transform: rotate(0deg);
+  }
+  to {
+      transform: rotate(360deg);
+  }
+}
+
+@keyframes overlayShow {
+  from {
+      opacity: 0;
+  }
+  to {
+      opacity: 1;
+  }
+}
+
+@keyframes contentShow {
+  from {
+      opacity: 0;
+      transform: translateY(20px);
+  }
+  to {
+      opacity: 1;
+      transform: translateY(0);
+  }
+}
+
+@media (max-width: 768px) {
+  .container {
+      padding: 20px;
+  }
+  
+  .header {
+      flex-direction: column;
+      gap: 20px;
+  }
+  
+  .buttonGroup {
+      width: 100%;
+      flex-direction: row;
+  }
+
+  .emailTextarea {
+      width: 350px;
+  }
+  .emailContainer{
+    width: 350px;
+  }
+
+  .editButton, 
+  .deleteButton {
+      padding: 4px 8px;
+      font-size: 12px;
+      margin-right: 8px;
+  }
+}
+/* Pulse Loader */
+.pulseLoader {
+    width: 40px;
+    height: 40px;
+    margin: 40px auto;
+    border-radius: 50%;
+    background: linear-gradient(45deg, #020079, #0066ff);
+    animation: pulse 1.2s ease-in-out infinite;
+  }
+  
+  @keyframes pulse {
+    0% {
+      transform: scale(0.8);
+      opacity: 0.5;
+    }
+    50% {
+      transform: scale(1);
+      opacity: 1;
+    }
+    100% {
+      transform: scale(0.8);
+      opacity: 0.5;
+    }
+  }
+  
+  /* Spinner Loader */
+  .spinnerLoader {
+    width: 40px;
+    height: 40px;
+    margin: 40px auto;
+    border: 3px solid #f0f0f0;
+    border-top: 3px solid #020079;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+  }
+  
+  @keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
+  
+  /* Dots Loader */
+  .dotsLoader {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    margin: 40px auto;
+  }
+  
+  .dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: linear-gradient(45deg, #020079, #0066ff);
+    animation: dots 1.4s ease-in-out infinite;
+  }
+  
+  .dot:nth-child(2) {
+    animation-delay: 0.2s;
+  }
+  
+  .dot:nth-child(3) {
+    animation-delay: 0.4s;
+  }
+  
+  @keyframes dots {
+    0%, 100% {
+      transform: scale(0.6);
+      opacity: 0.4;
+    }
+    50% {
+      transform: scale(1);
+      opacity: 1;
+    }
+  }
+  
+  /* Skeleton Loading */
+  .skeletonLoader {
+    background: #f0f0f0;
+    border-radius: 8px;
+    animation: skeleton 1.5s ease-in-out infinite;
+  }
+  
+  @keyframes skeleton {
+    0% {
+      opacity: 0.6;
+    }
+    50% {
+      opacity: 0.8;
+    }
+    100% {
+      opacity: 0.6;
+    }
+  }
+  
+  /* Row Skeleton */
+  .rowSkeleton {
+    height: 20px;
+    margin-bottom: 12px;
+    width: 100%;
+  }
+  
+  /* Card Skeleton */
+  .cardSkeleton {
+    padding: 20px;
+    border-radius: 12px;
+    background: white;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  }
+  
+  .cardSkeleton .header {
+    height: 24px;
+    width: 60%;
+    margin-bottom: 16px;
+  }
+  
+  .cardSkeleton .body {
+    height: 16px;
+    margin-bottom: 12px;
+  }
+  
+  .cardSkeleton .body:last-child {
+    width: 80%;
+  }
+  
+  /* Pretty Animations for Existing Elements */
+  .container {
+    animation: fadeIn 0.3s ease-out;
+  }
+  
+  .createButton, .createSimpleButton {
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .createButton::after, .createSimpleButton::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+      90deg,
+      rgba(255, 255, 255, 0) 0%,
+      rgba(255, 255, 255, 0.2) 50%,
+      rgba(255, 255, 255, 0) 100%
+    );
+    animation: shimmer 2s infinite;
+  }
+  
+  .modal {
+    animation: modalSlideIn 0.3s ease-out;
+  }
+  
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  @keyframes shimmer {
+    100% {
+      left: 100%;
+    }
+  }
+  
+  @keyframes modalSlideIn {
+    from {
+      opacity: 0;
+      transform: translateY(-20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+
+
+  /* Loading spinner animation */
+  .spinnerAnimation {
+    animation: spin 1s linear infinite;
+  }
+  
+  @keyframes spin {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
+    }
+  }
+
+/* Overlay with modern glassmorphism effect */
+.overlay {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(17, 25, 40, 0.75);
+  backdrop-filter: blur(12px) saturate(180%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  padding: 2rem;
+  animation: overlayShow 300ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Modern popup container with refined aesthetics */
+.popup {
+  background: linear-gradient(135deg, #f8fafc 0%, #eef2f6 100%);
+  border-radius: 16px;
+  box-shadow: 
+    0 8px 32px rgba(0, 0, 0, 0.08),
+    0 1px 2px rgba(0, 0, 0, 0.04);
+  width: 92%;
+  max-width: 640px;
+  overflow: hidden;
+  animation: popupShow 400ms cubic-bezier(0.16, 1, 0.3, 1);
+  border: 1px solid rgba(255, 255, 255, 0.4);
+}
+
+/* Sleek header with modern gradient */
+.headers {
+  background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%);
+  padding: 20px 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.title {
+  margin: 0;
+  color: #ffffff;
+  font-size: 1.25rem;
+  font-weight: 600;
+  letter-spacing: -0.025em;
+}
+
+/* Refined close button with smooth interactions */
+.closeButton {
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.closeButton:hover {
+  background: rgba(255, 255, 255, 0.2);
+  transform: scale(1.05);
+}
+
+.closeIcon {
+  color: #ffffff;
+  font-size: 20px;
+  line-height: 1;
+}
+
+/* Content area with improved spacing */
+.content {
+  padding: 24px;
+  max-height: 70vh;
+  overflow-y: auto;
+  color: #1e293b;
+}
+
+/* Enhanced email list styling */
+.emailList {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.emailItem {
+  background: #ffffff;
+  padding: 16px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  box-shadow: 
+    0 2px 4px rgba(0, 0, 0, 0.02),
+    0 1px 2px rgba(0, 0, 0, 0.03);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  border: 1px solid #e2e8f0;
+}
+
+.emailItem:hover {
+  transform: translateY(-2px);
+  box-shadow: 
+    0 12px 24px rgba(0, 0, 0, 0.05),
+    0 4px 8px rgba(0, 0, 0, 0.04);
+  border-color: #4f46e5;
+}
+
+.emailIcon {
+  background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%);
+  color: white;
+  width: 44px;
+  height: 44px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+}
+
+.emailAddress {
+  color: #1e293b;
+  font-size: 0.975rem;
+  font-weight: 500;
+  flex: 1;
+  word-break: break-all;
+}
+
+/* Refined summary section */
+.summary {
+  margin-top: 12px;
+  padding: 20px 10px;
+  border-top: 1px solid #e2e8f0;
+  color: #64748b;
+  font-size: 1rem;
+  text-align: right;
+}
+
+/* Smooth animations */
+@keyframes overlayShow {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes popupShow {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Modern scrollbar styling */
+.content::-webkit-scrollbar {
+  width: 8px;
+}
+
+.content::-webkit-scrollbar-track {
+  background: #f1f5f9;
+  border-radius: 8px;
+}
+
+.content::-webkit-scrollbar-thumb {
+  background: #4f46e5;
+  border-radius: 8px;
+  border: 2px solid #f1f5f9;
+}
+
+.content::-webkit-scrollbar-thumb:hover {
+  background: #7c3aed;
+}
+
+/* Responsive design improvements */
+@media (max-width: 640px) {
+  .overlay {
+    padding: 1rem;
+  }
+  
+  .popup {
+    width: 100%;
+    margin: 8px;
+  }
+  
+  .headers {
+    padding: 16px 20px;
+  }
+  
+  .content {
+    padding: 20px;
+  }
+  
+  .emailItem {
+    padding: 14px;
+  }
+  
+  .emailIcon {
+    width: 38px;
+    height: 38px;
+    font-size: 18px;
+  }
+}
+
+.headerWithIcon {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.icon {
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.iconSmall {
+  width: 16px;
+  height: 16px;
+}
+
+ /* Pagination Container */
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  margin-top: 2rem;
+  padding: 1rem 0;
+}
+
+/* Base Button Styles */
+.pagination button {
+  padding: 0.75rem 1.25rem;
+  border: 1px solid var(--border-color, #e2e8f0);
+  border-radius: 0.375rem;
+  background-color: #fff;
+  color: var(--text-color, #4a5568);
+  font-size: 0.875rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+}
+
+/* Button Hover State */
+.pagination button:hover {
+  background-color: var(--hover-bg, #f7fafc);
+  border-color: var(--hover-border, #cbd5e0);
+  transform: translateY(-1px);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+/* Disabled Button State */
+.pagination button:disabled {
+  background-color: var(--disabled-bg, #edf2f7);
+  border-color: var(--disabled-border, #e2e8f0);
+  color: var(--disabled-text, #a0aec0);
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+
+/* Page Numbers Container */
+.pageNumbers {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+}
+
+/* Active Page Style */
+.activePage {
+  background-color: var(--active-bg, #4299e1) !important;
+  color: white !important;
+  border-color: var(--active-border, #3182ce) !important;
+  font-weight: 600;
+}
+
+/* Size Selector Container */
+.sizeSelector {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-left: auto;
+  padding: 0.625rem;
+}
+
+/* Size Selector Dropdown */
+.sizeSelector select {
+  padding: 0.5rem;
+  border: 1px solid var(--border-color, #e2e8f0);
+  border-radius: 0.375rem;
+  background-color: white;
+  color: var(--text-color, #4a5568);
+  font-size: 0.875rem;
+  outline: none;
+  transition: all 0.2s ease-in-out;
+}
+
+/* Size Selector Hover State */
+.sizeSelector select:hover {
+  border-color: var(--hover-border, #cbd5e0);
+}
+
+/* Size Selector Focus State */
+.sizeSelector select:focus {
+  border-color: var(--focus-border, #4299e1);
+  box-shadow: 0 0 0 3px rgba(66, 153, 225, 0.15);
+}
+
+.selectGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.label {
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: #555;
+}
+
+.select {
+  padding: 0.5rem 1rem;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 0.25rem;
+  background-color: #fff;
+  color: #333;
+  cursor: pointer;
+  transition: border-color 0.2s ease-in-out;
+}
+
+.select:hover {
+  border-color: #007bff;
+}
+.controls {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}

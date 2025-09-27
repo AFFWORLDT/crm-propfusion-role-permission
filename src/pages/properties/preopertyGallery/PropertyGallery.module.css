@@ -1,0 +1,750 @@
+.gallery {
+    height: 100vh;
+    width: 100vw;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+}
+
+.imageContainer {
+    position: relative;
+    flex: 1;
+    width: 100%;
+    height: 100%;
+}
+
+.imageWrapper {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.mainImage {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: all 0.3s ease-in-out;
+}
+
+.mainImage.transitioning {
+    opacity: 0.8;
+    transform: scale(1.01);
+}
+
+.imageOverlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(
+        to bottom,
+        rgba(0, 0, 0, 0) 0%,
+        rgba(0, 0, 0, 0) 50%,
+        rgba(0, 0, 0, 0.3) 100%
+    );
+    pointer-events: none;
+}
+
+.navBtn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(255, 255, 255, 0.9);
+    color: #000;
+    border: none;
+    padding: 15px 12px;
+    font-size: 24px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    z-index: 15;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.navBtn:hover {
+    background: rgba(255, 255, 255, 1);
+    transform: translateY(-50%) scale(1.1);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+}
+
+.prevBtn {
+    left: 20px;
+}
+
+.nextBtn {
+    right: 20px;
+}
+
+.imageCounter {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background: rgba(0, 0, 0, 0.7);
+    color: white;
+    padding: 8px 15px;
+    border-radius: 20px;
+    font-size: 14px;
+    font-weight: 600;
+    z-index: 15;
+    backdrop-filter: blur(10px);
+}
+
+.propertyInfo {
+    position: absolute;
+    bottom: 120px;
+    left: 20px;
+    right: 20px;
+    padding: 20px;
+    border-radius: 10px;
+    z-index: 15;
+}
+
+.propertyHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 10px;
+    gap: 15px;
+}
+
+.propertyTitle {
+    margin: 0;
+    font-size: 22px;
+    font-weight: 700;
+    color: #fff;
+    flex: 1;
+    line-height: 1.2;
+}
+
+.propertyPrice {
+    font-size: 18px;
+    font-weight: 700;
+    color: #fff;
+    white-space: nowrap;
+}
+
+.propertyLocation {
+    margin: 0 0 12px 0;
+    font-size: 14px;
+    color: #e5e7eb;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.propertyDetails {
+    display: flex;
+    gap: 12px;
+    font-size: 13px;
+    margin-bottom: 12px;
+    flex-wrap: wrap;
+}
+
+.propertyDetails span {
+    background: rgba(102, 126, 234, 0.8) !important;
+    padding: 4px 10px;
+    border-radius: 15px;
+    font-weight: 500;
+    color: white !important;
+}
+
+.propertyType {
+    background: rgba(102, 126, 234, 0.8) !important;
+    color: white !important;
+}
+
+.agentInfo {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    font-size: 12px;
+    color: #d1d5db;
+    padding-top: 8px;
+    /* border-top: 1px solid rgba(255, 255, 255, 0.2); */
+}
+
+.agentAvatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid #ddd;
+}
+.controls {
+    position: absolute;
+    bottom: 40px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 20px;
+    z-index: 20;
+}
+
+.controlBtn {
+    color: white;
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    padding: 14px 24px;
+    border-radius: 30px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 600;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    backdrop-filter: blur(20px);
+    position: relative;
+    overflow: hidden;
+}
+
+.controlBtn::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    /* background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent); */
+    transition: left 0.6s ease;
+}
+
+.controlBtn:hover::before {
+    left: 100%;
+}
+
+.controlBtn:hover {
+    transform: translateY(-3px);
+}
+
+.controlBtn:active {
+    transform: translateY(-1px);
+}
+
+.nextPropertyBtn {
+    background: #fff;
+    color: #000;
+    border:none;
+    padding: 10px 16px;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+}
+
+
+
+.autoPlayBtn {
+  background: #fff;
+  color: #000;
+  border: none;
+  min-width: 120px;
+  padding: 10px 16px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  position: relative;
+}
+
+/* Playing state */
+.autoPlayBtn.playing {
+  background: #000;
+  color: #fff;
+}
+
+/* Paused state */
+.autoPlayBtn.paused {
+  background: #fff;
+  color: #000;
+}
+
+.progressBar {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 6px;
+    background: rgba(255, 255, 255, 0.1);
+    z-index: 25;
+}
+
+.progressFill {
+    height: 100%;
+    background: linear-gradient(90deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+    transition: width 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 0 20px rgba(102, 126, 234, 0.6);
+    position: relative;
+    overflow: hidden;
+}
+
+.progressFill::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(
+        90deg,
+        transparent 0%,
+        rgba(255, 255, 255, 0.3) 50%,
+        transparent 100%
+    );
+    animation: shimmer 2s infinite;
+}
+
+@keyframes shimmer {
+    0% {
+        transform: translateX(-100%);
+    }
+    100% {
+        transform: translateX(100%);
+    }
+}
+
+.progressIndicator {
+    position: absolute;
+    top: 20px;
+    left: 30px;
+    background: rgba(0, 0, 0, 0.8);
+    color: white;
+    padding: 10px 18px;
+    border-radius: 20px;
+    font-size: 13px;
+    font-weight: 600;
+    z-index: 15;
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+}
+
+.dotsContainer {
+    position: absolute;
+    bottom: 120px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 5pxpx;
+    z-index: 20;
+    padding: 12px 20px;
+    border-radius: 25px;
+    backdrop-filter: blur(20px);
+}
+
+.dot {
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    border: 2px solid rgba(255, 255, 255, 0.4);
+    background: transparent;
+    cursor: pointer;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    backdrop-filter: blur(10px);
+    position: relative;
+}
+
+.dot::before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 6px;
+    height: 6px;
+    background: rgba(255, 255, 255, 0.6);
+    border-radius: 50%;
+    transform: translate(-50%, -50%) scale(0);
+    transition: transform 0.3s ease;
+}
+
+.activeDot {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    border-color: white;
+    transform: scale(1.3);
+    box-shadow: 0 0 20px rgba(102, 126, 234, 0.6);
+}
+
+.activeDot::before {
+    transform: translate(-50%, -50%) scale(1);
+    background: white;
+}
+
+.dot:hover {
+    border-color: white;
+    transform: scale(1.2);
+}
+
+.loading {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: #000;
+    color: white;
+    gap: 20px;
+}
+
+.loading h2 {
+    font-size: 24px;
+    font-weight: 700;
+    margin: 0;
+    color: #fff;
+}
+
+.loading p {
+    font-size: 16px;
+    color: #999;
+    margin: 0;
+}
+
+.spinner {
+    width: 50px;
+    height: 50px;
+    border: 3px solid rgba(255, 255, 255, 0.3);
+    border-top: 3px solid white;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+    .propertyInfo {
+        bottom: 140px;
+        left: 15px;
+        right: 15px;
+        padding: 15px;
+    }
+
+    .propertyHeader {
+        flex-direction: column;
+        gap: 8px;
+    }
+
+    .propertyTitle {
+        font-size: 18px;
+    }
+
+    .propertyPrice {
+        font-size: 16px;
+    }
+
+    .propertyLocation {
+        font-size: 13px;
+    }
+
+    .propertyDetails {
+        gap: 8px;
+        flex-wrap: wrap;
+    }
+
+    .propertyDetails span {
+        padding: 3px 8px;
+        font-size: 11px;
+    }
+
+    .controls {
+        bottom: 20px;
+        gap: 10px;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .controlBtn {
+        padding: 8px 12px;
+        font-size: 11px;
+        min-width: 70px;
+    }
+
+    .navBtn {
+        width: 40px;
+        height: 40px;
+        font-size: 18px;
+    }
+
+    .prevBtn {
+        left: 15px;
+    }
+
+    .nextBtn {
+        right: 15px;
+    }
+
+    .imageCounter,
+    .progressIndicator {
+        font-size: 11px;
+        padding: 5px 10px;
+    }
+
+    .dotsContainer {
+        bottom: 100px;
+        gap: 6px;
+        padding: 6px 10px;
+    }
+
+    .dot {
+        width: 8px;
+        height: 8px;
+    }
+}
+
+@media (max-width: 480px) {
+    .propertyInfo {
+        bottom: 160px;
+        left: 10px;
+        right: 10px;
+        padding: 12px;
+    }
+
+    .propertyTitle {
+        font-size: 16px;
+    }
+
+    .propertyPrice {
+        font-size: 14px;
+    }
+
+    .controls {
+        bottom: 15px;
+        left: 10px;
+        right: 10px;
+        transform: none;
+        gap: 8px;
+    }
+
+    .controlBtn {
+        flex: 1;
+        min-width: auto;
+        padding: 6px 10px;
+        font-size: 10px;
+    }
+}
+
+/* Remove all fancy animations and effects */
+.controlBtn:focus,
+.navBtn:focus,
+.dot:focus {
+    outline: 2px solid #4facfe;
+    outline-offset: 2px;
+    border-radius: 25px;
+}
+
+.navBtn {
+    padding: 18px 14px;
+    font-size: 26px;
+    width: 60px;
+    height: 60px;
+}
+
+.prevBtn {
+    left: 20px;
+}
+
+.nextBtn {
+    right: 20px;
+}
+
+.imageCounter,
+.progressIndicator {
+    font-size: 12px;
+    padding: 8px 14px;
+}
+
+.dotsContainer {
+    bottom: 140px;
+    gap: 10px;
+    padding: 10px 16px;
+}
+
+.dot {
+    width: 12px;
+    height: 12px;
+}
+
+.agentInfo {
+    font-size: 13px;
+}
+
+@media (max-width: 480px) {
+    .imageContainer {
+        padding: 10px;
+    }
+
+    .propertyInfo {
+        bottom: 180px;
+        left: 15px;
+        right: 15px;
+        padding: 20px;
+    }
+
+    .propertyTitle {
+        font-size: 20px;
+    }
+
+    .propertyPrice {
+        font-size: 18px;
+    }
+
+    .controls {
+        bottom: 20px;
+        left: 15px;
+        right: 15px;
+        transform: none;
+        gap: 10px;
+    }
+
+    .controlBtn {
+        flex: 1;
+        min-width: auto;
+        padding: 10px 14px;
+        font-size: 12px;
+    }
+
+    .dotsContainer {
+        bottom: 150px;
+        gap: 8px;
+    }
+
+    .dot {
+        width: 10px;
+        height: 10px;
+    }
+
+    .navBtn {
+        width: 50px;
+        height: 50px;
+        font-size: 22px;
+    }
+
+    .prevBtn {
+        left: 15px;
+    }
+
+    .nextBtn {
+        right: 15px;
+    }
+}
+
+/* Keyboard navigation and accessibility */
+.controlBtn:focus,
+.navBtn:focus,
+.dot:focus {
+    outline: 3px solid #4facfe;
+    outline-offset: 3px;
+}
+
+/* Loading states and animations */
+.mainImage[src=""] {
+    background:
+        linear-gradient(45deg, #2d2d2d 25%, transparent 25%),
+        linear-gradient(-45deg, #2d2d2d 25%, transparent 25%),
+        linear-gradient(45deg, transparent 75%, #2d2d2d 75%),
+        linear-gradient(-45deg, transparent 75%, #2d2d2d 75%);
+    background-size: 20px 20px;
+    background-position:
+        0 0,
+        0 10px,
+        10px -10px,
+        -10px 0px;
+    animation: loading 2s linear infinite;
+}
+
+@keyframes loading {
+    0% {
+        background-position:
+            0 0,
+            0 10px,
+            10px -10px,
+            -10px 0px;
+    }
+    100% {
+        background-position:
+            20px 20px,
+            20px 30px,
+            30px 10px,
+            10px 20px;
+    }
+}
+
+/* Smooth entrance animations */
+.gallery * {
+    animation-fill-mode: both;
+}
+
+.navBtn {
+    animation: fadeInScale 0.6s ease 0.3s;
+}
+
+.imageCounter {
+    animation: slideInRight 0.6s ease 0.4s;
+}
+
+.progressIndicator {
+    animation: slideInLeft 0.6s ease 0.4s;
+}
+
+.controls {
+    animation: slideInUp 0.6s ease 0.5s;
+}
+
+.dotsContainer {
+    animation: slideInUp 0.6s ease 0.6s;
+}
+
+@keyframes fadeInScale {
+    0% {
+        opacity: 0;
+        transform: translateY(-50%) scale(0.5);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(-50%) scale(1);
+    }
+}
+
+@keyframes slideInRight {
+    0% {
+        opacity: 0;
+        transform: translateX(30px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes slideInLeft {
+    0% {
+        opacity: 0;
+        transform: translateX(-30px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes slideInUp {
+    0% {
+        opacity: 0;
+        transform: translateX(-50%) translateY(30px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateX(-50%) translateY(0);
+    }
+}

@@ -1,0 +1,776 @@
+/* Modern Chat Widget Styles */
+:root {
+  --primary-color: #0052FF;
+  --secondary-color: #1a56db;
+  --success-color: #4ade80;
+  --danger-color: #ff4444;
+  --text-primary: #1a1a1a;
+  --text-secondary: #6B7280;
+  --bg-primary: #ffffff;
+  --bg-secondary: #F8F9FD;
+  --border-radius: 20px;
+  --header-height: 70px;
+  --transition: all 0.3s ease;
+}
+
+.chat-widget {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 1000;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  margin-left: 80px;
+}
+
+/* Toggle Button */
+.chat-toggle-button {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background: var(--primary-color);
+  border: none;
+  cursor: pointer;
+  box-shadow: 0 4px 20px rgba(0, 82, 255, 0.2);
+  transition: var(--transition);
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.chat-toggle-button:hover {
+  transform: scale(1.05);
+  box-shadow: 0 4px 25px rgba(0, 82, 255, 0.3);
+}
+
+.close-icon {
+  font-size: 32px;
+  color: white;
+  line-height: 1;
+}
+
+/* Bot Icon */
+.bot-icon {
+  width: 32px;
+  height: 32px;
+  position: relative;
+}
+
+.bot-face {
+  width: 100%;
+  height: 100%;
+  background: white;
+  border-radius: 12px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.bot-eyes {
+  width: 16px;
+  height: 4px;
+  background: var(--primary-color);
+  border-radius: 2px;
+  position: relative;
+  margin-bottom: 4px;
+}
+
+.bot-mouth {
+  width: 10px;
+  height: 2px;
+  background: var(--primary-color);
+  border-radius: 1px;
+}
+
+/* Chat Container */
+.chat-container.modern {
+  position: fixed;
+  bottom: 90px;
+  right: 20px;
+  width: 380px;
+  height: 440px;
+  max-height: 90vh;
+  background: var(--bg-primary);
+  border-radius: var(--border-radius);
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  animation: slideIn 0.3s ease;
+  padding: 0;
+}
+
+/* Glass Effect */
+.glass {
+  background: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+/* Header */
+.chat-header.glass {
+  padding: 10px 16px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: var(--primary-color);
+  height: 48px;
+}
+
+.header-left {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.header-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.header-title {
+  color: white;
+  font-size: 16px;
+  font-weight: 600;
+  margin: 0;
+}
+
+.status {
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+/* Action Buttons */
+.action-button {
+  padding: 8px 16px;
+  border-radius: 100px;
+  border: none;
+  background: rgba(255, 255, 255, 0.15);
+  color: white;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transition: var(--transition);
+}
+
+.action-button:hover {
+  background: rgba(255, 255, 255, 0.25);
+}
+
+.action-button .icon {
+  font-size: 16px;
+}
+
+.action-button .label {
+  font-size: 14px;
+}
+
+/* Messages Area */
+.chat-messages {
+  flex: 1;
+  min-height: 0;
+  padding: 10px 10px 6px 10px;
+  overflow-y: auto;
+  background: var(--bg-secondary);
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.message-wrapper {
+  display: flex;
+  gap: 12px;
+  max-width: 85%;
+}
+
+.message-wrapper.user {
+  margin-right: auto;
+  margin-left: 0;
+}
+
+.message-avatar {
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  background: var(--primary-color);
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 11px;
+  font-weight: 600;
+}
+
+.message-bubble {
+  border-radius: 10px !important;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+  padding: 8px 12px;
+  margin-bottom: 0;
+  font-size: 14px;
+  background: #f4f6fb;
+  color: #222;
+  border: 1px solid #e5e7eb;
+  transition: background 0.2s;
+}
+
+.message-wrapper.user .message-bubble {
+  background: var(--primary-color);
+  color: white;
+}
+
+.message-text {
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.message-time {
+  font-size: 11px;
+  color: var(--text-secondary);
+  margin-top: 4px;
+}
+
+/* Input Area */
+.chat-input.glass {
+  padding: 6px 8px;
+  display: flex;
+  gap: 6px;
+  background: #f7f8fa;
+  border-top: 1px solid #e5e7eb;
+  border-radius: 0 0 var(--border-radius) var(--border-radius);
+  margin: 0;
+}
+
+.chat-input input {
+  flex: 1;
+  padding: 12px 16px;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 100px;
+  font-size: 14px;
+  transition: var(--transition);
+}
+
+.chat-input input:focus {
+  outline: none;
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 2px rgba(0, 82, 255, 0.1);
+}
+
+.send-button {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: var(--primary-color);
+  border: none;
+  color: white;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: var(--transition);
+}
+
+.send-button:hover {
+  transform: scale(1.05);
+}
+
+.send-button svg {
+  width: 20px;
+  height: 20px;
+  transform: rotate(45deg);
+}
+
+/* Loading Indicators */
+.loading-dots {
+  display: flex;
+  gap: 4px;
+}
+
+.dot {
+  width: 6px;
+  height: 6px;
+  background: currentColor;
+  border-radius: 50%;
+  animation: bounce 0.5s infinite alternate;
+}
+
+.dot:nth-child(2) { animation-delay: 0.2s; }
+.dot:nth-child(3) { animation-delay: 0.4s; }
+
+@keyframes bounce {
+  to { transform: translateY(-4px); }
+}
+
+/* Volume Meter */
+.volume-meter {
+  display: flex;
+  align-items: flex-end;
+  gap: 2px;
+  height: 20px;
+}
+
+.volume-meter .bar {
+  width: 3px;
+  background: var(--success-color);
+  border-radius: 1px;
+  transition: var(--transition);
+}
+
+/* Responsive Design */
+@media (max-width: 480px) {
+  .chat-container.modern {
+    width: 100%;
+    height: calc(100vh - 80px);
+    right: 0;
+    bottom: 70px;
+    border-radius: var(--border-radius) var(--border-radius) 0 0;
+  }
+  
+  #vapi-icon-container {
+    bottom: 15px !important;
+    left: 15px !important;
+  }
+  
+  .chat-widget {
+    margin-left: 70px;
+  }
+}
+
+/* Loading indicator */
+.loading-indicator {
+  display: inline-flex;
+  align-items: center;
+  padding: 6px 12px;
+  background: #F8F9FD;
+  border-radius: 12px;
+  font-size: 12px;
+  color: #6B7280;
+  align-self: flex-start;
+  margin-right: 36px;
+  margin-left: 0;
+}
+
+/* Scrollbar */
+.chat-messages::-webkit-scrollbar {
+  width: 4px;
+}
+
+.chat-messages::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.chat-messages::-webkit-scrollbar-thumb {
+  background: #E5E7EB;
+  border-radius: 2px;
+}
+
+/* Animations */
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.chat-container {
+  animation: slideIn 0.2s ease;
+}
+
+.message {
+  animation: messageAppear 0.2s ease;
+}
+
+@keyframes messageAppear {
+  from {
+    opacity: 0;
+    transform: translateY(5px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* System message */
+.system-message {
+  text-align: center;
+  padding: 8px 12px;
+  background: #F8F9FD;
+  border-radius: 12px;
+  font-size: 12px;
+  color: #6B7280;
+  margin: 8px auto;
+  max-width: 80%;
+}
+
+/* Add/Update these styles at the beginning of your CSS file */
+.chat-button {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background: #0052FF;
+  color: white;
+  border: none;
+  cursor: pointer;
+  box-shadow: 0 4px 15px rgba(0, 82, 255, 0.3);
+  font-size: 24px;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 1000;
+}
+
+.chat-button:hover {
+  transform: scale(1.05);
+  background: #0040CC;
+}
+
+/* Add these styles */
+.header-actions {
+  display: flex;
+  gap: 8px;
+}
+
+.voice-call-button {
+  padding: 6px 12px;
+  background: rgba(255, 255, 255, 0.15);
+  border: none;
+  border-radius: 100px;
+  color: white;
+  font-size: 14px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  transition: all 0.2s ease;
+}
+
+.voice-call-button:hover {
+  background: rgba(255, 255, 255, 0.25);
+}
+
+/* Voice call button loading state */
+.voice-call-button.loading {
+  background: rgba(255, 255, 255, 0.1);
+  cursor: not-allowed;
+}
+
+/* Loading spinner animation */
+.loading-spinner {
+  display: inline-block;
+  width: 12px;
+  height: 12px;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-radius: 50%;
+  border-top-color: white;
+  animation: spin 1s linear infinite;
+  margin-right: 6px;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Disabled button state */
+.voice-call-button:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+/* Voice call controls */
+.voice-controls {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.control-button {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: none;
+  background: rgba(255, 255, 255, 0.15);
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+}
+
+.control-button:hover {
+  background: rgba(255, 255, 255, 0.25);
+  transform: scale(1.05);
+}
+
+.control-button.muted {
+  background: #ff4444;
+}
+
+.control-button.end-call {
+  background: #ff4444;
+  transform: rotate(135deg);
+}
+
+.control-button.end-call:hover {
+  background: #ff2222;
+}
+
+.volume-indicator {
+  width: 50px;
+  height: 4px;
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: 2px;
+  overflow: hidden;
+  position: relative;
+}
+
+.volume-indicator::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #4ade80;
+  transform-origin: left;
+  transition: transform 0.1s ease;
+}
+
+/* System message improvements */
+.system-message {
+  background: linear-gradient(to right, #f8f9fd, #f0f2f8);
+  border-left: 3px solid #0052FF;
+  padding: 10px 14px;
+  margin: 8px 0;
+  border-radius: 0 12px 12px 0;
+  font-size: 13px;
+  color: #4a5568;
+}
+
+/* Message animations */
+@keyframes messageSlideIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.message {
+  animation: messageSlideIn 0.3s ease forwards;
+}
+
+/* Voice call status indicator */
+.call-status {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.8);
+  padding: 4px 8px;
+  background: rgba(0, 0, 0, 0.1);
+  border-radius: 100px;
+  margin-left: auto;
+}
+
+.call-status.active {
+  color: #4ade80;
+}
+
+/* AI Avatar Animation */
+.ai-avatar-container {
+  width: 40px;
+  height: 40px;
+  background: #1a56db;
+  border-radius: 50%;
+  position: relative;
+  margin-right: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+}
+
+.ai-face {
+  width: 24px;
+  height: 24px;
+  position: relative;
+}
+
+.ai-eyes {
+  display: flex;
+  justify-content: space-between;
+  position: absolute;
+  width: 100%;
+  top: 25%;
+}
+
+.eye {
+  width: 6px;
+  height: 6px;
+  background: white;
+  border-radius: 50%;
+  animation: blink 4s infinite;
+}
+
+.ai-mouth {
+  position: absolute;
+  bottom: 20%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 12px;
+  height: 3px;
+  background: white;
+  border-radius: 3px;
+}
+
+/* Speaking animation */
+.speaking .ai-mouth {
+  animation: speak 0.5s infinite;
+}
+
+/* Audio waves */
+.audio-waves {
+  position: absolute;
+  bottom: -8px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+  gap: 2px;
+}
+
+.wave {
+  width: 3px;
+  height: 12px;
+  background: #4ade80;
+  border-radius: 3px;
+  animation: wave 0.5s infinite ease-in-out;
+}
+
+.wave:nth-child(2) {
+  animation-delay: 0.1s;
+  height: 16px;
+}
+
+.wave:nth-child(3) {
+  animation-delay: 0.2s;
+  height: 20px;
+}
+
+.wave:nth-child(4) {
+  animation-delay: 0.3s;
+  height: 16px;
+}
+
+/* Animations */
+@keyframes blink {
+  0%, 90%, 100% {
+    transform: scaleY(1);
+  }
+  95% {
+    transform: scaleY(0);
+  }
+}
+
+@keyframes speak {
+  0%, 100% {
+    height: 3px;
+  }
+  50% {
+    height: 6px;
+  }
+}
+
+@keyframes wave {
+  0%, 100% {
+    transform: scaleY(0.5);
+  }
+  50% {
+    transform: scaleY(1);
+  }
+}
+
+/* Pulse effect when call is active */
+.speaking::after {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  border: 2px solid #4ade80;
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+    opacity: 0.8;
+  }
+  70% {
+    transform: scale(1.3);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 0;
+  }
+}
+
+/* Optional: Add a gradient background to avatar */
+.ai-avatar-container {
+  background: linear-gradient(135deg, #1a56db, #1e40af);
+  box-shadow: 0 4px 12px rgba(26, 86, 219, 0.3);
+}
+
+/* Optional: Add hover effect */
+.ai-avatar-container:hover {
+  transform: scale(1.05);
+}
+
+/* Vapi call dialer positioning */
+#vapi-icon-container {
+  position: fixed !important;
+  bottom: 20px !important;
+  left: 20px !important;
+  right: auto !important;
+  z-index: 1000 !important;
+}
+
+/* Optional: Add some styling to the icon */
+#vapi-icon-container img {
+  width: 24px;
+  height: 24px;
+  padding: 12px;
+  background: #0052FF;
+  border-radius: 50%;
+  box-shadow: 0 4px 15px rgba(0, 82, 255, 0.3);
+  transition: all 0.3s ease;
+}
+
+#vapi-icon-container img:hover {
+  transform: scale(1.05);
+  background: #0040CC;
+}
+
+/* Make sure the vapi container doesn't interfere with chat */
+#vapi-icon-container {
+  pointer-events: auto;
+} 

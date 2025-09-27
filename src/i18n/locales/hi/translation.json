@@ -1,0 +1,61 @@
+{
+  "common": {
+    "dashboard": "डैशबोर्ड",
+    "properties": "प्रॉपर्टीज",
+    "customers": "ग्राहक",
+    "agents": "एजेंट्स",
+    "reports": "रिपोर्ट्स",
+    "settings": "सेटिंग्स",
+    "logout": "लॉगआउट",
+    "search": "खोजें",
+    "add": "जोड़ें",
+    "edit": "संपादित करें",
+    "delete": "हटाएं",
+    "save": "सहेजें",
+    "cancel": "रद्द करें",
+    "loading": "लोड हो रहा है...",
+    "noData": "कोई डेटा उपलब्ध नहीं",
+    "error": "त्रुटि हुई"
+  },
+  "property": {
+    "title": "प्रॉपर्टी प्रबंधन",
+    "addProperty": "प्रॉपर्टी जोड़ें",
+    "editProperty": "प्रॉपर्टी संपादित करें",
+    "propertyDetails": "प्रॉपर्टी विवरण",
+    "propertyType": "प्रॉपर्टी का प्रकार",
+    "price": "मूल्य",
+    "location": "स्थान",
+    "status": "स्थिति",
+    "description": "विवरण"
+  },
+  "customer": {
+    "title": "ग्राहक प्रबंधन",
+    "addCustomer": "ग्राहक जोड़ें",
+    "editCustomer": "ग्राहक संपादित करें",
+    "customerDetails": "ग्राहक विवरण",
+    "name": "नाम",
+    "email": "ईमेल",
+    "phone": "फोन",
+    "address": "पता"
+  },
+  "agent": {
+    "title": "एजेंट प्रबंधन",
+    "addAgent": "एजेंट जोड़ें",
+    "editAgent": "एजेंट संपादित करें",
+    "agentDetails": "एजेंट विवरण",
+    "performance": "प्रदर्शन",
+    "commission": "कमीशन"
+  },
+  "dashboard": {
+    "sell": "बेचना",
+    "rent": "किराया",
+    "projects": "प्रोजेक्ट्स",
+    "listingsDistribution": "लिस्टिंग वितरण",
+    "totalListings": "कुल लिस्टिंग्स",
+    "totalLeads": "कुल लीड्स",
+    "leadDistribution": "लीड वितरण",
+    "totalWhatsappLeads": "कुल व्हाट्सएप लीड्स",
+    "activeDevelopers": "सक्रिय डेवलपर्स",
+    "coverageAreas": "कवरेज क्षेत्र"
+  }
+} 

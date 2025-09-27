@@ -1,0 +1,125 @@
+.breadcrumb {
+    display: flex;
+    list-style: none;
+    margin: 0;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+    align-items: center;
+    background: var(--background, hsl(0 0% 100%));
+    border-radius: 0.75rem;
+}
+
+.breadcrumbItem {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    font-size: 1.8rem;
+    font-weight: 500;
+    transition: all 0.2s ease;
+    position: relative;
+}
+
+.breadcrumbItem span {
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.2s ease;
+    
+}
+
+.breadcrumbItem span.highlight {
+    color: var(--breadcrumb-color, hsl(221.2 83.2% 53.3%));
+}
+
+.breadcrumbItem span.grayText {
+    color: hsl(215.4 16.3% 46.9%);
+}
+
+.breadcrumbItem::after {
+    content: "/";
+    position: absolute;
+    right: -1rem;
+    color: hsl(215.4 16.3% 46.9% / 0.4);
+}
+
+.breadcrumbItem:last-child::after {
+    content: none;
+}
+
+/* Number Box Styling */
+.numberBox {
+    width: 2.5rem;
+    height: 2.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 0.5rem;
+    font-size: 0.875rem;
+    font-weight: 500;
+    transition: all 0.2s ease;
+    border: 1px solid hsl(214.3 31.8% 91.4%);
+}
+
+.highlightBox {
+    color: hsl(222.2 47.4% 11.2%);
+    background: hsl(210 40% 98%);
+    border-color: hsl(214.3 31.8% 91.4%);
+    box-shadow: 
+        0 1px 2px 0 rgb(0 0 0 / 0.05),
+        0 1px 3px 0 rgb(0 0 0 / 0.1);
+    font-size: 1.4rem;
+}
+
+.grayBox {
+    color: hsl(215.4 16.3% 46.9%);
+    background: hsl(214.3 31.8% 91.4%);
+    border-color: hsl(214.3 31.8% 91.4%);
+    font-size: 1.4rem;
+    font-weight: 900;
+}
+
+/* Hover Effects */
+.breadcrumbItem:hover .highlightBox {
+    background: hsl(210 40% 96%);
+    transform: translateY(-1px);
+    box-shadow: 
+        0 4px 6px -1px rgb(0 0 0 / 0.1),
+        0 2px 4px -2px rgb(0 0 0 / 0.1);
+}
+
+.breadcrumbItem:hover span.highlight {
+    color: hsl(221.2 83.2% 46.3%);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .breadcrumb {
+        padding: 0.75rem;
+        gap: 1rem;
+    }
+
+    .numberBox {
+        width: 2.25rem;
+        height: 2.25rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .breadcrumb {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.75rem;
+    }
+
+    .breadcrumbItem {
+        width: 100%;
+    }
+
+    .breadcrumbItem::after {
+        content: none;
+    }
+
+    .numberBox {
+        width: 2rem;
+        height: 2rem;
+    }
+}

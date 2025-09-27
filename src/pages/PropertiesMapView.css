@@ -1,0 +1,79 @@
+.filter-container {
+  padding-top: 4rem;
+  margin-bottom: 1rem;
+}
+
+.filter-controls {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.filter-inputs {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+
+  
+}
+
+.advanced-filter-btn {
+  --toggleBtn-primary: #000;
+  border: 1px solid #000;
+  background-color: transparent;
+  padding: 1rem 1rem !important;
+  border-radius: 0.5rem;
+  color: #000;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.advanced-filter-btn:hover {
+  background-color: #000;
+  color: #fff;
+}
+
+.listing-type-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.listing-btn {
+  padding: 8px 24px;
+  background: #fff;
+  color: #1976d2;
+  border: 2px solid #1976d2;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: all 0.2s ease;
+}
+
+.listing-btn.active {
+  background: #1976d2;
+  color: #fff;
+}
+
+.listing-btn:hover {
+  background: #1976d2;
+  color: #fff;
+}
+
+.advanced-filter-content {
+  padding: 1.5rem;
+  border-top: 1px solid #eee;
+  background-color: transparent;
+}
+
+.center-text {
+  text-align: center;
+}
+
+.error-text {
+  text-align: center;
+  color: red;
+} 

@@ -1,0 +1,124 @@
+.notificationList {
+    padding: 0;
+    display: grid;
+    gap: 1.2rem;
+    width: 100%;
+}
+
+.noNotifications {
+    text-align: center;
+    color: var(--clr-neutral-600);
+    font-size: 1.6rem;
+    border-radius: 0.8rem;
+    padding: 2rem;
+}
+
+.notificationItem {
+    padding: 1.4rem;
+    border-radius: 1rem;
+    background-color: white;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.06);
+    transition: all 0.2s ease;
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    position: relative;
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    width: 100%;
+}
+
+.notificationItem span {
+    align-self: flex-end;
+    font-size: 1.4rem;
+    font-weight: 500;
+    color: var(--clr-neutral-300);
+}
+
+.notificationItem.seen {
+    background-color: #f8f9fa;
+}
+
+.notificationItem:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.08);
+}
+
+.notificationItem input {
+    height: 1.6rem;
+    width: 1.6rem;
+    cursor: pointer;
+}
+
+.notificationItem input:focus {
+    outline: none;
+}
+
+.notificationItem > div {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    cursor: pointer;
+}
+
+.notificationItem > div p {
+    margin: 0;
+    font-size: 1.2rem;
+    color: var(--clr-neutral-600);
+    line-height: 1.5;
+}
+
+.notificationItem > div h3 {
+    font-size: 1.4rem;
+    font-weight: 600;
+    margin: 0;
+    color: var(--clr-neutral-800);
+}
+
+.notificationItem > span {
+    margin-left: auto;
+    font-size: 1.4rem;
+    font-weight: 500;
+    color: var(--clr-neutral-300);
+}
+
+/* Responsive styles for mobile devices */
+@media (max-width: 768px) {
+    .notificationItem {
+        padding: 1.2rem;
+        border-radius: 0.8rem;
+        gap: 1rem;
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .notificationItem > div h3 {
+        font-size: 1.3rem;
+    }
+
+    .notificationItem > div p {
+        font-size: 1.1rem;
+    }
+
+    .notificationItem > span {
+        font-size: 1.2rem;
+    }
+}
+
+@media (min-width: 769px) and (max-width: 1024px) {
+    .notificationItem {
+        padding: 1.3rem;
+    }
+
+    .notificationItem > div h3 {
+        font-size: 1.35rem;
+    }
+
+    .notificationItem > div p {
+        font-size: 1.15rem;
+    }
+
+    .notificationItem > span {
+        font-size: 1.3rem;
+    }
+}

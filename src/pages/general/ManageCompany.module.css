@@ -1,0 +1,45 @@
+.companyFormContainer form {
+    padding: 1rem 2rem;
+    display: grid;
+    gap: 3.2rem;
+}
+
+.companyFormContainer form input,
+.companyFormContainer form textarea {
+    width: 100%;
+}
+
+.companyFormContainer form > div {
+    display: flex;
+    gap: 1.6rem 2.8rem;
+    align-items: center;
+}
+
+.companyFormContainer form > div > span {
+    min-width: 20rem;
+    font-size: 2rem;
+    font-weight: 600;
+}
+
+.inputFile input {
+    margin-top: 1.2rem;
+    width: 100%;
+}
+
+.inputFile :global(.imgContainer) {
+    border: 1px solid var(--clr-neutral-300);
+    border-radius: 1.6rem;
+    width: 20rem;
+    height: 15rem;
+}
+
+@media screen and (max-width: 900px) {
+    .companyFormContainer form > div:not(:global(.btnsContainer)) {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .inputFile input {
+        width: 100%;
+    }
+}

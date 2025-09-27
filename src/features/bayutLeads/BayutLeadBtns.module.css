@@ -1,0 +1,10 @@
+.leadBtns {
+    display: flex;
+    gap: 1rem;
+}
+
+.leadBtns button {
+    padding: 0.8rem 1.2rem;
+    border: 1px solid var(--clr-neutral-300);
+    border-radius: 0.6rem;
+}

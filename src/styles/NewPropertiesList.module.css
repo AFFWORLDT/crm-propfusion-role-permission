@@ -1,0 +1,9 @@
+.addPropertyButtonResponsive {
+    width: 100%;
+}
+
+@media (min-width: 768px) {
+    .addPropertyButtonResponsive {
+        width: auto;
+    }
+} 

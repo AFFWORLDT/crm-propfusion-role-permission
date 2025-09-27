@@ -1,0 +1,205 @@
+.container {
+  display: flex;
+  flex-direction: column;
+}
+
+.propertyCard {
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+  padding: 32px;
+  margin-bottom: 24px;
+  border: 1px solid #e5e7eb;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.title {
+  font-size: 2.1rem;
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+
+.location {
+  color: #888;
+  font-size: 1.25rem;
+}
+
+.typeTag {
+  background: #f5f5f5;
+  color: #333;
+  border-radius: 6px;
+  padding: 8px 20px;
+  font-size: 1.1rem;
+  font-weight: 600;
+}
+
+.meta {
+  display: flex;
+  gap: 48px;
+  margin: 24px 0;
+  font-size: 1.5rem;
+}
+
+.label {
+  color: #888;
+  font-size: 1.5rem;
+  margin-bottom: 4px;
+  display: block;
+}
+
+.revenueRow {
+  display: flex;
+  gap: 64px;
+  margin-bottom: 24px;
+}
+
+.revenue, .collected, .pending {
+  font-weight: 700;
+  font-size: 1.5rem;
+}
+
+.collected {
+  color: #1db954;
+}
+
+.pending {
+  color: #fbbf24;
+}
+
+.agreementCard {
+  background: #fafbfc;
+  border-radius: 10px;
+  padding: 24px;
+  margin-top: 18px;
+  border: 1px solid #f0f0f0;
+}
+
+.agreementHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-weight: 600;
+  margin-bottom: 12px;
+}
+
+.status {
+  padding: 4px 16px;
+  border-radius: 8px;
+  font-size: 1.2rem;
+  font-weight: 700;
+  background: #e5fbe5;
+  color: #1db954;
+}
+
+.status.active {
+  background: #e5fbe5;
+  color: #1db954;
+}
+
+.status.inactive {
+  background: #fbe5e5;
+  color: #e02424;
+}
+
+.agreementDetails {
+  display: flex;
+  gap: 48px;
+  margin-bottom: 16px;
+  font-size: 1.4rem;
+}
+
+.paymentsTable {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  margin-top: 10px;
+  background: #fff;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.04);
+  font-size: 1.4rem;
+  min-width: 480px;
+}
+.paymentsTable th, .paymentsTable td {
+  padding: 12px 16px;
+  text-align: left;
+}
+.paymentsTable th {
+  background: #f5f6fa;
+  font-weight: 700;
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  border-bottom: 2px solid #e5e7eb;
+}
+.paymentsTable tr {
+  transition: background 0.2s;
+}
+.paymentsTable tbody tr:nth-child(even) {
+  background: #fafbfc;
+}
+.paymentsTable tbody tr:hover {
+  background: #f0f4ff;
+}
+.paymentsTable td {
+  border-bottom: 1px solid #f0f0f0;
+}
+.paymentsTable td.amount, .paymentsTable td.dueDate {
+  text-align: left;
+}
+.paymentsTable td.status {
+  min-width: 100px;
+}
+.paymentsTable td.paymentMethod {
+  text-transform: capitalize;
+}
+.paymentsSection {
+  margin-top: 12px;
+  overflow-x: auto;
+}
+
+.noPayments {
+  color: #aaa;
+  font-size: 1.1rem;
+}
+
+.paymentRow {
+  display: flex;
+  align-items: center;
+  gap: 28px;
+  margin: 6px 0;
+  font-size: 1.15rem;
+}
+
+.paymentStatus {
+  border-radius: 8px;
+  padding: 4px 16px;
+  font-size: 1.1rem;
+  font-weight: 700;
+  text-transform: capitalize;
+}
+
+.paymentStatus.done {
+  background: #e5fbe5;
+  color: #1db954;
+}
+
+.paymentStatus.pending {
+  background: #fffbe5;
+  color: #fbbf24;
+}
+
+.paymentStatus.overdue {
+  background: #fbe5e5;
+  color: #e02424;
+}
+
+.paymentMethod {
+  color: #888;
+  font-size: 1.05rem;
+}

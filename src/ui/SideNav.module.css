@@ -1,0 +1,174 @@
+.sideNav {
+    padding: 3.6rem 2.4rem 2.4rem;
+    background-color: var(--clr-primary-300);
+    overflow: hidden auto;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4.8rem;
+}
+
+.logo {
+    margin: 0 auto;
+    max-width: 100%;
+    max-height: 8rem;
+    border-radius: 1.2rem;
+}
+
+.menuItems ul {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    color: var(--clr-neutral-50);
+    overflow: hidden;
+    user-select: none;
+}
+
+.menuItems li a,
+.menuItems li p {
+    padding: 1rem 2rem;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 1.2rem;
+    border-radius: 50px;
+    cursor: pointer;
+}
+
+.menuItems li a:hover,
+.menuItems :global(.active) {
+    background-color: var(--clr-primary-400);
+    color: white;
+    transition: 0.2s var(--timing-function);
+}
+
+.menuItems li img {
+    max-width: 2.8rem;
+}
+
+/******************/
+/* Hamburger Menu */
+/******************/
+
+.sideNav .menuHamburger {
+    position: relative;
+    display: grid;
+    min-height: 40px;
+    width: 40px;
+    place-items: center;
+    cursor: pointer;
+    z-index: 90;
+}
+
+.sideNav .menuHamburger span {
+    position: absolute;
+    display: block;
+    height: 2px;
+    width: 30px;
+    background-color: var(--clr-neutral-50);
+    border-radius: 28px;
+    transform: translateY(10px);
+    transition: var(--timing-function) 0.5s;
+}
+
+.sideNav.hamburgerActive .menuHamburger span {
+    transform: translateY(0) rotate(-45deg);
+}
+
+.sideNav .menuHamburger::before {
+    content: "";
+    position: absolute;
+    height: 2px;
+    width: 30px;
+    background-color: var(--clr-neutral-50);
+    border-radius: 28px;
+    transform: translateY(-10px);
+    box-shadow: 0 10px var(--clr-neutral-50);
+    transition: var(--timing-function) 0.5s;
+}
+
+.sideNav.hamburgerActive .menuHamburger::before {
+    transform: translateY(0) rotate(45deg);
+    box-shadow: none;
+}
+
+/***********************/
+/* For Collapsible Nav */
+/***********************/
+
+.sideNav .menuItems li a:not(:first-child),
+.sideNav .menuItems li span,
+.sideNav .menuItems li img:last-child {
+    display: none;
+}
+
+.sideNav.hamburgerActive .menuItems li span,
+.sideNav.hamburgerActive .menuItems li img:last-child {
+    display: unset;
+}
+
+.sideNav.hamburgerActive .menuItems li a:not(:first-child) {
+    display: flex;
+}
+
+/*****************/
+/* Media Queries */
+/*****************/
+
+@media only screen and (max-width: 1200px) {
+    .sideNav {
+        flex-direction: row;
+        gap: 3rem;
+        justify-content: space-between;
+        padding: 0.5rem 2rem;
+    }
+
+    .logo {
+        margin: 0;
+        max-height: 4.8rem;
+    }
+
+    .sideNav.hamburgerActive .menuHamburger span {
+        background-color: var(--clr-neutral-400);
+    }
+
+    .sideNav.hamburgerActive .menuHamburger::before {
+        background-color: var(--clr-neutral-400);
+        box-shadow: var(--clr-neutral-400);
+    }
+
+    .menuItems {
+        position: absolute;
+        top: 0;
+        right: 0;
+        z-index: 80;
+
+        display: none;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        min-height: 100svh;
+        padding: 4.8rem 0;
+        background-color: var(--clr-neutral-50);
+        font-size: var(--fs-md);
+        opacity: 0;
+    }
+
+    .sideNav.hamburgerActive .menuItems {
+        display: flex;
+        opacity: 1;
+    }
+
+    .menuItems ul {
+        height: auto;
+        gap: 1.5rem;
+        color: var(--clr-neutral-400);
+    }
+
+    .menuItems li a:not(:global(.active)) img,
+    .menuItems li p img {
+        filter: invert(100%) sepia(100%) saturate(0%) hue-rotate(0deg)
+            grayscale(100%);
+    }
+}

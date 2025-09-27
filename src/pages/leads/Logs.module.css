@@ -1,0 +1,89 @@
+.leadLogsTop {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 2rem;
+    flex-wrap: wrap;
+
+}
+.leadLogsTop h3 {
+    color: var(--clr-primary-300);
+    font-size: 2.2rem;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    white-space: nowrap; /* Prevent text wrapping */
+}
+.leadLogsTop h3 img {
+    max-width: 2.7rem;
+    object-fit: fill;
+}
+/* Updated CSS for Grid Layout */
+.logsContainer {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+    max-height: 50rem;
+    overflow: hidden auto;
+}
+
+.logItem {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    background-color: #ffffff;
+    border-radius: 8px;
+    padding: 16px;
+    transition:
+        box-shadow 0.2s ease,
+        transform 0.2s ease;
+    border: 1px solid var(--clr-neutral-200);
+    cursor: pointer;
+}
+
+
+.logHeader {
+    display: flex;
+    align-items: center;
+    margin-bottom: 12px;
+}
+
+.agentAvatar {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    margin-right: 15px;
+    border: 3px solid #007bff;
+    object-fit: cover;
+}
+
+.logTimestamp {
+    color: #666;
+    font-size: 0.9em;
+}
+
+.logMessage {
+    color: #333;
+    font-size: 0.95em;
+    line-height: 1.5;
+}
+
+.noLogs {
+    grid-column: 1 / -1;
+    text-align: center;
+    color: #777;
+    font-size: 1.1em;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 600px) {
+    .logsContainer {
+        grid-template-columns: 1fr;
+    }
+
+    .agentAvatar {
+        width: 40px;
+        height: 40px;
+    }
+}

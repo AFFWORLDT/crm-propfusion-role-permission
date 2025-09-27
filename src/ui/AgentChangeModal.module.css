@@ -1,0 +1,129 @@
+.agentAvatar {
+    width: 4.8rem;
+    height: 4.8rem;
+    border-radius: 1rem;
+    overflow: hidden; 
+}
+
+.agentAvatar img {
+    height: 100%;
+    max-width: 100% !important;
+    object-fit: cover !important;
+}
+
+.agentModal {
+    margin-top: 1rem;
+    padding: 2rem;
+    min-width: 30rem;
+    max-height: 80vh; 
+    display: grid;
+    gap: 1rem;
+    border-radius: 0.8rem;
+    overflow-y: auto; 
+    -ms-overflow-style: none;  /* Hide scrollbar for IE and Edge */
+    scrollbar-width: none;     /* Hide scrollbar for Firefox */
+}
+
+.agentModal::-webkit-scrollbar {
+    display: none;
+}
+
+.agentModal::-webkit-scrollbar-thumb {
+    background-color: var(--clr-primary-100);
+    border-radius: 10px;
+}
+
+.agentModal::-webkit-scrollbar-track {
+    background-color: var(--clr-neutral-300);
+}
+/* Add scrollbar for small screen heights */
+@media (max-height: 500px) {
+    .agentModal {
+        max-height: 60vh;
+        overflow-y: auto; /* Enable vertical scrolling */
+    margin-top: 4rem;
+
+    }
+
+    .agentModal::-webkit-scrollbar {
+        display: none;
+    }
+
+    .agentModal::-webkit-scrollbar-thumb {
+        background-color: var(--clr-primary-100);
+        border-radius: 10px;
+    }
+
+    .agentModal::-webkit-scrollbar-track {
+        background-color: var(--clr-neutral-300);
+    }
+}
+
+/* Wrapper for h3 to define fixed height */
+.agentModal-header {
+    height: auto; /* Adjust if a fixed height is required */
+    margin-bottom: 1rem;
+}
+
+.agentModal h3 {
+    font-size: 2rem;
+    font-weight: 600;
+    margin: 0; /* Avoid adding extra margin if wrapped */
+}
+
+/* Responsive text for header */
+@media (max-width: 768px) {
+    .agentModal h3 {
+        font-size: 1.8rem;
+    }
+}
+
+/* List styling */
+.agentModal ul {
+    margin: 0;
+    padding: 0;
+    display: grid;
+    gap: 1rem;
+}
+
+/* Button styling */
+.agentModal li button {
+    width: 100%;
+    padding: 1.5rem;
+    background-color: var(--clr-primary-100);
+    border-radius: 0.8rem;
+    font-size: 1.6rem;
+    transition: 0.3s var(--timing-function);
+}
+
+/* Hover and focus */
+.agentModal li button:hover, 
+.agentModal li button:focus {
+    background-color: var(--clr-primary-300);
+    color: var(--clr-neutral-100);
+}
+
+/* Responsive button text size */
+@media (max-width: 768px) {
+    .agentModal li button {
+        font-size: 1.4rem;
+        padding: 1rem;
+    }
+}
+
+/* Small screen adjustments */
+@media (max-width: 480px) {
+    .agentModal {
+        padding: 1rem;
+        gap: 0.8rem;
+    }
+
+    .agentModal h3 {
+        font-size: 1.6rem;
+    }
+
+    .agentModal li button {
+        font-size: 1.2rem;
+        padding: 0.8rem;
+    }
+}

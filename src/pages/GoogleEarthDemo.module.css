@@ -1,0 +1,197 @@
+.demoControls {
+  display: flex;
+  gap: 12px;
+  margin-top: 16px;
+}
+
+.viewButton {
+  background: #f3f4f6;
+  border: 2px solid #e5e7eb;
+  border-radius: 8px;
+  padding: 10px 20px;
+  font-size: 14px;
+  font-weight: 500;
+  color: #4b5563;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.viewButton:hover {
+  background: #e5e7eb;
+  border-color: #d1d5db;
+  color: #1f2937;
+}
+
+.viewButton.active {
+  background: #3b82f6;
+  border-color: #3b82f6;
+  color: white;
+}
+
+.demoInfo {
+  background: white;
+  border-radius: 12px;
+  padding: 24px;
+  margin-bottom: 24px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.demoInfo h3 {
+  margin: 0 0 16px 0;
+  color: #1f2937;
+  font-size: 20px;
+  font-weight: 600;
+}
+
+.demoInfo p {
+  margin: 0 0 20px 0;
+  color: #6b7280;
+  line-height: 1.6;
+}
+
+.features {
+  margin-bottom: 20px;
+}
+
+.features h4 {
+  margin: 0 0 12px 0;
+  color: #1f2937;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.features ul {
+  margin: 0;
+  padding-left: 20px;
+  color: #6b7280;
+}
+
+.features li {
+  margin-bottom: 8px;
+  line-height: 1.5;
+}
+
+.sampleData {
+  background: #f8fafc;
+  border-radius: 8px;
+  padding: 16px;
+  border-left: 4px solid #3b82f6;
+}
+
+.sampleData h4 {
+  margin: 0 0 8px 0;
+  color: #1f2937;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.sampleData p {
+  margin: 0;
+  color: #6b7280;
+  font-size: 14px;
+}
+
+.mapContainer {
+  margin-bottom: 24px;
+}
+
+.earthOnlyContainer {
+  background: white;
+  border-radius: 12px;
+  padding: 20px;
+  margin-bottom: 20px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.earthOnlyContainer h3 {
+  margin: 0 0 8px 0;
+  color: #1f2937;
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.earthOnlyContainer p {
+  margin: 0 0 16px 0;
+  color: #6b7280;
+  font-size: 14px;
+}
+
+.instructions {
+  background: #fef3c7;
+  border-radius: 12px;
+  padding: 20px;
+  border-left: 4px solid #f59e0b;
+}
+
+.instructions h4 {
+  margin: 0 0 12px 0;
+  color: #92400e;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.instructions ol {
+  margin: 0;
+  padding-left: 20px;
+  color: #92400e;
+}
+
+.instructions li {
+  margin-bottom: 8px;
+  line-height: 1.5;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .demoControls {
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .viewButton {
+    width: 100%;
+    text-align: center;
+  }
+
+  .demoInfo {
+    padding: 16px;
+  }
+
+  .demoInfo h3 {
+    font-size: 18px;
+  }
+
+  .features ul {
+    padding-left: 16px;
+  }
+
+  .earthOnlyContainer {
+    padding: 16px;
+  }
+
+  .instructions {
+    padding: 16px;
+  }
+}
+
+@media (max-width: 480px) {
+  .demoInfo {
+    padding: 12px;
+  }
+
+  .demoInfo h3 {
+    font-size: 16px;
+  }
+
+  .features h4,
+  .sampleData h4,
+  .earthOnlyContainer h3,
+  .instructions h4 {
+    font-size: 14px;
+  }
+
+  .features li,
+  .instructions li {
+    font-size: 13px;
+  }
+} 

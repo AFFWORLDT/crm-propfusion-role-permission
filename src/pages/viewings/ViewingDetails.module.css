@@ -1,0 +1,156 @@
+.viewingDetailsContainer {
+  padding: 1rem;
+  background-color: #f1f5f9;
+  min-height: 100vh;
+}
+
+.viewingCard {
+  background-color: #fff;
+  border-radius: 1rem;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08);
+  padding: 2rem;
+  margin-bottom: 2rem;
+  transition: box-shadow 0.3s ease;
+}
+
+.viewingCard:hover {
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.1);
+}
+
+.infoSection {
+  border-bottom: 1px solid #e2e8f0;
+  padding-bottom: 1.75rem;
+  margin-bottom: 1.75rem;
+}
+
+.infoSection:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
+  margin-bottom: 0;
+}
+
+.infoHeader {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: #1e293b;
+  margin-bottom: 1.25rem;
+}
+
+.headerIcon {
+  color: #2563eb;
+}
+
+.infoContent {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.infoRow {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.infoLabelContainer {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  min-width: 9rem;
+}
+
+.infoLabel {
+  font-weight: 500;
+  color: #475569;
+}
+
+.infoIcon {
+  color: #64748b;
+}
+
+.infoValue {
+  color: #1f2937;
+  font-weight: 400;
+  flex: 1;
+}
+
+.statusBadge {
+  padding: 0.4rem 1rem;
+  border-radius: 9999px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  display: inline-flex;
+  text-transform: capitalize;
+  align-items: center;
+  justify-content: center;
+}
+
+.scheduled {
+  background-color: #e0f2fe;
+  color: #0284c7;
+}
+
+.completed {
+  background-color: #dcfce7;
+  color: #16a34a;
+}
+
+.cancelled {
+  background-color: #fee2e2;
+  color: #dc2626;
+}
+
+.pending {
+  background-color: #fef9c3;
+  color: #ca8a04;
+}
+
+.notes {
+  background-color: #f8fafc;
+  padding: 1.25rem;
+  border-radius: 0.5rem;
+  font-style: italic;
+  color: #334155;
+  line-height: 1.6;
+  margin-top: 0.75rem;
+}
+
+/* States */
+.loadingState,
+.errorState,
+.emptyState {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  border-radius: 0.75rem;
+  font-weight: 500;
+  gap: 0.75rem;
+  background-color: #fff;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  font-size: 1rem;
+}
+
+.loadingIcon {
+  animation: spin 1.5s linear infinite;
+}
+
+.errorState {
+  color: #dc2626;
+  background-color: #fef2f2;
+}
+
+.emptyState {
+  color: #ca8a04;
+  background-color: #fffbeb;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}

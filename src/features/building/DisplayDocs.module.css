@@ -1,0 +1,342 @@
+.displayImages {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    gap: 2rem;
+    padding: 2rem;
+    background-color: var(--clr-neutral-50);
+    border-radius: 0.8rem;
+}
+
+.displayImagesEmpty {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 200px;
+    background-color: var(--clr-neutral-50);
+    border-radius: 0.8rem;
+}
+
+.displayImageContainer {
+    position: relative;
+    border-radius: 0.8rem;
+    overflow: hidden;
+    background-color: white;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.displayImageContainer.selected {
+    border: 2px solid var(--clr-primary-200);
+}
+
+.imgOperations {
+    position: absolute;
+    top: 0.5rem;
+    right: 0.5rem;
+    display: flex;
+    gap: 0.5rem;
+}
+
+.actions {
+    grid-column: 1 / -1;
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-top: 2rem;
+}
+
+.submitButton,
+.cancelButton {
+    padding: 0.8rem 1.6rem;
+    border-radius: 0.4rem;
+    cursor: pointer;
+}
+
+.uploadOverlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(255, 255, 255, 0.8);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+}
+
+.displayImageContainer :global(.imgContainer) {
+    height: 10rem;
+    width: 10rem;
+    border: 1px solid var(--clr-neutral-200);
+    border-radius: 1rem;
+    display: grid;
+    place-items: center;
+}
+
+.displayImageContainer .imgOperations {
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    gap: 1rem;
+    background: rgba(0, 0, 0, 0.05);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    opacity: 0;
+    transition: 0.3s var(--timing-function);
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.displayImageContainer:hover .imgOperations {
+    opacity: 1;
+}
+
+.displayImageContainer .imgOperations img {
+    height: 2.8rem;
+    width: 2.4rem;
+    filter: saturate(100) invert(100);
+}
+
+.expandedImage {
+    width: 90vw;
+    height: 90vh;
+    border-radius: 1.6rem;
+    border-top-right-radius: 8rem;
+}
+
+@media screen and (max-width: 900px) {
+    .displayImageContainer :global(.imgContainer),
+    .displayImageContainer .imgOperations {
+        border-radius: 0;
+    }
+
+    .displayImageContainer {
+        display: flex;
+    }
+
+    .displayImageContainer .imgOperations {
+        position: static;
+        opacity: 1;
+        width: 4rem;
+        background: rgba(0, 0, 0, 0.4);
+        flex-direction: column;
+    }
+
+    .expandedImage {
+        width: 80vw;
+        height: 60vh;
+    }
+}
+
+@media screen and (max-width: 760px) {
+    .expandedImage {
+        width: 100%;
+        height: 50vw;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .displayImages {
+        margin-left: 0;
+    }
+}
+
+.uploading {
+    position: relative;
+    pointer-events: none;
+    opacity: 0.7;
+}
+
+.uploadOverlay img {
+    width: 40px;
+    height: 40px;
+    animation: spin 1.5s linear infinite;
+    color: var(--clr-primary-200);
+    filter: invert(45%) sepia(90%) saturate(1000%) hue-rotate(200deg);
+}
+
+.uploadOverlay span {
+    color: var(--clr-primary-200);
+    font-weight: 500;
+    font-size: 16px;
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+/* Improved backdrop style */
+.uploading::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(2px);
+    z-index: 999;
+}
+
+.docsContainer {
+    width: 100%;
+    padding: 0.5rem;
+    position: relative;
+}
+
+.docsGrid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+    gap: 0.5rem;
+    width: 100%;
+}
+
+.docItem {
+    background: #ffffff;
+    border: 1px solid #e5e7eb;
+    border-radius: 4px;
+    padding: 0.5rem;
+    transition: all 0.2s ease;
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+}
+
+.docItem:hover {
+    box-shadow: 0 2px 4px -1px rgba(0, 0, 0, 0.1);
+}
+
+.docContent {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.25rem;
+}
+
+.docIcon {
+    width: 3rem;
+    height: 3rem;
+    object-fit: contain;
+}
+
+.docImage {
+    width: 100%;
+    height: 80px;
+    object-fit: cover;
+    border-radius: 3px;
+}
+
+.docType {
+    font-size: 0.75rem;
+    color: #4b5563;
+    text-align: center;
+    text-transform: capitalize;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 100%;
+    padding: 0 0.25rem;
+}
+
+.docActions {
+    display: flex;
+    justify-content: center;
+    gap: 0.25rem;
+    margin-top: 0.25rem;
+}
+
+.actionButton {
+    background: transparent;
+    border: none;
+    padding: 0.25rem;
+    cursor: pointer;
+    border-radius: 3px;
+    transition: all 0.2s ease;
+}
+
+.actionButton:hover {
+    background: #f3f4f6;
+}
+
+.actionButton:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.actionButton img {
+    width: 1rem;
+    height: 1rem;
+}
+
+.uploading {
+    opacity: 0.7;
+    pointer-events: none;
+}
+
+.uploadOverlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(255, 255, 255, 0.8);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+}
+
+.uploadOverlay img {
+    width: 1.5rem;
+    height: 1.5rem;
+    animation: spin 1s linear infinite;
+}
+
+.uploadOverlay span {
+    font-size: 0.875rem;
+}
+
+.galleryContainer {
+    max-width: 90vw;
+    max-height: 90vh;
+    margin: 1rem auto;
+    background: white;
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+@keyframes spin {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .docsGrid {
+        grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+    }
+
+    .docIcon {
+        width: 2.5rem;
+        height: 2.5rem;
+    }
+
+    .docImage {
+        height: 70px;
+    }
+
+    .docType {
+        font-size: 0.7rem;
+    }
+}

@@ -1,0 +1,657 @@
+/* SHADCN-INSPIRED MODERN UI */
+:root {
+  --primary: #0ea5e9;
+  --primary-foreground: #ffffff;
+  --muted: #f8fafc;
+  --muted-foreground: #64748b;
+  --card: #ffffff;
+  --card-foreground: #0f172a;
+  --border: #e2e8f0;
+  --input: #f3f4f6;
+  --ring: #e5e7eb;
+  --background: #ffffff;
+  --foreground: #0f172a;
+  --secondary: #f3f4f6;
+  --secondary-foreground: #0f172a;
+  --destructive: #ef4444;
+  --destructive-foreground: #ffffff;
+  --success: #10b981;
+  --success-foreground: #ffffff;
+  --warning: #f59e0b;
+  --warning-foreground: #ffffff;
+  --radius: 0.5rem;
+  --font-sans: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+  --shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
+  --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+  --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+  --card-header-bg: rgba(248, 250, 252, 0.5);
+  --card-border-hover: var(--primary);
+  --border-light: #f1f5f9;
+}
+
+/* Reset and base styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: var(--font-sans);
+  background-color: #f9fafb;
+  color: var(--foreground);
+}
+
+.addButton {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.5rem;
+  background: var(--primary);
+  border: none;
+  border-radius: var(--radius);
+  color: var(--primary-foreground);
+  font-weight: 600;
+  font-size: 0.9375rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  box-shadow: var(--shadow);
+}
+
+.addButton:hover {
+  background: hsl(198, 90%, 44%);
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-md);
+}
+
+.addButton:active {
+  transform: translateY(0);
+}
+
+.addButton svg {
+  transition: transform 0.2s ease;
+  width: 1.25rem;
+  height: 1.25rem;
+}
+
+.addButton:hover svg {
+  transform: rotate(90deg);
+}
+
+.addOwnerContainer {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+/* Grid layout */
+.listings {
+  display: grid;
+  gap: 2rem;
+  grid-template-columns: repeat(auto-fill, minmax(420px, 1fr));
+  margin-top: 1rem;
+}
+
+/* Card styling for grid view */
+.listingItem {
+  background: var(--card);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transition: all 0.25s ease;
+  border: 1px solid var(--border);
+  position: relative;
+  height: 100%;
+}
+
+.listingItem:hover {
+  box-shadow: var(--shadow-md);
+  border-color: var(--card-border-hover);
+  transform: translateY(-3px);
+}
+
+.listingContent {
+  padding: 0;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.listingTop {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid var(--border-light);
+  padding: 1.5rem;
+  background-color: var(--card-header-bg);
+}
+
+.listingTop h2 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--card-foreground);
+  line-height: 1.25;
+}
+
+.listingStatus {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.5rem 1.25rem;
+  border-radius: 9999px;
+  font-size: 1rem;
+  font-weight: 600;
+  text-transform: capitalize;
+  letter-spacing: 0.025em;
+  margin: 0.5rem 1.5rem 1.25rem;
+  box-shadow: var(--shadow-sm);
+}
+
+.listingContent ul {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 1rem;
+  margin: 0 1.5rem;
+  padding: 1.5rem;
+  background: var(--muted);
+  border-radius: var(--radius);
+  flex-grow: 1;
+}
+
+.listingContent ul li {
+  display: flex;
+  flex-direction: column;
+  gap: 0.375rem;
+  margin-bottom: 1rem;
+  position: relative;
+}
+
+.listingContent ul li span:first-child {
+  color: var(--muted-foreground);
+  font-size: 0.875rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.025em;
+}
+
+.listingContent ul li span:last-child {
+  color: var(--foreground);
+  font-weight: 600;
+  font-size: 1.125rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Action buttons */
+.actionButtons {
+  display: flex;
+  gap: 0.75rem;
+  padding: 1.5rem;
+  background: var(--card-header-bg);
+  border-top: 1px solid var(--border-light);
+  margin-top: auto;
+  flex-wrap: wrap;
+}
+
+.viewButton,
+.editButton,
+.deleteButton {
+  padding: 0.75rem 1.25rem;
+  border-radius: var(--radius);
+  font-weight: 600;
+  font-size: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.625rem;
+  transition: all 0.25s ease;
+  position: relative;
+  box-shadow: var(--shadow-sm);
+  border: none;
+  cursor: pointer;
+  flex: 1;
+  min-width: 110px;
+}
+
+.viewButton {
+  background: var(--success);
+  color: var(--success-foreground);
+}
+
+.editButton {
+  background: var(--primary);
+  color: var(--primary-foreground);
+}
+
+.deleteButton {
+  background: var(--destructive);
+  color: var(--destructive-foreground);
+}
+
+.viewButton:hover,
+.editButton:hover,
+.deleteButton:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
+
+.viewButton:focus,
+.editButton:focus,
+.deleteButton:focus {
+  outline: 2px solid var(--ring);
+  outline-offset: 2px;
+}
+
+.viewButton svg,
+.editButton svg,
+.deleteButton svg {
+  width: 1.25rem;
+  height: 1.25rem;
+}
+
+/* View Controls */
+.viewControls {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+  padding: 1.25rem;
+  background: var(--background);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  border: 1px solid var(--border);
+}
+
+.viewToggle {
+  display: flex;
+  gap: 0.375rem;
+  background: var(--muted);
+  padding: 0.375rem;
+  border-radius: var(--radius);
+}
+
+.viewToggleButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.625rem;
+  border: none;
+  background: transparent;
+  color: var(--muted-foreground);
+  cursor: pointer;
+  border-radius: calc(var(--radius) - 0.125rem);
+  transition: all 0.2s ease;
+}
+
+.viewToggleButton:hover {
+  color: var(--foreground);
+  background: rgba(0, 0, 0, 0.05);
+}
+
+.viewToggleButton.active {
+  background: var(--background);
+  color: var(--foreground);
+  box-shadow: var(--shadow-sm);
+}
+
+.viewToggleButton svg {
+  width: 1.25rem;
+  height: 1.25rem;
+}
+
+/* List View */
+.listView {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.listViewItem {
+  background: var(--card);
+  border-radius: var(--radius);
+  border: 1px solid var(--border);
+  overflow: hidden;
+  transition: all 0.2s ease;
+  box-shadow: var(--shadow);
+}
+
+.listViewItem:hover {
+  box-shadow: var(--shadow-md);
+  border-color: var(--primary);
+  transform: translateY(-2px);
+}
+
+.listViewContent {
+  padding: 1.5rem;
+}
+
+.listViewHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.25rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid var(--border);
+}
+
+.listViewHeader h3 {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--card-foreground);
+}
+
+.listViewDetails {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1.5rem;
+  margin: 1rem 0;
+  padding: 1.25rem;
+  background: var(--muted);
+  border-radius: var(--radius);
+}
+
+.detailColumn {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.detailColumn p {
+  margin: 0;
+  color: var(--card-foreground);
+  font-size: 1rem;
+  line-height: 1.5;
+}
+
+.detailColumn p strong {
+  color: var(--muted-foreground);
+  font-weight: 600;
+  margin-right: 0.5rem;
+  display: inline-block;
+}
+
+/* Table View */
+.tableViewContainer {
+  background: var(--card);
+  border-radius: var(--radius);
+  overflow: hidden;
+  box-shadow: var(--shadow);
+  border: 1px solid var(--border);
+}
+
+.tableView {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  font-size: 0.9375rem;
+}
+
+.tableHeader {
+  background: var(--muted);
+  color: var(--muted-foreground);
+  font-weight: 600;
+  font-size: 0.875rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  text-align: left;
+  padding: 1rem 1.25rem;
+  border-bottom: 1px solid var(--border);
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.tableHeader.sortable {
+  cursor: pointer;
+  user-select: none;
+  transition: background-color 0.2s ease;
+}
+
+.tableHeader.sortable:hover {
+  background-color: hsl(220, 14%, 94%);
+}
+
+.tableHeader.sorted {
+  color: var(--foreground);
+  background-color: hsl(220, 14%, 94%);
+}
+
+.sortIcon {
+  display: inline-block;
+  margin-left: 0.5rem;
+  font-weight: 700;
+  opacity: 0.7;
+}
+
+.tableRow {
+  border-bottom: 1px solid var(--border);
+  transition: all 0.2s ease;
+}
+
+.tableRow:last-child {
+  border-bottom: none;
+}
+
+.tableRow:hover {
+  background-color: var(--muted);
+}
+
+.tableRow td {
+  padding: 1.25rem;
+  color: var(--card-foreground);
+  transition: background-color 0.15s ease;
+  font-size: 1rem;
+}
+
+.tableRow td:first-child {
+  font-weight: 600;
+}
+
+.tableActions {
+  display: flex;
+  gap: 0.625rem;
+  justify-content: flex-start;
+}
+
+.tableActions button {
+  padding: 0.5rem;
+  border-radius: var(--radius);
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  cursor: pointer;
+  background: var(--muted);
+  color: var(--muted-foreground);
+}
+
+.tableActions button svg {
+  width: 1.125rem;
+  height: 1.125rem;
+}
+
+.tableActions button:hover {
+  transform: translateY(-2px);
+  background: var(--muted-foreground);
+  color: var(--muted);
+}
+
+.tableActions .viewButton:hover {
+  background: var(--success);
+  color: var(--success-foreground);
+}
+
+.tableActions .editButton:hover {
+  background: var(--primary);
+  color: var(--primary-foreground);
+}
+
+.tableActions .deleteButton:hover {
+  background: var(--destructive);
+  color: var(--destructive-foreground);
+}
+
+/* Responsive */
+@media (max-width: 1200px) {
+  .listings {
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+  }
+}
+
+@media (max-width: 768px) {
+  .listings {
+    grid-template-columns: 1fr;
+  }
+
+  .listingContent ul {
+    grid-template-columns: 1fr;
+  }
+
+  .actionButtons {
+    flex-wrap: wrap;
+  }
+
+  .viewControls {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 1rem;
+  }
+
+  .viewToggle {
+    justify-content: center;
+  }
+
+  .listViewDetails {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .addOwnerText {
+    display: none;
+  }
+
+  .addOwnerContainer {
+    padding: 1.25rem;
+  }
+
+  .listingContent, 
+  .listViewContent {
+    padding: 1.25rem;
+  }
+
+  .tableView {
+    font-size: 0.875rem;
+  }
+
+  .tableHeader, 
+  .tableRow td {
+    padding: 1rem 0.75rem;
+  }
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(5px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.listView, 
+.listings, 
+.tableViewContainer {
+  animation: fadeIn 0.2s ease;
+}
+
+/* Status colors - using attribute selectors */
+.status-active {
+  background-color: hsl(142, 76%, 95%) !important;
+  color: hsl(142, 72%, 29%) !important;
+}
+
+.status-inactive {
+  background-color: hsl(0, 86%, 95%) !important;
+  color: hsl(0, 72%, 42%) !important;
+}
+
+.status-pending {
+  background-color: hsl(35, 100%, 95%) !important;
+  color: hsl(35, 100%, 40%) !important;
+}
+
+.status-verified {
+  background-color: hsl(217, 100%, 95%) !important;
+  color: hsl(217, 92%, 45%) !important;
+}
+
+.status-unverified {
+  background-color: hsl(220, 9%, 95%) !important;
+  color: hsl(220, 9%, 46%) !important;
+}
+
+/* Loading skeletons */
+.skeletonCard {
+  background: var(--card);
+  border-radius: var(--radius);
+  padding: 1.5rem;
+  box-shadow: var(--shadow);
+  border: 1px solid var(--border);
+}
+
+.skeletonHeader {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 1.5rem;
+}
+
+.skeletonTitle {
+  height: 24px;
+  width: 200px;
+  background: var(--muted);
+  border-radius: var(--radius);
+}
+
+.skeletonField {
+  margin-bottom: 1.25rem;
+}
+
+.skeletonLabel {
+  height: 16px;
+  width: 120px;
+  background: var(--muted);
+  border-radius: var(--radius);
+  margin-bottom: 0.5rem;
+}
+
+.skeletonValue {
+  height: 22px;
+  background: var(--muted);
+  border-radius: var(--radius);
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -1000px 0;
+  }
+  100% {
+    background-position: 1000px 0;
+  }
+}
+
+.skeletonTitle,
+.skeletonLabel,
+.skeletonValue {
+  animation: shimmer 2s infinite linear;
+  background: linear-gradient(to right, var(--muted) 4%, hsl(220, 14%, 94%) 25%, var(--muted) 36%);
+  background-size: 1000px 100%;
+}

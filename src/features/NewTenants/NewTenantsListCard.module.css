@@ -1,0 +1,179 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  padding: 1.5rem;
+  width: 100%;
+}
+
+.card {
+  background: white;
+  border-radius: 0.75rem;
+  padding: 2rem;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  transition: all 0.2s ease;
+}
+
+.card:hover {
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transform: translateY(-2px);
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.profileImage {
+  width: 5rem;
+  height: 5rem;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.tenantInfo {
+  flex: 1;
+}
+
+.tenantName {
+  font-size: 1.75rem;
+  font-weight: 600;
+  color: hsl(240 10% 3.9%);
+  margin-bottom: 0.5rem;
+}
+
+.tenantEmail {
+  font-size: 1.125rem;
+  color: hsl(240 3.8% 46.1%);
+}
+
+.detailsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.5rem;
+  margin-top: 1.5rem;
+}
+
+.detailItem {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.label {
+  font-size: 1.125rem;
+  color: hsl(240 3.8% 46.1%);
+}
+
+.value {
+  font-size: 1.25rem;
+  color: hsl(240 10% 3.9%);
+  font-weight: 500;
+}
+
+.agentSection {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-top: 2rem;
+  padding-top: 2rem;
+  border-top: 1px solid hsl(240 5.9% 90%);
+}
+
+.agentImage {
+  width: 3.5rem;
+  height: 3.5rem;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.agentInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.agentName {
+  font-size: 1.125rem;
+  font-weight: 500;
+  color: hsl(240 10% 3.9%);
+}
+
+.agentEmail {
+  font-size: 1rem;
+  color: hsl(240 3.8% 46.1%);
+}
+
+.verificationBadge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 1rem;
+  border-radius: 9999px;
+  font-size: 1rem;
+  font-weight: 500;
+  background-color: hsl(142.1 76.2% 36.3% / 0.1);
+  color: hsl(142.1 76.2% 36.3%);
+  margin-top: 0.75rem;
+}
+
+.loadMoreButton {
+  padding: 1rem 2rem;
+  background-color: hsl(240 5.9% 90%);
+  border: none;
+  border-radius: 0.5rem;
+  font-size: 1.125rem;
+  font-weight: 500;
+  color: hsl(240 10% 3.9%);
+  cursor: pointer;
+  transition: all 0.2s ease;
+  width: fit-content;
+  margin: 0 auto;
+}
+
+.loadMoreButton:hover {
+  background-color: hsl(240 5.9% 85%);
+}
+
+.loadMoreButton:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+@media (max-width: 640px) {
+  .card {
+    padding: 1.5rem;
+  }
+
+  .header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .detailsGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .agentSection {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .tenantName {
+    font-size: 1.5rem;
+  }
+
+  .tenantEmail {
+    font-size: 1rem;
+  }
+
+  .label {
+    font-size: 1rem;
+  }
+
+  .value {
+    font-size: 1.125rem;
+  }
+} 

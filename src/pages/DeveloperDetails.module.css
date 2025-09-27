@@ -1,0 +1,214 @@
+.developerInfo {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  margin-bottom: 1.5rem;
+  padding: 1.5rem;
+  background: hsl(var(--background));
+  border-radius: 0.75rem;
+  border: 1px solid hsl(var(--border));
+}
+
+.developerLogo {
+  width: 80px;
+  height: 80px;
+  border-radius: 0.75rem;
+  object-fit: contain;
+  background: hsl(var(--muted));
+  border: 1px solid hsl(var(--border));
+  padding: 0.5rem;
+  transition: all 0.2s ease;
+}
+
+.developerLogo:hover {
+  transform: scale(1.02);
+  border-color: hsl(var(--border-hover));
+}
+
+.developerName {
+  margin: 0;
+  font-weight: 600;
+  font-size: 1.5rem;
+  line-height: 2rem;
+  letter-spacing: -0.025em;
+  color: hsl(var(--foreground));
+}
+
+.developerDescription {
+  color: hsl(var(--muted-foreground));
+  font-size: 0.925rem;
+  line-height: 1.5;
+  margin-top: 0.5rem;
+}
+
+.documentsContainer {
+  padding: 1.5rem;
+  background: hsl(var(--card));
+  border-radius: 0.75rem;
+  border: 1px solid hsl(var(--border));
+}
+
+.projectsSection {
+  background: hsl(var(--background));
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  min-height: 0;
+  padding: 1.5rem;
+  height: calc(100vh - 90px);
+  border-radius: 0.75rem;
+  border: 1px solid hsl(var(--border));
+  overflow: hidden;
+}
+
+.filtersContainer {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 2rem;
+  flex-wrap: wrap;
+  background: hsl(var(--card));
+  border-radius: 0.75rem;
+  box-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+  padding: 1.25rem;
+  align-items: center;
+  border: 1px solid hsl(var(--border));
+}
+
+.inputWrapper {
+  position: relative;
+  min-width: 200px;
+  flex: 1;
+}
+
+.inputIcon {
+  position: absolute;
+  left: 0.75rem;
+  top: 50%;
+  transform: translateY(-50%);
+  color: hsl(var(--muted-foreground));
+  display: flex;
+  align-items: center;
+  pointer-events: none;
+}
+
+.input {
+  width: 100%;
+  border-radius: 0.5rem;
+  border: 1px solid hsl(var(--input));
+  background: hsl(var(--background));
+  padding: 0.75rem 1rem 0.75rem 2.5rem;
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  color: hsl(var(--foreground));
+  transition: all 0.2s ease;
+}
+
+.input:focus {
+  outline: none;
+  border-color: hsl(var(--ring));
+  box-shadow: 0 0 0 2px hsl(var(--ring) / 0.2);
+}
+
+.input:hover {
+  border-color: hsl(var(--input-hover));
+}
+
+.input::placeholder {
+  color: hsl(var(--muted-foreground));
+}
+
+.projectsGrid {
+  overflow-y: auto;
+  flex: 1;
+  height: 100%;
+  margin-top: 1rem;
+  padding: 0.5rem;
+  border-radius: 0.75rem;
+  background: hsl(var(--card));
+  border: 1px solid hsl(var(--border));
+  scrollbar-gutter: stable;
+}
+
+.comingSoonContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 320px;
+  padding: 1.5rem;
+}
+
+.comingSoonCard {
+  background: hsl(var(--card));
+  border-radius: 0.75rem;
+  border: 1px solid hsl(var(--border));
+  padding: 3rem 4rem;
+  font-size: 1.5rem;
+  color: hsl(var(--primary));
+  font-weight: 600;
+  letter-spacing: -0.025em;
+  text-align: center;
+  box-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+  transition: all 0.2s ease;
+}
+
+.comingSoonCard:hover {
+  border-color: hsl(var(--border-hover));
+  transform: translateY(-1px);
+}
+
+.loadingContainer {
+  padding: 2rem;
+  text-align: center;
+  color: hsl(var(--muted-foreground));
+  font-size: 0.925rem;
+}
+
+/* Scrollbar styling */
+.projectsGrid::-webkit-scrollbar {
+  width: 8px;
+}
+
+.projectsGrid::-webkit-scrollbar-track {
+  background: hsl(var(--muted));
+  border-radius: 4px;
+}
+
+.projectsGrid::-webkit-scrollbar-thumb {
+  background: hsl(var(--muted-foreground) / 0.3);
+  border-radius: 4px;
+}
+
+.projectsGrid::-webkit-scrollbar-thumb:hover {
+  background: hsl(var(--muted-foreground) / 0.5);
+}
+
+.filtersWrapper {
+  margin-bottom: 2rem;
+  background: hsl(var(--card));
+  border-radius: 0.75rem;
+  border: 1px solid hsl(var(--border));
+  overflow: hidden;
+}
+
+.toggleButton {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  width: 100%;
+  padding: 0.75rem 1rem;
+  background: hsl(var(--muted));
+  border: none;
+  color: hsl(var(--foreground));
+  font-size: 1.6rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.toggleButton:hover {
+  background: hsl(var(--muted-foreground) / 0.1);
+}
+
+.toggleButton svg {
+  color: hsl(var(--muted-foreground));
+} 

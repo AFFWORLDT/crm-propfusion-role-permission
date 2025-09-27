@@ -1,0 +1,311 @@
+.contactCard {
+  background: #f8fafc;
+  border-radius: 16px;
+  padding: 24px;
+  box-shadow: 0 1px 4px rgba(16, 24, 40, 0.04);
+  margin: 24px;
+  border: 1px solid #e5e7eb;
+}
+
+.contactTitle {
+  color: #18181b;
+  font-size: 22px;
+  font-weight: 600;
+  margin-bottom: 20px;
+}
+
+.tableWrapper {
+  overflow-x: auto;
+  border-radius: 12px;
+  border: 1px solid #e5e7eb;
+  background: #fff;
+}
+
+.contactTable {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 800px;
+  background: #fff;
+}
+
+.contactTable th {
+  background: #f4f4f5;
+  padding: 14px;
+  text-align: left;
+  font-weight: 500;
+  color: #71717a;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.contactTable td {
+  padding: 14px;
+  border-bottom: 1px solid #f1f5f9;
+  color: #18181b;
+  background: #fff;
+}
+
+.contactTable tr:hover {
+  background-color: #f4f4f5;
+}
+
+.avatar {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: #e0e7ef;
+  color: #4b5563;
+  font-weight: 600;
+  font-size: 14px;
+  margin-right: 12px;
+  border: 1px solid #e5e7eb;
+}
+
+.button {
+  padding: 12px 0;
+  border-radius: 8px;
+  font-weight: 500;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  border: 1px solid #e5e7eb;
+  background: #fff;
+  color: #18181b;
+  box-shadow: 0 1px 2px rgba(16, 24, 40, 0.04);
+  width: 100%;
+  margin-bottom: 0.5rem;
+}
+
+.buttonPrimary {
+  background: #4b5563;
+  color: #fff;
+  border: none;
+  box-shadow: 0 1px 4px rgba(75, 85, 99, 0.08);
+}
+
+.buttonPrimary:hover {
+  background: #374151;
+  box-shadow: 0 2px 8px rgba(75, 85, 99, 0.12);
+}
+
+.buttonSecondary {
+  background: #fff;
+  color: #4b5563;
+  border: 1.5px solid #4b5563;
+  box-shadow: 0 1px 4px rgba(75, 85, 99, 0.04);
+}
+
+.buttonSecondary:hover {
+  background: #f4f4f5;
+  color: #1f2937;
+  border-color: #1f2937;
+}
+
+.buttonGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  justify-content: stretch;
+  margin-bottom: 20px;
+}
+
+@media (min-width: 700px) {
+  .button {
+    width: auto;
+    margin-bottom: 0;
+    padding: 10px 22px;
+    font-size: 14px;
+  }
+  .buttonGroup {
+    flex-direction: row;
+    gap: 12px;
+    justify-content: flex-end;
+    margin-bottom: 24px;
+  }
+}
+
+.modalOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.10);
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  backdrop-filter: blur(2px);
+}
+
+.modalContent {
+  background: #fff;
+  border-radius: 14px;
+  padding: 24px;
+  min-width: 320px;
+  box-shadow: 0 2px 16px rgba(16, 24, 40, 0.08);
+  border: 1px solid #e5e7eb;
+}
+
+.modalTitle {
+  font-size: 18px;
+  font-weight: 600;
+  color: #18181b;
+  margin-bottom: 18px;
+}
+
+.formGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  margin-bottom: 18px;
+}
+
+.input {
+  padding: 10px;
+  border-radius: 6px;
+  border: 1.2px solid #e5e7eb;
+  font-size: 14px;
+  background: #f8fafc;
+  transition: all 0.2s ease;
+}
+
+.input:focus {
+  outline: none;
+  border-color: #4b5563;
+  box-shadow: 0 0 0 2px rgba(75, 85, 99, 0.08);
+}
+
+.errorMessage {
+  color: #dc2626;
+  margin-top: 8px;
+  margin-bottom: 4px;
+  font-weight: 600;
+  font-size: 14px;
+}
+
+.modalActions {
+  display: flex;
+  gap: 10px;
+  margin-top: 18px;
+  justify-content: flex-end;
+}
+
+.buttonCancel {
+  padding: 10px 20px;
+  border-radius: 8px;
+  border: none;
+  background: #f4f4f5;
+  color: #71717a;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.buttonCancel:hover {
+  background: #e5e7eb;
+}
+
+.loadMoreButton {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.loadMoreButton button {
+  padding: 10px 24px;
+  border-radius: 8px;
+  border: none;
+  background: #4b5563;
+  color: white;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  box-shadow: 0 1px 4px rgba(75, 85, 99, 0.08);
+}
+
+.loadMoreButton button:hover {
+  background: #374151;
+  box-shadow: 0 2px 8px rgba(75, 85, 99, 0.12);
+}
+
+.loadMoreButton button:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+
+.actionButton {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  color: #4b5563;
+  font-weight: 500;
+  padding: 4px 8px;
+  border-radius: 4px;
+  transition: all 0.2s ease;
+}
+
+.actionButton:hover {
+  background: #f4f4f5;
+}
+
+.actionButton:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.tableLink {
+  color: #4b5563;
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+
+.tableLink:hover {
+  color: #1f2937;
+  text-decoration: underline;
+}
+
+.tagBadge {
+  display: inline-block;
+  background: #f1f5f9;
+  color: #4b5563;
+  border-radius: 16px;
+  padding: 5px 16px;
+  font-size: 1rem;
+  margin-right: 6px;
+  font-weight: 500;
+  box-shadow: none;
+  letter-spacing: 0.5px;
+  border: 1px solid #e5e7eb;
+}
+
+a {
+  color: #4b5563;
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.2s;
+}
+a:hover {
+  color: #1f2937;
+  text-decoration: underline;
+}
+
+@media (max-width: 700px) {
+  .contactCard {
+    padding: 1rem 0.3rem;
+    max-width: 99vw;
+  }
+  .contactTable th, .contactTable td {
+    padding: 10px 6px;
+    font-size: 0.98rem;
+  }
+  .avatar {
+    width: 34px;
+    height: 34px;
+    font-size: 1rem;
+  }
+} 

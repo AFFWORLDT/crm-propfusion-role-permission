@@ -1,0 +1,292 @@
+.reportDashboardWrapper {
+  padding: 1rem;
+}
+
+.metricsCardsLayout {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.insightfulMetricCard {
+  background: white !important;
+  border: 1px solid hsl(214.3 31.8% 91.4%);
+  border-radius: 0.5rem;
+  padding: 1.5rem;
+  box-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+  transition: box-shadow 0.2s ease-in-out;
+}
+
+.insightfulMetricCard:hover {
+  box-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px 0 rgb(0 0 0 / 0.06);
+}
+
+.metricCardHeaderSection {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 0.5rem;
+}
+
+.metricCardTitleText {
+  font-size: 1.4rem;
+  font-weight: 500;
+  color: hsl(215.4 16.3% 56.9%) !important;
+  line-height: 1;
+}
+
+.metricCardVisualIcon {
+  font-size: 1.25rem !important;
+  opacity: 0.7;
+}
+
+.metricCardValueDisplay {
+  font-size: 2.75rem !important;
+  font-weight: 700;
+  color: hsl(215.4 16.3% 46.9%) !important  ;
+  line-height: 1;
+  margin: 0.5rem 0;
+}
+
+.metricCardDescriptionText {
+  font-size: 1.2rem;
+  color: hsl(215.4 16.3% 56.9%) !important;
+  margin: 0;
+}
+
+/* Clean status indicators */
+.todayTasksHighlight {
+  border-top: 3px solid hsl(142.1 76.2% 36.3%);
+}
+
+.urgentTasksAlert {
+  border-top: 3px solid hsl(0 84.2% 60.2%);
+}
+
+.scheduledTasksPreview {
+  border-top: 3px solid hsl(221.2 83.2% 53.3%);
+}
+
+.totalMetricsSummary {
+  border-top: 3px solid hsl(262.1 83.3% 57.8%);
+}
+
+.leadsAnalyticsSection {
+  background: white !important;
+  border: 1px solid hsl(214.3 31.8% 91.4%);
+  border-radius: 0.5rem;
+  padding: 1.5rem;
+  box-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+}
+
+.analyticsHeadingTitle {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: hsl(215.4 16.3% 46.9%);
+  margin: 0 0 1.5rem 0;
+  padding-bottom: 0.75rem;
+  border-bottom: 1px solid hsl(214.3 31.8% 91.4%);
+}
+
+.leadStageProgressRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 0;
+  border-bottom: 1px solid hsl(214.3 31.8% 91.4%);
+  transition: background-color 0.15s ease-in-out;
+}
+
+.leadStageProgressRow:last-child {
+  border-bottom: none;
+}
+
+.leadStageProgressRow:hover {
+  background-color: hsl(210 40% 98%);
+  margin: 0 -0.75rem;
+  padding: 1rem 0.75rem;
+  border-radius: 0.375rem;
+}
+
+.stageDetailsWrapper {
+  display: flex;
+  align-items: center;
+  flex: 1;
+  min-width: 0;
+  color: white !important;
+}
+
+.leadStageNameLabel {
+  font-size: 1rem;
+  font-weight: 500;
+  color: hsl(215.4 16.3% 46.9%);
+  margin-right: 1rem;
+  min-width: 200px;
+  text-transform: capitalize;
+}
+
+.progressBarContainer {
+  flex: 1;
+  margin-right: 1rem;
+  height: 8px;
+  background-color: hsl(214.3 31.8% 91.4%);
+  border-radius: 4px;
+  overflow: hidden;
+  position: relative;
+}
+
+.progressBarFillIndicator {
+  height: 100%;
+  border-radius: 4px;
+  transition: width 0.6s ease-out;
+}
+
+.leadStageCountBadge {
+  font-size: 1rem;
+  font-weight: 600;
+  color: hsl(215.4 16.3% 46.9%);
+  min-width: 60px;
+  text-align: right;
+  background-color: hsl(210 40% 98%);
+  padding: 0.375rem 0.75rem;
+  border-radius: 0.375rem;
+  border: 1px solid hsl(214.3 31.8% 91.4%);
+}
+
+/* Clean, professional colors for stages */
+.leadStageProgressRow:nth-child(1) .progressBarFillIndicator { background-color: hsl(0 84.2% 60.2%); }
+.leadStageProgressRow:nth-child(2) .progressBarFillIndicator { background-color: hsl(25 95% 53%); }
+.leadStageProgressRow:nth-child(3) .progressBarFillIndicator { background-color: hsl(48 96% 53%); }
+.leadStageProgressRow:nth-child(4) .progressBarFillIndicator { background-color: hsl(142.1 76.2% 36.3%); }
+.leadStageProgressRow:nth-child(5) .progressBarFillIndicator { background-color: hsl(199 89% 48%); }
+.leadStageProgressRow:nth-child(6) .progressBarFillIndicator { background-color: hsl(221.2 83.2% 53.3%); }
+.leadStageProgressRow:nth-child(7) .progressBarFillIndicator { background-color: hsl(262.1 83.3% 57.8%); }
+.leadStageProgressRow:nth-child(8) .progressBarFillIndicator { background-color: hsl(336 75% 40%); }
+
+.noDataEmptyStateView {
+  text-align: center;
+  padding: 3rem 1rem;
+  color: hsl(215.4 16.3% 56.9%);
+}
+
+.emptyStateVisualizationIcon {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+  opacity: 0.5;
+}
+
+.noDataEmptyStateView p {
+  font-size: 1.125rem;
+  margin: 0;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .reportDashboardWrapper {
+    padding: 1rem;
+  }
+  
+  .metricsCardsLayout {
+    grid-template-columns: 1fr;
+    gap: 0.75rem;
+  }
+  
+  .insightfulMetricCard {
+    padding: 1.25rem;
+  }
+  
+  .metricCardTitleText {
+    font-size: 0.875rem;
+  }
+  
+  .metricCardValueDisplay {
+    font-size: 2.25rem;
+  }
+  
+  .metricCardDescriptionText {
+    font-size: 0.875rem;
+  }
+  
+  .analyticsHeadingTitle {
+    font-size: 1.25rem;
+  }
+  
+  .leadStageProgressRow {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0.75rem;
+    padding: 1rem 0;
+  }
+  
+  .stageDetailsWrapper {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0.5rem;
+  }
+  
+  .leadStageNameLabel {
+    min-width: auto;
+    margin-right: 0;
+    margin-bottom: 0.5rem;
+    font-size: 0.875rem;
+  }
+  
+  .progressBarContainer {
+    margin-right: 0;
+    height: 8px;
+  }
+  
+  .leadStageCountBadge {
+    align-self: flex-end;
+    min-width: auto;
+    font-size: 0.875rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .reportDashboardWrapper {
+    padding: 0.75rem;
+  }
+  
+  .insightfulMetricCard {
+    padding: 1rem;
+  }
+  
+  .leadsAnalyticsSection {
+    padding: 1rem;
+  }
+  
+  .metricCardValueDisplay {
+    font-size: 2rem;
+  }
+  
+  .analyticsHeadingTitle {
+    font-size: 1.125rem;
+  }
+}
+
+/* Dark mode support */
+@media (prefers-color-scheme: dark) {
+  .insightfulMetricCard, .leadsAnalyticsSection {
+    background: #1e293b;
+    border-color: #334155;
+    color: #f1f5f9;
+  }
+  
+  .metricCardValueDisplay, .analyticsHeadingTitle {
+    color: #f1f5f9;
+  }
+  
+  .leadStageProgressRow {
+    background-color: #334155;
+  }
+  
+  .leadStageProgressRow:hover {
+    background-color: #475569;
+  }
+  
+  .leadStageNameLabel, .leadStageCountBadge {
+    color: #e2e8f0;
+  }
+} 

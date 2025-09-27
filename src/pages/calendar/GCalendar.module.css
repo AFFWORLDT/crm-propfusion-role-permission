@@ -1,0 +1,733 @@
+.calendarContainer {
+    background: white;
+    border-radius: 12px;
+    padding: 24px;
+    margin: 20px 0;
+  }
+  
+  .calendarHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 24px;
+  }
+  
+  .calendarControls {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+  
+  .calendarControls button {
+    background: #f5f5f5;
+    border: none;
+    border-radius: 8px;
+    padding: 8px 16px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: all 0.2s;
+  }
+  
+  .calendarControls button:hover {
+    background: #e0e0e0;
+  }
+  
+  .calendarControls h2 {
+    font-size: 24px;
+    font-weight: 600;
+    color: #333;
+    margin: 0;
+  }
+  
+  .viewControls {
+    display: flex;
+    gap: 12px;
+  }
+  
+  .viewSelect {
+    padding: 8px 16px;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    font-size: 14px;
+    cursor: pointer;
+  }
+  
+  .todayButton {
+    background: #4d94ff;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    padding: 8px 16px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: all 0.2s;
+  }
+  
+  .todayButton:hover {
+    background: #3d84ef;
+  }
+  
+  .calendar {
+    width: 100%;
+  }
+  
+  .weekdays {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 1px;
+    background: #f5f5f5;
+    border-radius: 8px 8px 0 0;
+  }
+  
+  .weekday {
+    padding: 12px;
+    text-align: center;
+    font-weight: 500;
+    color: #666;
+    background: white;
+  }
+  
+  .days {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 1px;
+    background: #f5f5f5;
+    border-radius: 0 0 8px 8px;
+  }
+  
+  .day {
+    aspect-ratio: 1;
+    padding: 8px;
+    background: white;
+    cursor: pointer;
+    transition: all 0.2s;
+    position: relative;
+  }
+  
+  .day:hover {
+    background: #f8f9fa;
+  }
+  
+  .dayNumber {
+    font-size: 14px;
+    color: #333;
+    margin-bottom: 4px;
+  }
+  
+  .today {
+    background: #e8f0fe;
+  }
+  
+  .today .dayNumber {
+    color: #4d94ff;
+    font-weight: 600;
+  }
+  
+  .eventDots {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px;
+    margin-top: 4px;
+  }
+  
+  .eventDot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: #4d94ff;
+  }
+  
+  /* Week View Styles */
+  .weekView {
+    width: 100%;
+    border-radius: 8px;
+    overflow: hidden;
+    background: white;
+  }
+  
+  .weekHeader {
+    display: grid;
+    grid-template-columns: 60px repeat(7, 1fr);
+    background: #f5f5f5;
+    border-bottom: 1px solid #e0e0e0;
+  }
+  
+  .dayColumn {
+    padding: 12px;
+    text-align: center;
+  }
+  
+  .dayLabel {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+  }
+  
+  .dayName {
+    font-size: 14px;
+    color: #666;
+  }
+  
+  .weekGrid {
+    display: grid;
+    grid-template-columns: 60px repeat(7, 1fr);
+    height: 720px;
+    position: relative;
+  }
+  
+  .timeGutter {
+    background: #f8f9fa;
+    border-right: 1px solid #e0e0e0;
+  }
+  
+  .timeSlot {
+    height: 60px;
+    padding: 4px;
+    font-size: 12px;
+    color: #666;
+    border-bottom: 1px solid #e0e0e0;
+  }
+  
+  .timeCell {
+    height: 60px;
+    border-bottom: 1px solid #e0e0e0;
+    border-right: 1px solid #e0e0e0;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+  
+  .timeCell:hover {
+    background: #f8f9fa;
+  }
+  
+  .weekEvent, .dayEvent {
+    position: absolute;
+    left: 0;
+    right: 0;
+    background: #4d94ff;
+    color: white;
+    border-radius: 4px;
+    padding: 8px;
+    margin: 0 4px;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+  
+  .weekEvent:hover, .dayEvent:hover {
+    background: #3d84ef;
+  }
+  
+  .eventContent {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+  
+  .eventTime {
+    font-size: 12px;
+    opacity: 0.9;
+  }
+  
+  .eventTitle {
+    font-size: 14px;
+    font-weight: 500;
+  }
+  
+  /* Modal Styles */
+  .modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+  }
+  
+  .modalContent {
+    background: white;
+    border-radius: 12px;
+    padding: 24px;
+    width: 90%;
+    max-width: 500px;
+    max-height: 90vh;
+    overflow-y: auto;
+  }
+  
+  .modalContent h3 {
+    margin: 0 0 20px 0;
+    font-size: 20px;
+    color: #333;
+  }
+  
+  .modalContent form {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+  
+  .modalContent input,
+  .modalContent textarea,
+  .modalContent select {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    font-size: 14px;
+  }
+  
+  .modalContent textarea {
+    min-height: 100px;
+    resize: vertical;
+  }
+  
+  .locationField {
+    display: flex;
+    gap: 8px;
+  }
+  
+  .locationField button {
+    white-space: nowrap;
+    background: #f5f5f5;
+    border: none;
+    border-radius: 8px;
+    padding: 8px 16px;
+    cursor: pointer;
+    font-size: 14px;
+  }
+  
+  .modalButtons {
+    display: flex;
+    gap: 12px;
+    margin-top: 20px;
+  }
+  
+  .modalButtons button {
+    flex: 1;
+    padding: 12px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: all 0.2s;
+  }
+  
+  .modalButtons button[type="submit"] {
+    background: #4d94ff;
+    color: white;
+  }
+  
+  .modalButtons button[type="submit"]:hover {
+    background: #3d84ef;
+  }
+  
+  .modalButtons button[type="button"] {
+    background: #f5f5f5;
+  }
+  
+  .modalButtons button[type="button"]:hover {
+    background: #e0e0e0;
+  }
+  
+  /* Event List Styles */
+  .eventList {
+    margin-top: 24px;
+    background: white;
+    border-radius: 12px;
+    padding: 24px;
+    border: 1px solid #e0e0e0;
+  }
+  
+  .eventList h3 {
+    margin: 0 0 16px 0;
+    font-size: 18px;
+    color: #333;
+  }
+  
+  .eventItem {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 16px;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    margin-bottom: 12px;
+    transition: all 0.2s;
+  }
+  
+  .eventItem:hover {
+    border-color: #4d94ff;
+  }
+  
+  .eventInfo h4 {
+    margin: 0 0 8px 0;
+    font-size: 16px;
+    color: #333;
+  }
+  
+  .eventInfo p {
+    margin: 4px 0;
+    font-size: 14px;
+    color: #666;
+  }
+  
+  .eventActions {
+    display: flex;
+    gap: 8px;
+  }
+  
+  .eventActions button {
+    padding: 8px 16px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: all 0.2s;
+  }
+  
+  .eventActions button:first-child {
+    background: #f5f5f5;
+  }
+  
+  .eventActions button:last-child {
+    background: #ff4d4d;
+    color: white;
+  }
+  
+  .eventActions button:last-child:disabled {
+    background: #ffb3b3;
+    cursor: not-allowed;
+    opacity: 0.7;
+  }
+  
+  .eventActions button:first-child:hover {
+    background: #e0e0e0;
+  }
+  
+  .eventActions button:last-child:hover {
+    background: #ff3333;
+  }
+  
+  /* Agent Selector Styles */
+  .agentSelectorWrapper {
+    position: relative;
+  }
+  
+  .agentSelectorButton {
+    width: 100%;
+    padding: 12px;
+    background: #f5f5f5;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 14px;
+  }
+  
+  .agentSelectorModal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+  }
+  
+  .agentSelectorContent {
+    background: white;
+    border-radius: 12px;
+    padding: 24px;
+    width: 90%;
+    max-width: 500px;
+    max-height: 90vh;
+    overflow-y: auto;
+  }
+  
+  .modalHeader {
+    margin-bottom: 20px;
+  }
+  
+  .modalHeader h3 {
+    margin: 0 0 16px 0;
+    font-size: 20px;
+    color: #333;
+  }
+  
+  .searchInput {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    font-size: 14px;
+  }
+  
+  .agentList {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    max-height: 400px;
+    overflow-y: auto;
+  }
+  
+  .agentCard {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+  
+  .agentCard:hover {
+    border-color: #4d94ff;
+  }
+  
+  .agentCard.selected {
+    background: #e8f0fe;
+    border-color: #4d94ff;
+  }
+  
+  .agentAvatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: #f5f5f5;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 600;
+    color: #666;
+  }
+  
+  .agentAvatar img {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    object-fit: cover;
+  }
+  
+  .agentInfo {
+    flex: 1;
+  }
+  
+  .agentName {
+    font-size: 14px;
+    color: #333;
+  }
+  
+  .checkmark {
+    color: #4d94ff;
+    font-weight: bold;
+  }
+  
+  .modalFooter {
+    margin-top: 20px;
+    display: flex;
+    justify-content: flex-end;
+  }
+  
+  .doneButton {
+    padding: 12px 24px;
+    background: #4d94ff;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: all 0.2s;
+  }
+  
+  .doneButton:hover {
+    background: #3d84ef;
+  }
+  
+  .loadingContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 400px;
+    width: 100%;
+  }
+  
+  .loadingSpinner {
+    width: 50px;
+    height: 50px;
+    border: 5px solid #f3f3f3;
+    border-top: 5px solid #3498db;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    margin-bottom: 20px;
+  }
+  
+  @keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
+  
+  .errorContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 400px;
+    width: 100%;
+    padding: 20px;
+    text-align: center;
+  }
+  
+  .errorMessage {
+    color: #e74c3c;
+    font-size: 1.1rem;
+    margin-bottom: 20px;
+  }
+  
+  .retryButton {
+    padding: 10px 20px;
+    background-color: #3498db;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background-color 0.3s ease;
+  }
+  
+  .retryButton:hover {
+    background-color: #2980b9;
+  }
+  
+  .eventAgents {
+    margin-top: 8px;
+  }
+  
+  .agentAvatars {
+    display: flex;
+    gap: 4px;
+    align-items: center;
+  }
+  
+  .agentAvatarWrapper {
+    position: relative;
+  }
+  
+  .agentAvatar {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #e0e0e0;
+    color: #666;
+    font-weight: 500;
+    border: 2px solid white;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s ease;
+  }
+  
+  .agentAvatar:hover {
+    transform: scale(1.1);
+    z-index: 1;
+  }
+  
+  .agentAvatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  
+  .agentTooltip {
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(0, 0, 0, 0.8);
+    color: white;
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-size: 12px;
+    white-space: nowrap;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.2s ease;
+    margin-bottom: 8px;
+    pointer-events: none;
+  }
+  
+  .agentTooltip::after {
+    content: '';
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    border-width: 4px;
+    border-style: solid;
+    border-color: rgba(0, 0, 0, 0.8) transparent transparent transparent;
+  }
+  
+  .agentAvatarWrapper:hover .agentTooltip {
+    opacity: 1;
+    visibility: visible;
+  }
+  
+  .agentName {
+    color: #333;
+  }
+  
+  .eventType {
+    margin: 4px 0;
+    font-size: 0.9rem;
+    color: #666;
+  }
+  
+  .checkInType {
+    color: #34a853;
+    font-weight: 600;
+    background-color: rgba(52, 168, 83, 0.1);
+    padding: 4px 8px;
+    border-radius: 4px;
+    display: inline-block;
+  }
+  
+  .checkOutType {
+    color: #ea4335;
+    font-weight: 600;
+    background-color: rgba(234, 67, 53, 0.1);
+    padding: 4px 8px;
+    border-radius: 4px;
+    display: inline-block;
+  }
+  
+  .deleteButtonLoading {
+    position: relative;
+    padding-right: 30px !important;
+  }
+  
+  .deleteButtonLoading::after {
+    content: '';
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 16px;
+    height: 16px;
+    border: 2px solid #ffffff;
+    border-radius: 50%;
+    border-top-color: transparent;
+    animation: spin 1s linear infinite;
+  }
+  

@@ -1,0 +1,120 @@
+.faq-container {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 2.5rem 1rem;
+}
+
+.faq-container h2 {
+  text-align: center;
+  margin-bottom: 2.5rem;
+  color: #1a237e;
+  font-size: 2.5rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+
+.faq-categories {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.7rem;
+  margin-bottom: 2.5rem;
+  justify-content: center;
+}
+
+.category-btn {
+  padding: 0.6rem 1.3rem;
+  border: 1.5px solid #e0e0e0;
+  border-radius: 22px;
+  background: #fff;
+  cursor: pointer;
+  transition: all 0.3s;
+  font-size: 1.1rem;
+  font-weight: 500;
+  color: #1a237e;
+}
+
+.category-btn:hover, .category-btn.active {
+  background: #1976d2;
+  color: #fff;
+  border-color: #1976d2;
+}
+
+.faq-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+}
+
+.faq-item {
+  border: 1.5px solid #e3e6f0;
+  border-radius: 10px;
+  overflow: hidden;
+  background: #f9fafe;
+  box-shadow: 0 2px 8px rgba(26,35,126,0.04);
+}
+
+.faq-question {
+  padding: 1.3rem 1.5rem;
+  background-color: #f1f6ff;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: background 0.2s;
+}
+
+.faq-question:hover {
+  background: #e3eefd;
+}
+
+.faq-question h3 {
+  margin: 0;
+  font-size: 1.35rem;
+  color: #0d133d;
+  font-weight: 600;
+  letter-spacing: 0.2px;
+  line-height: 1.4;
+}
+
+.faq-icon {
+  font-size: 2rem;
+  color: #1976d2;
+  transition: transform 0.3s;
+  font-weight: bold;
+}
+
+.faq-icon.active {
+  transform: rotate(180deg);
+}
+
+.faq-answer {
+  padding: 1.2rem 1.7rem 1.5rem 1.7rem;
+  background-color: #fff;
+  border-top: 1.5px solid #e3e6f0;
+}
+
+.faq-answer p {
+  margin: 0;
+  color: #222;
+  font-size: 1.18rem;
+  font-weight: 500;
+  line-height: 1.8;
+  letter-spacing: 0.1px;
+}
+
+.faq-loading {
+  text-align: center;
+  padding: 2rem;
+  color: #666;
+  font-size: 1.2rem;
+}
+
+.faq-error {
+  text-align: center;
+  padding: 2rem;
+  color: #dc3545;
+  font-size: 1.2rem;
+  background-color: #f8d7da;
+  border-radius: 8px;
+  margin: 1rem 0;
+} 

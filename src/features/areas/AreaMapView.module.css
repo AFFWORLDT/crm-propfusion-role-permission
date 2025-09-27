@@ -1,0 +1,47 @@
+
+.mapArea {
+  height: 600px;
+  width: 100%;
+  position: relative;
+}
+
+.loadingMessage {
+  text-align: center;
+  padding: 20px;
+}
+
+.errorMessage {
+  color: red;
+  text-align: center;
+  padding: 20px;
+}
+
+.popupTitle {
+  font-size: 1.2rem;
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+
+.countsList {
+  margin-top: 8px;
+}
+
+.countsList p {
+  margin: 4px 0;
+  font-size: 0.9rem;
+  color: #4a5568;
+}
+
+@media (max-width: 900px) {
+  .mapArea {
+    height: calc(100vh - 70px) !important;
+    top: 70px !important;
+  }
+}
+
+@media (max-width: 600px) {
+  .mapArea {
+    height: calc(100vh - 56px) !important;
+    top: 56px !important;
+  }
+} 

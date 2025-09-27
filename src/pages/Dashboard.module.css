@@ -1,0 +1,662 @@
+.listingOverViewComponent {
+    height: 300px;
+    width: 100%;
+}
+
+.dashboardForPropertyReportHeader {
+    font-size: 1.8rem;
+    font-weight: 800;
+    color: #4a4a4a;
+    margin-bottom: 2rem;
+}
+
+.propertyStatesCard {
+    gap: 1.5rem;
+    padding: 1.4rem;
+    background: rgb(255, 255, 255);
+    backdrop-filter: blur(10px);
+    border: 2px solid rgba(255, 255, 255, 0.7);
+    border-radius: 10px;
+    box-shadow: 0 1px 2px 1px rgba(0, 0, 0, 0.08);
+    overflow-y: scroll;
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none; /* IE and Edge */
+}
+.propertyStatesCard::-webkit-scrollbar {
+    display: none; /* Chrome, Safari and Opera */
+}
+
+.propertyStateTop {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.propertyStateTop h3 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #4a4a4a;
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid rgba(99, 102, 241, 0.2);
+}
+
+.propertyStateTop p {
+    font-size: 1rem;
+    font-weight: 400;
+    color: #4a4a4a;
+    padding-bottom: 0.5rem;
+}
+
+.propertyStateBottom {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+}
+
+.propertyStateBottom span {
+    font-size: 1.8rem;
+    font-weight: 800;
+    color: #000000;
+    margin-bottom: 0.5rem;
+}
+
+.propertyStateBottom p {
+    font-size: 1.3rem;
+    font-weight: 400;
+    color: #4a4a4a;
+}
+
+.dashboardForPropertyReport {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+    gap: 2rem;
+    padding: 2rem;
+    margin: 0 auto;
+    background: linear-gradient(135deg, #e5e5e5 0%, #f9fbff 100%);
+
+    border-radius: 24px;
+    margin-bottom: 2rem;
+}
+
+.dashboard {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+    gap: 2rem;
+    padding: 2rem;
+    margin: 0 auto;
+    margin: 0 auto;
+    background: linear-gradient(135deg, #e5e5e5 0%, #f9fbff 100%);
+
+    border-radius: 24px;
+    margin-bottom: 2rem;
+}
+
+.dashboardGroup {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.infoContainer {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    padding: 1.8rem;
+    background: rgba(255, 255, 255, 0.9);
+    backdrop-filter: blur(10px);
+    border: 2px solid rgba(255, 255, 255, 0.7);
+    border-radius: 20px;
+    box-shadow:
+        0 10px 15px -3px rgba(0, 0, 0, 0.08),
+        0 4px 6px -2px rgba(0, 0, 0, 0.05),
+        inset 0 -8px 16px -8px rgba(0, 0, 0, 0.05);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    overflow: hidden;
+}
+
+.infoContainer::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, #ff6b6b, #4ecdc4, #45b7d1, #96c93d);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.infoContainer:hover {
+    transform: translateY(-4px) scale(1.02);
+    box-shadow:
+        0 20px 25px -5px rgba(0, 0, 0, 0.1),
+        0 10px 10px -5px rgba(0, 0, 0, 0.04),
+        inset 0 -8px 16px -8px rgba(0, 0, 0, 0.05);
+    border-color: rgba(255, 255, 255, 0.9);
+}
+
+.infoContainer:hover::before {
+    opacity: 1;
+}
+
+.infoIcon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 56px;
+    height: 56px;
+    background: linear-gradient(135deg, #6366f1 0%, #4f46e5 50%, #3730a3 100%);
+    border-radius: 16px;
+    padding: 0.75rem;
+    box-shadow:
+        0 4px 6px -1px rgba(99, 102, 241, 0.3),
+        0 2px 4px -1px rgba(99, 102, 241, 0.2);
+    transition: transform 0.3s ease;
+}
+
+.infoIcon:hover {
+    transform: rotate(5deg) scale(1.1);
+}
+
+.infoIcon svg {
+    width: 28px;
+    height: 28px;
+    color: white;
+    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1));
+}
+
+.infoContent {
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+}
+
+.infoContent span:first-child {
+    font-size: 0.9rem;
+    color: #6366f1;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+}
+
+.infoContent span:last-child {
+    font-size: 1.75rem;
+    font-weight: 800;
+    background: linear-gradient(135deg, #1a1a1a 0%, #4a4a4a 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    letter-spacing: -0.02em;
+}
+
+.chartContainer {
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 20px;
+    padding: 1.5rem;
+    min-height: 400px;
+    height: auto;
+    width: 100%;
+    border: 1px solid rgba(255, 255, 255, 0.7);
+    box-shadow:
+        0 10px 15px -3px rgba(0, 0, 0, 0.08),
+        0 4px 6px -2px rgba(0, 0, 0, 0.05),
+        inset 0 2px 4px rgba(255, 255, 255, 0.1);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    display: flex;
+    flex-direction: column;
+}
+
+.chartContainer::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(
+        135deg,
+        rgba(255, 255, 255, 0.1),
+        rgba(255, 255, 255, 0.05)
+    );
+    pointer-events: none;
+}
+
+.chartContainer:hover {
+    transform: translateY(-4px);
+    box-shadow:
+        0 20px 25px -5px rgba(0, 0, 0, 0.1),
+        0 10px 10px -5px rgba(0, 0, 0, 0.04),
+        inset 0 2px 4px rgba(255, 255, 255, 0.1);
+    border-color: rgba(99, 102, 241, 0.4);
+}
+
+.chartHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.chartHeader h3 {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #4a4a4a;
+}
+
+/* Custom styles for different card types */
+.infoContainer:nth-child(1) .infoIcon {
+    background: linear-gradient(135deg, #ff6b6b 0%, #ee5253 100%);
+}
+
+.infoContainer:nth-child(2) .infoIcon {
+    background: linear-gradient(135deg, #4ecdc4 0%, #45b7d1 100%);
+}
+
+.infoContainer:nth-child(3) .infoIcon {
+    background: linear-gradient(135deg, #96c93d 0%, #7cb518 100%);
+}
+
+.infoContainer:nth-child(4) .infoIcon {
+    background: linear-gradient(135deg, #a78bfa 0%, #8b5cf6 100%);
+}
+
+.infoContainer:nth-child(5) .infoIcon {
+    background: linear-gradient(135deg, #f472b6 0%, #ec4899 100%);
+}
+
+/* Shimmer effect for loading state */
+@keyframes shimmer {
+    0% {
+        background-position: -1000px 0;
+    }
+
+    100% {
+        background-position: 1000px 0;
+    }
+}
+
+.loading {
+    animation: shimmer 2s infinite linear;
+    background: linear-gradient(
+        to right,
+        rgba(255, 255, 255, 0) 0%,
+        rgba(255, 255, 255, 0.5) 50%,
+        rgba(255, 255, 255, 0) 100%
+    );
+    background-size: 1000px 100%;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .dashboardForPropertyReport {
+        grid-template-columns: 1fr;
+    }
+
+    .dashboard {
+        grid-template-columns: 1fr;
+        padding: 1.5rem;
+        gap: 1.5rem;
+    }
+
+    .infoContainer {
+        padding: 1.5rem;
+    }
+
+    .chartContainer {
+        min-height: 350px;
+        padding: 1.5rem;
+    }
+
+    .infoIcon {
+        width: 48px;
+        height: 48px;
+    }
+
+    .infoIcon svg {
+        width: 24px;
+        height: 24px;
+    }
+
+    .infoContent span:last-child {
+        font-size: 1.5rem;
+    }
+}
+
+/* Dark mode support */
+
+/* Add these new styles to your existing Dashboard.module.css file */
+
+.dashboardSubtitle {
+    color: #6366f1;
+    font-size: 1.1rem;
+    font-weight: 500;
+}
+
+.chartTitle {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #4a4a4a;
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid rgba(99, 102, 241, 0.2);
+}
+
+.quickStats {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+    margin-top: 2rem;
+}
+
+.statCard {
+    background: rgba(255, 255, 255, 0.9);
+    backdrop-filter: blur(10px);
+    border-radius: 16px;
+    padding: 1.5rem;
+    border: 2px solid rgba(255, 255, 255, 0.7);
+    box-shadow:
+        0 10px 15px -3px rgba(0, 0, 0, 0.08),
+        0 4px 6px -2px rgba(0, 0, 0, 0.05);
+    transition: all 0.3s ease;
+}
+
+.statCard:hover {
+    transform: translateY(-4px);
+    box-shadow:
+        0 20px 25px -5px rgba(0, 0, 0, 0.1),
+        0 10px 10px -5px rgba(0, 0, 0, 0.04);
+}
+
+.statCard h3 {
+    font-size: 0.9rem;
+    color: #6366f1;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    margin-bottom: 0.75rem;
+}
+
+.statValue {
+    font-size: 2rem;
+    font-weight: 700;
+    color: #1a1a1a;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.statTrend {
+    font-size: 1.25rem;
+    color: #22c55e;
+    font-weight: 900;
+}
+
+.statTrend.down {
+    color: #ef4444;
+}
+
+.dashboardSkeleton {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    padding: 2rem;
+}
+
+/* Dark mode adjustments */
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .dashboardSubtitle {
+        font-size: 1rem;
+    }
+
+    .quickStats {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+}
+
+.loadingSpinner {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 200px;
+    width: 100%;
+    font-size: 1.2rem;
+    color: var(--color-grey-500);
+}
+
+/* Remove the old loading styles */
+.dashboardSkeleton,
+.loading {
+    display: none;
+}
+
+/* New loader styles */
+.loaderContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 60vh;
+    gap: 2rem;
+}
+
+.loader {
+    display: flex;
+    gap: 0.8rem;
+}
+
+.circle {
+    width: 1.5rem;
+    height: 1.5rem;
+    border-radius: 50%;
+    background: #6366f1;
+    animation: bounce 0.5s alternate infinite;
+}
+
+.circle:nth-child(2) {
+    animation-delay: 0.1s;
+    background: #4ecdc4;
+}
+
+.circle:nth-child(3) {
+    animation-delay: 0.2s;
+    background: #96c93d;
+}
+
+.circle:nth-child(4) {
+    animation-delay: 0.3s;
+    background: #ff6b6b;
+}
+
+@keyframes bounce {
+    to {
+        transform: translateY(-1rem);
+    }
+}
+
+.loaderText {
+    font-size: 1.2rem;
+    color: #6366f1;
+    font-weight: 500;
+    animation: fadeInOut 1.5s ease-in-out infinite;
+}
+
+@keyframes fadeInOut {
+    0%,
+    100% {
+        opacity: 0.5;
+    }
+    50% {
+        opacity: 1;
+    }
+}
+
+/* Add these new classes for responsive chart containers */
+.chartWrapper {
+    width: 100%;
+    margin: 0 auto;
+    transition: all 0.3s ease;
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+/* Responsive chart container grid */
+.chartGrid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5rem;
+    width: 100%;
+    margin-bottom: 1.5rem;
+}
+
+/* Chart container with better shadows and animations */
+.chartContainer {
+    background-color: #fff;
+    border-radius: 12px;
+    padding: 1.25rem;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+    transition: all 0.3s ease;
+    overflow: hidden;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.chartContainer:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+}
+
+.chartTitle {
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+    color: #333;
+}
+
+/* Enhanced loader styling */
+.loaderContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 300px;
+    width: 100%;
+}
+
+.loader {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.circle {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background-color: #4ecdc4;
+    animation: bounce 1.2s infinite ease-in-out;
+}
+
+.circle:nth-child(1) {
+    animation-delay: 0s;
+    background-color: #4ecdc4;
+}
+
+.circle:nth-child(2) {
+    animation-delay: 0.2s;
+    background-color: #ff6b6b;
+}
+
+.circle:nth-child(3) {
+    animation-delay: 0.4s;
+    background-color: #ffb74d;
+}
+
+.circle:nth-child(4) {
+    animation-delay: 0.6s;
+    background-color: #a78bfa;
+}
+
+/* Responsive section styling */
+.sectionGrid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+    width: 100%;
+    margin-bottom: 2rem;
+}
+
+@media (min-width: 768px) {
+    .sectionGrid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (min-width: 1024px) {
+    .sectionGrid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+/* Responsive section loader */
+.sectionLoader {
+    width: 100%;
+    height: 300px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(255, 255, 255, 0.8);
+    border-radius: 12px;
+    margin-bottom: 1.5rem;
+}
+
+@keyframes bounce {
+    0%,
+    80%,
+    100% {
+        transform: scale(0);
+    }
+    40% {
+        transform: scale(1);
+    }
+}
+
+/* Media queries for responsive design */
+@media (max-width: 768px) {
+    .chartContainer {
+        padding: 1rem;
+    }
+
+    .chartTitle {
+        font-size: 1rem;
+    }
+
+    .chartGrid {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 576px) {
+    .sectionStyles {
+        padding: 2rem 1rem !important;
+    }
+
+    .chartContainer {
+        padding: 0.75rem;
+    }
+}
+
+.propertyStatesCard--danger {
+    background: #fff1f2;
+    border-color: #fecaca;
+}
+.propertyStatesCard--warning {
+    background: #fffbeb;
+    border-color: #fde68a;
+}

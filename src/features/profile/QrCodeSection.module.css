@@ -1,0 +1,89 @@
+.qrCodeUpload {
+    width: 100%;
+    margin-top: 10px;
+}
+
+.qrCodeSection {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+    padding: 20px;
+    border: 2px dashed #ddd;
+    border-radius: 8px;
+    background-color: #fafafa;
+    transition: all 0.2s;
+}
+
+.qrCodeSection:hover {
+    border-color: #999;
+    background-color: #f5f5f5;
+}
+
+.qrCodePreview {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: white;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.qrCodeActions {
+    display: flex;
+    gap: 10px;
+}
+
+.iconButton {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    padding: 8px 12px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    background: white;
+    cursor: pointer;
+    transition: all 0.2s;
+    font-size: 14px;
+    color: #666;
+}
+
+.iconButton:hover {
+    background: #f5f5f5;
+    border-color: #999;
+    color: #333;
+}
+
+.qrCodeButton {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 6px;
+    background: #f0f0f0;
+    cursor: pointer;
+    transition: all 0.2s;
+    font-size: 14px;
+    color: #666;
+}
+
+.qrCodeButton:hover {
+    background: #e5e5e5;
+    color: #333;
+}
+
+.qrCodeButton.loading {
+    opacity: 0.7;
+    cursor: not-allowed;
+}
+
+.qrCodeModalContent {
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #fafafa;
+    border-radius: 8px;
+} 

@@ -1,0 +1,56 @@
+.pagination {
+    max-width: 144rem;
+    margin: 1rem auto;
+
+    display: flex;
+    gap: 3.2rem;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.pagination button {
+    height: 4rem;
+    aspect-ratio: 1 / 1;
+    border: 1px solid var(--clr-neutral-200);
+    font-weight: 500;
+    padding: 1rem;
+    border-radius: 0.8rem;
+
+    display: grid;
+    place-items: center;
+}
+
+.pagination button:disabled {
+    background-color: unset;
+}
+
+.pageInfo {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+}
+
+.pageInfo select {
+    border-radius: 0.8rem;
+    border: 1px solid #e0e3e2;
+    padding: 0.6rem;
+}
+
+.pageSize {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+}
+
+.paginationBtns {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+}
+
+@media only screen and (max-width: 1250px) {
+    .pagination {
+        gap: 2rem;
+        flex-wrap: wrap;
+    }
+}

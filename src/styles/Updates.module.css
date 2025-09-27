@@ -1,0 +1,215 @@
+.container {
+    height: auto;
+    padding: 2rem;
+    background-color: #f8f9fa;
+  }
+  
+  .wrapper {
+    max-width: 90%;
+    margin: 0 auto;
+  }
+  
+  .header {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 2.5rem;
+    justify-content: space-between;
+  }
+  
+  .title {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #1a1a1a;
+    margin: 0;
+  }
+  
+  .updateGrid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 1.5rem;
+    margin-top: 2rem;
+  }
+  
+  .updateCard {
+    background: white;
+    border-radius: 12px;
+    padding: 1.5rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    border: 1px solid  #ccc;
+  }
+  
+  .updateCard:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 12px rgba(0, 0, 0, 0.1);
+ 
+  }
+  
+  .cardHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+  }
+  
+  .date {
+    font-size: 0.875rem;
+    color: #666;
+  }
+  
+  .cardTitle {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: #1a1a1a;
+    margin: 0.5rem 0;
+  }
+  
+  .description {
+    color: #4a4a4a;
+    line-height: 1.6;
+    margin-bottom: 1rem;
+  }
+  
+  .tag {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.25rem 0.75rem;
+    border-radius: 9999px;
+    font-size: 0.875rem;
+    font-weight: 500;
+  }
+  
+  .tagDesign {
+    background-color: #f3e8ff;
+    color: #7e22ce;
+  }
+  
+  .tagTechnical {
+    background-color: #dbeafe;
+    color: #1d4ed8;
+  }
+  
+  .tagFeature {
+    background-color: #dcfce7;
+    color: #15803d;
+  }
+  
+  .tagBeta {
+    background-color: #fef3c7;
+    color: #92400e;
+  }
+  
+  .tagUpcoming {
+    background-color: #fae8ff;
+    color: #86198f;
+  }
+  
+  .betaBadge {
+    background-color: #fef3c7;
+    color: #92400e;
+    padding: 0.25rem 0.5rem;
+    border-radius: 4px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    margin-left: 0.5rem;
+  }
+  
+  .feedbackSection {
+    background: #fff;
+    border-radius: 12px;
+    padding: 1.5rem;
+    margin-top: 2rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+  }
+  
+  .sectionTitle {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #1a1a1a;
+    margin-bottom: 1rem;
+  
+  }
+  
+  .feedbackList {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 1rem;
+    margin-top: 1rem;
+    
+  }
+  
+  .feedbackCard {
+    background: #f8f9fa;
+    border-radius: 8px;
+    padding: 1rem;
+    border: 1px solid  #ccc;
+  }
+  
+  .userInfo {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 0.5rem;
+  }
+  
+  .userName {
+    font-weight: 500;
+    color: #1a1a1a;
+  }
+  
+  .userRole {
+    font-size: 0.75rem;
+    color: #666;
+  }
+  
+  .joinBetaButton {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background-color: #f97316;
+    color: white;
+    padding: 0.5rem 1rem;
+    border-radius: 6px;
+    font-weight: 500;
+    transition: background-color 0.2s ease;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .joinBetaButton:hover {
+    background-color: #ea580c;
+  }
+  
+  .statusCompleted {
+    color: #16a34a;
+  }
+  
+  .statusInProgress {
+    color: #2563eb;
+  }
+  
+  .statusPending {
+    color: #ca8a04;
+  }
+  
+  .footer {
+    margin-top: 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  @media (max-width: 768px) {
+    .container {
+      padding: 1rem;
+    }
+    
+    .updateGrid {
+      grid-template-columns: 1fr;
+    }
+    
+    .title {
+      font-size: 2rem;
+    }
+  }

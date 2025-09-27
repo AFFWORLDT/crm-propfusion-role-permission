@@ -1,0 +1,150 @@
+.subscriptionContainer {
+    padding: 1rem 2rem;
+    display: grid;
+    gap: 3.8rem;
+}
+
+.subscriptionContainer > p {
+    margin: 0 auto;
+    width: fit-content;
+    text-align: center;
+    font-weight: 500;
+    font-size: 1.8rem;
+    background-color: var(--clr-primary-100);
+    padding: 1rem 3.2rem;
+    border-radius: 2.4rem;
+
+    display: flex;
+    gap: 1rem;
+}
+
+.subscriptionContainer p img {
+    height: 2.4rem;
+}
+
+.subscriptionTabs {
+    display: flex;
+    gap: 2rem;
+    justify-content: center;
+}
+
+.subscriptionTabs button,
+.btnBuySubscription {
+    font-size: 1.8rem;
+    font-weight: 500;
+    padding: 0.8rem 2rem;
+    border-radius: 0.8rem;
+    border: 1px solid transparent;
+}
+
+.subscriptionTabs button.btnActiveTab {
+    background-color: var(--clr-primary-100);
+    border: 1px solid var(--clr-primary-200) !important;
+}
+
+.subscriptionCards {
+    display: grid;
+    grid-template-columns: repeat(3, 32rem);
+    gap: 2rem;
+    justify-content: center;
+}
+
+.subscriptionCard {
+    border-radius: 1.2rem;
+    padding: 4rem 2rem;
+    border: 3px solid transparent;
+    background-image: linear-gradient(#ffffff, #ffffff),
+        linear-gradient(96.24deg, #6248ff, #ff4848 51%, #ff7a91 75%);
+    background-origin: border-box;
+    background-clip: padding-box, border-box;
+}
+
+.subscriptionCardInner {
+    height: 100%;
+    display: grid;
+    gap: 2rem;
+    justify-items: center;
+    align-items: center;
+    text-align: center;
+}
+
+.subscriptionCardInner h3 {
+    font-size: 2.8rem;
+    font-weight: 600;
+}
+
+.subscriptionPrice span:first-child {
+    font-size: 2.4rem;
+    font-weight: 600;
+}
+
+.subscriptionPrice span:last-child {
+    margin-left: 0.4rem;
+    font-weight: 500;
+    color: var(--clr-neutral-300);
+    letter-spacing: 1px;
+}
+
+.btnBuySubscription {
+    padding: 1rem 2rem;
+    width: 100%;
+    background-image: linear-gradient(
+        96.24deg,
+        #6248ff,
+        #ff4848 51%,
+        #ff7a91 75%
+    );
+    color: var(--clr-neutral-50);
+    border: none;
+    cursor: pointer;
+    transition: opacity 0.2s ease;
+    font-size: 1.4rem;
+}
+
+.btnBuySubscription:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+.btnBuySubscription:hover:not(:disabled) {
+    opacity: 0.9;
+}
+
+.subscriptionButtonsContainer {
+    display: flex;
+    gap: 0.8rem;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+}
+
+.subscriptionButtonsContainer button {
+    flex: 1;
+    min-width: 0;
+}
+
+@media screen and (max-width: 1400px) {
+    .subscriptionCards {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .subscriptionButtonsContainer {
+        flex-direction: column;
+        gap: 0.6rem;
+    }
+
+    .subscriptionCards {
+        display: flex;
+        flex-wrap: wrap;
+    }
+
+    .subscriptionCard {
+        width: 28rem;
+    }
+
+    .subscriptionCardInner > div {
+        width: 100%;
+    }
+}

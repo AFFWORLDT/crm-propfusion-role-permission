@@ -1,0 +1,90 @@
+/* === Styles for New Multi-Button Toggle === */
+.viewToggleContainerMulti {
+    display: inline-flex;
+    align-items: center;
+    background-color: #f1f5f9;
+    border-radius: 0.6rem;
+    padding: 0.25rem;
+    overflow: hidden;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+
+.btnViewMulti {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.5rem 0.9rem;
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+    color: #4a5568;
+    transition: all 0.3s ease;
+    border-radius: 0.4rem;
+    margin: 0 0.1rem;
+}
+
+.btnViewMulti:hover {
+    background-color: rgba(0, 0, 0, 0.03);
+    color: #2d3748;
+}
+
+.btnViewMulti.activeMulti {
+    background-color: #ffffff;
+    color: #2563eb;
+    font-weight: 600;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
+}
+
+.iconMulti {
+    display: flex;
+    align-items: center;
+}
+
+/* === Styles for Legacy Single Toggle Button === */
+.viewToggleContainerLegacy {
+    display: flex;
+    align-items: center;
+}
+
+.btnViewLegacy {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.8rem 1.4rem;
+    border: 1px solid #e2e8f0;
+    border-radius: 0.5rem;
+    background-color: white;
+    cursor: pointer;
+    font-size: 1.4rem; /* Assuming original size */
+    color: #000000; /* Assuming original color */
+    font-weight: 500;
+    transition: all 0.2s ease;
+}
+
+.btnViewLegacy:hover {
+    background-color: #f8fafc;
+    border-color: #cbd5e1;
+}
+
+.btnViewLegacy img {
+    width: 1.5rem;
+    height: 1.5rem;
+}
+
+/* Keep legacy active styles separate if needed, or simplify if they were the same */
+.activeLegacyTable,
+.activeLegacyCard {
+    background-color: #f1f5f9; /* Example: Adjust as per original style */
+    border-color: #cbd5e1;
+    color: #0f172a;
+}
+
+/* --- Remove Generic/Old Selectors --- */
+/* Comment out or delete selectors like .btnView, .active, .icon if they are no longer needed universally */
+/* 
+.btnView { ... } 
+.active { ... } 
+.icon { ... }
+.activeTable { ... }
+.activeCard { ... }
+*/ 

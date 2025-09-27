@@ -1,0 +1,75 @@
+.formWrapper {
+    max-width: 100%;
+    width: 100%;
+}
+
+.formHeader {
+    margin-bottom: 2rem;
+    text-align: center;
+}
+
+
+
+
+.formGrid {
+    display: grid;
+    gap: 1.25rem;
+    width: 100%;
+}
+
+.formGroup {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.formGroup textarea {
+    resize: vertical;
+    min-height: 100px;
+}
+
+.buttonContainer {
+    margin-top: 2rem;
+    display: flex;
+    justify-content: center;
+}
+
+.buttonContainer button {
+    transition: all 0.2s ease;
+    
+}
+
+.buttonContainer button:hover {
+    opacity: 0.9;
+    transform: translateY(-1px);
+}
+
+.buttonContainer button:disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
+}
+
+/* Mobile Responsive Styles */
+@media (max-width: 768px) {
+   
+    .formGrid {
+        gap: 1rem;
+    }
+
+    .buttonContainer {
+        margin-top: 1.5rem;
+    }
+}
+
+/* Tablet and larger screens */
+@media (min-width: 768px) {
+    .formGrid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    /* Make certain fields full width */
+    .formGrid > div:nth-last-child(2),
+    .formGrid > div:last-child {
+        grid-column: 1 / -1;
+    }
+}

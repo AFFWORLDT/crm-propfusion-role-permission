@@ -1,0 +1,114 @@
+.container {
+  width: 100%;
+}
+
+.header {
+  margin-bottom: 1rem;
+}
+
+.header strong {
+  font-size: 1.6rem;
+  font-weight: 600;
+  color: hsl(240 10% 3.9%);
+}
+
+.buttonContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.input {
+  display: flex;
+  height: 40px;
+  width: 100%;
+  border-radius: 6px;
+  border: 1px solid hsl(240 5.9% 90%);
+  background-color: transparent;
+  padding: 0.5rem 0.75rem;
+  font-size: 1.5rem;
+  line-height: 1.25rem;
+  color: hsl(240 10% 3.9%);
+  box-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+  transition: border-color 0.2s ease;
+}
+
+.input:focus {
+  outline: none;
+  border-color: hsl(240 5.9% 80%);
+  ring: 2px solid hsl(240 5% 64.9%);
+}
+
+.input:disabled {
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 40px;
+  border-radius: 6px;
+  font-size: 1.4rem;
+  font-weight: 500;
+  padding: 0 1rem;
+  transition: all 0.2s ease;
+  cursor: pointer;
+  border: 1px solid transparent;
+}
+
+.button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.buttonDeactivate {
+  background-color: hsl(0 84.2% 97%);
+  color: hsl(0 84.2% 60.2%);
+  border: 1px solid hsl(0 84.2% 90%);
+}
+
+.buttonDeactivate:hover:not(:disabled) {
+  background-color: hsl(0 84.2% 95%);
+  border-color: hsl(0 84.2% 85%);
+}
+
+.buttonSchedule {
+  background-color: hsl(221.2 83.2% 97%);
+  color: hsl(221.2 83.2% 53.3%);
+  border: 1px solid hsl(221.2 83.2% 90%);
+}
+
+.buttonSchedule:hover:not(:disabled) {
+  background-color: hsl(221.2 83.2% 95%);
+  border-color: hsl(221.2 83.2% 85%);
+}
+
+.buttonRemove {
+  background-color: hsl(24.6 95% 97%);
+  color: hsl(24.6 95% 53.1%);
+  border: 1px solid hsl(24.6 95% 90%);
+}
+
+.buttonRemove:hover:not(:disabled) {
+  background-color: hsl(24.6 95% 95%);
+  border-color: hsl(24.6 95% 85%);
+}
+
+.buttonCancel {
+  background-color: hsl(220 13% 97%);
+  color: hsl(240 10% 3.9%);
+  border: 1px solid hsl(220 13% 91%);
+}
+
+.buttonCancel:hover {
+  background-color: hsl(220 13% 95%);
+  border-color: hsl(220 13% 86%);
+}
+
+.scheduledTime {
+  font-size: 0.875rem;
+  color: hsl(240 3.8% 46.1%);
+  margin: 0.5rem 0;
+} 

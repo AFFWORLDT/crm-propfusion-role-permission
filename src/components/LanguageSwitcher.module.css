@@ -1,0 +1,40 @@
+.languageSelect {
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+}
+
+.languageSelect :global(.ant-select-selector) {
+  background: transparent !important;
+  border: none !important;
+  padding: 0 !important;
+}
+
+.languageSelect :global(.ant-select-selection-item) {
+  padding: 0 !important;
+}
+
+.languageOption {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 4px 0;
+}
+
+.flag {
+  width: 20px;
+  height: 15px;
+  object-fit: cover;
+  border-radius: 2px;
+}
+
+/* Hover effect */
+.languageSelect:hover {
+  opacity: 0.8;
+}
+
+/* Selected language style */
+.languageSelect :global(.ant-select-selection-item) {
+  color: var(--clr-primary-500) !important;
+  font-weight: 500;
+} 

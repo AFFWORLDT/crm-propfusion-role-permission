@@ -1,0 +1,104 @@
+/* SmtpConfigSelector.module.css */
+
+/* Wrapper for the select dropdown */
+.selectWrapper {
+  position: relative;
+  width: 100%;
+}
+
+/* Dropdown arrow */
+.selectWrapper::after {
+  content: '▼';
+  position: absolute;
+  right: 1rem;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #4a5568;
+  pointer-events: none;
+  font-size: 0.8rem;
+}
+
+/* Select element styling */
+.select {
+  width: 100%;
+  padding: 0.875rem 2.5rem 0.875rem 1rem;
+  border: 2px solid #e2e8f0;
+  border-radius: 0.5rem;
+  background: linear-gradient(to bottom, #ffffff, #f8fafc);
+  font-size: 1rem;
+  line-height: 1.5;
+  color: #2d3748;
+  appearance: none;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-weight: 500;
+}
+
+/* Hover effect */
+.select:hover {
+  border-color: #4299e1;
+  background: linear-gradient(to bottom, #ffffff, #ebf8ff);
+}
+
+/* Focus effect */
+.select:focus {
+  outline: none;
+  border-color: #4299e1;
+  box-shadow: 0 0 0 3px rgba(66, 153, 225, 0.25);
+  background: #ffffff;
+}
+
+/* Options styling */
+.select option {
+  background: #ffffff;
+  color: #2d3748;
+  padding: 1rem;
+  font-weight: 500;
+}
+
+/* Disabled select styling */
+.select:disabled {
+  background: #f7fafc;
+  cursor: not-allowed;
+  opacity: 0.7;
+}
+
+/* Loader styling */
+.dotsLoader {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  margin: 40px auto;
+}
+
+/* Individual dot for loader */
+.dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: linear-gradient(45deg, #020079, #0066ff);
+  animation: dots 1.4s ease-in-out infinite;
+}
+
+/* Animation delay for second dot */
+.dot:nth-child(2) {
+  animation-delay: 0.2s;
+}
+
+/* Animation delay for third dot */
+.dot:nth-child(3) {
+  animation-delay: 0.4s;
+}
+
+/* Keyframes for dot animation */
+@keyframes dots {
+  0%, 100% {
+    transform: scale(0.6);
+    opacity: 0.4;
+  }
+  50% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}

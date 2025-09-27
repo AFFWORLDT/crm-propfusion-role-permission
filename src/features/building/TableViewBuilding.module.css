@@ -1,0 +1,166 @@
+/* Add these styles to your existing Listings.module.css file */
+
+.tableContainer {
+    position: relative;
+    height: 100%;
+    width: 100%;
+    overflow-x: auto;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  }
+  
+  .spinnerContainer {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1000;
+  }
+  
+  .buildingTable {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    margin-bottom: 1.5rem;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+    background-color: #fff;
+    border-radius: 8px;
+    overflow: hidden;
+  }
+  
+  .buildingTable th {
+    background-color: #f8f9fa;
+    padding: 1.25rem 1rem;
+    text-align: left;
+    font-weight: 600;
+    color: #495057;
+    border-bottom: 2px solid #e9ecef;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    font-size: 0.85rem;
+  }
+  
+  .imageHeader {
+    width: 120px;
+  }
+  
+  .actionHeader {
+    width: 120px;
+    text-align: center;
+  }
+  
+  .tableRow {
+    transition: all 0.2s ease;
+  }
+  
+  .tableRow:hover {
+    background-color: #f8f9fa;
+    transform: translateY(-2px);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+  }
+  
+  .tableRow td {
+    padding: 1.2rem 1rem;
+    border-bottom: 1px solid #e9ecef;
+    vertical-align: middle;
+  }
+  
+  .tableRow:last-child td {
+    border-bottom: none;
+  }
+  
+  .thumbnailContainer {
+    width: 100px;
+    height: 70px;
+    overflow: hidden;
+    border-radius: 6px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+  }
+  
+  .thumbnailContainer:hover {
+    transform: scale(1.05);
+  }
+  
+  .thumbnail {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+  }
+  
+  .thumbnailContainer:hover .thumbnail {
+    transform: scale(1.1);
+  }
+  
+  .nameCell {
+    min-width: 220px;
+  }
+  
+  .buildingName {
+    margin: 0;
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #212529;
+  }
+  
+  .buildingSubName {
+    margin: 0.35rem 0 0;
+    font-size: 0.875rem;
+    color: #6c757d;
+    font-weight: 400;
+  }
+  
+  .propertyTypeCell {
+    color: #495057;
+    font-size: 0.875rem;
+    font-weight: 500;
+  }
+  
+  .daysCell {
+    white-space: nowrap;
+    color: #6c757d;
+    font-size: 0.875rem;
+    font-style: italic;
+  }
+  
+  .actionCell {
+    text-align: center;
+  }
+  
+  .detailButton {
+    background-color: #4361ee;
+    color: white;
+    border: none;
+    padding: 0.6rem 1rem;
+    border-radius: 6px;
+    font-size: 0.85rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    box-shadow: 0 2px 4px rgba(67, 97, 238, 0.3);
+  }
+  
+  .detailButton:hover {
+    background-color: #3a56d4;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(67, 97, 238, 0.4);
+  }
+  
+  .detailButton:active {
+    transform: translateY(0);
+    box-shadow: 0 1px 2px rgba(67, 97, 238, 0.4);
+  }
+  
+  .loadingMoreContainer {
+    display: flex;
+    justify-content: center;
+    padding: 1.5rem;
+    background-color: transparent;
+  }
+  
+  /* Responsive adjustments */
+  @media (max-width: 768px) {
+    .buildingTable {
+      min-width: 768px; /* Ensures horizontal scrolling on small screens */
+    }
+  }

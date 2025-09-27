@@ -1,0 +1,91 @@
+.propertyReference {
+  width: 100% !important;
+}
+
+.error {
+  color: #dc2626;
+  margin: 1rem 0;
+}
+
+.headerContent {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.referenceList {
+  list-style: none;
+  padding: 0;
+  margin: 1rem 0;
+}
+
+.referenceItem {
+  border: 1px solid #e5e7eb;
+  border-radius: 0.5rem;
+  padding: 1rem;
+  margin-bottom: 1rem;
+  width: 100% !important;
+}
+
+.referenceHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.5rem;
+}
+
+.headerInfo {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.referenceDate {
+  color: #6b7280;
+  font-size: 0.875rem;
+}
+
+.referenceContent {
+  color: #374151;
+  line-height: 1.5;
+}
+
+.infoRow {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-bottom: 1rem;
+  padding: 0.5rem;
+  background-color: #f9fafb;
+  border-radius: 0.375rem;
+}
+
+.infoItem {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.25rem 0.5rem;
+  background-color: white;
+  border-radius: 0.25rem;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+}
+
+.analysisSection {
+  margin-top: 1rem;
+}
+
+.analysisSummary {
+  margin-top: 0.5rem;
+  padding: 1rem;
+  background-color: #f9fafb;
+  border-radius: 0.375rem;
+  font-size: 0.875rem;
+}
+
+.analysisSummary p {
+  margin-bottom: 0.75rem;
+}
+
+.analysisSummary p:last-child {
+  margin-bottom: 0;
+} 

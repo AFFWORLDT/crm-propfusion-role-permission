@@ -1,0 +1,517 @@
+.mobileAppsContainer {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem 0;
+}
+
+/* Header Section */
+.headerSection {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    border-radius: 20px;
+    padding: 3rem 2rem;
+    margin-bottom: 3rem;
+    color: white;
+    text-align: center;
+}
+
+.headerContent {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+.headerIcon {
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 50%;
+    padding: 1.5rem;
+    backdrop-filter: blur(10px);
+}
+
+.headerText h1 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin: 0;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.headerText p {
+    font-size: 1.2rem;
+    margin: 0;
+    opacity: 0.9;
+    max-width: 600px;
+}
+
+/* App Stores Section */
+.appStoresSection {
+    margin-bottom: 3rem;
+}
+
+.appStoresSection h2 {
+    font-size: 2rem;
+    font-weight: 600;
+    color: #1f2937;
+    margin-bottom: 2rem;
+    text-align: center;
+}
+
+.storeButtons {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.storeButton {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1.5rem 2rem;
+    background: white;
+    border: 2px solid #e5e7eb;
+    border-radius: 16px;
+    text-decoration: none;
+    color: #374151;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+}
+
+.storeButton:hover {
+    transform: translateY(-2px);
+    border-color: #2563eb;
+    box-shadow: 0 8px 25px rgba(37, 99, 235, 0.15);
+    color: #2563eb;
+}
+
+.storeButtonText {
+    flex: 1;
+    text-align: left;
+}
+
+.storeName {
+    display: block;
+    font-weight: 600;
+    font-size: 1.1rem;
+    margin-bottom: 0.25rem;
+}
+
+.storeSubtitle {
+    display: block;
+    font-size: 0.9rem;
+    opacity: 0.7;
+}
+
+/* Features Section */
+.featuresSection {
+    margin-bottom: 3rem;
+}
+
+.featuresSection h2 {
+    font-size: 2rem;
+    font-weight: 600;
+    color: #1f2937;
+    margin-bottom: 2rem;
+    text-align: center;
+}
+
+.featuresGrid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+}
+
+.featureCard {
+    background: white;
+    padding: 2rem;
+    border-radius: 16px;
+    border: 1px solid #e5e7eb;
+    text-align: center;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.featureCard:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+    border-color: #2563eb;
+}
+
+.featureIcon {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 1.5rem;
+}
+
+.featureCard h3 {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: #1f2937;
+    margin-bottom: 1rem;
+}
+
+.featureCard p {
+    color: #6b7280;
+    line-height: 1.6;
+    margin: 0;
+}
+
+/* API Section */
+.apiSection {
+    margin-bottom: 3rem;
+}
+
+.apiSection h2 {
+    font-size: 2rem;
+    font-weight: 600;
+    color: #1f2937;
+    margin-bottom: 2rem;
+    text-align: center;
+}
+
+.apiInfo {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.apiCard {
+    background: white;
+    padding: 2rem;
+    border-radius: 16px;
+    border: 1px solid #e5e7eb;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.apiCard h3 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #1f2937;
+    margin-bottom: 1rem;
+}
+
+.apiCard p {
+    color: #6b7280;
+    line-height: 1.6;
+    margin-bottom: 1.5rem;
+}
+
+.apiUrl {
+    background: #f3f4f6;
+    border: 1px solid #d1d5db;
+    border-radius: 8px;
+    padding: 1rem;
+    margin: 1rem 0;
+    text-align: center;
+}
+
+.apiUrl code {
+    font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+    font-size: 1rem;
+    color: #2563eb;
+    font-weight: 600;
+}
+
+.apiNote {
+    font-size: 0.9rem;
+    color: #9ca3af;
+    font-style: italic;
+}
+
+.apiFeatures h4 {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #1f2937;
+    margin-bottom: 1rem;
+}
+
+.apiFeatures ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.apiFeatures li {
+    padding: 0.5rem 0;
+    color: #6b7280;
+    position: relative;
+    padding-left: 1.5rem;
+}
+
+.apiFeatures li::before {
+    content: "✓";
+    position: absolute;
+    left: 0;
+    color: #10b981;
+    font-weight: bold;
+}
+
+/* Requirements Section */
+.requirementsSection {
+    margin-bottom: 3rem;
+}
+
+.requirementsSection h2 {
+    font-size: 2rem;
+    font-weight: 600;
+    color: #1f2937;
+    margin-bottom: 2rem;
+    text-align: center;
+}
+
+.requirementsGrid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.requirementCard {
+    background: white;
+    padding: 2rem;
+    border-radius: 16px;
+    border: 1px solid #e5e7eb;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.requirementCard h3 {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: #1f2937;
+    margin-bottom: 1rem;
+    text-align: center;
+}
+
+.requirementCard ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.requirementCard li {
+    padding: 0.5rem 0;
+    color: #6b7280;
+    position: relative;
+    padding-left: 1.5rem;
+    border-bottom: 1px solid #f3f4f6;
+}
+
+.requirementCard li:last-child {
+    border-bottom: none;
+}
+
+.requirementCard li::before {
+    content: "•";
+    position: absolute;
+    left: 0;
+    color: #2563eb;
+    font-weight: bold;
+    font-size: 1.2rem;
+}
+
+/* Login Section */
+.loginSection {
+    margin-bottom: 3rem;
+}
+
+.loginSection h2 {
+    font-size: 2rem;
+    font-weight: 600;
+    color: #1f2937;
+    margin-bottom: 2rem;
+    text-align: center;
+}
+
+.loginInfo {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.loginCard {
+    background: white;
+    padding: 2rem;
+    border-radius: 16px;
+    border: 1px solid #e5e7eb;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.loginCard h3 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #1f2937;
+    margin-bottom: 1rem;
+    text-align: center;
+}
+
+.loginCard p {
+    color: #6b7280;
+    line-height: 1.6;
+    margin-bottom: 2rem;
+    text-align: center;
+}
+
+.loginSteps h4 {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #1f2937;
+    margin-bottom: 1rem;
+}
+
+.loginSteps ol {
+    padding-left: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.loginSteps li {
+    padding: 0.5rem 0;
+    color: #6b7280;
+    line-height: 1.6;
+}
+
+.loginSteps strong {
+    color: #2563eb;
+    font-weight: 600;
+}
+
+.organizationNote h4 {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #1f2937;
+    margin-bottom: 1rem;
+}
+
+.organizationNote ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.organizationNote li {
+    padding: 0.5rem 0;
+    color: #6b7280;
+    position: relative;
+    padding-left: 1.5rem;
+}
+
+.organizationNote li::before {
+    content: "•";
+    position: absolute;
+    left: 0;
+    color: #2563eb;
+    font-weight: bold;
+    font-size: 1.2rem;
+}
+
+/* Support Section */
+.supportSection {
+    text-align: center;
+}
+
+.supportSection h2 {
+    font-size: 2rem;
+    font-weight: 600;
+    color: #1f2937;
+    margin-bottom: 2rem;
+}
+
+.supportLinks {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1rem;
+}
+
+.supportLink {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 1rem 1.5rem;
+    background: #2563eb;
+    color: white;
+    text-decoration: none;
+    border-radius: 12px;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 4px rgba(37, 99, 235, 0.2);
+}
+
+.supportLink:hover {
+    background: #1d4ed8;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .headerSection {
+        padding: 2rem 1rem;
+        margin-bottom: 2rem;
+    }
+    
+    .headerText h1 {
+        font-size: 2rem;
+    }
+    
+    .headerText p {
+        font-size: 1rem;
+    }
+    
+    .storeButtons {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+    
+    .featuresGrid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+    
+    .requirementsGrid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+    
+    .supportLinks {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .supportLink {
+        width: 100%;
+        max-width: 300px;
+        justify-content: center;
+    }
+}
+
+@media (max-width: 480px) {
+    .mobileAppsContainer {
+        padding: 1rem 0;
+    }
+    
+    .headerSection {
+        padding: 1.5rem 1rem;
+    }
+    
+    .headerText h1 {
+        font-size: 1.75rem;
+    }
+    
+    .storeButton {
+        padding: 1rem 1.5rem;
+    }
+    
+    .featureCard,
+    .apiCard,
+    .requirementCard {
+        padding: 1.5rem;
+    }
+}

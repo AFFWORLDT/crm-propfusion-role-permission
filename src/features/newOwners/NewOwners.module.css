@@ -1,0 +1,260 @@
+.ownerCard {
+  background: white;
+  border-radius: 8px;
+  padding: 1.5rem;
+  margin-bottom: 1rem;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  border: 1px solid #e5e7eb;
+  transition: all 0.2s ease;
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 2rem;
+}
+
+.ownerCard:hover {
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transform: translateY(-2px);
+}
+
+.avatarSection {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+
+.avatar {
+  width: 120px;
+  height: 120px;
+  border-radius: 60px;
+  background: #f3f4f6;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2.5rem;
+  color: #6b7280;
+  font-weight: 600;
+  overflow: hidden;
+}
+
+.profileImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.detailsSection {
+  flex: 1;
+  position: relative;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 1rem;
+}
+
+.ownerName {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #111827;
+  margin: 0;
+}
+
+.badge {
+  background: #f3f4f6;
+  padding: 0.25rem 0.75rem;
+  border-radius: 9999px;
+  font-size: 1rem;
+  font-weight: 600;
+  color: #374151;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+}
+
+.field {
+  margin-bottom: 1rem;
+}
+
+.label {
+  font-size: 1.6rem;
+  color: #6b7280;
+  margin-bottom: 0.5rem;
+  display: block;
+}
+
+.value {
+  font-size: 1.5rem;
+  color: #111827;
+  font-weight: 500;
+}
+
+.loadMore {
+  display: flex;
+  justify-content: center;
+  margin-top: 2rem;
+}
+
+.loadMoreButton {
+  background: #1f2937;
+  color: white;
+  border: none;
+  padding: 0.75rem 1.5rem;
+  border-radius: 6px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.loadMoreButton:hover {
+  background: #374151;
+}
+
+.loadMoreButton:disabled {
+  background: #9ca3af;
+  cursor: not-allowed;
+}
+
+.loadingMore {
+  text-align: center;
+  padding: 1rem;
+  color: #6b7280;
+  font-size: 1.4rem;
+  font-weight: 500;
+}
+
+.actionButtons {
+  display: flex;
+  gap: 1rem;
+  margin-top: 2rem;
+  padding-top: 1rem;
+  border-top: 1px solid #e5e7eb;
+}
+
+.rentButton,
+.sellButton,
+.detailsButton,
+.assignButton {
+  padding: 0.75rem 1.5rem;
+  border-radius: 6px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-size: 1.4rem;
+  flex: 1;
+  border: 1px solid #e5e7eb;
+}
+
+.detailsButton {
+  background: #f5f3ff;
+  color: #6366f1;
+  border-color: #6366f1;
+}
+
+.detailsButton:hover {
+  background: #ede9fe;
+}
+
+.rentButton {
+  background: #eff6ff;
+  color: #3b82f6;
+  border-color: #3b82f6;
+}
+
+.rentButton:hover {
+  background: #dbeafe;
+}
+
+.sellButton {
+  background: #ecfdf5;
+  color: #10b981;
+  border-color: #10b981;
+}
+
+.sellButton:hover {
+  background: #d1fae5;
+}
+
+.assignButton {
+  background: #fff7ed;
+  color: #f97316;
+  border-color: #f97316;
+}
+
+.assignButton:hover {
+  background: #ffedd5;
+}
+
+.menuContainer {
+  position: absolute;
+  top: 1rem;
+  right: 1.5rem;
+}
+
+/* Mobile Responsiveness */
+@media screen and (max-width: 768px) {
+  .ownerCard {
+    grid-template-columns: 1fr;
+    padding: 1rem;
+    gap: 1rem;
+  }
+
+  .grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  .avatar {
+    width: 80px;
+    height: 80px;
+    font-size: 1.8rem;
+  }
+
+  .ownerName {
+    font-size: 1.25rem;
+  }
+
+  .value {
+    font-size: 1.5rem;
+  }
+
+  .label {
+    font-size: 1.5rem;
+  }
+
+  .actionButtons {
+    flex-direction: column;
+  }
+
+  .rentButton,
+  .sellButton,
+  .detailsButton,
+  .assignButton {
+    width: 100%;
+  }
+}
+
+@media screen and (min-width: 769px) and (max-width: 1024px) {
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.bottomActions {
+  display: flex;
+  justify-content: center;
+  margin: 20px 0;
+  padding: 10px;
+}
+
+.bottomRightAction {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  padding: 1rem;
+} 

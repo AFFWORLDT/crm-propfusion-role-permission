@@ -1,0 +1,347 @@
+.container {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background-color: hsl(210 40% 98%);
+}
+
+.loading, .error {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  font-size: 1.2rem;
+  color: hsl(215 25% 27%);
+}
+
+.error {
+  color: hsl(0 84.2% 60.2%);
+}
+
+.header {
+  padding: 2rem 1rem;
+  background: linear-gradient(to right, hsl(222 47% 11%), hsl(215 25% 27%));
+  color: white;
+}
+
+.headerContent {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  gap: 2rem;
+  align-items: center;
+}
+
+.agentAvatar {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  border: 4px solid white;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  object-fit: cover;
+}
+
+.agentInfo {
+  flex: 1;
+}
+
+.agentName {
+  font-size: 2rem;
+  font-weight: 700;
+  margin: 0 0 0.5rem;
+}
+
+.agentRemarks {
+  font-style: italic;
+  margin: 0 0 1rem;
+  opacity: 0.9;
+}
+
+.agentContacts {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.chip {
+  background-color: hsl(215 25% 27% / 0.1);
+  color: white;
+  padding: 0.25rem 0.75rem;
+  border-radius: 9999px;
+  font-size: 0.875rem;
+  border: 1px solid hsl(215 25% 27% / 0.2);
+}
+
+.main {
+  flex: 1;
+  padding: 2rem 1rem;
+}
+
+.contentWrapper {
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.sectionTitle {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: hsl(215 25% 27%);
+  margin-bottom: 2rem;
+}
+
+.filterContainer {
+  background-color: white;
+  padding: 1.5rem;
+  border-radius: 0.75rem;
+  margin-bottom: 2rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1rem;
+  border: 1px solid hsl(215 25% 27% / 0.1);
+}
+
+.searchInput,
+.select {
+  width: 100%;
+  padding: 0.75rem;
+  border: 1px solid hsl(215 25% 27% / 0.2);
+  border-radius: 0.5rem;
+  font-size: 0.875rem;
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+.searchInput:focus,
+.select:focus {
+  border-color: hsl(215 25% 27%);
+}
+
+.resetButton {
+  padding: 0.75rem 1.5rem;
+  background-color: hsl(215 25% 27%);
+  color: white;
+  border: none;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  font-weight: 500;
+  transition: background-color 0.2s;
+}
+
+.resetButton:hover {
+  background-color: hsl(215 25% 22%);
+}
+
+.viewToggle {
+  display: flex;
+  justify-content: center;
+  gap: 0.5rem;
+  margin-bottom: 2rem;
+}
+
+.viewButton {
+  padding: 0.5rem 1rem;
+  background-color: white;
+  border: 1px solid hsl(215 25% 27% / 0.2);
+  border-radius: 0.5rem;
+  cursor: pointer;
+  font-size: 0.875rem;
+  transition: all 0.2s;
+}
+
+.viewButton.active {
+  background-color: hsl(215 25% 27%);
+  color: white;
+}
+
+.viewButton:hover:not(.active) {
+  background-color: hsl(210 40% 98%);
+}
+
+.gridContainer {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 2rem;
+}
+
+.listContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.propertyCard {
+  background-color: white;
+  border-radius: 1rem;
+  overflow: hidden;
+  border: 1px solid hsl(215 25% 27% / 0.1);
+  transition: all 0.2s;
+}
+
+.propertyCard:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1);
+}
+
+.propertyImage {
+  height: 200px;
+  background-size: cover;
+  background-position: center;
+  position: relative;
+}
+
+.propertyType {
+  position: absolute;
+  top: 0.5rem;
+  right: 0.5rem;
+  background-color: hsl(215 25% 27% / 0.8);
+  color: white;
+  padding: 0.25rem 0.75rem;
+  border-radius: 9999px;
+  font-size: 0.75rem;
+  font-weight: 500;
+}
+
+.propertyContent {
+  padding: 1.5rem;
+}
+
+.propertyTitle {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: hsl(215 25% 27%);
+  margin: 0 0 1rem;
+}
+
+.propertyLocation {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: hsl(215 25% 27% / 0.8);
+  margin-bottom: 1rem;
+}
+
+.icon {
+  width: 1.25rem;
+  height: 1.25rem;
+  flex-shrink: 0;
+}
+
+.propertyStats {
+  display: flex;
+  justify-content: space-around;
+  padding: 1rem;
+  margin: 1rem 0;
+  background-color: hsl(210 40% 98%);
+  border-radius: 0.5rem;
+}
+
+.statItem {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: hsl(215 25% 27% / 0.8);
+  font-size: 0.875rem;
+}
+
+.propertyPrice {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: hsl(142.1 76.2% 36.3%);
+  margin-top: 1rem;
+}
+
+.listPropertyCard {
+  display: flex;
+  flex-direction: row;
+}
+
+.listImageContainer {
+  width: 400px;
+  flex-shrink: 0;
+}
+
+.mapContainer {
+  width: 100%;
+  height: 70vh;
+  border-radius: 1rem;
+  overflow: hidden;
+  border: 1px solid hsl(215 25% 27% / 0.1);
+}
+
+.footer {
+  background-color: hsl(222 47% 11%);
+  color: white;
+  padding: 2rem 1rem;
+  margin-top: 2rem;
+}
+
+.footerContent {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2rem;
+}
+
+.companyInfo,
+.contactInfo,
+.legalInfo {
+  padding: 1rem;
+}
+
+.companyLogo {
+  width: 80px;
+  height: 80px;
+  object-fit: contain;
+  margin-bottom: 1rem;
+}
+
+.companyName {
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin: 0 0 1rem;
+}
+
+.companyDescription {
+  opacity: 0.8;
+  margin: 0 0 1rem;
+}
+
+.websiteLink {
+  color: white;
+  text-decoration: none;
+  border-bottom: 1px solid currentColor;
+}
+
+.websiteLink:hover {
+  opacity: 0.8;
+}
+
+.copyright {
+  font-size: 0.875rem;
+  opacity: 0.6;
+  margin-top: 2rem;
+}
+
+@media (max-width: 768px) {
+  .headerContent {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .agentContacts {
+    justify-content: center;
+  }
+
+  .listPropertyCard {
+    flex-direction: column;
+  }
+
+  .listImageContainer {
+    width: 100%;
+  }
+
+  .filterContainer {
+    grid-template-columns: 1fr;
+  }
+} 

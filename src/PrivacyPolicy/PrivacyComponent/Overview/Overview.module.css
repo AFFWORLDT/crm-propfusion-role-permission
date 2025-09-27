@@ -1,0 +1,38 @@
+.content{
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+.content h3{
+  text-align: center;
+  font-size: 40px;
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+} 
+.cardContainer{
+  padding-top: 50px;
+  padding-bottom: 50px;
+}
+.card{
+  box-sizing: border-box;
+  padding: 10px 5px 10px 5px;
+  margin: 10px ;
+  font-size: 25px;
+ border-radius: 8px;
+ transition: all 0.5s ease-in-out;
+ background-color: rgb(188, 231, 231); 
+
+}
+.card:hover{
+background-color: rgb(171, 234, 234);
+transition: all 0.1s ease-in-out;
+padding-left: 15px;
+box-shadow: 5px 5px 5px 5px rgb(135, 204, 204); 
+}
+@media only screen and (max-width:500px){
+  .card{
+    font-size: 20px;
+  }
+}
+@media only screen and (max-width:370px){
+  .card{
+    font-size: 17px;
+  }
+}

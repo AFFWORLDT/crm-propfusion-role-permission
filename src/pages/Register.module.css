@@ -1,0 +1,157 @@
+.registerContainer {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    padding: 20px;
+}
+
+.header {
+    display: flex;
+    justify-content: center;
+    padding: 20px 0;
+    margin-bottom: 20px;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    text-decoration: none;
+    color: white;
+    font-size: 24px;
+    font-weight: 700;
+}
+
+.logo img {
+    height: 40px;
+    width: auto;
+}
+
+.logo span {
+    color: white;
+}
+
+.registerForm {
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+    padding: 40px;
+    width: 100%;
+    max-width: 450px;
+    margin: 0 auto;
+}
+
+.registerHeader {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.registerTitle {
+    font-size: 28px;
+    font-weight: 700;
+    color: #1a1a1a;
+    margin-bottom: 8px;
+}
+
+.registerSubtitle {
+    font-size: 16px;
+    color: #666;
+    line-height: 1.5;
+}
+
+.formGroup {
+    margin-bottom: 20px;
+}
+
+.formLabel {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 600;
+    color: #333;
+    font-size: 14px;
+}
+
+.formInput {
+    width: 100%;
+    padding: 12px 16px;
+    border: 2px solid #e1e5e9;
+    border-radius: 8px;
+    font-size: 16px;
+    transition: border-color 0.3s ease;
+}
+
+.formInput:focus {
+    outline: none;
+    border-color: #667eea;
+}
+
+.submitButton {
+    width: 100%;
+    padding: 14px;
+    background: #667eea;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-top: 10px;
+}
+
+.submitButton:hover {
+    background: #5a6fd8;
+}
+
+.submitButton:disabled {
+    background: #ccc;
+    cursor: not-allowed;
+}
+
+.loginLink {
+    text-align: center;
+    margin-top: 20px;
+    color: #666;
+    font-size: 14px;
+}
+
+.loginLinkText {
+    color: #667eea;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.loginLinkText:hover {
+    text-decoration: underline;
+}
+
+.termsText {
+    text-align: center;
+    margin-top: 15px;
+    color: #999;
+    font-size: 12px;
+    line-height: 1.4;
+}
+
+.errorMessage {
+    color: #e74c3c;
+    font-size: 14px;
+    margin-top: 5px;
+}
+
+.successMessage {
+    color: #27ae60;
+    font-size: 14px;
+    margin-top: 5px;
+}
+
+@media (max-width: 480px) {
+    .registerForm {
+        padding: 30px 20px;
+    }
+    
+    .registerTitle {
+        font-size: 24px;
+    }
+} 

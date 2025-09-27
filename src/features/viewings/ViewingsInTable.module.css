@@ -1,0 +1,236 @@
+.notesCell {
+    position: relative;
+    max-width: 200px;
+}
+
+.truncatedText {
+    display: block;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    cursor: help;
+    font-size: 1rem;
+}
+
+.editButton {
+    padding: 6px 12px;
+    background-color: hsl(222.2 47.4% 11.2%);
+    color: hsl(210 40% 98%);
+    border: 1px solid hsl(217.2 32.6% 17.5%);
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 0.875rem;
+    font-weight: 500;
+    transition: all 0.2s ease;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    height: 32px;
+}
+
+.editButton:hover {
+    background-color: hsl(217.2 32.6% 17.5%);
+    border-color: hsl(217.2 32.6% 17.5%);
+}
+
+.editButton:focus {
+    outline: 2px solid hsl(222.2 47.4% 11.2%);
+    outline-offset: 2px;
+}
+
+.loadingRow {
+    grid-column: 1 / -1;
+    text-align: center;
+    padding: 1rem;
+    color: #666;
+    font-style: italic;
+    font-size: 1rem;
+}
+
+.noMoreDataRow {
+    grid-column: 1 / -1;
+    text-align: center;
+    padding: 1rem;
+    color: #666;
+    font-style: italic;
+    border-top: 1px solid #eee;
+    font-size: 1rem;
+}
+
+.clientInfoCell {
+    padding: 0.8rem;
+    position: relative;
+
+    
+}
+
+.clientInfoCell .truncatedText {
+    display: block;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    cursor: help;
+    font-size: 1.5rem;
+
+}
+
+.clientInfoCell .truncatedText:hover::after {
+    content: attr(title);
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: 100%;
+    background: white;
+    padding: 16px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.08);
+    width: max-content;
+    max-width: 350px;
+    z-index: 9000 !important;
+    white-space: pre-line;
+    font-size: 1.5rem;
+    line-height: 1.6;
+    color: #1a1a1a;
+    border: 1px solid #e2e8f0;
+    margin-bottom: 8px;
+    font-weight: 500;
+}
+
+.clientInfoCell .truncatedText:hover::before {
+    content: '';
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: calc(100% - 5px);
+    border-width: 5px;
+    border-style: solid;
+    border-color: #e2e8f0 transparent transparent transparent;
+    z-index: 1000;
+}
+
+.actionsCell {
+    display: flex;
+    align-items: center;
+    gap: 0.9rem;
+    justify-content: center;
+}
+
+.actionButton {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0.25rem;
+    border-radius: 4px;
+    transition: background-color 0.2s;
+}
+
+.actionButton:hover {
+    background-color: var(--color-grey-100);
+}
+
+.agentInfo {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.agentAvatar {
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    object-fit: cover;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+}
+
+.agentAvatarWrapper {
+    position: relative;
+}
+
+.agentAvatarWrapper:hover .agentAvatar {
+    transform: scale(1.1);
+}
+
+.agentPopover {
+    position: absolute;
+    top: calc(100% + 8px);
+    left: 50%;
+    transform: translateX(-50%);
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.08);
+    padding: 12px;
+    min-width: 200px;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.2s ease;
+    z-index: 1000;
+    border: 1px solid #e2e8f0;
+}
+
+.agentAvatarWrapper:hover .agentPopover {
+    opacity: 1;
+    visibility: visible;
+    transform: translateX(-50%) translateY(0);
+}
+
+.agentPopover::before {
+    content: '';
+    position: absolute;
+    top: -6px;
+    left: 50%;
+    transform: translateX(-50%);
+    border-width: 6px;
+    border-style: solid;
+    border-color: transparent transparent #e2e8f0 transparent;
+}
+
+.agentPopoverContent {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+}
+
+.agentPopoverAvatar {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid #e2e8f0;
+}
+
+.agentPopoverInfo {
+    flex: 1;
+}
+
+.agentPopoverInfo h4 {
+    margin: 0 0 4px 0;
+    font-size: 14px;
+    font-weight: 600;
+    color: #1a1a1a;
+}
+
+.agentPopoverInfo p {
+    margin: 0 0 2px 0;
+    font-size: 12px;
+    color: #666;
+}
+
+.viewing-actions .cancel-btn:hover {
+  background: #ffcdd2;
+}
+
+.tableRowLink {
+  display: contents; /* Allows the Link to wrap table cells without breaking layout */
+  color: inherit; /* Inherit text color from parent */
+  text-decoration: none; /* Remove underline */
+  cursor: pointer; /* Indicate it's clickable */
+}
+
+.tableRowLink:hover > div {
+    background-color: #f0f4ff; /* Add hover effect to the cells */
+}
+
+.viewings-table th, .viewings-table td {
+    
+} 

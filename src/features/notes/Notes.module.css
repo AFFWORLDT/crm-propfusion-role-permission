@@ -1,0 +1,108 @@
+.notesContent {
+    border: 1px solid var(--clr-neutral-200);
+    border-radius: 0.8rem;
+    padding: 2rem;
+}
+.notesContent p {
+    margin: 0;
+    font-size: 1.6rem;
+    color: var(--clr-neutral-600);
+    font-weight: 500;
+}
+.notesTop {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 2rem;
+    flex-wrap: wrap; /* Allow wrapping on smaller screens */
+}
+
+.notes h3 {
+    margin-bottom: 1rem;
+    color: var(--clr-primary-300);
+    font-size: 2.2rem;
+    font-weight: 600;
+
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    white-space: nowrap; /* Prevent text wrapping */
+}
+
+.notes h3 img {
+    max-width: 2.8rem;
+    object-fit: fill;
+}
+
+.btnAddNote {
+    width: 8rem;
+    padding: 0.5rem 1rem;
+    border: 1px solid var(--clr-neutral-300);
+    border-radius: 0.5rem;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+}
+
+.btnAddNote img {
+    max-width: 2rem;
+}
+
+.notesForm {
+    min-width: 40rem;
+}
+
+.notesForm h3 {
+    font-size: 2.4rem;
+    font-weight: 600;
+    margin-bottom: 2.4rem;
+}
+
+.notesForm form {
+    display: grid;
+    gap: 2.4rem;
+}
+
+.formFieldGroup {
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+}
+
+.formFieldGroup p {
+    color: red;
+    font-size: 1.4rem;
+    font-weight: 500;
+    margin-top: 0.4rem;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .notesTop {
+        gap: 1rem;
+    }
+
+    .notes h3 {
+        gap: 0.5rem;
+    }
+
+    .notesForm {
+        min-width: 100%; /* Use full width */
+    }
+}
+
+@media (max-width: 480px) {
+    .btnAddNote {
+        font-size: 1.4rem;
+    }
+
+    .notesForm h3 {
+        font-size: 2rem;
+    }
+
+    .notesForm form {
+        gap: 1.6rem;
+    }
+}
