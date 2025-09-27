@@ -40,6 +40,11 @@ export const getApiUrl = () => {
         return DEFAULT_API_URL;
     }
 
+    // For Vercel deployments, always use the default API
+    if (hostname.includes("vercel.app")) {
+        return DEFAULT_API_URL;
+    }
+
     // Check if domain is propfusion.io or www.propfusion.io
     if (hostname === "crm.propfusion.io") {
         const organizationName = localStorage.getItem("organizationName");
@@ -49,8 +54,7 @@ export const getApiUrl = () => {
         return DEFAULT_API_URL;
     }
 
-    // For other domains, use hos
-    // tname parsing logic
+    // For other domains, use hostname parsing logic
     const parts = hostname.split(".");
     let apiHostname;
 
