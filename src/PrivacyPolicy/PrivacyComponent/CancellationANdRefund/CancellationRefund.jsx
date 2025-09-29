@@ -5,14 +5,14 @@ const Cancellation = () => {
   return (
     <>
       <Helmet>
-        <title>Cancellation and Refund Policy | Propfusion Policies</title>
+        <title>Cancellation and Refund Policy | ONEX Properties</title>
         <meta
           name="description"
-          content="Learn about Propfusion.io's Cancellation and Refund Policy. Find out how we handle cancellations and refunds to ensure a smooth experience for our customers."
+          content="Review ONEX Properties' cancellation and refund policy for our real estate services and solutions."
         />
         <meta
           name="keywords"
-          content="Propfusion.io cancellation policy, refund policy, cancellation process, refund process, customer support, policy terms, return policy, cancellations and refunds, Propfusion, Propfusion cancellations and refunds"
+          content="ONEX Properties cancellation policy, refund policy, real estate services cancellation, refund process, customer support, policy terms, cancellations and refunds, ONEX Properties"
         />
       </Helmet>
       <div className={styles.cancellationContent}>

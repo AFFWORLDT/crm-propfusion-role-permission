@@ -264,14 +264,14 @@ const Pricing = () => {
     return (
         <>
             <Helmet>
-                <title>Pricing Details | Propfusion Policies</title>
+                <title>Pricing Details | ONEX Properties Policies</title>
                 <meta
                     name="description"
-                    content="Explore Propfusion.io's transparent pricing details for our IT services. Find affordable solutions tailored to your business needs with clear and competitive pricing."
+                    content="Detailed pricing information for ONEX Properties services and solutions."
                 />
                 <meta
                     name="keywords"
-                    content="Propfusion.io pricing details, IT service pricing, affordable solutions, transparent pricing, cost-effective IT services, pricing plans, service costs, Propfusion, Propfusion pricing details"
+                    content="ONEX Properties pricing details, real estate service pricing, affordable solutions, transparent pricing, cost-effective property management, pricing plans, service costs, ONEX Properties"
                 />
             </Helmet>
 

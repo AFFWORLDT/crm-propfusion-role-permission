@@ -392,7 +392,7 @@ function VehicleReport() {
             </div>
             
             <div className={styles.footer}>
-                <p>© {new Date().getFullYear()} PropFusion - Vehicle Inspection Report</p>
+                <p>© {new Date().getFullYear()} ONEX Properties - Vehicle Inspection Report</p>
                 <p>Reference ID: {vehicleId}</p>
                 <p>Generated On: {new Date().toLocaleString()}</p>
             </div>

@@ -146,14 +146,14 @@ const Privacy = () => {
   return (
     <>
       <Helmet>
-        <title>Privacy Policy | Propfusion Policies</title>
+        <title>Privacy Policy | ONEX Properties Policies</title>
         <meta
           name="description"
-          content="Read Propfusion.io's Privacy Policy to understand how we collect, use, and protect your personal information. Your privacy and data security are our top priorities."
+          content="Learn how ONEX Properties protects your privacy and handles your personal information in our real estate services."
         />
         <meta
           name="keywords"
-          content="Propfusion.io privacy policy, data protection, personal information, privacy practices, information security, data collection, user privacy, data privacy policy, Propfusion, Propfusion privacy policy"
+          content="ONEX Properties privacy policy, data protection, personal information, privacy practices, information security, real estate data collection, user privacy, data privacy policy, ONEX Properties"
         />
       </Helmet>
   

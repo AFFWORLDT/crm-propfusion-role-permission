@@ -116,14 +116,14 @@ const TermsAndCondition = () => {
   return (
     <>
       <Helmet>
-        <title>Terms and Conditions | Propfusion Policies</title>
+        <title>Terms and Conditions | ONEX Properties</title>
         <meta
           name="description"
-          content="Review Propfusion.io's Terms and Conditions to understand the rules and guidelines governing our services. Ensure a clear and fair understanding of our terms."
+          content="Review the terms and conditions for using ONEX Properties' real estate services and solutions."
         />
         <meta
           name="keywords"
-          content="Propfusion.io terms and conditions, service terms, user agreement, legal terms, company policies, usage guidelines, terms of service, service rules, Propfusion, Propfusion terms and conditions"
+          content="ONEX Properties terms and conditions, service terms, user agreement, legal terms, company policies, real estate usage guidelines, terms of service, service rules, ONEX Properties"
         />
       </Helmet>
       

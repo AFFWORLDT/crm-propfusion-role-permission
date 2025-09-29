@@ -701,7 +701,7 @@ const SupportTab = () => (
           <strong>Phone:</strong> +1-800-CRM-HELP
         </div>
         <div className={styles.emergencyItem}>
-          <strong>Email:</strong> emergency@propfusion.com
+          <strong>Email:</strong> support@onexproperties.com
         </div>
         <div className={styles.emergencyItem}>
           <strong>Response Time:</strong> Within 2 hours

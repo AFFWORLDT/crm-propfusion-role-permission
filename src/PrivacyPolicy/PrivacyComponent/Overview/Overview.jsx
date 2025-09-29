@@ -43,14 +43,14 @@ function Overview() {
   return (
     <>
       <Helmet>
-        <title>Overview | Propfusion Policies</title>
+        <title>Overview | ONEX Properties Policies</title>
         <meta
           name="description"
-          content="Explore Propfusion's policy overview, including Terms and Conditions, Privacy Policy, Cancellation and Refund Policy, Customer Support, and Pricing Details."
+          content="Overview of ONEX Properties policies including terms, privacy, and support information."
         />
         <meta
           name="keywords"
-          content="Propfusion, policies, terms and conditions, privacy policy, refund policy, cancellation policy, customer support, pricing details"
+          content="ONEX Properties, policies, terms and conditions, privacy policy, refund policy, cancellation policy, customer support, pricing details"
         />
       </Helmet>
 

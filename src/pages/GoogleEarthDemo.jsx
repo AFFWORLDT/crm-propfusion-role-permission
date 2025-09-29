@@ -104,7 +104,7 @@ const GoogleEarthDemo = () => {
         <div className={styles.demoInfo}>
           <h3>Google Earth API Integration</h3>
           <p>
-            This demo showcases the Google Earth API integration in the PropFusion CRM system. 
+            This demo showcases the Google Earth API integration in the ONEX Properties CRM system. 
             You can switch between traditional Google Maps and immersive 3D Google Earth views.
           </p>
           

@@ -107,7 +107,7 @@ function Register() {
         }
     };
 
-    // PropFusion Logo JSX
+    // ONEX Properties Logo JSX
     const PFLogo = (
         <Box
             sx={{
@@ -126,7 +126,7 @@ function Register() {
         >
             <img
                 src="/logo.png"
-                alt="PropFusion Logo"
+                alt="ONEX Properties Logo"
                 style={{
                     width: "90%",
                     height: "90%",
@@ -185,7 +185,7 @@ function Register() {
                             fontSize={{ xs: 17, md: 20 }}
                             sx={{ fontWeight: 500 }}
                         >
-                            Join PropFusion and start managing your properties
+                            Join ONEX Properties and start managing your properties
                             efficiently
                         </Typography>
                     </Box>
@@ -382,7 +382,7 @@ function Register() {
                         fontSize={{ xs: 32, md: 44 }}
                         sx={{ color: "#fff", letterSpacing: 0.5 }}
                     >
-                        PropFusion CRM
+                        ONEX Properties CRM
                     </Typography>
                     <Typography
                         variant="subtitle1"

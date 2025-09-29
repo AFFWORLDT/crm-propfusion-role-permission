@@ -366,7 +366,7 @@ const OverviewSection = () => {
             </div>
             <div className={styles.contactItem}>
               <MessageSquare size={20} />
-              <span>Email: support@propfusion.com</span>
+              <span>Email: support@onexproperties.com</span>
             </div>
             <div className={styles.contactItem}>
               <Phone size={20} />

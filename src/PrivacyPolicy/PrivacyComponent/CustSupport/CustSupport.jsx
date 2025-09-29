@@ -143,14 +143,14 @@ const CustSupport = () => {
   return (
     <>
       <Helmet>
-        <title>Customer Support | Propfusion Policies</title>
+        <title>Customer Support | ONEX Properties Policies</title>
         <meta
           name="description"
-          content="Get expert assistance with Propfusion.io's Customer Support. Our dedicated team is here to help you with any inquiries, troubleshooting, or technical issues you may have."
+          content="Get in touch with ONEX Properties customer support for assistance with our real estate services and solutions."
         />
         <meta
           name="keywords"
-          content="Propfusion.io customer support, tech support, customer service, help center, technical assistance, support team, troubleshooting, customer inquiries, Propfusion, Propfusion customer support"
+          content="ONEX Properties customer support, real estate support, customer service, help center, property assistance, support team, troubleshooting, customer inquiries, ONEX Properties"
         />
       </Helmet>
 

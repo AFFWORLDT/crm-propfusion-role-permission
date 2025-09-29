@@ -183,14 +183,14 @@ const About = () => {
                     Includes title, description, and keywords for the About Us page
                 */}
                 <Helmet>
-                    <title>About Us | Propfusion Policies</title>
+                    <title>About Us | ONEX Properties</title>
                     <meta
                         name="description"
-                        content="Learn about Propfusion.io, an innovative IT company delivering cutting-edge solutions. Meet our expert team and explore our mission to empower businesses globally."
+                        content="Learn more about ONEX Properties and our commitment to delivering exceptional real estate services and solutions."
                     />
                     <meta
                         name="keywords"
-                        content="Propfusion.io, technology experts, digital transformation, About us, Propfusion, Propfusion About Us"
+                        content="ONEX Properties, real estate experts, property management, About us, ONEX Properties About Us, real estate services"
                     />
                 </Helmet>
 
