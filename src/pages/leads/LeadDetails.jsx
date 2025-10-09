@@ -5,7 +5,11 @@ import useLead from "../../features/leads/useLead";
 import toast from "react-hot-toast";
 import SectionTop from "../../ui/SectionTop";
 import Spinner from "../../ui/Spinner";
-import { formatLocationsForMetaAds, formatNum, getDaysFromCurrentDate } from "../../utils/utils";
+import {
+    formatLocationsForMetaAds,
+    formatNum,
+    getDaysFromCurrentDate,
+} from "../../utils/utils";
 import DeleteLead from "../../features/leads/DeleteLead";
 import PageNotFound from "../PageNotFound";
 import useUpdateLead from "../../features/leads/useUpdateLead";
@@ -24,10 +28,14 @@ import PreferredProperty from "../../features/leads/PrefredPropert";
 import PreferredDeveloper from "../../features/leads/PreferredDeveloper";
 import PreferredProject from "../../features/leads/PreferredProject";
 import LeadMessage from "../../features/leads/LeadMessage";
-import { useForm } from 'react-hook-form';
+import { useForm } from "react-hook-form";
 import FormInputDataList from "../../ui/FormInputDataList";
 import FormInputSelect from "../../ui/FormInputSelect";
-import { PROPERTY_TYPES, BEDROOM_NUM_OPTIONS, NUM_OPTIONS } from "../../utils/constants";
+import {
+    PROPERTY_TYPES,
+    BEDROOM_NUM_OPTIONS,
+    NUM_OPTIONS,
+} from "../../utils/constants";
 import {
     ChevronDown,
     ChevronRight,
@@ -62,6 +70,9 @@ import AIPropertySuggestions from "../../features/leads/AIPropertySuggestions";
 import FormInputAsyncDataList from "../../ui/FormInputAsyncDataList";
 import { getLocations } from "../../services/apiProperties";
 import FormInputCountries from "../../ui/FormInputCountries";
+import { useAuth } from "../../context/AuthContext";
+import useAllDetails from "../../features/all-details/useAllDetails";
+import moment from "moment";
 
 function formatDate(dateStr) {
     const date = new Date(dateStr);
@@ -76,7 +87,8 @@ function LeadDetails() {
     const { hasPermission } = useMyPermissions();
     const [openLocationModal, setOpenLocationModal] = useState(false);
     const [openPhoneModal, setOpenPhoneModal] = useState(false);
-    const [openSecondaryPhoneModal, setOpenSecondaryPhoneModal] = useState(false);
+    const [openSecondaryPhoneModal, setOpenSecondaryPhoneModal] =
+        useState(false);
     const [openEmailModal, setOpenEmailModal] = useState(false);
     const [openNationalityModal, setOpenNationalityModal] = useState(false);
     const [openPropertyTypeModal, setOpenPropertyTypeModal] = useState(false);
@@ -84,23 +96,29 @@ function LeadDetails() {
     const [openBathroomModal, setOpenBathroomModal] = useState(false);
     const [openBudgetModal, setOpenBudgetModal] = useState(false);
     const [isExtraFieldsExpanded, setIsExtraFieldsExpanded] = useState(false);
-    const { control, handleSubmit, setValue, register, formState: { errors } } = useForm({
+    const {
+        control,
+        handleSubmit,
+        setValue,
+        register,
+        formState: { errors },
+    } = useForm({
         defaultValues: {
             location: null,
-            phone: '',
-            secondaryPhone: '',
-            email: '',
+            phone: "",
+            secondaryPhone: "",
+            email: "",
             nationality: null,
             propertyType: [],
-            roomsFrom: '',
-            roomsTo: '',
-            from_bathroom: '',
-            to_bathroom: '',
-            budgetFrom: '',
-            budgetTo: ''
-        }
+            roomsFrom: "",
+            roomsTo: "",
+            from_bathroom: "",
+            to_bathroom: "",
+            budgetFrom: "",
+            budgetTo: "",
+        },
     });
-
+    const { data: companyData } = useAllDetails();
     const { data: leadData, isLoading: isLoadingLead, error } = useLead();
     const { changeLead, isPending: isUpdatingLead } = useUpdateLead();
     const { data: staffData, isLoading: isLoadingStaff } = useStaff();
@@ -122,33 +140,37 @@ function LeadDetails() {
 
     const navigate = useNavigate();
 
+    const companyName = companyData?.company_settings?.company_name;
+
     useEffect(() => {
         if (error) toast.error(error.message);
     }, [error]);
 
     useEffect(() => {
         if (leadData?.[0]?.location) {
-            setValue('location', {
+            setValue("location", {
                 value: leadData[0].location,
                 label: [
                     leadData[0].location.city,
                     leadData[0].location.community,
                     leadData[0].location.sub_community,
                     leadData[0].location.property_name,
-                ].filter(Boolean).join(", ")
+                ]
+                    .filter(Boolean)
+                    .join(", "),
             });
         }
     }, [leadData, setValue]);
 
     const onSubmit = (data) => {
         if (!data.location?.value) return;
-        
+
         changeLead({
             id: leadData[0]?.id,
-            payload: { 
-                ...leadData[0], 
-                location: data.location.value
-            }
+            payload: {
+                ...leadData[0],
+                location: data.location.value,
+            },
         });
         setOpenLocationModal(false);
     };
@@ -173,7 +195,6 @@ function LeadDetails() {
             payload: { ...leadData[0], status },
         });
     }
-
 
     function handleChangePublic(is_public) {
         changeLead({
@@ -252,7 +273,9 @@ function LeadDetails() {
                                     borderRadius: "8px",
                                 }}
                             >
-                                {leadData?.[0]?.is_public? "Public" : "Private"}
+                                {leadData?.[0]?.is_public
+                                    ? "Public"
+                                    : "Private"}
                             </span>
                         </div>
                     </div>
@@ -275,8 +298,21 @@ function LeadDetails() {
                             </div>
                             <ul>
                                 <li>
-                                    <span style={{display: "flex", alignItems: "center", gap: "8px"}}>
-                                        <Hash className="icon" style={{width: "16px", height: "16px"}} /> Lead ID
+                                    <span
+                                        style={{
+                                            display: "flex",
+                                            alignItems: "center",
+                                            gap: "8px",
+                                        }}
+                                    >
+                                        <Hash
+                                            className="icon"
+                                            style={{
+                                                width: "16px",
+                                                height: "16px",
+                                            }}
+                                        />{" "}
+                                        Lead ID
                                     </span>
                                     <span>{leadData[0]?.id || "N/A"}</span>
                                 </li>
@@ -313,14 +349,16 @@ function LeadDetails() {
                                     >
                                         <MapPin className="icon" /> Location
                                         <button
-                                            onClick={() => setOpenLocationModal(true)}
+                                            onClick={() =>
+                                                setOpenLocationModal(true)
+                                            }
                                             style={{
                                                 border: "none",
                                                 background: "transparent",
                                                 cursor: "pointer",
                                                 padding: "4px",
                                                 display: "flex",
-                                                alignItems: "center"
+                                                alignItems: "center",
                                             }}
                                         >
                                             <Edit size={16} />
@@ -353,7 +391,10 @@ function LeadDetails() {
                                         <Phone className="icon" /> Phone
                                         <button
                                             onClick={() => {
-                                                setValue('phone', leadData[0]?.phone || '');
+                                                setValue(
+                                                    "phone",
+                                                    leadData[0]?.phone || ""
+                                                );
                                                 setOpenPhoneModal(true);
                                             }}
                                             style={{
@@ -362,7 +403,7 @@ function LeadDetails() {
                                                 cursor: "pointer",
                                                 padding: "4px",
                                                 display: "flex",
-                                                alignItems: "center"
+                                                alignItems: "center",
                                             }}
                                         >
                                             <Edit size={16} />
@@ -382,8 +423,14 @@ function LeadDetails() {
                                         Phone
                                         <button
                                             onClick={() => {
-                                                setValue('secondaryPhone', leadData[0]?.secondryPhone || '');
-                                                setOpenSecondaryPhoneModal(true);
+                                                setValue(
+                                                    "secondaryPhone",
+                                                    leadData[0]
+                                                        ?.secondryPhone || ""
+                                                );
+                                                setOpenSecondaryPhoneModal(
+                                                    true
+                                                );
                                             }}
                                             style={{
                                                 border: "none",
@@ -391,7 +438,7 @@ function LeadDetails() {
                                                 cursor: "pointer",
                                                 padding: "4px",
                                                 display: "flex",
-                                                alignItems: "center"
+                                                alignItems: "center",
                                             }}
                                         >
                                             <Edit size={16} />
@@ -412,7 +459,10 @@ function LeadDetails() {
                                         <Mail className="icon" /> Email
                                         <button
                                             onClick={() => {
-                                                setValue('email', leadData[0]?.email || '');
+                                                setValue(
+                                                    "email",
+                                                    leadData[0]?.email || ""
+                                                );
                                                 setOpenEmailModal(true);
                                             }}
                                             style={{
@@ -421,7 +471,7 @@ function LeadDetails() {
                                                 cursor: "pointer",
                                                 padding: "4px",
                                                 display: "flex",
-                                                alignItems: "center"
+                                                alignItems: "center",
                                             }}
                                         >
                                             <Edit size={16} />
@@ -440,10 +490,17 @@ function LeadDetails() {
                                         <Flag className="icon" /> Nationality
                                         <button
                                             onClick={() => {
-                                                setValue('nationality', leadData[0]?.nationality ? {
-                                                    value: leadData[0].nationality,
-                                                    label: leadData[0].nationality
-                                                } : null);
+                                                setValue(
+                                                    "nationality",
+                                                    leadData[0]?.nationality
+                                                        ? {
+                                                              value: leadData[0]
+                                                                  .nationality,
+                                                              label: leadData[0]
+                                                                  .nationality,
+                                                          }
+                                                        : null
+                                                );
                                                 setOpenNationalityModal(true);
                                             }}
                                             style={{
@@ -452,7 +509,7 @@ function LeadDetails() {
                                                 cursor: "pointer",
                                                 padding: "4px",
                                                 display: "flex",
-                                                alignItems: "center"
+                                                alignItems: "center",
                                             }}
                                         >
                                             <Edit size={16} />
@@ -528,10 +585,15 @@ function LeadDetails() {
                                         <Home className="icon" /> Property Type
                                         <button
                                             onClick={() => {
-                                                setValue('propertyType', leadData[0]?.property_type?.map(type => ({
-                                                    value: type,
-                                                    label: type
-                                                })) || []);
+                                                setValue(
+                                                    "propertyType",
+                                                    leadData[0]?.property_type?.map(
+                                                        (type) => ({
+                                                            value: type,
+                                                            label: type,
+                                                        })
+                                                    ) || []
+                                                );
                                                 setOpenPropertyTypeModal(true);
                                             }}
                                             style={{
@@ -540,7 +602,7 @@ function LeadDetails() {
                                                 cursor: "pointer",
                                                 padding: "4px",
                                                 display: "flex",
-                                                alignItems: "center"
+                                                alignItems: "center",
                                             }}
                                         >
                                             <Edit size={16} />
@@ -596,8 +658,14 @@ function LeadDetails() {
                                         Rooms
                                         <button
                                             onClick={() => {
-                                                setValue('roomsFrom', leadData[0]?.roomsFrom || '');
-                                                setValue('roomsTo', leadData[0]?.roomsTo || '');
+                                                setValue(
+                                                    "roomsFrom",
+                                                    leadData[0]?.roomsFrom || ""
+                                                );
+                                                setValue(
+                                                    "roomsTo",
+                                                    leadData[0]?.roomsTo || ""
+                                                );
                                                 setOpenRoomsModal(true);
                                             }}
                                             style={{
@@ -606,7 +674,7 @@ function LeadDetails() {
                                                 cursor: "pointer",
                                                 padding: "4px",
                                                 display: "flex",
-                                                alignItems: "center"
+                                                alignItems: "center",
                                             }}
                                         >
                                             <Edit size={16} />
@@ -625,8 +693,16 @@ function LeadDetails() {
                                         <Bath className="icon" /> Bath Rooms
                                         <button
                                             onClick={() => {
-                                                setValue('from_bathroom', leadData[0]?.from_bathroom || '');
-                                                setValue('to_bathroom', leadData[0]?.to_bathroom || '');
+                                                setValue(
+                                                    "from_bathroom",
+                                                    leadData[0]
+                                                        ?.from_bathroom || ""
+                                                );
+                                                setValue(
+                                                    "to_bathroom",
+                                                    leadData[0]?.to_bathroom ||
+                                                        ""
+                                                );
                                                 setOpenBathroomModal(true);
                                             }}
                                             style={{
@@ -635,7 +711,7 @@ function LeadDetails() {
                                                 cursor: "pointer",
                                                 padding: "4px",
                                                 display: "flex",
-                                                alignItems: "center"
+                                                alignItems: "center",
                                             }}
                                         >
                                             <Edit size={16} />
@@ -655,8 +731,15 @@ function LeadDetails() {
                                         <Wallet className="icon" /> Budget
                                         <button
                                             onClick={() => {
-                                                setValue('budgetFrom', leadData[0]?.budgetFrom || '');
-                                                setValue('budgetTo', leadData[0]?.budgetTo || '');
+                                                setValue(
+                                                    "budgetFrom",
+                                                    leadData[0]?.budgetFrom ||
+                                                        ""
+                                                );
+                                                setValue(
+                                                    "budgetTo",
+                                                    leadData[0]?.budgetTo || ""
+                                                );
                                                 setOpenBudgetModal(true);
                                             }}
                                             style={{
@@ -665,7 +748,7 @@ function LeadDetails() {
                                                 cursor: "pointer",
                                                 padding: "4px",
                                                 display: "flex",
-                                                alignItems: "center"
+                                                alignItems: "center",
                                             }}
                                         >
                                             <Edit size={16} />
@@ -689,20 +772,38 @@ function LeadDetails() {
                                 {leadData[0]?.locations?.length > 0 && (
                                     <>
                                         <li>
-                                            <span style={{display: "flex", alignItems: "center", gap: "8px"}}>
+                                            <span
+                                                style={{
+                                                    display: "flex",
+                                                    alignItems: "center",
+                                                    gap: "8px",
+                                                }}
+                                            >
                                                 <FileText className="icon" /> ID
                                             </span>
                                             <span>{`${leadData[0]?.locations ? leadData[0]?.locations[0]?.id : "N/A"}`}</span>
                                         </li>
                                         <li>
-                                            <span style={{display: "flex", alignItems: "center", gap: "8px"}}>
+                                            <span
+                                                style={{
+                                                    display: "flex",
+                                                    alignItems: "center",
+                                                    gap: "8px",
+                                                }}
+                                            >
                                                 <Building className="icon" />{" "}
                                                 City
                                             </span>
                                             <span>{`${leadData[0]?.locations ? leadData[0]?.locations[0]?.city : "N/A"}`}</span>
                                         </li>
                                         <li>
-                                            <span style={{display: "flex", alignItems: "center", gap: "8px"}}>
+                                            <span
+                                                style={{
+                                                    display: "flex",
+                                                    alignItems: "center",
+                                                    gap: "8px",
+                                                }}
+                                            >
                                                 <Building2 className="icon" />{" "}
                                                 Tower
                                             </span>
@@ -712,7 +813,13 @@ function LeadDetails() {
                                             </span>
                                         </li>
                                         <li>
-                                            <span style={{display: "flex", alignItems: "center", gap: "8px"}}>
+                                            <span
+                                                style={{
+                                                    display: "flex",
+                                                    alignItems: "center",
+                                                    gap: "8px",
+                                                }}
+                                            >
                                                 <LandPlot className="icon" />{" "}
                                                 Community
                                             </span>
@@ -722,7 +829,13 @@ function LeadDetails() {
                                             </span>
                                         </li>
                                         <li>
-                                            <span style={{display: "flex", alignItems: "center", gap: "8px"}}>
+                                            <span
+                                                style={{
+                                                    display: "flex",
+                                                    alignItems: "center",
+                                                    gap: "8px",
+                                                }}
+                                            >
                                                 <LandPlot className="icon" />{" "}
                                                 Sub Community
                                             </span>
@@ -743,7 +856,13 @@ function LeadDetails() {
                                                 alignItems: "center",
                                             }}
                                         >
-                                            <span style={{display: "flex", alignItems: "center", gap: "8px"}}>
+                                            <span
+                                                style={{
+                                                    display: "flex",
+                                                    alignItems: "center",
+                                                    gap: "8px",
+                                                }}
+                                            >
                                                 <Users className="icon" /> Agent
                                             </span>
                                             {hasPermission("assign_leads") && (
@@ -795,7 +914,13 @@ function LeadDetails() {
 
                                 {leadData[0]?.bayut_lead_id && (
                                     <li>
-                                        <span style={{display: "flex", alignItems: "center", gap: "8px"}}>
+                                        <span
+                                            style={{
+                                                display: "flex",
+                                                alignItems: "center",
+                                                gap: "8px",
+                                            }}
+                                        >
                                             <FileText className="icon" /> Bayut
                                             Lead ID
                                         </span>
@@ -805,24 +930,40 @@ function LeadDetails() {
 
                                 {leadData[0]?.createTime && (
                                     <li>
-                                        <span style={{display: "flex", alignItems: "center", gap: "8px"}}>
+                                        <span
+                                            style={{
+                                                display: "flex",
+                                                alignItems: "center",
+                                                gap: "8px",
+                                            }}
+                                        >
                                             <CalendarDays className="icon" />{" "}
                                             Created At
                                         </span>
                                         <span>
-                                            {formatDate(leadData[0].createTime)}
+                                            {moment(
+                                                leadData[0].createTime
+                                            ).format("MMMM DD,YYYY h:mm A")}
                                         </span>
                                     </li>
                                 )}
 
                                 {leadData[0]?.updateTime && (
                                     <li>
-                                        <span style={{display: "flex", alignItems: "center", gap: "8px"}}   >
+                                        <span
+                                            style={{
+                                                display: "flex",
+                                                alignItems: "center",
+                                                gap: "8px",
+                                            }}
+                                        >
                                             <CalendarClock className="icon" />{" "}
                                             Update At
                                         </span>
                                         <span>
-                                            {formatDate(leadData[0].updateTime)}
+                                            {moment(
+                                                leadData[0].updateTime
+                                            ).format("MMMM DD,YYYY h:mm A")}
                                         </span>
                                     </li>
                                 )}
@@ -831,46 +972,74 @@ function LeadDetails() {
                     </div>
 
                     {/* Extra Fields Section */}
-                    {leadData[0]?.custom_fields && Object.keys(leadData[0].custom_fields).length > 0 && (
-                        <div className={styles.leadContent} style={{ marginTop: '20px' }}>
-                            <div 
-                                className={styles.leadTop}
-                                style={{ 
-                                    cursor: 'pointer',
-                                    display: 'flex',
-                                    alignItems: 'center',
-                                    justifyContent: 'space-between',
-                                    padding: '8px 0'
-                                }}
-                                onClick={() => setIsExtraFieldsExpanded(!isExtraFieldsExpanded)}
+                    {leadData[0]?.custom_fields &&
+                        Object.keys(leadData[0].custom_fields).length > 0 && (
+                            <div
+                                className={styles.leadContent}
+                                style={{ marginTop: "20px" }}
                             >
-                                <h3 style={{ margin: '0', fontSize: '18px', fontWeight: '600' }}>Extra Fields</h3>
-                                {isExtraFieldsExpanded ? (
-                                    <ChevronDown size={20} style={{ color: '#666' }} />
-                                ) : (
-                                    <ChevronRight size={20} style={{ color: '#666' }} />
+                                <div
+                                    className={styles.leadTop}
+                                    style={{
+                                        cursor: "pointer",
+                                        display: "flex",
+                                        alignItems: "center",
+                                        justifyContent: "space-between",
+                                        padding: "8px 0",
+                                    }}
+                                    onClick={() =>
+                                        setIsExtraFieldsExpanded(
+                                            !isExtraFieldsExpanded
+                                        )
+                                    }
+                                >
+                                    <h3
+                                        style={{
+                                            margin: "0",
+                                            fontSize: "18px",
+                                            fontWeight: "600",
+                                        }}
+                                    >
+                                        Extra Fields
+                                    </h3>
+                                    {isExtraFieldsExpanded ? (
+                                        <ChevronDown
+                                            size={20}
+                                            style={{ color: "#666" }}
+                                        />
+                                    ) : (
+                                        <ChevronRight
+                                            size={20}
+                                            style={{ color: "#666" }}
+                                        />
+                                    )}
+                                </div>
+                                {isExtraFieldsExpanded && (
+                                    <div
+                                        style={{
+                                            backgroundColor: "#f8f9fa",
+                                            border: "1px solid #e9ecef",
+                                            borderRadius: "8px",
+                                            padding: "16px",
+                                            marginTop: "12px",
+                                            fontFamily: "monospace",
+                                            fontSize: "14px",
+                                            lineHeight: "1.5",
+                                            overflow: "auto",
+                                            maxHeight: "400px",
+                                            whiteSpace: "pre-wrap",
+                                            wordBreak: "break-word",
+                                        }}
+                                    >
+                                        {JSON.stringify(
+                                            leadData[0].custom_fields,
+                                            null,
+                                            2
+                                        )}
+                                    </div>
                                 )}
                             </div>
-                            {isExtraFieldsExpanded && (
-                                <div style={{
-                                    backgroundColor: '#f8f9fa',
-                                    border: '1px solid #e9ecef',
-                                    borderRadius: '8px',
-                                    padding: '16px',
-                                    marginTop: '12px',
-                                    fontFamily: 'monospace',
-                                    fontSize: '14px',
-                                    lineHeight: '1.5',
-                                    overflow: 'auto',
-                                    maxHeight: '400px',
-                                    whiteSpace: 'pre-wrap',
-                                    wordBreak: 'break-word'
-                                }}>
-                                    {JSON.stringify(leadData[0].custom_fields, null, 2)}
-                                </div>
-                            )}
-                        </div>
-                    )}
+                        )}
 
                     <div className={styles.btnsLeadOperations}>
                         {leadData[0]?.isClaim === "NO" && (
@@ -888,18 +1057,18 @@ function LeadDetails() {
                             </button>
                         )}
 
-<button
-                                className="btnFormNormal"
-                                onClick={handleDealLead}
-                                disabled={isUpdatingLead}
-                                style={{
-                                    backgroundColor: "#6a87c0",
-                                    color: "white",
-                                    border: "1px solid #6a87c0",
-                                }}
-                            >
-                                Deal Lead
-                            </button>
+                        <button
+                            className="btnFormNormal"
+                            onClick={handleDealLead}
+                            disabled={isUpdatingLead}
+                            style={{
+                                backgroundColor: "#6a87c0",
+                                color: "white",
+                                border: "1px solid #6a87c0",
+                            }}
+                        >
+                            Deal Lead
+                        </button>
                         <AIPropertySuggestions leadId={leadData[0]?.id} />
 
                         {leadData[0]?.status === "ACTIVE" && (
@@ -921,13 +1090,13 @@ function LeadDetails() {
                                 Activate
                             </button>
                         )}
-                        {leadData[0]?.is_public  && (
+                        {leadData[0]?.is_public && (
                             <button
                                 className="btnFormNormal"
                                 onClick={() => handleChangePublic(false)}
                                 disabled={isUpdatingLead}
                             >
-                               Private
+                                Private
                             </button>
                         )}
 
@@ -958,6 +1127,90 @@ function LeadDetails() {
                             data={leadData[0]}
                             className={`btnFormNormal `}
                         />
+
+                        {/* Communication Buttons */}
+                        <button
+                            className="btnFormNormal"
+                            onClick={() => {
+                                const subject = `Property Inquiry - ${leadData[0]?.name}`;
+                                const body = `Hi ${leadData[0]?.name},\n\nThank you for your interest in our property listings. I'm reaching out to discuss your property requirements and how I can assist you in finding the perfect property in Dubai.\n\nBest regards,\n${leadData[0]?.agent?.name || "Property Agent"}`;
+                                window.open(
+                                    `mailto:${leadData[0]?.phone}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`
+                                );
+                            }}
+                            style={{
+                                backgroundColor: "#4CAF50",
+                                color: "white",
+                                border: "1px solid #4CAF50",
+                                display: "flex",
+                                alignItems: "center",
+                                gap: "8px",
+                            }}
+                        >
+                            <Mail size={16} />
+                            Email
+                        </button>
+
+                        <button
+                            className="btnFormNormal"
+                            onClick={() => {
+                                const agentName =
+                                    leadData[0]?.agent?.name ||
+                                    "Property Agent";
+                                const propertyLink = `${window.location.origin}/share-new-property/${leadData?.[0]?.clientType?.toLowerCase()}/${leadData?.[0]?.preferred_property?.[0]}`;
+
+                                // Determine if it's a rent or sale lead based on lead data
+                                // You can adjust this logic based on how you identify rent vs sale leads
+                                const isRentLead =
+                                    leadData[0]?.clientType?.toLowerCase() ===
+                                    "rent";
+
+                                let selectedMessage;
+
+                                if (isRentLead) {
+                                    // Rent template
+                                    selectedMessage = `This is ${agentName} from ${companyName} . 👋\n\nThanks for your interest in this property — here's the listing link for your reference: ${leadData[0]?.preferred_property?.length > 0 ? propertyLink : "-"}\n\nIf you could share your move-in date, budget, and preferred area or community, I can send you a few options that fit your requirements right away.\n\nLooking forward to helping you find your next home! 🏡`;
+                                } else {
+                                    // Sale template (default)
+                                    selectedMessage = `This is ${agentName} from ${companyName} . 👋\n\nThank you for your interest in the property you viewed — here's the listing link for your reference: ${leadData[0]?.preferred_property?.length > 0 ? propertyLink : "-"}\n\nAre you currently looking to buy for investment or personal use?\n\nOnce I know your budget and preferred areas , I can share a few great options that match your goals.\n\nLooking forward to helping you find the right property in Dubai. 🏡`;
+                                }
+
+                                const whatsappUrl = `https://wa.me/${leadData[0]?.phone?.replace(/[^0-9]/g, "")}?text=${encodeURIComponent(selectedMessage)}`;
+                                window.open(whatsappUrl, "_blank");
+                            }}
+                            style={{
+                                backgroundColor: "#25D366",
+                                color: "white",
+                                border: "1px solid #25D366",
+                                display: "flex",
+                                alignItems: "center",
+                                gap: "8px",
+                            }}
+                        >
+                            <MessageSquare size={16} />
+                            WhatsApp
+                        </button>
+
+                        <button
+                            className="btnFormNormal"
+                            onClick={() => {
+                                window.open(
+                                    `tel:${leadData[0]?.phone}`,
+                                    "_self"
+                                );
+                            }}
+                            style={{
+                                backgroundColor: "#2196F3",
+                                color: "white",
+                                border: "1px solid #2196F3",
+                                display: "flex",
+                                alignItems: "center",
+                                gap: "8px",
+                            }}
+                        >
+                            <PhoneCall size={16} />
+                            Call
+                        </button>
                     </div>
                 </div>
 
@@ -1034,7 +1287,7 @@ function LeadDetails() {
                     <div className={styles.modalContent}>
                         <div className={styles.modalHeader}>
                             <h2>Edit Location</h2>
-                            <button 
+                            <button
                                 className={styles.closeButton}
                                 onClick={() => setOpenLocationModal(false)}
                             >
@@ -1053,15 +1306,17 @@ function LeadDetails() {
                                     className="location-input"
                                 />
                                 <div className={styles.modalFooter}>
-                                    <button 
-                                        type="button" 
+                                    <button
+                                        type="button"
                                         className={styles.cancelButton}
-                                        onClick={() => setOpenLocationModal(false)}
+                                        onClick={() =>
+                                            setOpenLocationModal(false)
+                                        }
                                     >
                                         Cancel
                                     </button>
-                                    <button 
-                                        type="submit" 
+                                    <button
+                                        type="submit"
                                         className={styles.saveButton}
                                     >
                                         Save Changes
@@ -1078,7 +1333,7 @@ function LeadDetails() {
                     <div className={styles.modalContent}>
                         <div className={styles.modalHeader}>
                             <h2>Edit Phone Number</h2>
-                            <button 
+                            <button
                                 className={styles.closeButton}
                                 onClick={() => setOpenPhoneModal(false)}
                             >
@@ -1086,35 +1341,37 @@ function LeadDetails() {
                             </button>
                         </div>
                         <div className={styles.modalBody}>
-                            <form onSubmit={handleSubmit((data) => {
-                                if (!data.phone) return;
-                                changeLead({
-                                    id: leadData[0]?.id,
-                                    payload: { 
-                                        ...leadData[0], 
-                                        phone: data.phone
-                                    }
-                                });
-                                setOpenPhoneModal(false);
-                            })}>
+                            <form
+                                onSubmit={handleSubmit((data) => {
+                                    if (!data.phone) return;
+                                    changeLead({
+                                        id: leadData[0]?.id,
+                                        payload: {
+                                            ...leadData[0],
+                                            phone: data.phone,
+                                        },
+                                    });
+                                    setOpenPhoneModal(false);
+                                })}
+                            >
                                 <div className={styles.formGroup}>
                                     <label>Phone Number</label>
                                     <input
-                                        {...register('phone')}
+                                        {...register("phone")}
                                         type="tel"
                                         placeholder="Enter phone number"
                                     />
                                 </div>
                                 <div className={styles.modalFooter}>
-                                    <button 
-                                        type="button" 
+                                    <button
+                                        type="button"
                                         className={styles.cancelButton}
                                         onClick={() => setOpenPhoneModal(false)}
                                     >
                                         Cancel
                                     </button>
-                                    <button 
-                                        type="submit" 
+                                    <button
+                                        type="submit"
                                         className={styles.saveButton}
                                     >
                                         Save Changes
@@ -1131,43 +1388,49 @@ function LeadDetails() {
                     <div className={styles.modalContent}>
                         <div className={styles.modalHeader}>
                             <h2>Edit Secondary Phone Number</h2>
-                            <button 
+                            <button
                                 className={styles.closeButton}
-                                onClick={() => setOpenSecondaryPhoneModal(false)}
+                                onClick={() =>
+                                    setOpenSecondaryPhoneModal(false)
+                                }
                             >
                                 ×
                             </button>
                         </div>
                         <div className={styles.modalBody}>
-                            <form onSubmit={handleSubmit((data) => {
-                                if (!data.secondaryPhone) return;
-                                changeLead({
-                                    id: leadData[0]?.id,
-                                    payload: { 
-                                        ...leadData[0], 
-                                        secondryPhone: data.secondaryPhone
-                                    }
-                                });
-                                setOpenSecondaryPhoneModal(false);
-                            })}>
+                            <form
+                                onSubmit={handleSubmit((data) => {
+                                    if (!data.secondaryPhone) return;
+                                    changeLead({
+                                        id: leadData[0]?.id,
+                                        payload: {
+                                            ...leadData[0],
+                                            secondryPhone: data.secondaryPhone,
+                                        },
+                                    });
+                                    setOpenSecondaryPhoneModal(false);
+                                })}
+                            >
                                 <div className={styles.formGroup}>
                                     <label>Secondary Phone Number</label>
                                     <input
-                                        {...register('secondaryPhone')}
+                                        {...register("secondaryPhone")}
                                         type="tel"
                                         placeholder="Enter secondary phone number"
                                     />
                                 </div>
                                 <div className={styles.modalFooter}>
-                                    <button 
-                                        type="button" 
+                                    <button
+                                        type="button"
                                         className={styles.cancelButton}
-                                        onClick={() => setOpenSecondaryPhoneModal(false)}
+                                        onClick={() =>
+                                            setOpenSecondaryPhoneModal(false)
+                                        }
                                     >
                                         Cancel
                                     </button>
-                                    <button 
-                                        type="submit" 
+                                    <button
+                                        type="submit"
                                         className={styles.saveButton}
                                     >
                                         Save Changes
@@ -1184,7 +1447,7 @@ function LeadDetails() {
                     <div className={styles.modalContent}>
                         <div className={styles.modalHeader}>
                             <h2>Edit Email Address</h2>
-                            <button 
+                            <button
                                 className={styles.closeButton}
                                 onClick={() => setOpenEmailModal(false)}
                             >
@@ -1192,26 +1455,29 @@ function LeadDetails() {
                             </button>
                         </div>
                         <div className={styles.modalBody}>
-                            <form onSubmit={handleSubmit((data) => {
-                                if (!data.email) return;
-                                changeLead({
-                                    id: leadData[0]?.id,
-                                    payload: { 
-                                        ...leadData[0], 
-                                        email: data.email
-                                    }
-                                });
-                                setOpenEmailModal(false);
-                            })}>
+                            <form
+                                onSubmit={handleSubmit((data) => {
+                                    if (!data.email) return;
+                                    changeLead({
+                                        id: leadData[0]?.id,
+                                        payload: {
+                                            ...leadData[0],
+                                            email: data.email,
+                                        },
+                                    });
+                                    setOpenEmailModal(false);
+                                })}
+                            >
                                 <div className={styles.formGroup}>
                                     <label>Email Address</label>
                                     <input
-                                        {...register('email', {
-                                            required: 'Email is required',
+                                        {...register("email", {
+                                            required: "Email is required",
                                             pattern: {
                                                 value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
-                                                message: 'Invalid email address'
-                                            }
+                                                message:
+                                                    "Invalid email address",
+                                            },
                                         })}
                                         type="email"
                                         placeholder="Enter email address"
@@ -1223,15 +1489,15 @@ function LeadDetails() {
                                     )}
                                 </div>
                                 <div className={styles.modalFooter}>
-                                    <button 
-                                        type="button" 
+                                    <button
+                                        type="button"
                                         className={styles.cancelButton}
                                         onClick={() => setOpenEmailModal(false)}
                                     >
                                         Cancel
                                     </button>
-                                    <button 
-                                        type="submit" 
+                                    <button
+                                        type="submit"
                                         className={styles.saveButton}
                                     >
                                         Save Changes
@@ -1248,7 +1514,7 @@ function LeadDetails() {
                     <div className={styles.modalContent}>
                         <div className={styles.modalHeader}>
                             <h2>Edit Nationality</h2>
-                            <button 
+                            <button
                                 className={styles.closeButton}
                                 onClick={() => setOpenNationalityModal(false)}
                             >
@@ -1256,17 +1522,19 @@ function LeadDetails() {
                             </button>
                         </div>
                         <div className={styles.modalBody}>
-                            <form onSubmit={handleSubmit((data) => {
-                                if (!data.nationality) return;
-                                changeLead({
-                                    id: leadData[0]?.id,
-                                    payload: { 
-                                        ...leadData[0], 
-                                        nationality: data.nationality.value
-                                    }
-                                });
-                                setOpenNationalityModal(false);
-                            })}>
+                            <form
+                                onSubmit={handleSubmit((data) => {
+                                    if (!data.nationality) return;
+                                    changeLead({
+                                        id: leadData[0]?.id,
+                                        payload: {
+                                            ...leadData[0],
+                                            nationality: data.nationality.value,
+                                        },
+                                    });
+                                    setOpenNationalityModal(false);
+                                })}
+                            >
                                 <div className={styles.formGroup}>
                                     <label>Nationality</label>
                                     <FormInputCountries
@@ -1283,15 +1551,17 @@ function LeadDetails() {
                                     )}
                                 </div>
                                 <div className={styles.modalFooter}>
-                                    <button 
-                                        type="button" 
+                                    <button
+                                        type="button"
                                         className={styles.cancelButton}
-                                        onClick={() => setOpenNationalityModal(false)}
+                                        onClick={() =>
+                                            setOpenNationalityModal(false)
+                                        }
                                     >
                                         Cancel
                                     </button>
-                                    <button 
-                                        type="submit" 
+                                    <button
+                                        type="submit"
                                         className={styles.saveButton}
                                     >
                                         Save Changes
@@ -1308,7 +1578,7 @@ function LeadDetails() {
                     <div className={styles.modalContent}>
                         <div className={styles.modalHeader}>
                             <h2>Edit Property Types</h2>
-                            <button 
+                            <button
                                 className={styles.closeButton}
                                 onClick={() => setOpenPropertyTypeModal(false)}
                             >
@@ -1316,17 +1586,22 @@ function LeadDetails() {
                             </button>
                         </div>
                         <div className={styles.modalBody}>
-                            <form onSubmit={handleSubmit((data) => {
-                                if (!data.propertyType?.length) return;
-                                changeLead({
-                                    id: leadData[0]?.id,
-                                    payload: { 
-                                        ...leadData[0], 
-                                        property_type: data.propertyType.map(type => type.value)
-                                    }
-                                });
-                                setOpenPropertyTypeModal(false);
-                            })}>
+                            <form
+                                onSubmit={handleSubmit((data) => {
+                                    if (!data.propertyType?.length) return;
+                                    changeLead({
+                                        id: leadData[0]?.id,
+                                        payload: {
+                                            ...leadData[0],
+                                            property_type:
+                                                data.propertyType.map(
+                                                    (type) => type.value
+                                                ),
+                                        },
+                                    });
+                                    setOpenPropertyTypeModal(false);
+                                })}
+                            >
                                 <div className={styles.formGroup}>
                                     <label>Property Types</label>
                                     <FormInputDataList
@@ -1344,15 +1619,17 @@ function LeadDetails() {
                                     )}
                                 </div>
                                 <div className={styles.modalFooter}>
-                                    <button 
-                                        type="button" 
+                                    <button
+                                        type="button"
                                         className={styles.cancelButton}
-                                        onClick={() => setOpenPropertyTypeModal(false)}
+                                        onClick={() =>
+                                            setOpenPropertyTypeModal(false)
+                                        }
                                     >
                                         Cancel
                                     </button>
-                                    <button 
-                                        type="submit" 
+                                    <button
+                                        type="submit"
                                         className={styles.saveButton}
                                     >
                                         Save Changes
@@ -1369,7 +1646,7 @@ function LeadDetails() {
                     <div className={styles.modalContent}>
                         <div className={styles.modalHeader}>
                             <h2>Edit Preferred Rooms</h2>
-                            <button 
+                            <button
                                 className={styles.closeButton}
                                 onClick={() => setOpenRoomsModal(false)}
                             >
@@ -1377,18 +1654,23 @@ function LeadDetails() {
                             </button>
                         </div>
                         <div className={styles.modalBody}>
-                            <form onSubmit={handleSubmit((data) => {
-                                changeLead({
-                                    id: leadData[0]?.id,
-                                    payload: { 
-                                        ...leadData[0], 
-                                        roomsFrom: data.roomsFrom,
-                                        roomsTo: data.roomsTo
-                                    }
-                                });
-                                setOpenRoomsModal(false);
-                            })}>
-                                <div className={styles.formGroup} style={{ display: 'flex', gap: '1rem' }}>
+                            <form
+                                onSubmit={handleSubmit((data) => {
+                                    changeLead({
+                                        id: leadData[0]?.id,
+                                        payload: {
+                                            ...leadData[0],
+                                            roomsFrom: data.roomsFrom,
+                                            roomsTo: data.roomsTo,
+                                        },
+                                    });
+                                    setOpenRoomsModal(false);
+                                })}
+                            >
+                                <div
+                                    className={styles.formGroup}
+                                    style={{ display: "flex", gap: "1rem" }}
+                                >
                                     <div style={{ flex: 1 }}>
                                         <label>From</label>
                                         <FormInputSelect
@@ -1399,7 +1681,9 @@ function LeadDetails() {
                                             valueAsNumber={true}
                                         />
                                         {errors.roomsFrom && (
-                                            <span className={styles.errorMessage}>
+                                            <span
+                                                className={styles.errorMessage}
+                                            >
                                                 {errors.roomsFrom.message}
                                             </span>
                                         )}
@@ -1414,22 +1698,24 @@ function LeadDetails() {
                                             valueAsNumber={true}
                                         />
                                         {errors.roomsTo && (
-                                            <span className={styles.errorMessage}>
+                                            <span
+                                                className={styles.errorMessage}
+                                            >
                                                 {errors.roomsTo.message}
                                             </span>
                                         )}
                                     </div>
                                 </div>
                                 <div className={styles.modalFooter}>
-                                    <button 
-                                        type="button" 
+                                    <button
+                                        type="button"
                                         className={styles.cancelButton}
                                         onClick={() => setOpenRoomsModal(false)}
                                     >
                                         Cancel
                                     </button>
-                                    <button 
-                                        type="submit" 
+                                    <button
+                                        type="submit"
                                         className={styles.saveButton}
                                     >
                                         Save Changes
@@ -1446,7 +1732,7 @@ function LeadDetails() {
                     <div className={styles.modalContent}>
                         <div className={styles.modalHeader}>
                             <h2>Edit Bathrooms</h2>
-                            <button 
+                            <button
                                 className={styles.closeButton}
                                 onClick={() => setOpenBathroomModal(false)}
                             >
@@ -1454,18 +1740,23 @@ function LeadDetails() {
                             </button>
                         </div>
                         <div className={styles.modalBody}>
-                            <form onSubmit={handleSubmit((data) => {
-                                changeLead({
-                                    id: leadData[0]?.id,
-                                    payload: { 
-                                        ...leadData[0], 
-                                        from_bathroom: data.from_bathroom,
-                                        to_bathroom: data.to_bathroom
-                                    }
-                                });
-                                setOpenBathroomModal(false);
-                            })}>
-                                <div className={styles.formGroup} style={{ display: 'flex', gap: '1rem' }}>
+                            <form
+                                onSubmit={handleSubmit((data) => {
+                                    changeLead({
+                                        id: leadData[0]?.id,
+                                        payload: {
+                                            ...leadData[0],
+                                            from_bathroom: data.from_bathroom,
+                                            to_bathroom: data.to_bathroom,
+                                        },
+                                    });
+                                    setOpenBathroomModal(false);
+                                })}
+                            >
+                                <div
+                                    className={styles.formGroup}
+                                    style={{ display: "flex", gap: "1rem" }}
+                                >
                                     <div style={{ flex: 1 }}>
                                         <label>From</label>
                                         <FormInputSelect
@@ -1479,7 +1770,9 @@ function LeadDetails() {
                                             valueAsNumber={true}
                                         />
                                         {errors.from_bathroom && (
-                                            <span className={styles.errorMessage}>
+                                            <span
+                                                className={styles.errorMessage}
+                                            >
                                                 {errors.from_bathroom.message}
                                             </span>
                                         )}
@@ -1497,22 +1790,26 @@ function LeadDetails() {
                                             valueAsNumber={true}
                                         />
                                         {errors.to_bathroom && (
-                                            <span className={styles.errorMessage}>
+                                            <span
+                                                className={styles.errorMessage}
+                                            >
                                                 {errors.to_bathroom.message}
                                             </span>
                                         )}
                                     </div>
                                 </div>
                                 <div className={styles.modalFooter}>
-                                    <button 
-                                        type="button" 
+                                    <button
+                                        type="button"
                                         className={styles.cancelButton}
-                                        onClick={() => setOpenBathroomModal(false)}
+                                        onClick={() =>
+                                            setOpenBathroomModal(false)
+                                        }
                                     >
                                         Cancel
                                     </button>
-                                    <button 
-                                        type="submit" 
+                                    <button
+                                        type="submit"
                                         className={styles.saveButton}
                                     >
                                         Save Changes
@@ -1529,7 +1826,7 @@ function LeadDetails() {
                     <div className={styles.modalContent}>
                         <div className={styles.modalHeader}>
                             <h2>Edit Budget</h2>
-                            <button 
+                            <button
                                 className={styles.closeButton}
                                 onClick={() => setOpenBudgetModal(false)}
                             >
@@ -1537,22 +1834,27 @@ function LeadDetails() {
                             </button>
                         </div>
                         <div className={styles.modalBody}>
-                            <form onSubmit={handleSubmit((data) => {
-                                changeLead({
-                                    id: leadData[0]?.id,
-                                    payload: { 
-                                        ...leadData[0], 
-                                        budgetFrom: data.budgetFrom,
-                                        budgetTo: data.budgetTo
-                                    }
-                                });
-                                setOpenBudgetModal(false);
-                            })}>
-                                <div className={styles.formGroup} style={{ display: 'flex', gap: '1rem' }}>
+                            <form
+                                onSubmit={handleSubmit((data) => {
+                                    changeLead({
+                                        id: leadData[0]?.id,
+                                        payload: {
+                                            ...leadData[0],
+                                            budgetFrom: data.budgetFrom,
+                                            budgetTo: data.budgetTo,
+                                        },
+                                    });
+                                    setOpenBudgetModal(false);
+                                })}
+                            >
+                                <div
+                                    className={styles.formGroup}
+                                    style={{ display: "flex", gap: "1rem" }}
+                                >
                                     <div style={{ flex: 1 }}>
                                         <label>From</label>
                                         <input
-                                            {...register('budgetFrom')}
+                                            {...register("budgetFrom")}
                                             type="number"
                                             placeholder="AED"
                                         />
@@ -1560,22 +1862,24 @@ function LeadDetails() {
                                     <div style={{ flex: 1 }}>
                                         <label>To</label>
                                         <input
-                                            {...register('budgetTo')}
+                                            {...register("budgetTo")}
                                             type="number"
                                             placeholder="AED"
                                         />
                                     </div>
                                 </div>
                                 <div className={styles.modalFooter}>
-                                    <button 
-                                        type="button" 
+                                    <button
+                                        type="button"
                                         className={styles.cancelButton}
-                                        onClick={() => setOpenBudgetModal(false)}
+                                        onClick={() =>
+                                            setOpenBudgetModal(false)
+                                        }
                                     >
                                         Cancel
                                     </button>
-                                    <button 
-                                        type="submit" 
+                                    <button
+                                        type="submit"
                                         className={styles.saveButton}
                                     >
                                         Save Changes

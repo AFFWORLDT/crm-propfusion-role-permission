@@ -18,10 +18,15 @@ import ReactCrop from "react-image-crop";
 import "react-image-crop/dist/ReactCrop.css";
 import axiosInstance from "../utils/axiosInstance";
 import DummyPerson from "./../assets/dummy-person.png";
+import useAllDetails from "../features/all-details/useAllDetails";
+import ProfileBusinessCardGenerator from "../components/ProfileBusinessCardGenerator";
 
 function Profile() {
     const navigate = useNavigate();
     const [activeProfileTab, setActiveProfileTab] = useState("info");
+    const { data } = useAllDetails();
+    const colorCode = data?.company_settings?.sidebar_color_code || "#020079";
+
     const { currentUser } = useAuth();
     const { data: userData, isLoading, error } = useStaff(currentUser?.id);
     const { data: teamData } = useTeam(userData?.team);
@@ -29,7 +34,7 @@ function Profile() {
     const videoInputRef = useRef(null);
     const imgRef = useRef(null);
     const queryClient = useQueryClient();
-    
+
     const [showCropModal, setShowCropModal] = useState(false);
     const [selectedFile, setSelectedFile] = useState(null);
     const [crop, setCrop] = useState({
@@ -42,7 +47,6 @@ function Profile() {
     });
     const [completedCrop, setCompletedCrop] = useState(null);
     const [previewUrl, setPreviewUrl] = useState(null);
-
 
     useEffect(() => {
         if (error) toast.error(error.message);
@@ -134,7 +138,7 @@ function Profile() {
         return new Promise((resolve) => {
             canvas.toBlob(
                 (blob) => {
-                resolve(blob);
+                    resolve(blob);
                 },
                 "image/jpeg",
                 0.9
@@ -202,7 +206,7 @@ function Profile() {
             const files = e.target.files;
             if (files.length > 0) {
                 const file = files[0];
-                
+
                 // Validate file size (max 50MB)
                 const maxSize = 50 * 1024 * 1024;
                 if (file.size > maxSize) {
@@ -212,7 +216,7 @@ function Profile() {
 
                 const formData = new FormData();
                 formData.append("video", file);
-                
+
                 await toast.promise(
                     axiosInstance.post(
                         `/agent/${currentUser?.id}/upload_video`,
@@ -277,6 +281,10 @@ function Profile() {
         videoInputRef.current?.click();
     };
 
+    const handleWallet = () => {
+        navigate("/wallet");
+    };
+
     return (
         <div className="sectionContainer">
             <SectionTop heading="Profile">
@@ -303,6 +311,12 @@ function Profile() {
                             >
                                 <div className={styles.profileTabs}>
                                     <button
+                                        style={{
+                                            background:
+                                                activeProfileTab === "info"
+                                                    ? colorCode
+                                                    : "",
+                                        }}
                                         className={
                                             activeProfileTab === "info"
                                                 ? styles.activeProfileTab
@@ -315,6 +329,12 @@ function Profile() {
                                         General Information
                                     </button>
                                     <button
+                                        style={{
+                                            background:
+                                                activeProfileTab === "pass"
+                                                    ? colorCode
+                                                    : "",
+                                        }}
                                         className={
                                             activeProfileTab === "pass"
                                                 ? styles.activeProfileTab
@@ -328,7 +348,10 @@ function Profile() {
                                     </button>
                                 </div>
                                 {activeProfileTab === "info" && (
-                                    <ChangeInfoForm userData={userData} />
+                                    <ChangeInfoForm
+                                        userData={userData}
+                                        colorCode={colorCode}
+                                    />
                                 )}
                                 {activeProfileTab === "pass" && (
                                     <ChangePassForm id={userData.id} />
@@ -347,7 +370,7 @@ function Profile() {
                                             e.target.src = DummyPerson;
                                         }}
                                     />
-                                    <button 
+                                    <button
                                         className={styles.uploadButton}
                                         onClick={handleImageClick}
                                         type="button"
@@ -392,62 +415,64 @@ function Profile() {
                                         alignItems: "center",
                                         gap: "0.5rem",
                                         justifyContent: "center",
-                                        marginBottom: "0.2rem"
+                                        marginBottom: "0.2rem",
                                     }}
                                 >
                                     {userData.name}
                                     {userData?.kyc_verification ? (
-                                        <svg 
-                                            width="20" 
-                                            height="20" 
-                                            viewBox="0 0 24 24" 
+                                        <svg
+                                            width="20"
+                                            height="20"
+                                            viewBox="0 0 24 24"
                                             className={`${styles.verificationBadge} ${styles.verified}`}
                                             title="Verified Account"
                                         >
-                                            <path 
-                                                d="M12 2L15.09 8.26L22 9L17 14L18.18 21L12 17.77L5.82 21L7 14L2 9L8.91 8.26L12 2Z" 
+                                            <path
+                                                d="M12 2L15.09 8.26L22 9L17 14L18.18 21L12 17.77L5.82 21L7 14L2 9L8.91 8.26L12 2Z"
                                                 fill="#1DA1F2"
                                                 stroke="#ffffff"
                                                 strokeWidth="0.5"
                                             />
-                                            <path 
-                                                d="M9 12L11 14L15 10" 
-                                                stroke="white" 
-                                                strokeWidth="2" 
-                                                fill="none" 
-                                                strokeLinecap="round" 
+                                            <path
+                                                d="M9 12L11 14L15 10"
+                                                stroke="white"
+                                                strokeWidth="2"
+                                                fill="none"
+                                                strokeLinecap="round"
                                                 strokeLinejoin="round"
                                             />
                                         </svg>
                                     ) : (
-                                        <svg 
-                                            width="20" 
-                                            height="20" 
-                                            viewBox="0 0 24 24" 
+                                        <svg
+                                            width="20"
+                                            height="20"
+                                            viewBox="0 0 24 24"
                                             className={`${styles.verificationBadge} ${styles.unverified}`}
                                             title="Unverified Account"
                                         >
-                                            <path 
-                                                d="M12 2L15.09 8.26L22 9L17 14L18.18 21L12 17.77L5.82 21L7 14L2 9L8.91 8.26L12 2Z" 
+                                            <path
+                                                d="M12 2L15.09 8.26L22 9L17 14L18.18 21L12 17.77L5.82 21L7 14L2 9L8.91 8.26L12 2Z"
                                                 fill="#ef4444"
                                                 stroke="#ffffff"
                                                 strokeWidth="0.5"
                                             />
-                                            <path 
-                                                d="M8 8L16 16M16 8L8 16" 
-                                                stroke="white" 
-                                                strokeWidth="2" 
-                                                strokeLinecap="round" 
+                                            <path
+                                                d="M8 8L16 16M16 8L8 16"
+                                                stroke="white"
+                                                strokeWidth="2"
+                                                strokeLinecap="round"
                                                 strokeLinejoin="round"
                                             />
                                         </svg>
                                     )}
                                 </h3>
-                                <div style={{ 
-                                    display: "flex", 
-                                    justifyContent: "center", 
-                                    marginBottom: "0.5rem" 
-                                }}>
+                                <div
+                                    style={{
+                                        display: "flex",
+                                        justifyContent: "center",
+                                        marginBottom: "0.5rem",
+                                    }}
+                                >
                                     {userData?.staff_level ? (
                                         <span
                                             style={{
@@ -493,7 +518,7 @@ function Profile() {
                                             style={{
                                                 color: "#9e9e9e",
                                                 fontStyle: "italic",
-                                                fontSize: "0.9rem"
+                                                fontSize: "0.9rem",
                                             }}
                                         >
                                             Not Specified
@@ -573,6 +598,9 @@ function Profile() {
 
                                 <div className={styles.profileActions}>
                                     <button
+                                        style={{
+                                            background: colorCode,
+                                        }}
                                         className={styles.portfolioButton}
                                         onClick={handleGeneratePortfolio}
                                     >
@@ -580,11 +608,32 @@ function Profile() {
                                     </button>
                                 </div>
 
+                                <div className={styles.profileActions}>
+                                    <button
+                                        style={{
+                                            background: colorCode,
+                                        }}
+                                        className={styles.portfolioButton}
+                                        onClick={handleWallet}
+                                    >
+                                        Ledger
+                                    </button>
+                                </div>
+
+                                {/* Generate Business Card Button */}
+                                <ProfileBusinessCardGenerator
+                                    currentUser={currentUser}
+                                    colorCode={colorCode}
+                                />
+
                                 {/* Video Section */}
                                 <div className={styles.videoSection}>
                                     <div className={styles.videoHeader}>
                                         <h4>My Video</h4>
-                                        <button 
+                                        <button
+                                            style={{
+                                                background: colorCode,
+                                            }}
                                             className={styles.uploadVideoButton}
                                             onClick={handleVideoClick}
                                             type="button"
@@ -600,7 +649,7 @@ function Profile() {
                                         accept="video/*"
                                         style={{ display: "none" }}
                                     />
-                                    
+
                                     {userData?.videoLink ? (
                                         <div className={styles.videoContainer}>
                                             <video
@@ -639,219 +688,122 @@ function Profile() {
 
                         {/* Beautiful Crop Modal */}
                         {showCropModal && (
-                            <div 
+                            <div
                                 className={styles.modalOverlay}
                                 style={{
-                                    position: 'fixed',
+                                    position: "fixed",
                                     top: 0,
                                     left: 0,
                                     right: 0,
                                     bottom: 0,
-                                    backgroundColor: 'rgba(0, 0, 0, 0.8)',
-                                    display: 'flex',
-                                    alignItems: 'center',
-                                    justifyContent: 'center',
+                                    backgroundColor: "rgba(0, 0, 0, 0.8)",
+                                    display: "flex",
+                                    alignItems: "center",
+                                    justifyContent: "center",
                                     zIndex: 9999,
-                                    backdropFilter: 'blur(4px)',
+                                    backdropFilter: "blur(4px)",
                                 }}
                                 onClick={handleCropCancel}
                             >
-                                <div 
+                                <div
                                     className={styles.cropModal}
                                     style={{
-                                        background: 'linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%)',
-                                        borderRadius: '20px',
-                                        padding: '2rem',
-                                        maxWidth: '90vw',
-                                        maxHeight: '90vh',
-                                        width: '600px',
-                                        boxShadow: '0 20px 60px rgba(0, 0, 0, 0.3)',
-                                        border: '1px solid rgba(255, 255, 255, 0.2)',
-                                        position: 'relative',
-                                        overflow: 'hidden',
+                                        background:
+                                            "linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%)",
+                                        borderRadius: "20px",
+                                        padding: "2rem",
+                                        maxWidth: "90vw",
+                                        maxHeight: "90vh",
+                                        width: "600px",
+                                        boxShadow:
+                                            "0 20px 60px rgba(0, 0, 0, 0.3)",
+                                        border: "1px solid rgba(255, 255, 255, 0.2)",
+                                        position: "relative",
+                                        overflow: "hidden",
                                     }}
                                     onClick={(e) => e.stopPropagation()}
                                 >
-                                    {/* Header */}
-                                    <div style={{
-                                        display: 'flex',
-                                        alignItems: 'center',
-                                        justifyContent: 'space-between',
-                                        marginBottom: '1.5rem',
-                                        paddingBottom: '1rem',
-                                        borderBottom: '2px solid #e3f2fd'
-                                    }}>
-                                        <div style={{
-                                            display: 'flex',
-                                            alignItems: 'center',
-                                            gap: '0.75rem'
-                                        }}>
-                                            <div style={{
-                                                background: 'linear-gradient(135deg, #1976d2, #42a5f5)',
-                                                borderRadius: '50%',
-                                                width: '40px',
-                                                height: '40px',
-                                                display: 'flex',
-                                                alignItems: 'center',
-                                                justifyContent: 'center',
-                                                color: 'white',
-                                                fontSize: '1.2rem',
-                                                fontWeight: 'bold'
-                                            }}>
-                                                ✂️
-                                            </div>
-                                            <div>
-                                                <h3 style={{
-                                                    margin: 0,
-                                                    fontSize: '1.4rem',
-                                                    fontWeight: '700',
-                                                    background: 'linear-gradient(135deg, #1976d2, #42a5f5)',
-                                                    WebkitBackgroundClip: 'text',
-                                                    WebkitTextFillColor: 'transparent',
-                                                }}>
-                                                    Crop Your Avatar
-                                                </h3>
-                                                <p style={{
-                                                    margin: '0.25rem 0 0 0',
-                                                    color: '#666',
-                                                    fontSize: '0.9rem'
-                                                }}>
-                                                    Adjust the crop area to perfect your profile picture
-                                                </p>
-                                            </div>
-                                        </div>
-                                        <button
-                                            onClick={handleCropCancel}
+                                    {/* Crop Area */}
+                                    <div
+                                        style={{
+                                            display: "flex",
+                                            justifyContent: "center",
+                                            marginBottom: "1.5rem",
+                                            background: "#f8f9fa",
+                                            borderRadius: "12px",
+                                            padding: "1rem",
+                                            border: "2px dashed #e3f2fd",
+                                        }}
+                                    >
+                                        <ReactCrop
+                                            crop={crop}
+                                            onChange={(c) => setCrop(c)}
+                                            onComplete={(c) =>
+                                                setCompletedCrop(c)
+                                            }
+                                            aspect={1}
                                             style={{
-                                                background: 'none',
-                                                border: 'none',
-                                                fontSize: '1.5rem',
-                                                cursor: 'pointer',
-                                                color: '#999',
-                                                padding: '0.5rem',
-                                                borderRadius: '50%',
-                                                transition: 'all 0.3s ease',
-                                                display: 'flex',
-                                                alignItems: 'center',
-                                                justifyContent: 'center',
-                                                width: '40px',
-                                                height: '40px'
-                                            }}
-                                            onMouseEnter={(e) => {
-                                                e.target.style.backgroundColor = '#f5f5f5';
-                                                e.target.style.color = '#333';
-                                            }}
-                                            onMouseLeave={(e) => {
-                                                e.target.style.backgroundColor = 'transparent';
-                                                e.target.style.color = '#999';
+                                                maxWidth: "100%",
+                                                maxHeight: "400px",
                                             }}
                                         >
-                                            ×
-                                        </button>
-                                    </div>
-
-                                    {/* Crop Area */}
-                                    <div style={{
-                                        display: 'flex',
-                                        justifyContent: 'center',
-                                        marginBottom: '1.5rem',
-                                        background: '#f8f9fa',
-                                        borderRadius: '12px',
-                                        padding: '1rem',
-                                        border: '2px dashed #e3f2fd'
-                                    }}>
-                                    <ReactCrop
-                                        crop={crop}
-                                        onChange={(c) => setCrop(c)}
-                                        onComplete={(c) => setCompletedCrop(c)}
-                                        aspect={1}
-                                            style={{
-                                                maxWidth: '100%',
-                                                maxHeight: '400px'
-                                            }}
-                                    >
-                                        <img
-                                            ref={imgRef}
-                                            src={previewUrl}
+                                            <img
+                                                ref={imgRef}
+                                                src={previewUrl}
                                                 style={{
-                                                    maxWidth: '100%',
-                                                    maxHeight: '400px',
-                                                    borderRadius: '8px',
-                                                    boxShadow: '0 4px 12px rgba(0,0,0,0.1)'
+                                                    maxWidth: "100%",
+                                                    maxHeight: "400px",
+                                                    borderRadius: "8px",
+                                                    boxShadow:
+                                                        "0 4px 12px rgba(0,0,0,0.1)",
                                                 }}
-                                            alt="Crop preview"
-                                        />
-                                    </ReactCrop>
-                                    </div>
-
-                                    {/* Instructions */}
-                                    <div style={{
-                                        background: 'linear-gradient(135deg, #e3f2fd, #f3e5f5)',
-                                        borderRadius: '12px',
-                                        padding: '1rem',
-                                        marginBottom: '1.5rem',
-                                        border: '1px solid #bbdefb'
-                                    }}>
-                                        <div style={{
-                                            display: 'flex',
-                                            alignItems: 'center',
-                                            gap: '0.5rem',
-                                            marginBottom: '0.5rem'
-                                        }}>
-                                            <span style={{
-                                                fontSize: '1.2rem'
-                                            }}>💡</span>
-                                            <span style={{
-                                                fontWeight: '600',
-                                                color: '#1976d2'
-                                            }}>Pro Tips:</span>
-                                        </div>
-                                        <ul style={{
-                                            margin: 0,
-                                            paddingLeft: '1.2rem',
-                                            color: '#555',
-                                            fontSize: '0.9rem',
-                                            lineHeight: '1.5'
-                                        }}>
-                                            <li>Drag the corners to resize the crop area</li>
-                                            <li>Click and drag to move the crop area</li>
-                                            <li>Make sure your face is centered for the best result</li>
-                                        </ul>
+                                                alt="Crop preview"
+                                            />
+                                        </ReactCrop>
                                     </div>
 
                                     {/* Action Buttons */}
-                                    <div style={{
-                                        display: 'flex',
-                                        gap: '1rem',
-                                        justifyContent: 'flex-end'
-                                    }}>
+                                    <div
+                                        style={{
+                                            display: "flex",
+                                            gap: "1rem",
+                                            justifyContent: "flex-end",
+                                        }}
+                                    >
                                         <button
                                             onClick={handleCropCancel}
                                             style={{
-                                                padding: '0.75rem 1.5rem',
-                                                borderRadius: '25px',
-                                                border: '2px solid #e0e0e0',
-                                                background: 'linear-gradient(135deg, #f5f5f5, #ffffff)',
-                                                color: '#666',
-                                                fontWeight: '600',
-                                                cursor: 'pointer',
-                                                transition: 'all 0.3s ease',
-                                                fontSize: '0.9rem',
-                                                display: 'flex',
-                                                alignItems: 'center',
-                                                gap: '0.5rem'
+                                                padding: "0.75rem 1.5rem",
+                                                borderRadius: "25px",
+                                                border: "2px solid #e0e0e0",
+                                                background:
+                                                    "linear-gradient(135deg, #f5f5f5, #ffffff)",
+                                                color: "#666",
+                                                fontWeight: "600",
+                                                cursor: "pointer",
+                                                transition: "all 0.3s ease",
+                                                fontSize: "0.9rem",
+                                                display: "flex",
+                                                alignItems: "center",
+                                                gap: "0.5rem",
                                             }}
                                             onMouseEnter={(e) => {
-                                                e.target.style.borderColor = '#999';
-                                                e.target.style.color = '#333';
-                                                e.target.style.transform = 'translateY(-2px)';
-                                                e.target.style.boxShadow = '0 4px 12px rgba(0,0,0,0.15)';
+                                                e.target.style.borderColor =
+                                                    "#999";
+                                                e.target.style.color = "#333";
+                                                e.target.style.transform =
+                                                    "translateY(-2px)";
+                                                e.target.style.boxShadow =
+                                                    "0 4px 12px rgba(0,0,0,0.15)";
                                             }}
                                             onMouseLeave={(e) => {
-                                                e.target.style.borderColor = '#e0e0e0';
-                                                e.target.style.color = '#666';
-                                                e.target.style.transform = 'translateY(0)';
-                                                e.target.style.boxShadow = 'none';
+                                                e.target.style.borderColor =
+                                                    "#e0e0e0";
+                                                e.target.style.color = "#666";
+                                                e.target.style.transform =
+                                                    "translateY(0)";
+                                                e.target.style.boxShadow =
+                                                    "none";
                                             }}
                                         >
                                             <span>↶</span>
@@ -861,32 +813,40 @@ function Profile() {
                                             onClick={handleCropComplete}
                                             disabled={!completedCrop}
                                             style={{
-                                                padding: '0.75rem 1.5rem',
-                                                borderRadius: '25px',
-                                                border: 'none',
-                                                background: completedCrop 
-                                                    ? 'linear-gradient(135deg, #1976d2, #42a5f5)' 
-                                                    : 'linear-gradient(135deg, #ccc, #ddd)',
-                                                color: 'white',
-                                                fontWeight: '700',
-                                                cursor: completedCrop ? 'pointer' : 'not-allowed',
-                                                transition: 'all 0.3s ease',
-                                                fontSize: '0.9rem',
-                                                display: 'flex',
-                                                alignItems: 'center',
-                                                gap: '0.5rem',
-                                                opacity: completedCrop ? 1 : 0.6
+                                                padding: "0.75rem 1.5rem",
+                                                borderRadius: "25px",
+                                                border: "none",
+                                                background: completedCrop
+                                                    ? "linear-gradient(135deg, #1976d2, #42a5f5)"
+                                                    : "linear-gradient(135deg, #ccc, #ddd)",
+                                                color: "white",
+                                                fontWeight: "700",
+                                                cursor: completedCrop
+                                                    ? "pointer"
+                                                    : "not-allowed",
+                                                transition: "all 0.3s ease",
+                                                fontSize: "0.9rem",
+                                                display: "flex",
+                                                alignItems: "center",
+                                                gap: "0.5rem",
+                                                opacity: completedCrop
+                                                    ? 1
+                                                    : 0.6,
                                             }}
                                             onMouseEnter={(e) => {
                                                 if (completedCrop) {
-                                                    e.target.style.transform = 'translateY(-2px)';
-                                                    e.target.style.boxShadow = '0 6px 20px rgba(25, 118, 210, 0.4)';
+                                                    e.target.style.transform =
+                                                        "translateY(-2px)";
+                                                    e.target.style.boxShadow =
+                                                        "0 6px 20px rgba(25, 118, 210, 0.4)";
                                                 }
                                             }}
                                             onMouseLeave={(e) => {
                                                 if (completedCrop) {
-                                                    e.target.style.transform = 'translateY(0)';
-                                                    e.target.style.boxShadow = 'none';
+                                                    e.target.style.transform =
+                                                        "translateY(0)";
+                                                    e.target.style.boxShadow =
+                                                        "none";
                                                 }
                                             }}
                                         >
@@ -897,7 +857,6 @@ function Profile() {
                                 </div>
                             </div>
                         )}
-
                     </>
                 )}
             </section>

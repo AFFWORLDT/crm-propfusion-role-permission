@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect, useCallback, useRef } from "react";
 import { useDrag, useDrop } from "react-dnd";
 import {
@@ -14,8 +13,8 @@ import {
     // ScanSearch,
     // MoreHorizontal,
     Edit,
-        // Trash2,
-        // AlertCircle,
+    // Trash2,
+    // AlertCircle,
     Inbox,
     X,
     ChevronUp,
@@ -85,7 +84,13 @@ const StageColumn = ({
                 >
                     {stage.name}
                 </span>
-                <div style={{ display: "flex", alignItems: "center", gap: "0.5rem" }}>
+                <div
+                    style={{
+                        display: "flex",
+                        alignItems: "center",
+                        gap: "0.5rem",
+                    }}
+                >
                     <span
                         className={styles.leadCountRight}
                         style={{
@@ -116,7 +121,9 @@ const StageColumn = ({
                                 key={lead.id}
                                 lead={lead}
                                 stageColor={stage.color_code}
-                                handleRowClick={() => handleRowClick(lead.id.toString())}
+                                handleRowClick={() =>
+                                    handleRowClick(lead.id.toString())
+                                }
                                 setShowFollowUp={setShowFollowUp}
                             />
                         ))
@@ -146,10 +153,6 @@ const LeadBasedOnStage = ({
     const [isDraggingOverGap, setIsDraggingOverGap] = useState(false);
     const { addFollowUp } = useCreateFollowUp();
     const scrollTimeout = useRef(null);
-
-  
-
-   
 
     // Improved scroll handler with debounce
     const handleScroll = useCallback(() => {
@@ -224,8 +227,10 @@ const LeadBasedOnStage = ({
 
             try {
                 // Get stage name for logging
-                const stageName = stages?.find((s) => s.id === toStageId)?.name || "Unknown Stage";
-                
+                const stageName =
+                    stages?.find((s) => s.id === toStageId)?.name ||
+                    "Unknown Stage";
+
                 // Create follow-up payload for stage change
                 const payload = {
                     type: "lead",
@@ -292,11 +297,10 @@ const LeadBasedOnStage = ({
                 // Refresh data from server to ensure consistency
                 // Instead of page refresh, we can trigger a data refetch
                 // This will be handled by the parent component's data fetching logic
-
             } catch (error) {
-                console.error('Error moving lead:', error);
-                toast.error('Failed to move lead. Please try again.');
-                
+                console.error("Error moving lead:", error);
+                toast.error("Failed to move lead. Please try again.");
+
                 // Revert local state on error
                 // You might want to refresh the data from server here
             }
@@ -346,10 +350,7 @@ const LeadBasedOnStage = ({
 
     return (
         <>
-            <div
-             
-            >
-                
+            <div>
                 <div
                     className={styles.boardContainer}
                     style={{
@@ -398,7 +399,7 @@ const LeadBasedOnStage = ({
                 )}
 
                 {/* Global styles for tooltips */}
-                            <style>{`
+                <style>{`
                 .whatsapp-tooltip-container {
                     position: relative;
                 }
@@ -448,14 +449,14 @@ const LeadBasedOnStage = ({
 
 // Helper function to extract info from message
 const extractInfoFromMessage = (message) => {
-    if (!message) return { link: '', refNumber: '' };
-    
+    if (!message) return { link: "", refNumber: "" };
+
     const linkMatch = message.match(/https?:\/\/[^\s]+/);
     const refMatch = message.match(/ref:?\s*([^\s]+)/i);
-    
+
     return {
-        link: linkMatch ? linkMatch[0] : '',
-        refNumber: refMatch ? refMatch[1] : ''
+        link: linkMatch ? linkMatch[0] : "",
+        refNumber: refMatch ? refMatch[1] : "",
     };
 };
 
@@ -528,11 +529,17 @@ const DraggableLeadCard = ({
             const rect = event.currentTarget.getBoundingClientRect();
             const viewportHeight = window.innerHeight;
             const viewportWidth = window.innerWidth;
-            
+
             // Calculate position to ensure tooltip is visible within viewport
-            const x = Math.min(Math.max(rect.left + rect.width / 2, 150), viewportWidth - 150);
-            const y = Math.min(Math.max(rect.top - 10, 100), viewportHeight - 100);
-            
+            const x = Math.min(
+                Math.max(rect.left + rect.width / 2, 150),
+                viewportWidth - 150
+            );
+            const y = Math.min(
+                Math.max(rect.top - 10, 100),
+                viewportHeight - 100
+            );
+
             setTooltipPosition({
                 x: x,
                 y: y,
@@ -555,14 +562,39 @@ const DraggableLeadCard = ({
         // Don't use the regular tooltip system for this
         // WhatsApp tooltips are controlled by CSS hover
     };
-
-    const handleWhatsAppClick = (message, agentName, phoneNumber) => {
+    let whatsappMessage;
+    const handleWhatsAppClick = (
+        message,
+        agentName,
+        phoneNumber,
+        clientType
+    ) => {
         const { link, refNumber } = extractInfoFromMessage(message);
         const propertyLink = link;
         const whatsappNumber = phoneNumber;
-        const companyName = allDetails?.company_settings?.company_name || '';
+        const companyName = allDetails?.company_settings?.company_name || "";
 
-        let whatsappMessage = `Hi I'm ${agentName} from ${companyName}\nYou enquired on my hot listing\n${propertyLink}`;
+        if (clientType?.toLowerCase() === "rent") {
+            whatsappMessage = `This is ${agentName} from ${companyName} . 👋
+
+Thanks for your interest in this property — here’s the listing link for your reference: ${propertyLink}
+
+If you could share your move-in date, budget, and preferred area or community, I can send you a few options that fit your requirements right away.
+
+Looking forward to helping you find your next home! `;
+        } else {
+            whatsappMessage = `This is ${agentName} from ${companyName} . 👋
+
+Thank you for your interest in the property you viewed — here’s the listing link for your reference: ${propertyLink} 
+
+Are you currently looking to buy for investment or personal use?
+
+Once I know your budget and preferred areas , I can share a few great options that match your goals.
+
+Looking forward to helping you find the right property in Dubai. 🏡`;
+        }
+
+        //= `Hi I'm ${agentName} from ${companyName}\nYou enquired on my hot listing\n${propertyLink}`;
 
         if (refNumber) {
             whatsappMessage += `\nReference no.: ${refNumber}`;
@@ -598,7 +630,7 @@ const DraggableLeadCard = ({
     // };
 
     const capitalizeFirstLetter = (string) => {
-        if (!string) return '';
+        if (!string) return "";
         return string.charAt(0).toUpperCase() + string.slice(1);
     };
 
@@ -729,11 +761,12 @@ const DraggableLeadCard = ({
                                 width={16}
                                 height={16}
                                 style={{ cursor: "pointer" }}
-                                onClick={() => 
+                                onClick={() =>
                                     handleWhatsAppClick(
                                         lead?.leads_message,
                                         lead?.agent?.name,
-                                        lead?.phone
+                                        lead?.phone,
+                                        lead?.clientType
                                     )
                                 }
                                 onMouseEnter={(e) =>
@@ -764,7 +797,13 @@ const DraggableLeadCard = ({
                         </div>
 
                         <div>
-                            <div style={{ display: "flex", gap: "10px", alignItems: "center" }}>
+                            <div
+                                style={{
+                                    display: "flex",
+                                    gap: "10px",
+                                    alignItems: "center",
+                                }}
+                            >
                                 <div
                                     style={{
                                         display: "flex",
@@ -789,10 +828,15 @@ const DraggableLeadCard = ({
                                         >
                                             <ClientSourceIcon
                                                 source={lead?.clientSource}
-                                                leadMessage={lead?.leads_message}
+                                                leadMessage={
+                                                    lead?.leads_message
+                                                }
                                                 agentName={lead?.agent?.name}
                                                 phoneNumber={lead?.phone}
-                                                companyLogo={allDetails?.company_settings?.company_logo_url}
+                                                companyLogo={
+                                                    allDetails?.company_settings
+                                                        ?.company_logo_url
+                                                }
                                             />
                                         </span>
                                     </div>
@@ -812,9 +856,10 @@ const DraggableLeadCard = ({
                                             gap: "6px",
                                         }}
                                     >
-                                        {lead?.clientSubSource?.toLowerCase() === "whatsapp" && (
+                                        {lead?.clientSubSource?.toLowerCase() ===
+                                            "whatsapp" && (
                                             <div
-                                                onClick={() => 
+                                                onClick={() =>
                                                     handleWhatsAppClick(
                                                         lead?.leads_message,
                                                         lead?.agent?.name,
@@ -830,7 +875,9 @@ const DraggableLeadCard = ({
                                                     zIndex: 1001,
                                                 }}
                                                 className="whatsapp-tooltip-container"
-                                                onMouseEnter={handleWhatsAppTooltip}
+                                                onMouseEnter={
+                                                    handleWhatsAppTooltip
+                                                }
                                             >
                                                 <img
                                                     src="/icons/whatsapp/whatsapp.svg"
@@ -838,27 +885,34 @@ const DraggableLeadCard = ({
                                                     style={{
                                                         width: "20px",
                                                         height: "20px",
-                                                        backgroundColor: "#25D366",
+                                                        backgroundColor:
+                                                            "#25D366",
                                                         borderRadius: "4px",
                                                         padding: "2px",
                                                     }}
                                                 />
-                                                {lead?.whatsapp_delivery_notifications?.length > 0 && (
+                                                {lead
+                                                    ?.whatsapp_delivery_notifications
+                                                    ?.length > 0 && (
                                                     <div
                                                         className="whatsapp-tooltip"
                                                         style={{
                                                             display: "none",
-                                                            position: "absolute",
+                                                            position:
+                                                                "absolute",
                                                             left: "-180px",
                                                             top: "-80px",
-                                                            backgroundColor: "#ffffff",
+                                                            backgroundColor:
+                                                                "#ffffff",
                                                             color: "#4b5563",
                                                             padding: "8px 10px",
                                                             borderRadius: "4px",
                                                             fontSize: "12px",
-                                                            whiteSpace: "nowrap",
+                                                            whiteSpace:
+                                                                "nowrap",
                                                             zIndex: 9999,
-                                                            boxShadow: "0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24)",
+                                                            boxShadow:
+                                                                "0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24)",
                                                             border: "1px solid #e5e7eb",
                                                             width: "180px",
                                                         }}
@@ -866,34 +920,69 @@ const DraggableLeadCard = ({
                                                         <div
                                                             style={{
                                                                 display: "flex",
-                                                                flexDirection: "column",
+                                                                flexDirection:
+                                                                    "column",
                                                                 gap: "2px",
                                                             }}
                                                         >
                                                             {lead.whatsapp_delivery_notifications.map(
-                                                                (notification, index) => (
-                                                                    <div key={index} style={{ marginBottom: "4px" }}>
-                                                                                                                                                 <div style={{ 
-                                                                            fontWeight: "500", 
-                                                                            fontSize: "12px",
-                                                                            color: "#4a5568",
-                                                                            lineHeight: "1.3"
-                                                                        }}>
-                                                                            Status: {notification.status}
+                                                                (
+                                                                    notification,
+                                                                    index
+                                                                ) => (
+                                                                    <div
+                                                                        key={
+                                                                            index
+                                                                        }
+                                                                        style={{
+                                                                            marginBottom:
+                                                                                "4px",
+                                                                        }}
+                                                                    >
+                                                                        <div
+                                                                            style={{
+                                                                                fontWeight:
+                                                                                    "500",
+                                                                                fontSize:
+                                                                                    "12px",
+                                                                                color: "#4a5568",
+                                                                                lineHeight:
+                                                                                    "1.3",
+                                                                            }}
+                                                                        >
+                                                                            Status:{" "}
+                                                                            {
+                                                                                notification.status
+                                                                            }
                                                                         </div>
-                                                                        <div style={{ 
-                                                                            fontSize: "11px",
-                                                                            color: "#718096",
-                                                                            lineHeight: "1.3"
-                                                                        }}>
-                                                                            Time: {new Date(notification.created_at).toLocaleString(undefined, {
-                                                                                month: "numeric",
-                                                                                day: "numeric",
-                                                                                year: "numeric",
-                                                                                hour: "2-digit",
-                                                                                minute: "2-digit",
-                                                                                hour12: true
-                                                                            }).replace(',', '')}
+                                                                        <div
+                                                                            style={{
+                                                                                fontSize:
+                                                                                    "11px",
+                                                                                color: "#718096",
+                                                                                lineHeight:
+                                                                                    "1.3",
+                                                                            }}
+                                                                        >
+                                                                            Time:{" "}
+                                                                            {new Date(
+                                                                                notification.created_at
+                                                                            )
+                                                                                .toLocaleString(
+                                                                                    undefined,
+                                                                                    {
+                                                                                        month: "numeric",
+                                                                                        day: "numeric",
+                                                                                        year: "numeric",
+                                                                                        hour: "2-digit",
+                                                                                        minute: "2-digit",
+                                                                                        hour12: true,
+                                                                                    }
+                                                                                )
+                                                                                .replace(
+                                                                                    ",",
+                                                                                    ""
+                                                                                )}
                                                                         </div>
                                                                     </div>
                                                                 )
@@ -903,7 +992,8 @@ const DraggableLeadCard = ({
                                                 )}
                                             </div>
                                         )}
-                                        {lead?.clientSubSource?.toLowerCase() === "email" && (
+                                        {lead?.clientSubSource?.toLowerCase() ===
+                                            "email" && (
                                             <div
                                                 style={{
                                                     display: "flex",
@@ -930,8 +1020,11 @@ const DraggableLeadCard = ({
                                             }
                                         `}</style>
                                         {lead?.clientSubSource !== "WhatsApp" &&
-                                            lead?.clientSubSource?.toLowerCase() !== "email" &&
-                                            capitalizeFirstLetter(lead?.clientSubSource)}
+                                            lead?.clientSubSource?.toLowerCase() !==
+                                                "email" &&
+                                            capitalizeFirstLetter(
+                                                lead?.clientSubSource
+                                            )}
                                     </span>
                                 </div>
                             </div>
@@ -947,7 +1040,23 @@ const DraggableLeadCard = ({
                     >
                         <MapPin size={16} />
                         <span style={{ fontSize: "14px" }}>
-                            {lead?.areas ? lead?.areas[0]?.name : "No location"}
+                            {lead?.location ? (
+                                <div
+                                    style={{
+                                        color: "#6b7280",
+                                        fontSize: "12px",
+                                        opacity: 0.8,
+                                    }}
+                                >
+                                    {lead.location.sub_community}
+                                    <span>, </span>
+                                    {lead.location.community}
+                                    {/* <span>, </span> */}
+                                    {/* {item.location.city} */}
+                                </div>
+                            ) : (
+                                "No location"
+                            )}
                         </span>
                     </div>
 

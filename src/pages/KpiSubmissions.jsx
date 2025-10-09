@@ -97,6 +97,18 @@ const KpiSubmissions = () => {
                         if (tabId === "TRANSACTIONS") {
                             return "/transactions";
                         }
+                        if (tabId === "LEDGER") {
+                            return "/ledger";
+                        }
+                        if (tabId === "PAYOUTLIST") {
+                            return "/payout-list";
+                        }
+                        if (tabId === "ALLTRANSACTIONS") {
+                            return "/all-transactions";
+                        }       
+                        if (tabId === "ALLAGENTWALLET") {
+                            return "/all-agent-wallet";
+                        }
                         return `/kpi-submissions`;
                     }}
                 />

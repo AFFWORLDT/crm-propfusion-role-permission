@@ -935,6 +935,34 @@ export const KPI_CONTRACTS_TABS = [
         fontColor: "#0284c7", // Dark blue
         path: "/transactions",
     },
+    {
+        id: "LEDGER",
+        label: "Ledger",
+        bgColor: "#f0f4ff", // Light purple
+        fontColor: "#7c3aed", // Dark purple
+        path: "/ledger",
+    },
+    {
+        id: "PAYOUTLIST",
+        label: "Payout List",
+        bgColor: "#f0f9ff", // Light blue
+        fontColor: "#0284c7", // Dark blue
+        path: "/payout-list",
+    },
+    {
+        id: "ALLTRANSACTIONS",
+        label: "All Transactions",
+        bgColor: "#f0f4ff", // Light purple
+        fontColor: "#7c3aed", // Dark purple
+        path: "/all-transactions",
+    },
+    {
+        id: "ALLAGENTWALLET",
+        label: "All Agent Wallet",
+        bgColor: "#f0f9ff", // Light blue
+        fontColor: "#0284c7", // Dark blue
+        path: "/all-agent-wallet",
+    },
 ];
 
 export const RENTAL_AGREEMENT_TABS = [
