@@ -12,7 +12,7 @@ const {data}=useAllDetails()
   const currentUser=data?.current_user_details
 console.log(currentUser)
   // Generate affiliate registration URL
-  const affiliateUrl = `${window.location.origin}/agent-registration?affiliate_id=${currentUser?.id}&roleid=108`
+  const affiliateUrl = `https://partnership.onexproperty.com/apply?affiliate_id=${currentUser?.id}&roleid=108`
 
   // Generate QR code
   useEffect(() => {
@@ -21,7 +21,7 @@ console.log(currentUser)
       
       setIsGenerating(true)
       try {
-        const qrDataURL = await QRCode.toDataURL(affiliateUrl, {
+        const qrDataURL = await QRCode.toDataURL(affiliateUrl, { 
           width: 300,
           margin: 2,
           color: {
