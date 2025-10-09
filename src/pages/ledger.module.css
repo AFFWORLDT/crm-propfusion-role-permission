@@ -1,0 +1,205 @@
+.content {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+.agentRow {
+    display: flex;
+    gap: 24px;
+    align-items: stretch;
+}
+
+.agentDetails {
+    flex: 1;
+    min-width: 0;
+}
+
+.agentCard {
+    background: #ffffff;
+    border-radius: 16px;
+    padding: 24px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    border: 1px solid #e5e7eb;
+    height: 100%;
+}
+
+.agentHeader {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.agentAvatar {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 3px solid #e5e7eb;
+    background-color: #f3f4f6;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.avatarImage {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.avatarPlaceholder {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #f3f4f6;
+}
+
+.avatarPlaceholder svg {
+    width: 40px;
+    height: 40px;
+    color: #6b7280;
+}
+
+.agentInfo h3 {
+    font-size: 20px;
+    font-weight: 600;
+    color: #111827;
+    margin: 0 0 8px 0;
+}
+
+.agentInfo p {
+    font-size: 14px;
+    color: #6b7280;
+    margin: 0 0 4px 0;
+}
+
+.agentInfo p:last-child {
+    margin-bottom: 0;
+}
+
+.agentEmail {
+    font-weight: 500;
+    color: #374151;
+}
+
+.agentId {
+    font-size: 12px;
+    color: #9ca3af;
+    font-family: 'Courier New', monospace;
+}
+
+.agentDetailsGrid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    margin-top: 20px;
+    padding-top: 20px;
+    border-top: 1px solid #f3f4f6;
+}
+
+.detailItem {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.detailLabel {
+    font-size: 12px;
+    font-weight: 600;
+    color: #6b7280;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.detailValue {
+    font-size: 14px;
+    color: #111827;
+    font-weight: 500;
+}
+
+.statusBadge {
+    display: inline-block;
+    padding: 4px 8px;
+    border-radius: 12px;
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    width: fit-content;
+}
+
+.statusBadge.active {
+    background-color: #dcfce7;
+    color: #059669;
+    border: 1px solid #bbf7d0;
+}
+
+.statusBadge.inactive {
+    background-color: #fef2f2;
+    color: #dc2626;
+    border: 1px solid #fecaca;
+}
+
+.specialitiesSection {
+    margin-top: 20px;
+    padding-top: 20px;
+    border-top: 1px solid #f3f4f6;
+}
+
+.specialitiesTitle {
+    font-size: 14px;
+    font-weight: 600;
+    color: #374151;
+    margin: 0 0 12px 0;
+}
+
+.specialitiesList {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.specialityTag {
+    display: inline-block;
+    padding: 6px 12px;
+    background-color: #f3f4f6;
+    color: #374151;
+    border-radius: 16px;
+    font-size: 12px;
+    font-weight: 500;
+    border: 1px solid #e5e7eb;
+}
+
+.walletSection {
+    flex: 1;
+    min-width: 0;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    .agentRow {
+        flex-direction: column;
+    }
+    
+    .agentDetails,
+    .walletSection {
+        flex: none;
+    }
+    
+    .agentDetailsGrid {
+        grid-template-columns: 1fr;
+    }
+    
+    .agentAvatar {
+        width: 60px;
+        height: 60px;
+    }
+    
+    .avatarPlaceholder svg {
+        width: 30px;
+        height: 30px;
+    }
+}

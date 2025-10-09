@@ -203,6 +203,11 @@ import EditJob from "./pages/jobs/edit";
 import ViewJob from "./pages/jobs/view";
 import Applications from "./pages/carrier/Applications";
 import Affiliate from "./pages/affiliate";
+import Wallet from "./pages/wallet";
+import Ledger from "./pages/ledger";
+import PayoutList from "./pages/payoutList";
+import AllAgentWallet from "./pages/allAgentWallet";
+import Alltransaction from "./pages/Alltransaction";
 
 delete L.Icon.Default.prototype._getIconUrl;
 
@@ -233,7 +238,7 @@ function App() {
                     <BrowserRouter
                         future={{
                             v7_startTransition: true,
-                            v7_relativeSplatPath: true
+                            v7_relativeSplatPath: true,
                         }}
                     >
                         <Routes>
@@ -359,7 +364,12 @@ function App() {
                                             <Route
                                                 path="list"
                                                 element={
-                                                    <RoleGuard permissions={["view_developers", "manage_developers"]}>
+                                                    <RoleGuard
+                                                        permissions={[
+                                                            "view_developers",
+                                                            "manage_developers",
+                                                        ]}
+                                                    >
                                                         <DevelopersList />
                                                     </RoleGuard>
                                                 }
@@ -367,7 +377,11 @@ function App() {
                                             <Route
                                                 path=":developerId"
                                                 element={
-                                                    <RoleGuard permissions={["view_developers"]}>
+                                                    <RoleGuard
+                                                        permissions={[
+                                                            "view_developers",
+                                                        ]}
+                                                    >
                                                         <DeveloperDetails />
                                                     </RoleGuard>
                                                 }
@@ -375,7 +389,11 @@ function App() {
                                             <Route
                                                 path=":developerId/documents"
                                                 element={
-                                                    <RoleGuard permissions={["view_developers"]}>
+                                                    <RoleGuard
+                                                        permissions={[
+                                                            "view_developers",
+                                                        ]}
+                                                    >
                                                         <DeveloperDocuments />
                                                     </RoleGuard>
                                                 }
@@ -394,7 +412,12 @@ function App() {
                                             <Route
                                                 path="list"
                                                 element={
-                                                    <RoleGuard permissions={["view_areas", "manage_areas"]}>
+                                                    <RoleGuard
+                                                        permissions={[
+                                                            "view_areas",
+                                                            "manage_areas",
+                                                        ]}
+                                                    >
                                                         <AreasList />
                                                     </RoleGuard>
                                                 }
@@ -860,7 +883,12 @@ function App() {
                                             <Route
                                                 path="portal-calls"
                                                 element={
-                                                    <RoleGuard permissions={["view_leads", "basic_affiliate"]}>
+                                                    <RoleGuard
+                                                        permissions={[
+                                                            "view_leads",
+                                                            "basic_affiliate",
+                                                        ]}
+                                                    >
                                                         <PortalCalls />
                                                     </RoleGuard>
                                                 }
@@ -956,7 +984,10 @@ function App() {
                                             path="/profile"
                                             element={<Profile />}
                                         ></Route>
-                                        
+                                        <Route
+                                            path="/wallet"
+                                            element={<Wallet />}
+                                        ></Route>
                                         {/* Requirements Routes */}
                                         <Route
                                             path="/requirements"
@@ -974,7 +1005,7 @@ function App() {
                                             path="/requirements/:id/edit"
                                             element={<RequirementForm />}
                                         />
-                                        
+
                                         <Route element={<ProtectedRoute />}>
                                             <Route path="/admin">
                                                 <Route
@@ -989,7 +1020,12 @@ function App() {
                                                 <Route
                                                     path="staff"
                                                     element={
-                                                        <RoleGuard permissions={["view_users", "manage_users"]}>
+                                                        <RoleGuard
+                                                            permissions={[
+                                                                "view_users",
+                                                                "manage_users",
+                                                            ]}
+                                                        >
                                                             <Staff />
                                                         </RoleGuard>
                                                     }
@@ -997,7 +1033,11 @@ function App() {
                                                 <Route
                                                     path="staff/:staffId"
                                                     element={
-                                                        <RoleGuard permissions={["view_users"]}>
+                                                        <RoleGuard
+                                                            permissions={[
+                                                                "view_users",
+                                                            ]}
+                                                        >
                                                             <StaffDetails />
                                                         </RoleGuard>
                                                     }
@@ -1005,7 +1045,11 @@ function App() {
                                                 <Route
                                                     path="requests"
                                                     element={
-                                                        <RoleGuard permissions={["manage_support"]}>
+                                                        <RoleGuard
+                                                            permissions={[
+                                                                "manage_support",
+                                                            ]}
+                                                        >
                                                             <Request />
                                                         </RoleGuard>
                                                     }
@@ -1013,7 +1057,12 @@ function App() {
                                                 <Route
                                                     path="teams"
                                                     element={
-                                                        <RoleGuard permissions={["view_teams", "manage_teams"]}>
+                                                        <RoleGuard
+                                                            permissions={[
+                                                                "view_teams",
+                                                                "manage_teams",
+                                                            ]}
+                                                        >
                                                             <Teams />
                                                         </RoleGuard>
                                                     }
@@ -1021,7 +1070,11 @@ function App() {
                                                 <Route
                                                     path="teams-tree"
                                                     element={
-                                                        <RoleGuard permissions={["view_teams"]}>
+                                                        <RoleGuard
+                                                            permissions={[
+                                                                "view_teams",
+                                                            ]}
+                                                        >
                                                             <TeamsTree />
                                                         </RoleGuard>
                                                     }
@@ -1029,7 +1082,12 @@ function App() {
                                                 <Route
                                                     path="affiliate-tree"
                                                     element={
-                                                        <RoleGuard permissions={["manage_agent", "basic_affiliate"]}>
+                                                        <RoleGuard
+                                                            permissions={[
+                                                                "manage_agent",
+                                                                "basic_affiliate",
+                                                            ]}
+                                                        >
                                                             <AffiliateTree />
                                                         </RoleGuard>
                                                     }
@@ -1037,7 +1095,12 @@ function App() {
                                                 <Route
                                                     path="affiliate-wallet"
                                                     element={
-                                                        <RoleGuard permissions={["manage_agent", "basic_affiliate"]}>
+                                                        <RoleGuard
+                                                            permissions={[
+                                                                "manage_agent",
+                                                                "basic_affiliate",
+                                                            ]}
+                                                        >
                                                             <AffiliateWallet />
                                                         </RoleGuard>
                                                     }
@@ -1045,7 +1108,12 @@ function App() {
                                                 <Route
                                                     path="affiliate"
                                                     element={
-                                                        <RoleGuard permissions={["manage_agent", "basic_affiliate"]}>
+                                                        <RoleGuard
+                                                            permissions={[
+                                                                "manage_agent",
+                                                                "basic_affiliate",
+                                                            ]}
+                                                        >
                                                             <Affiliate />
                                                         </RoleGuard>
                                                     }
@@ -1053,7 +1121,11 @@ function App() {
                                                 <Route
                                                     path="watermark"
                                                     element={
-                                                        <RoleGuard permissions={["manage_settings"]}>
+                                                        <RoleGuard
+                                                            permissions={[
+                                                                "manage_settings",
+                                                            ]}
+                                                        >
                                                             <Watermark />
                                                         </RoleGuard>
                                                     }
@@ -1061,7 +1133,11 @@ function App() {
                                                 <Route
                                                     path="watermark-qr"
                                                     element={
-                                                        <RoleGuard permissions={["manage_settings"]}>
+                                                        <RoleGuard
+                                                            permissions={[
+                                                                "manage_settings",
+                                                            ]}
+                                                        >
                                                             <WaterMarkQr />
                                                         </RoleGuard>
                                                     }
@@ -1069,7 +1145,11 @@ function App() {
                                                 <Route
                                                     path="Map/:id"
                                                     element={
-                                                        <RoleGuard permissions={["view_analytics"]}>
+                                                        <RoleGuard
+                                                            permissions={[
+                                                                "view_analytics",
+                                                            ]}
+                                                        >
                                                             <MapPage />
                                                         </RoleGuard>
                                                     }
@@ -1077,7 +1157,11 @@ function App() {
                                                 <Route
                                                     path="audience"
                                                     element={
-                                                        <RoleGuard permissions={["manage_customers"]}>
+                                                        <RoleGuard
+                                                            permissions={[
+                                                                "manage_customers",
+                                                            ]}
+                                                        >
                                                             <Audience />
                                                         </RoleGuard>
                                                     }
@@ -1085,7 +1169,11 @@ function App() {
                                                 <Route
                                                     path="fusionmails"
                                                     element={
-                                                        <RoleGuard permissions={["manage_emails"]}>
+                                                        <RoleGuard
+                                                            permissions={[
+                                                                "manage_emails",
+                                                            ]}
+                                                        >
                                                             <FusionMails />
                                                         </RoleGuard>
                                                     }
@@ -1093,7 +1181,12 @@ function App() {
                                                 <Route
                                                     path="blog"
                                                     element={
-                                                        <RoleGuard permissions={["view_blogs", "manage_blogs"]}>
+                                                        <RoleGuard
+                                                            permissions={[
+                                                                "view_blogs",
+                                                                "manage_blogs",
+                                                            ]}
+                                                        >
                                                             <Blog />
                                                         </RoleGuard>
                                                     }
@@ -1101,7 +1194,11 @@ function App() {
                                                 <Route
                                                     path="blog/:id"
                                                     element={
-                                                        <RoleGuard permissions={["view_blogs"]}>
+                                                        <RoleGuard
+                                                            permissions={[
+                                                                "view_blogs",
+                                                            ]}
+                                                        >
                                                             <ReadBlogPage />
                                                         </RoleGuard>
                                                     }
@@ -1109,7 +1206,12 @@ function App() {
                                                 <Route
                                                     path="integrations"
                                                     element={
-                                                        <RoleGuard permissions={["view_integrations", "manage_integrations"]}>
+                                                        <RoleGuard
+                                                            permissions={[
+                                                                "view_integrations",
+                                                                "manage_integrations",
+                                                            ]}
+                                                        >
                                                             <Integrations />
                                                         </RoleGuard>
                                                     }
@@ -1117,7 +1219,11 @@ function App() {
                                                 <Route
                                                     path="data-import"
                                                     element={
-                                                        <RoleGuard permissions={["manage_system"]}>
+                                                        <RoleGuard
+                                                            permissions={[
+                                                                "manage_system",
+                                                            ]}
+                                                        >
                                                             <DataImport />
                                                         </RoleGuard>
                                                     }
@@ -1125,7 +1231,11 @@ function App() {
                                                 <Route
                                                     path="integration"
                                                     element={
-                                                        <RoleGuard permissions={["manage_integrations"]}>
+                                                        <RoleGuard
+                                                            permissions={[
+                                                                "manage_integrations",
+                                                            ]}
+                                                        >
                                                             <IntegrationContainer />
                                                         </RoleGuard>
                                                     }
@@ -1266,6 +1376,22 @@ function App() {
                                         <Route
                                             path="/kpi-submissions"
                                             element={<KpiSubmissions />}
+                                        />
+                                        <Route
+                                            path="/ledger"
+                                            element={<Ledger />}
+                                        />
+                                        <Route
+                                            path="/payout-list"
+                                            element={<PayoutList />}
+                                        />
+                                        <Route
+                                            path="/all-transactions"
+                                            element={<Alltransaction />}
+                                        />
+                                        <Route
+                                            path="/all-agent-wallet"
+                                            element={<AllAgentWallet />}
                                         />
                                         <Route
                                             path="/followup-report"

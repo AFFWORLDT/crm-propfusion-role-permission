@@ -1,0 +1,252 @@
+.container {
+    background: #ffffff;
+    border-radius: 16px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
+    border: 1px solid rgba(229, 231, 235, 0.5);
+    padding: 32px;
+    transition: all 0.3s ease;
+}
+
+.container:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.12);
+}
+
+.header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 24px;
+}
+
+.headerIcon {
+    padding: 8px;
+    background-color: #f3f4f6;
+    border-radius: 8px;
+}
+
+.headerIcon svg {
+    width: 24px;
+    height: 24px;
+    color: #111827;
+}
+
+.headerContent h2 {
+    font-size: 20px;
+    font-weight: 600;
+    color: #111827;
+    margin: 0;
+}
+
+.headerContent p {
+    font-size: 14px;
+    color: #6b7280;
+    margin: 0;
+}
+
+.agentSelection {
+    margin-bottom: 24px;
+}
+
+.label {
+    display: block;
+    font-size: 14px;
+    font-weight: 500;
+    color: #374151;
+    margin-bottom: 8px;
+}
+
+.select {
+    width: 100%;
+    padding: 8px 12px;
+    border: 1px solid #d1d5db;
+    border-radius: 6px;
+    background-color: white;
+    font-size: 14px;
+    color: #374151;
+    transition: all 0.2s ease;
+}
+
+.select:focus {
+    outline: none;
+    border-color: #3b82f6;
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+}
+
+.select:disabled {
+    background-color: #f9fafb;
+    cursor: not-allowed;
+}
+
+.loadingText {
+    font-size: 14px;
+    color: #6b7280;
+    margin-top: 4px;
+}
+
+.content {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.agentInfo {
+    background-color: #f9fafb;
+    border-radius: 8px;
+    padding: 16px;
+}
+
+.agentInfoContent {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.agentInfoIcon {
+    padding: 8px;
+    background-color: #dcfce7;
+    border-radius: 8px;
+}
+
+.agentInfoIcon svg {
+    width: 20px;
+    height: 20px;
+    color: #16a34a;
+}
+
+.agentDetails h3 {
+    font-weight: 500;
+    color: #111827;
+    margin: 0;
+}
+
+.agentDetails p {
+    font-size: 14px;
+    color: #6b7280;
+    margin: 0;
+}
+
+.balanceCard {
+    background: #ffffff;
+    border-radius: 16px;
+    padding: 32px;
+    color: #111827;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    border: 1px solid #e5e7eb;
+}
+
+.balanceHeader {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.balanceInfo p {
+    color: #6b7280;
+    font-size: 14px;
+    font-weight: 500;
+    margin: 0;
+}
+
+.balanceAmount {
+    font-size: 30px;
+    font-weight: bold;
+    margin-top: 4px;
+    margin-bottom: 0;
+    color: #111827;
+}
+
+.balanceAgentId {
+    color: #6b7280;
+    font-size: 14px;
+    margin-top: 4px;
+    margin-bottom: 0;
+}
+
+.balanceIcon {
+    padding: 12px;
+    background-color: #f3f4f6;
+    border-radius: 8px;
+    border: 1px solid #d1d5db;
+}
+
+.balanceIcon svg {
+    width: 32px;
+    height: 32px;
+    color: #111827;
+}
+
+.loadingContainer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 32px 0;
+}
+
+.spinner {
+    width: 32px;
+    height: 32px;
+    border: 2px solid #e5e7eb;
+    border-top: 2px solid #111827;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+.loadingText {
+    margin-left: 8px;
+    color: #6b7280;
+}
+
+.errorCard {
+    background-color: #fef2f2;
+    border: 1px solid #fecaca;
+    border-radius: 8px;
+    padding: 16px;
+}
+
+.errorContent {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.errorIcon svg {
+    width: 20px;
+    height: 20px;
+    color: #dc2626;
+}
+
+.errorTitle {
+    color: #991b1b;
+    font-weight: 500;
+    margin: 0;
+}
+
+.errorMessage {
+    color: #dc2626;
+    font-size: 14px;
+    margin-top: 4px;
+    margin-bottom: 0;
+}
+
+.emptyState {
+    text-align: center;
+    padding: 32px 0;
+    color: #6b7280;
+}
+
+.emptyStateIcon {
+    width: 48px;
+    height: 48px;
+    margin: 0 auto 12px;
+    color: #d1d5db;
+}
+
+.emptyStateText {
+    margin: 0;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}

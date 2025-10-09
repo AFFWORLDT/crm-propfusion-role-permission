@@ -36,7 +36,8 @@ export const tableStyles = {
         borderRadius: "16px",
         border: "1px solid #e2e8f0",
         borderBottom: "none",
-        boxShadow: "0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06)",
+        boxShadow:
+            "0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06)",
         transition: "all 0.3s cubic-bezier(0.4, 0, 0.2, 1)",
     },
     table: {
@@ -96,7 +97,8 @@ export const tableStyles = {
         width: "100%",
         justifyContent: "center",
         "&:hover": {
-            backgroundColor: "linear-gradient(135deg, #e2e8f0 0%, #cbd5e1 100%)",
+            backgroundColor:
+                "linear-gradient(135deg, #e2e8f0 0%, #cbd5e1 100%)",
             borderColor: "#94a3b8",
             transform: "translateY(-1px)",
             boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1)",
@@ -244,12 +246,37 @@ export default function LeadsBaseTable({
 
         return { link, refNumber, phone };
     };
-    const handleWhatsAppClick = (leadMessage, agentName, phoneNumber) => {
+    const handleWhatsAppClick = (
+        leadMessage,
+        agentName,
+        phoneNumber,
+        clintType,
+        preferred_property
+    ) => {
         const { link, refNumber } = extractInfoFromMessage(leadMessage);
-        const propertyLink = link;
+        const propertyLink = `${window.location.origin}/share-new-property/${clintType?.toLowerCase()}/${preferred_property}`;
         const whatsappNumber = phoneNumber;
+        let whatsappMessage;
 
-        let whatsappMessage = `Hi I'm ${agentName} from ${companyName}\nYou enquired on my hot listing\n${propertyLink}`;
+        if (clintType?.toLowerCase() === "rent") {
+            whatsappMessage = `This is ${agentName} from ${companyName} . 👋
+
+Thanks for your interest in this property — here’s the listing link for your reference: ${propertyLink}
+
+If you could share your move-in date, budget, and preferred area or community, I can send you a few options that fit your requirements right away.
+
+Looking forward to helping you find your next home! `;
+        } else {
+            whatsappMessage = `This is ${agentName} from ${companyName} . 👋
+
+Thank you for your interest in the property you viewed — here’s the listing link for your reference: ${propertyLink} 
+
+Are you currently looking to buy for investment or personal use?
+
+Once I know your budget and preferred areas , I can share a few great options that match your goals.
+
+Looking forward to helping you find the right property in Dubai. 🏡`;
+        }
 
         if (refNumber) {
             whatsappMessage += `\nReference no.: ${refNumber}`;
@@ -387,7 +414,7 @@ export default function LeadsBaseTable({
 
         try {
             setIsUpdatingBulk(true);
-            await updateBulkLeadDraft(selectedLeads, { is_public:isPublic });
+            await updateBulkLeadDraft(selectedLeads, { is_public: isPublic });
             toast.success(
                 `Successfully updated ${selectedLeads.length} leads to ${status}`
             );
@@ -547,13 +574,13 @@ export default function LeadsBaseTable({
                                     Assign Agent
                                 </MenuItem>
                                 <MenuItem
-                                    onClick={()=>handleBulkMakePublic(true)}
+                                    onClick={() => handleBulkMakePublic(true)}
                                     className={styles.menuItem}
                                 >
                                     Make public
                                 </MenuItem>
                                 <MenuItem
-                                    onClick={()=>handleBulkMakePublic(false)}
+                                    onClick={() => handleBulkMakePublic(false)}
                                     className={styles.menuItem}
                                 >
                                     Make Private
@@ -608,14 +635,23 @@ export default function LeadsBaseTable({
                             >
                                 Created {sortIcon}
                             </th>
-                            <th style={{ ...tableStyles.th, width: "80px" }}>Source</th>
-                            <th style={{ ...tableStyles.th, width: "140px" }}>Client Info</th>
+                            <th style={{ ...tableStyles.th, width: "80px" }}>
+                                Source
+                            </th>
+                            <th style={{ ...tableStyles.th, width: "140px" }}>
+                                Client Info
+                            </th>
                             <th style={{ ...tableStyles.th, width: "60px" }}>
                                 Agent
                             </th>
-                            <th style={{ ...tableStyles.th, width: "20px", backgroundColor: "transparent", border: "none" }}>
-                                
-                            </th>
+                            <th
+                                style={{
+                                    ...tableStyles.th,
+                                    width: "20px",
+                                    backgroundColor: "transparent",
+                                    border: "none",
+                                }}
+                            ></th>
                             <th style={{ ...tableStyles.th, width: "100px" }}>
                                 Actions
                             </th>
@@ -624,7 +660,12 @@ export default function LeadsBaseTable({
                                 Classification
                             </th>
 
-                            <th style={{ ...tableStyles.th, borderBottom: "2px solid #e2e8f0" }}>
+                            <th
+                                style={{
+                                    ...tableStyles.th,
+                                    borderBottom: "2px solid #e2e8f0",
+                                }}
+                            >
                                 Preference
                             </th>
                             <th style={{ ...tableStyles.th, width: "80px" }}>
@@ -639,7 +680,8 @@ export default function LeadsBaseTable({
                                 className={styles.tableRow}
                                 style={{
                                     ...tableStyles.tr,
-                                    backgroundColor: index % 2 === 0 ? "#ffffff" : "#fafbfc",
+                                    backgroundColor:
+                                        index % 2 === 0 ? "#ffffff" : "#fafbfc",
                                     borderRadius: "8px",
                                     marginBottom: "4px",
                                 }}
@@ -673,21 +715,42 @@ export default function LeadsBaseTable({
                                                 item?.status === "INACTIVE"
                                                     ? styles.statusInactive
                                                     : item?.status === "PENDING"
-                                                    ? styles.statusPending
-                                                    : item?.status === "CONVERTED"
-                                                    ? styles.statusConverted
-                                                    : styles.statusActive
+                                                      ? styles.statusPending
+                                                      : item?.status ===
+                                                          "CONVERTED"
+                                                        ? styles.statusConverted
+                                                        : styles.statusActive
                                             }`}
                                             title={item?.status || "ACTIVE"}
                                         >
                                             {item?.status === "INACTIVE" ? (
-                                                <CancelIcon style={{ fontSize: "16px", color: "#dc2626" }} />
+                                                <CancelIcon
+                                                    style={{
+                                                        fontSize: "16px",
+                                                        color: "#dc2626",
+                                                    }}
+                                                />
                                             ) : item?.status === "PENDING" ? (
-                                                <PendingIcon style={{ fontSize: "16px", color: "#d97706" }} />
+                                                <PendingIcon
+                                                    style={{
+                                                        fontSize: "16px",
+                                                        color: "#d97706",
+                                                    }}
+                                                />
                                             ) : item?.status === "CONVERTED" ? (
-                                                <TrendingUpIcon style={{ fontSize: "16px", color: "#3730a3" }} />
+                                                <TrendingUpIcon
+                                                    style={{
+                                                        fontSize: "16px",
+                                                        color: "#3730a3",
+                                                    }}
+                                                />
                                             ) : (
-                                                <CheckCircleIcon style={{ fontSize: "16px", color: "#166534" }} />
+                                                <CheckCircleIcon
+                                                    style={{
+                                                        fontSize: "16px",
+                                                        color: "#166534",
+                                                    }}
+                                                />
                                             )}
                                         </div>
                                     </div>
@@ -731,7 +794,9 @@ export default function LeadsBaseTable({
                                         </div>
                                     </div>
                                 </td>
-                                <td style={{ ...tableStyles.td, width: "80px" }}>
+                                <td
+                                    style={{ ...tableStyles.td, width: "80px" }}
+                                >
                                     <div
                                         style={{
                                             display: "flex",
@@ -802,7 +867,10 @@ export default function LeadsBaseTable({
                                                                 item?.leads_message,
                                                                 item?.agent
                                                                     ?.name,
-                                                                item?.phone
+                                                                item?.phone,
+                                                                item?.clientType,
+                                                                item
+                                                                    ?.preferred_property?.[0]
                                                             )
                                                         }
                                                         style={{
@@ -946,7 +1014,12 @@ export default function LeadsBaseTable({
                                         </div>
                                     </div>
                                 </td>
-                                <td style={{ ...tableStyles.td, width: "140px" }}>
+                                <td
+                                    style={{
+                                        ...tableStyles.td,
+                                        width: "140px",
+                                    }}
+                                >
                                     <div
                                         style={{
                                             display: "flex",
@@ -978,7 +1051,13 @@ export default function LeadsBaseTable({
                                                 />
                                             )}
                                         </span>
-                                        <span style={{ color: "#64748b", fontSize: "10px", lineHeight: "1.2" }}>
+                                        <span
+                                            style={{
+                                                color: "#64748b",
+                                                fontSize: "10px",
+                                                lineHeight: "1.2",
+                                            }}
+                                        >
                                             {item?.phone}
                                         </span>
 
@@ -1119,7 +1198,9 @@ export default function LeadsBaseTable({
                                         )}
                                     </div>
                                 </td>
-                                <td style={{ ...tableStyles.td, width: "80px" }}>
+                                <td
+                                    style={{ ...tableStyles.td, width: "80px" }}
+                                >
                                     <Modal>
                                         <Modal.Open openWindowName="chooseAgent">
                                             <button
@@ -1184,9 +1265,7 @@ export default function LeadsBaseTable({
                                         backgroundColor: "transparent",
                                         border: "none",
                                     }}
-                                >
-                                    
-                                </td>
+                                ></td>
                                 <td
                                     style={{
                                         ...tableStyles.td,
@@ -1211,7 +1290,9 @@ export default function LeadsBaseTable({
                                     </div>
                                 </td>
 
-                                <td style={{ ...tableStyles.td, width: "80px" }}>
+                                <td
+                                    style={{ ...tableStyles.td, width: "80px" }}
+                                >
                                     <div
                                         style={{
                                             display: "flex",
@@ -1417,13 +1498,15 @@ export default function LeadsBaseTable({
                                                 {item.location.sub_community}
                                                 <span>, </span>
                                                 {item.location.community}
-                                                <span>, </span>
-                                                {item.location.city}
+                                                {/* <span>, </span> */}
+                                                {/* {item.location.city} */}
                                             </div>
                                         )}
                                     </div>
                                 </td>
-                                <td style={{ ...tableStyles.td, width: "80px" }}>
+                                <td
+                                    style={{ ...tableStyles.td, width: "80px" }}
+                                >
                                     {item?.last_followup?.agent_id && (
                                         <LeadTableCell
                                             item={item?.last_followup}
