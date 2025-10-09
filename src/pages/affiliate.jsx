@@ -21,7 +21,7 @@ console.log(currentUser)
       
       setIsGenerating(true)
       try {
-        const qrDataURL = await QRCode.toDataURL(affiliateUrl, {
+        const qrDataURL = await QRCode.toDataURL(affiliateUrl, { 
           width: 300,
           margin: 2,
           color: {
