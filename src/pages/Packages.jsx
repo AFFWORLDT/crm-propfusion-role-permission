@@ -12,6 +12,13 @@ const Packages = () => {
     const [selectedPackage, setSelectedPackage] = useState(null);
     const [showPaymentDetails, setShowPaymentDetails] = useState(false);
     
+    // Debug: Log user data to console
+    console.log('Packages - User data:', {
+        currentUserDetails: data?.current_user_details,
+        currentUser,
+        userId: data?.current_user_details?.id || currentUser?.id
+    });
+    
     const companySettings = data?.company_settings || {};
     const colorCode = companySettings.sidebar_color_code || "#020079";
 
@@ -220,7 +227,7 @@ const Packages = () => {
                                     <h4>Payment Instructions:</h4>
                                     <ol>
                                         <li>Transfer {selectedPackage.currency} {selectedPackage.price} to the account details above</li>
-                                        <li>Include your user ID (<strong>{data?.current_user_details?.id || currentUser?.id}</strong>) in the payment reference</li>
+                                        <li>Include your user ID (<strong>{data?.current_user_details?.id || currentUser?.id || 'Loading...'}</strong>) in the payment reference</li>
                                         <li>Send payment confirmation to support@company.com</li>
                                         <li>Your subscription will be activated within 24 hours</li>
                                     </ol>
