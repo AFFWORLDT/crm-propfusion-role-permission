@@ -1,0 +1,487 @@
+.packagesContainer {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+.packagesHeader {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.packagesHeader h2 {
+    font-size: 2.5rem;
+    font-weight: 600;
+    color: #1f2937;
+    margin-bottom: 16px;
+    font-family: 'Inter', sans-serif;
+}
+
+.packagesHeader p {
+    font-size: 1.1rem;
+    color: #6b7280;
+    max-width: 600px;
+    margin: 0 auto;
+    font-family: 'Inter', sans-serif;
+}
+
+.packagesGrid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 30px;
+    margin-bottom: 60px;
+}
+
+.packageCard {
+    background: #ffffff;
+    border: 2px solid #e5e7eb;
+    border-radius: 16px;
+    padding: 32px;
+    position: relative;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    font-family: 'Inter', sans-serif;
+}
+
+.packageCard:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+}
+
+.packageCard.popular {
+    border-color: #020079;
+    transform: scale(1.05);
+}
+
+.packageCard.popular:hover {
+    transform: scale(1.05) translateY(-4px);
+}
+
+.popularBadge {
+    position: absolute;
+    top: -12px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: linear-gradient(135deg, #020079, #020079);
+    color: white;
+    padding: 8px 24px;
+    border-radius: 20px;
+    font-size: 0.875rem;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    box-shadow: 0 4px 6px -1px rgba(2, 0, 121, 0.3);
+    font-family: 'Inter', sans-serif;
+}
+
+.packageHeader {
+    text-align: center;
+    margin-bottom: 32px;
+}
+
+.packageHeader h3 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #1f2937;
+    margin-bottom: 16px;
+    font-family: 'Inter', sans-serif;
+}
+
+.price {
+    display: flex;
+    align-items: baseline;
+    justify-content: center;
+    margin-bottom: 16px;
+    gap: 4px;
+}
+
+.currency {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: #6b7280;
+    font-family: 'Inter', sans-serif;
+}
+
+.amount {
+    font-size: 3rem;
+    font-weight: 700;
+    color: #1f2937;
+    line-height: 1;
+    font-family: 'Inter', sans-serif;
+}
+
+.duration {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: #6b7280;
+    font-family: 'Inter', sans-serif;
+}
+
+.description {
+    color: #6b7280;
+    font-size: 1rem;
+    line-height: 1.5;
+    font-family: 'Inter', sans-serif;
+}
+
+.refund {
+    background: linear-gradient(135deg, #020079, #020079);
+    color: white;
+    padding: 8px 16px;
+    border-radius: 20px;
+    font-size: 0.875rem;
+    font-weight: 600;
+    text-align: center;
+    margin: 16px 0;
+    box-shadow: 0 4px 6px -1px rgba(2, 0, 121, 0.3);
+    font-family: 'Inter', sans-serif;
+}
+
+.features {
+    margin-bottom: 32px;
+}
+
+.features h4 {
+    font-size: 1.125rem;
+    font-weight: 600;
+    color: #1f2937;
+    margin-bottom: 16px;
+    font-family: 'Inter', sans-serif;
+}
+
+.features ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.features li {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    margin-bottom: 12px;
+    font-size: 0.95rem;
+    color: #4b5563;
+    line-height: 1.5;
+    font-family: 'Inter', sans-serif;
+}
+
+.checkIcon {
+    color: #020079;
+    margin-top: 2px;
+    flex-shrink: 0;
+}
+
+.selectButton {
+    width: 100%;
+    padding: 14px 24px;
+    border: 2px solid transparent;
+    border-radius: 8px;
+    color: white;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    font-family: 'Inter', sans-serif;
+}
+
+.selectButton:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+}
+
+.packagesFooter {
+    text-align: center;
+    padding: 40px;
+    background: #f9fafb;
+    border-radius: 16px;
+    margin-top: 40px;
+}
+
+.packagesFooter h3 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #1f2937;
+    margin-bottom: 12px;
+    font-family: 'Inter', sans-serif;
+}
+
+.packagesFooter p {
+    color: #6b7280;
+    margin-bottom: 24px;
+    font-size: 1.1rem;
+    font-family: 'Inter', sans-serif;
+}
+
+.contactButton {
+    background: #020079;
+    color: white;
+    border: none;
+    padding: 12px 32px;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-family: 'Inter', sans-serif;
+}
+
+.contactButton:hover {
+    background: #010056;
+    transform: translateY(-2px);
+}
+
+/* Payment Details Styles */
+.paymentContainer {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.paymentHeader {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.backButton {
+    background: #6b7280;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 6px;
+    font-size: 0.875rem;
+    cursor: pointer;
+    margin-bottom: 20px;
+    transition: all 0.3s ease;
+}
+
+.backButton:hover {
+    background: #4b5563;
+}
+
+.paymentHeader h2 {
+    font-size: 2rem;
+    font-weight: 700;
+    color: #1f2937;
+    margin-bottom: 20px;
+}
+
+.selectedPackage {
+    background: #f9fafb;
+    padding: 20px;
+    border-radius: 12px;
+    border: 2px solid #e5e7eb;
+}
+
+.selectedPackage h3 {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #1f2937;
+    margin-bottom: 8px;
+}
+
+.paymentMethods {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+}
+
+.paymentSection {
+    background: #ffffff;
+    border: 2px solid #e5e7eb;
+    border-radius: 12px;
+    padding: 24px;
+}
+
+.sectionHeader {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 20px;
+    padding-bottom: 12px;
+    border-bottom: 2px solid #e5e7eb;
+}
+
+.sectionHeader h3 {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: #1f2937;
+    margin: 0;
+}
+
+.icon {
+    color: #6b7280;
+}
+
+.bankDetails {
+    margin-bottom: 24px;
+}
+
+.bankDetailItem {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 0;
+    border-bottom: 1px solid #f3f4f6;
+}
+
+.bankDetailItem:last-child {
+    border-bottom: none;
+}
+
+.bankDetailItem label {
+    font-weight: 600;
+    color: #374151;
+    font-size: 0.95rem;
+}
+
+.detailValue {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.detailValue span {
+    font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+    background: #f3f4f6;
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-size: 0.875rem;
+    color: #1f2937;
+}
+
+.copyButton {
+    background: #6b7280;
+    color: white;
+    border: none;
+    padding: 6px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.copyButton:hover {
+    background: #4b5563;
+    transform: scale(1.05);
+}
+
+.paymentInstructions {
+    background: #fef3c7;
+    border: 1px solid #f59e0b;
+    border-radius: 8px;
+    padding: 16px;
+}
+
+.paymentInstructions h4 {
+    color: #92400e;
+    font-weight: 600;
+    margin-bottom: 12px;
+    font-size: 1rem;
+}
+
+.paymentInstructions ol {
+    color: #92400e;
+    padding-left: 20px;
+    margin: 0;
+}
+
+.paymentInstructions li {
+    margin-bottom: 6px;
+    font-size: 0.9rem;
+}
+
+.onlinePayment {
+    text-align: center;
+}
+
+.onlinePayment p {
+    color: #6b7280;
+    margin-bottom: 20px;
+    font-size: 0.95rem;
+}
+
+.paymentLinkButton {
+    background: #3b82f6;
+    color: white;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin: 0 auto 16px;
+}
+
+.paymentLinkButton:hover {
+    background: #2563eb;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 15px rgba(59, 130, 246, 0.3);
+}
+
+.paymentNote {
+    color: #9ca3af;
+    font-size: 0.875rem;
+    font-style: italic;
+    margin: 0;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .packagesGrid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+    
+    .packageCard.popular {
+        transform: none;
+    }
+    
+    .packageCard.popular:hover {
+        transform: translateY(-4px);
+    }
+    
+    .paymentMethods {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+    
+    .packagesHeader h2 {
+        font-size: 2rem;
+    }
+    
+    .amount {
+        font-size: 2.5rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .packagesContainer,
+    .paymentContainer {
+        padding: 15px;
+    }
+    
+    .packageCard {
+        padding: 24px;
+    }
+    
+    .packagesHeader h2 {
+        font-size: 1.75rem;
+    }
+    
+    .amount {
+        font-size: 2rem;
+    }
+}
