@@ -1,14 +1,12 @@
-import React, { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useState } from 'react';
 import SectionTop from '../ui/SectionTop';
 import useAllDetails from '../features/all-details/useAllDetails';
 import { useAuth } from '../context/AuthContext';
-import { CreditCard, Building, Users, Star, CheckCircle, ExternalLink, Copy, Banknote } from 'lucide-react';
+import { CreditCard, Star, CheckCircle, ExternalLink, Copy, Banknote } from 'lucide-react';
 import toast from 'react-hot-toast';
 import styles from './Packages.module.css';
 
 const Packages = () => {
-    const navigate = useNavigate();
     const { data } = useAllDetails();
     const { currentUser } = useAuth();
     const [selectedPackage, setSelectedPackage] = useState(null);
@@ -123,11 +121,6 @@ const Packages = () => {
         });
     };
 
-    const generatePaymentLink = (packageId) => {
-        // In real implementation, this would generate a payment link
-        const paymentLink = `${window.location.origin}/payment/${packageId}?user=${currentUser?.id}`;
-        copyToClipboard(paymentLink, 'Payment link');
-    };
 
     if (showPaymentDetails && selectedPackage) {
         return (
@@ -300,7 +293,7 @@ const Packages = () => {
                                 </div>
 
                                 <div className={styles.features}>
-                                    <h4>What's included:</h4>
+                                    <h4>What&apos;s included:</h4>
                                     <ul>
                                         {pkg.features.map((feature, index) => (
                                             <li key={index}>
