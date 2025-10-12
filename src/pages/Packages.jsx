@@ -2,7 +2,7 @@ import { useState } from 'react';
 import SectionTop from '../ui/SectionTop';
 import useAllDetails from '../features/all-details/useAllDetails';
 import { useAuth } from '../context/AuthContext';
-import { CreditCard, Star, CheckCircle, ExternalLink, Copy, Banknote } from 'lucide-react';
+import { CreditCard, Star, CheckCircle, ExternalLink, Copy, Banknote, Coins } from 'lucide-react';
 import toast from 'react-hot-toast';
 import styles from './Packages.module.css';
 
@@ -255,6 +255,60 @@ const Packages = () => {
                                     <p className={styles.paymentNote}>
                                         You will be redirected to our secure payment gateway
                                     </p>
+                                </div>
+                            </div>
+
+                            {/* Cryptocurrency Payment Section */}
+                            <div className={styles.paymentSection}>
+                                <div className={styles.sectionHeader}>
+                                    <Coins className={styles.icon} />
+                                    <h3>Cryptocurrency Payment</h3>
+                                </div>
+                                <div className={styles.cryptoPayment}>
+                                    <p>Pay with USDT (TRC20) - Fast and secure cryptocurrency payment</p>
+                                    
+                                    <div className={styles.cryptoDetails}>
+                                        <div className={styles.cryptoAddress}>
+                                            <label>USDT TRC20 Address:</label>
+                                            <div className={styles.addressContainer}>
+                                                <span className={styles.cryptoAddressText}>
+                                                    TQBMmDHfpeJ5R2PMLW3usqePTqvZ3WQpM6
+                                                </span>
+                                                <button 
+                                                    className={styles.copyButton}
+                                                    onClick={() => copyToClipboard('TQBMmDHfpeJ5R2PMLW3usqePTqvZ3WQpM6', 'USDT TRC20 Address')}
+                                                >
+                                                    <Copy size={16} />
+                                                </button>
+                                            </div>
+                                        </div>
+                                        
+                                        <div className={styles.qrCodeSection}>
+                                            <label>QR Code:</label>
+                                            <div className={styles.qrContainer}>
+                                                <img 
+                                                    src="/images/trc20.jpeg" 
+                                                    alt="USDT TRC20 QR Code" 
+                                                    className={styles.qrCode}
+                                                />
+                                                <p className={styles.qrNote}>Scan this QR code with your crypto wallet</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <div className={styles.cryptoInstructions}>
+                                        <h4>Crypto Payment Instructions:</h4>
+                                        <ol>
+                                            <li>Send exactly <strong>{selectedPackage.currency} {selectedPackage.price}</strong> worth of USDT to the address above</li>
+                                            <li>Use <strong>TRC20 network only</strong> (Tron blockchain)</li>
+                                            <li>Include your user ID (<strong>{data?.current_user_details?.id || currentUser?.id || 'Loading...'}</strong>) in the transaction memo</li>
+                                            <li>Wait for network confirmation (usually 1-5 minutes)</li>
+                                            <li>Send transaction hash to support@company.com for verification</li>
+                                        </ol>
+                                        <div className={styles.cryptoWarning}>
+                                            <strong>⚠️ Important:</strong> Only send USDT on TRC20 network. Sending on other networks may result in loss of funds.
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>

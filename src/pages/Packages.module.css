@@ -485,3 +485,160 @@
         font-size: 2rem;
     }
 }
+
+/* Cryptocurrency Payment Styles */
+.cryptoPayment {
+    padding: 24px;
+    background: #f8fafc;
+    border-radius: 12px;
+    border: 1px solid #e2e8f0;
+}
+
+.cryptoPayment p {
+    color: #475569;
+    margin-bottom: 24px;
+    font-size: 1.1rem;
+    font-family: 'Inter', sans-serif;
+}
+
+.cryptoDetails {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 32px;
+    margin-bottom: 32px;
+}
+
+.cryptoAddress,
+.qrCodeSection {
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    border: 1px solid #e2e8f0;
+}
+
+.cryptoAddress label,
+.qrCodeSection label {
+    display: block;
+    font-weight: 600;
+    color: #374151;
+    margin-bottom: 12px;
+    font-size: 1rem;
+    font-family: 'Inter', sans-serif;
+}
+
+.addressContainer {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    background: #f1f5f9;
+    padding: 12px;
+    border-radius: 6px;
+    border: 1px solid #cbd5e1;
+}
+
+.cryptoAddressText {
+    flex: 1;
+    font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+    font-size: 0.9rem;
+    color: #1e293b;
+    word-break: break-all;
+    line-height: 1.4;
+}
+
+.qrContainer {
+    text-align: center;
+}
+
+.qrCode {
+    max-width: 200px;
+    width: 100%;
+    height: auto;
+    border: 2px solid #e2e8f0;
+    border-radius: 8px;
+    margin-bottom: 12px;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+}
+
+.qrNote {
+    color: #6b7280;
+    font-size: 0.9rem;
+    font-family: 'Inter', sans-serif;
+    margin: 0;
+}
+
+.cryptoInstructions {
+    background: white;
+    padding: 24px;
+    border-radius: 8px;
+    border: 1px solid #e2e8f0;
+}
+
+.cryptoInstructions h4 {
+    color: #1f2937;
+    margin-bottom: 16px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    font-family: 'Inter', sans-serif;
+}
+
+.cryptoInstructions ol {
+    margin: 0 0 20px 0;
+    padding-left: 20px;
+    color: #374151;
+    font-family: 'Inter', sans-serif;
+}
+
+.cryptoInstructions li {
+    margin-bottom: 8px;
+    line-height: 1.5;
+}
+
+.cryptoInstructions strong {
+    color: #1f2937;
+    font-weight: 600;
+}
+
+.cryptoWarning {
+    background: #fef3cd;
+    border: 1px solid #f59e0b;
+    border-radius: 6px;
+    padding: 12px;
+    color: #92400e;
+    font-size: 0.9rem;
+    font-family: 'Inter', sans-serif;
+}
+
+.cryptoWarning strong {
+    color: #92400e;
+}
+
+/* Responsive Design for Crypto Payment */
+@media (max-width: 768px) {
+    .cryptoDetails {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+    
+    .cryptoPayment {
+        padding: 16px;
+    }
+    
+    .cryptoAddress,
+    .qrCodeSection {
+        padding: 16px;
+    }
+    
+    .qrCode {
+        max-width: 150px;
+    }
+    
+    .addressContainer {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 8px;
+    }
+    
+    .cryptoAddressText {
+        font-size: 0.8rem;
+    }
+}
