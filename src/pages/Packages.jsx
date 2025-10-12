@@ -262,51 +262,49 @@ const Packages = () => {
                             <div className={styles.paymentSection}>
                                 <div className={styles.sectionHeader}>
                                     <Coins className={styles.icon} />
-                                    <h3>Cryptocurrency Payment</h3>
+                                    <h3>USDT TRC20 Payment</h3>
                                 </div>
                                 <div className={styles.cryptoPayment}>
-                                    <p>Pay with USDT (TRC20) - Fast and secure cryptocurrency payment</p>
+                                    <p>Pay securely with USDT TRC20. Scan QR code or copy wallet address below.</p>
                                     
                                     <div className={styles.cryptoDetails}>
-                                        <div className={styles.cryptoAddress}>
-                                            <label>USDT TRC20 Address:</label>
-                                            <div className={styles.addressContainer}>
-                                                <span className={styles.cryptoAddressText}>
-                                                    TQBMmDHfpeJ5R2PMLW3usqePTqvZ3WQpM6
-                                                </span>
-                                                <button 
-                                                    className={styles.copyButton}
-                                                    onClick={() => copyToClipboard('TQBMmDHfpeJ5R2PMLW3usqePTqvZ3WQpM6', 'USDT TRC20 Address')}
-                                                >
-                                                    <Copy size={16} />
-                                                </button>
-                                            </div>
-                                        </div>
-                                        
                                         <div className={styles.qrCodeSection}>
-                                            <label>QR Code:</label>
                                             <div className={styles.qrContainer}>
                                                 <img 
                                                     src="/images/trc20.jpeg" 
                                                     alt="USDT TRC20 QR Code" 
                                                     className={styles.qrCode}
                                                 />
-                                                <p className={styles.qrNote}>Scan this QR code with your crypto wallet</p>
+                                                <p className={styles.qrNote}>Scan QR code with your USDT wallet</p>
                                             </div>
                                         </div>
-                                    </div>
-                                    
-                                    <div className={styles.cryptoInstructions}>
-                                        <h4>Crypto Payment Instructions:</h4>
-                                        <ol>
-                                            <li>Send exactly <strong>{selectedPackage.currency} {selectedPackage.price}</strong> worth of USDT to the address above</li>
-                                            <li>Use <strong>TRC20 network only</strong> (Tron blockchain)</li>
-                                            <li>Include your user ID (<strong>{data?.current_user_details?.id || currentUser?.id || 'Loading...'}</strong>) in the transaction memo</li>
-                                            <li>Wait for network confirmation (usually 1-5 minutes)</li>
-                                            <li>Send transaction hash to support@company.com for verification</li>
-                                        </ol>
-                                        <div className={styles.cryptoWarning}>
-                                            <strong>⚠️ Important:</strong> Only send USDT on TRC20 network. Sending on other networks may result in loss of funds.
+                                        
+                                        <div className={styles.cryptoAddress}>
+                                            <label>USDT TRC20 Wallet Address:</label>
+                                            <div className={styles.addressInputContainer}>
+                                                <input 
+                                                    type="text" 
+                                                    value="TQBMmDHfpeJ5R2PMLW3usqePTqvZ3WQpM6"
+                                                    readOnly
+                                                    className={styles.cryptoAddressInput}
+                                                />
+                                                <button 
+                                                    className={styles.copyButton}
+                                                    onClick={() => copyToClipboard('TQBMmDHfpeJ5R2PMLW3usqePTqvZ3WQpM6', 'USDT TRC20 Address')}
+                                                >
+                                                    Copy
+                                                </button>
+                                            </div>
+                                            
+                                            <div className={styles.cryptoInstructions}>
+                                                <h4>Important:</h4>
+                                                <ul>
+                                                    <li>Send exactly <strong>{selectedPackage.currency} {selectedPackage.price}</strong> USDT</li>
+                                                    <li>Use <strong>TRC20 network only</strong></li>
+                                                    <li>Include your user ID (<strong>{data?.current_user_details?.id || currentUser?.id || 'Loading...'}</strong>) in memo</li>
+                                                    <li>Payment confirmation may take 10-30 minutes</li>
+                                                </ul>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
