@@ -11,7 +11,6 @@ const Packages = () => {
     const { currentUser } = useAuth();
     const [selectedPackage, setSelectedPackage] = useState(null);
     const [showPaymentDetails, setShowPaymentDetails] = useState(false);
-    const [selectedPaymentMethod, setSelectedPaymentMethod] = useState('bank');
     
     // Debug: Log user data to console
     console.log('Packages - User data:', {
@@ -28,58 +27,79 @@ const Packages = () => {
         {
             id: "essential",
             name: "Essential",
-            price: 100,
-            currency: "$",
-            description: "Perfect for getting started",
+            price: "100",
+            currency: "USD",
+            description: "Build a global team starting from $100 only",
+            refund: "$100 Refund After First Property Sale",
             features: [
-                "Basic lead management",
-                "Property listings",
-                "Email support",
-                "Standard reports"
+                "Build a global team starting from $100 only",
+                "Income from both property sales and the team",
+                "Commission on both packages & property sales",
+                "6-Level Income on team sales",
+                "Training & Certification via Kings Global Academy UK",
+                "Co-Branding & Promotional Material",
+                "Monthly Performance Reports to track earnings",
+                "Fully sponsored International Trips & Recognition Awards",
+                "Access to Global Team Building Strategy (Earn worldwide)",
+                "Technology Ecosystem: Real-time commission tracking, dashboards & mobile app"
             ],
-            paymentLink: "https://business.mamopay.com/pay/affworldfzllc-2ad088",
-            refund: "7-day money-back guarantee",
-            popular: false
+            paymentLink: "https://business.mamopay.com/pay/affworldfzllc-c431ba",
+            popular: false,
+            color: "#3B82F6"
         },
         {
             id: "premium",
             name: "Premium",
-            price: 1500,
-            currency: "$",
-            description: "Advanced features for growing businesses",
+            price: "1500",
+            currency: "USD",
+            description: "All Essential features plus premium benefits",
+            refund: "Bonus $1500 Refund After First Property Sale",
             features: [
-                "Everything in Essential",
-                "Advanced analytics",
-                "Priority support",
-                "Custom integrations",
-                "Team collaboration",
-                "API access"
+                "All Essential features included",
+                "Kings Global Academy UK Real Estate Manager Certified Course",
+                "International Tour 3N/4D Fully (Dubai/Thailand)",
+                "Award with Bollywood Celebrity",
+                "Bonus $1500 Refund After First Property Sale",
+                "Up to 80% Commission",
+                "9 Qualifies Leads Per Year",
+                "Membership Packages Commission - Earn 10% Commission For Every Package Sale",
+                "Weekly Payout",
+                "CRM of Choice: Now in your OneX tech stack!",
+                "Dubai Office Access",
+                "More Benefits. Ask me!"
             ],
-            paymentLink: "https://business.mamopay.com/pay/affworldfzllc-c431ba",
-            refund: "14-day money-back guarantee",
-            popular: true
+            paymentLink: "https://business.mamopay.com/pay/affworldfzllc-2ad088",
+            popular: true,
+            color: "#10B981"
         },
         {
             id: "exclusive",
             name: "Exclusive",
-            price: 3000,
-            currency: "$",
-            description: "Full-featured solution for enterprises",
+            price: "3000",
+            currency: "USD",
+            description: "All Premium features plus exclusive benefits",
+            refund: "Bonus $3000 Refund After First Property Sale",
             features: [
-                "Everything in Premium",
-                "White-label solution",
-                "Dedicated account manager",
-                "Custom development",
-                "24/7 phone support",
-                "Advanced security"
+                "All Premium features included",
+                "Kings Global Academy UK Real Estate Manager Certified Course",
+                "International Tour 3N/4D Fully (UK/Europe)",
+                "Award with Bollywood Celebrity",
+                "Bonus $3000 Refund After First Property Sale",
+                "Up to 80% Commission",
+                "15 Qualifies Leads Per Year",
+                "Membership Packages Commission - Earn 10% Commission For Every Package Sale",
+                "Weekly Payout",
+                "CRM of Choice: Now in your OneX tech stack!",
+                "Dubai Office Access",
+                "More Benefits. Ask me!"
             ],
             paymentLink: "https://business.mamopay.com/pay/affworldfzllc-5134df",
-            refund: "30-day money-back guarantee",
-            popular: false
+            popular: false,
+            color: "#8B5CF6"
         }
     ];
 
-    // Bank details
+    // Real bank account details
     const bankDetails = {
         accountName: "ONE X REAL ESTATE LLC",
         accountNumber: "019101816816",
@@ -90,7 +110,7 @@ const Packages = () => {
         currency: "AED"
     };
 
-    const handleBuyNow = (pkg) => {
+    const handleSelectPackage = (pkg) => {
         setSelectedPackage(pkg);
         setShowPaymentDetails(true);
     };
@@ -100,14 +120,14 @@ const Packages = () => {
         setSelectedPackage(null);
     };
 
-    const copyToClipboard = async (text, label) => {
-        try {
-            await navigator.clipboard.writeText(text);
+    const copyToClipboard = (text, label) => {
+        navigator.clipboard.writeText(text).then(() => {
             toast.success(`${label} copied to clipboard!`);
-        } catch (err) {
+        }).catch(() => {
             toast.error('Failed to copy to clipboard');
-        }
+        });
     };
+
 
     if (showPaymentDetails && selectedPackage) {
         return (
@@ -135,228 +155,159 @@ const Packages = () => {
                         </div>
 
                         <div className={styles.paymentMethods}>
-                            {/* Payment Method Selection */}
-                            <div className={styles.paymentMethodSelection}>
-                                <h3>Choose Payment Method</h3>
-                                <div className={styles.paymentOptions}>
-                                    <label className={`${styles.paymentOption} ${selectedPaymentMethod === 'bank' ? styles.selected : ''}`}>
-                                        <input 
-                                            type="radio" 
-                                            name="paymentMethod" 
-                                            value="bank"
-                                            checked={selectedPaymentMethod === 'bank'}
-                                            onChange={(e) => setSelectedPaymentMethod(e.target.value)}
-                                        />
-                                        <div className={styles.optionIcon}>
-                                            <Banknote size={24} />
+                            {/* Bank Transfer Section */}
+                            <div className={styles.paymentSection}>
+                                <div className={styles.sectionHeader}>
+                                    <Banknote className={styles.icon} />
+                                    <h3>Bank Transfer</h3>
+                                </div>
+                                <div className={styles.bankDetails}>
+                                    <div className={styles.bankDetailItem}>
+                                        <label>Account Name:</label>
+                                        <div className={styles.detailValue}>
+                                            <span>{bankDetails.accountName}</span>
+                                            <button 
+                                                className={styles.copyButton}
+                                                onClick={() => copyToClipboard(bankDetails.accountName, 'Account name')}
+                                            >
+                                                <Copy size={16} />
+                                            </button>
                                         </div>
-                                        <div className={styles.optionContent}>
-                                            <div className={styles.optionTitle}>Bank Transfer</div>
-                                            <div className={styles.optionDescription}>Direct bank transfer</div>
+                                    </div>
+                                    <div className={styles.bankDetailItem}>
+                                        <label>Account Number:</label>
+                                        <div className={styles.detailValue}>
+                                            <span>{bankDetails.accountNumber}</span>
+                                            <button 
+                                                className={styles.copyButton}
+                                                onClick={() => copyToClipboard(bankDetails.accountNumber, 'Account number')}
+                                            >
+                                                <Copy size={16} />
+                                            </button>
                                         </div>
-                                    </label>
-
-                                    <label className={`${styles.paymentOption} ${selectedPaymentMethod === 'card' ? styles.selected : ''}`}>
-                                        <input 
-                                            type="radio" 
-                                            name="paymentMethod" 
-                                            value="card"
-                                            checked={selectedPaymentMethod === 'card'}
-                                            onChange={(e) => setSelectedPaymentMethod(e.target.value)}
-                                        />
-                                        <div className={styles.optionIcon}>
-                                            <CreditCard size={24} />
+                                    </div>
+                                    <div className={styles.bankDetailItem}>
+                                        <label>IBAN:</label>
+                                        <div className={styles.detailValue}>
+                                            <span>{bankDetails.iban}</span>
+                                            <button 
+                                                className={styles.copyButton}
+                                                onClick={() => copyToClipboard(bankDetails.iban, 'IBAN')}
+                                            >
+                                                <Copy size={16} />
+                                            </button>
                                         </div>
-                                        <div className={styles.optionContent}>
-                                            <div className={styles.optionTitle}>Credit/Debit Card</div>
-                                            <div className={styles.optionDescription}>Secure payment with Visa, MasterCard</div>
+                                    </div>
+                                    <div className={styles.bankDetailItem}>
+                                        <label>Bank Name:</label>
+                                        <div className={styles.detailValue}>
+                                            <span>{bankDetails.bankName}</span>
                                         </div>
-                                    </label>
-
-                                    <label className={`${styles.paymentOption} ${selectedPaymentMethod === 'crypto' ? styles.selected : ''}`}>
-                                        <input 
-                                            type="radio" 
-                                            name="paymentMethod" 
-                                            value="crypto"
-                                            checked={selectedPaymentMethod === 'crypto'}
-                                            onChange={(e) => setSelectedPaymentMethod(e.target.value)}
-                                        />
-                                        <div className={styles.optionIcon}>
-                                            <Coins size={24} />
+                                    </div>
+                                    <div className={styles.bankDetailItem}>
+                                        <label>Swift Code:</label>
+                                        <div className={styles.detailValue}>
+                                            <span>{bankDetails.swiftCode}</span>
+                                            <button 
+                                                className={styles.copyButton}
+                                                onClick={() => copyToClipboard(bankDetails.swiftCode, 'Swift code')}
+                                            >
+                                                <Copy size={16} />
+                                            </button>
                                         </div>
-                                        <div className={styles.optionContent}>
-                                            <div className={styles.optionTitle}>USDT TRC20</div>
-                                            <div className={styles.optionDescription}>Cryptocurrency payment</div>
+                                    </div>
+                                    <div className={styles.bankDetailItem}>
+                                        <label>Currency:</label>
+                                        <div className={styles.detailValue}>
+                                            <span>{bankDetails.currency}</span>
                                         </div>
-                                    </label>
+                                    </div>
+                                </div>
+                                <div className={styles.paymentInstructions}>
+                                    <h4>Payment Instructions:</h4>
+                                    <ol>
+                                        <li>Transfer {selectedPackage.currency} {selectedPackage.price} to the account details above</li>
+                                        <li>Include your user ID (<strong>{data?.current_user_details?.id || currentUser?.id || 'Loading...'}</strong>) in the payment reference</li>
+                                        <li>Send payment confirmation to support@company.com</li>
+                                        <li>Your subscription will be activated within 24 hours</li>
+                                    </ol>
                                 </div>
                             </div>
 
-                            {/* Bank Transfer Section */}
-                            {selectedPaymentMethod === 'bank' && (
-                                <div className={styles.paymentSection}>
-                                    <div className={styles.sectionHeader}>
-                                        <Banknote className={styles.icon} />
-                                        <h3>Bank Transfer Details</h3>
-                                    </div>
-                                    <div className={styles.bankDetails}>
-                                        <div className={styles.bankInfo}>
-                                            <div className={styles.bankRow}>
-                                                <span className={styles.label}>Account Holder:</span>
-                                                <span className={styles.value}>{bankDetails.accountName}</span>
-                                                <button 
-                                                    className={styles.copyButton}
-                                                    onClick={() => copyToClipboard(bankDetails.accountName, 'Account Name')}
-                                                >
-                                                    <Copy size={16} />
-                                                </button>
-                                            </div>
-                                            <div className={styles.bankRow}>
-                                                <span className={styles.label}>Bank Name:</span>
-                                                <span className={styles.value}>{bankDetails.bankName}</span>
-                                                <button 
-                                                    className={styles.copyButton}
-                                                    onClick={() => copyToClipboard(bankDetails.bankName, 'Bank Name')}
-                                                >
-                                                    <Copy size={16} />
-                                                </button>
-                                            </div>
-                                            <div className={styles.bankRow}>
-                                                <span className={styles.label}>Account Number:</span>
-                                                <span className={styles.value}>{bankDetails.accountNumber}</span>
-                                                <button 
-                                                    className={styles.copyButton}
-                                                    onClick={() => copyToClipboard(bankDetails.accountNumber, 'Account Number')}
-                                                >
-                                                    <Copy size={16} />
-                                                </button>
-                                            </div>
-                                            <div className={styles.bankRow}>
-                                                <span className={styles.label}>IBAN:</span>
-                                                <span className={styles.value}>{bankDetails.iban}</span>
-                                                <button 
-                                                    className={styles.copyButton}
-                                                    onClick={() => copyToClipboard(bankDetails.iban, 'IBAN')}
-                                                >
-                                                    <Copy size={16} />
-                                                </button>
-                                            </div>
-                                            <div className={styles.bankRow}>
-                                                <span className={styles.label}>SWIFT Code:</span>
-                                                <span className={styles.value}>{bankDetails.swiftCode}</span>
-                                                <button 
-                                                    className={styles.copyButton}
-                                                    onClick={() => copyToClipboard(bankDetails.swiftCode, 'SWIFT Code')}
-                                                >
-                                                    <Copy size={16} />
-                                                </button>
-                                            </div>
-                                        </div>
-                                        
-                                        <div className={styles.paymentInstructions}>
-                                            <h4>Payment Instructions:</h4>
-                                            <ul>
-                                                <li>Transfer exactly <strong>{selectedPackage.currency} {selectedPackage.price}</strong> to the account above</li>
-                                                <li>Include your user ID (<strong>{data?.current_user_details?.id || currentUser?.id || 'Loading...'}</strong>) in the payment reference</li>
-                                                <li>Keep the bank receipt as proof of payment</li>
-                                                <li>Payment confirmation may take 1-3 business days</li>
-                                            </ul>
-                                        </div>
-                                    </div>
+                            {/* Online Payment Section */}
+                            <div className={styles.paymentSection}>
+                                <div className={styles.sectionHeader}>
+                                    <CreditCard className={styles.icon} />
+                                    <h3>Online Payment</h3>
                                 </div>
-                            )}
-
-                            {/* Credit/Debit Card Section */}
-                            {selectedPaymentMethod === 'card' && (
-                                <div className={styles.paymentSection}>
-                                    <div className={styles.sectionHeader}>
-                                        <CreditCard className={styles.icon} />
-                                        <h3>Credit/Debit Card Payment</h3>
-                                    </div>
-                                    <div className={styles.cardPayment}>
-                                        <p>Pay securely with your credit or debit card using our secure payment gateway.</p>
-                                        <a 
-                                            href={selectedPackage.paymentLink}
-                                            target="_blank"
-                                            rel="noopener noreferrer"
-                                            className={styles.paymentLinkButton}
-                                        >
-                                            <ExternalLink size={20} />
-                                            Pay {selectedPackage.currency}{selectedPackage.price} Now
-                                        </a>
-                                        <div className={styles.cardInstructions}>
-                                            <h4>Important:</h4>
-                                            <ul>
-                                                <li>You will be redirected to a secure payment page</li>
-                                                <li>Include your user ID (<strong>{data?.current_user_details?.id || currentUser?.id || 'Loading...'}</strong>) in the payment reference</li>
-                                                <li>Payment is processed securely and encrypted</li>
-                                                <li>You will receive a confirmation email after payment</li>
-                                            </ul>
-                                        </div>
-                                    </div>
+                                <div className={styles.onlinePayment}>
+                                    <p>Click the button below to complete your payment securely:</p>
+                                    <a 
+                                        href={selectedPackage.paymentLink}
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        className={styles.paymentLinkButton}
+                                        style={{ background: colorCode }}
+                                    >
+                                        <ExternalLink size={20} />
+                                        Pay ${selectedPackage.price} Online
+                                    </a>
+                                    <p className={styles.paymentNote}>
+                                        You will be redirected to our secure payment gateway
+                                    </p>
                                 </div>
-                            )}
+                            </div>
 
                             {/* Cryptocurrency Payment Section */}
-                            {selectedPaymentMethod === 'crypto' && (
-                                <div className={styles.paymentSection}>
-                                    <div className={styles.sectionHeader}>
-                                        <Coins className={styles.icon} />
-                                        <h3>USDT TRC20 Payment</h3>
-                                    </div>
-                                    <div className={styles.cryptoPayment}>
-                                        <p>Pay securely with USDT TRC20. Scan QR code or copy wallet address below.</p>
+                            <div className={styles.paymentSection}>
+                                <div className={styles.sectionHeader}>
+                                    <Coins className={styles.icon} />
+                                    <h3>USDT TRC20 Payment</h3>
+                                </div>
+                                <div className={styles.cryptoPayment}>
+                                    <p>Pay securely with USDT TRC20. Scan QR code or copy wallet address below.</p>
+                                    
+                                    <div className={styles.cryptoDetails}>
+                                        <div className={styles.qrCodeSection}>
+                                            <div className={styles.qrContainer}>
+                                                <img 
+                                                    src="/images/trc20.jpeg" 
+                                                    alt="USDT TRC20 QR Code" 
+                                                    className={styles.qrCode}
+                                                />
+                                                <p className={styles.qrNote}>Scan QR code with your USDT wallet</p>
+                                            </div>
+                                        </div>
                                         
-                                        <div className={styles.cryptoDetails}>
-                                            <div className={styles.qrCodeSection}>
-                                                <div className={styles.qrContainer}>
-                                                    <img 
-                                                        src="/images/trc20.jpeg" 
-                                                        alt="USDT TRC20 QR Code" 
-                                                        className={styles.qrCode}
-                                                    />
-                                                    <p className={styles.qrNote}>Scan QR code with your USDT wallet</p>
-                                                </div>
+                                        <div className={styles.cryptoAddress}>
+                                            <label>USDT TRC20 Wallet Address:</label>
+                                            <div className={styles.addressInputContainer}>
+                                                <input 
+                                                    type="text" 
+                                                    value="TQBMmDHfpeJ5R2PMLW3usqePTqvZ3WQpM6"
+                                                    readOnly
+                                                    className={styles.cryptoAddressInput}
+                                                />
+                                                <button 
+                                                    className={styles.copyButton}
+                                                    onClick={() => copyToClipboard('TQBMmDHfpeJ5R2PMLW3usqePTqvZ3WQpM6', 'USDT TRC20 Address')}
+                                                >
+                                                    Copy
+                                                </button>
                                             </div>
                                             
-                                            <div className={styles.cryptoAddress}>
-                                                <label>USDT TRC20 Wallet Address:</label>
-                                                <div className={styles.addressInputContainer}>
-                                                    <input 
-                                                        type="text" 
-                                                        value="TQBMmDHfpeJ5R2PMLW3usqePTqvZ3WQpM6"
-                                                        readOnly
-                                                        className={styles.cryptoAddressInput}
-                                                    />
-                                                    <button 
-                                                        className={styles.copyButton}
-                                                        onClick={() => copyToClipboard('TQBMmDHfpeJ5R2PMLW3usqePTqvZ3WQpM6', 'USDT TRC20 Address')}
-                                                    >
-                                                        Copy
-                                                    </button>
-                                                </div>
-                                                
-                                                <div className={styles.cryptoInstructions}>
-                                                    <h4>Important:</h4>
-                                                    <ul>
-                                                        <li>Send exactly <strong>{selectedPackage.currency} {selectedPackage.price}</strong> USDT</li>
-                                                        <li>Use <strong>TRC20 network only</strong></li>
-                                                        <li>Include your user ID (<strong>{data?.current_user_details?.id || currentUser?.id || 'Loading...'}</strong>) in memo</li>
-                                                        <li>Payment confirmation may take 10-30 minutes</li>
-                                                    </ul>
-                                                </div>
+                                            <div className={styles.cryptoInstructions}>
+                                                <h4>Important:</h4>
+                                                <ul>
+                                                    <li>Send exactly <strong>{selectedPackage.currency} {selectedPackage.price}</strong> USDT</li>
+                                                    <li>Use <strong>TRC20 network only</strong></li>
+                                                    <li>Include your user ID (<strong>{data?.current_user_details?.id || currentUser?.id || 'Loading...'}</strong>) in memo</li>
+                                                    <li>Payment confirmation may take 10-30 minutes</li>
+                                                </ul>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                            )}
-
-                            <div className={styles.contactSection}>
-                                <h3>Need Help?</h3>
-                                <p>If you have any questions about payment or need assistance, please contact our support team.</p>
-                                <button className={styles.contactButton}>
-                                    Contact Support
-                                </button>
                             </div>
                         </div>
                     </div>
@@ -374,10 +325,13 @@ const Packages = () => {
                         <h2>Select the Perfect Plan for Your Business</h2>
                         <p>Choose from our flexible pricing plans designed to grow with your real estate business</p>
                     </div>
-                    
+
                     <div className={styles.packagesGrid}>
                         {packages.map((pkg) => (
-                            <div key={pkg.id} className={`${styles.packageCard} ${pkg.popular ? styles.popular : ''}`}>
+                            <div 
+                                key={pkg.id} 
+                                className={`${styles.packageCard} ${pkg.popular ? styles.popular : ''}`}
+                            >
                                 {pkg.popular && (
                                     <div className={styles.popularBadge}>
                                         <Star size={16} />
@@ -388,36 +342,50 @@ const Packages = () => {
                                 <div className={styles.packageHeader}>
                                     <h3>{pkg.name}</h3>
                                     <div className={styles.price}>
-                                        <span className={styles.currency}>{pkg.currency}</span>
+                                        <span className={styles.currency}>$</span>
                                         <span className={styles.amount}>{pkg.price}</span>
+                                    </div>
+                                    <div className={styles.refund}>
+                                        {pkg.refund}
                                     </div>
                                     <p className={styles.description}>{pkg.description}</p>
                                 </div>
-                                
+
                                 <div className={styles.features}>
                                     <h4>What&apos;s included:</h4>
                                     <ul>
                                         {pkg.features.map((feature, index) => (
                                             <li key={index}>
-                                                <CheckCircle className={styles.checkIcon} />
+                                                <CheckCircle size={16} className={styles.checkIcon} />
                                                 {feature}
                                             </li>
                                         ))}
                                     </ul>
                                 </div>
-                                
-                                <div className={styles.refund}>
-                                    <p>{pkg.refund}</p>
-                                </div>
-                                
+
                                 <button 
                                     className={styles.selectButton}
-                                    onClick={() => handleBuyNow(pkg)}
+                                    style={{ 
+                                        background: colorCode,
+                                        borderColor: colorCode
+                                    }}
+                                    onClick={() => handleSelectPackage(pkg)}
                                 >
-                                    Select {pkg.name}
+                                    Select Plan
                                 </button>
                             </div>
                         ))}
+                    </div>
+
+                    <div className={styles.packagesFooter}>
+                        <h3>Need a custom solution?</h3>
+                        <p>Contact our sales team for enterprise pricing and custom features</p>
+                        <button 
+                            className={styles.contactButton}
+                            onClick={() => window.open('mailto:support@company.com', '_blank')}
+                        >
+                            Contact Sales
+                        </button>
                     </div>
                 </div>
             </div>
