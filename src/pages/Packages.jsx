@@ -11,6 +11,7 @@ const Packages = () => {
     const { currentUser } = useAuth();
     const [selectedPackage, setSelectedPackage] = useState(null);
     const [showPaymentDetails, setShowPaymentDetails] = useState(false);
+    const [selectedPaymentMethod, setSelectedPaymentMethod] = useState('bank');
     
     // Debug: Log user data to console
     console.log('Packages - User data:', {
@@ -155,12 +156,70 @@ const Packages = () => {
                         </div>
 
                         <div className={styles.paymentMethods}>
-                            {/* Bank Transfer Section */}
-                            <div className={styles.paymentSection}>
-                                <div className={styles.sectionHeader}>
-                                    <Banknote className={styles.icon} />
-                                    <h3>Bank Transfer</h3>
+                            {/* Payment Method Selection */}
+                            <div className={styles.paymentMethodSelection}>
+                                <h3>Choose Payment Method</h3>
+                                <div className={styles.paymentOptions}>
+                                    <label className={`${styles.paymentOption} ${selectedPaymentMethod === 'bank' ? styles.selected : ''}`}>
+                                        <input 
+                                            type="radio" 
+                                            name="paymentMethod" 
+                                            value="bank"
+                                            checked={selectedPaymentMethod === 'bank'}
+                                            onChange={(e) => setSelectedPaymentMethod(e.target.value)}
+                                        />
+                                        <div className={styles.optionIcon}>
+                                            <Banknote size={24} />
+                                        </div>
+                                        <div className={styles.optionContent}>
+                                            <div className={styles.optionTitle}>Bank Transfer</div>
+                                            <div className={styles.optionDescription}>Direct bank transfer</div>
+                                        </div>
+                                    </label>
+
+                                    <label className={`${styles.paymentOption} ${selectedPaymentMethod === 'card' ? styles.selected : ''}`}>
+                                        <input 
+                                            type="radio" 
+                                            name="paymentMethod" 
+                                            value="card"
+                                            checked={selectedPaymentMethod === 'card'}
+                                            onChange={(e) => setSelectedPaymentMethod(e.target.value)}
+                                        />
+                                        <div className={styles.optionIcon}>
+                                            <CreditCard size={24} />
+                                        </div>
+                                        <div className={styles.optionContent}>
+                                            <div className={styles.optionTitle}>Credit/Debit Card</div>
+                                            <div className={styles.optionDescription}>Secure payment with Visa, MasterCard</div>
+                                        </div>
+                                    </label>
+
+                                    <label className={`${styles.paymentOption} ${selectedPaymentMethod === 'crypto' ? styles.selected : ''}`}>
+                                        <input 
+                                            type="radio" 
+                                            name="paymentMethod" 
+                                            value="crypto"
+                                            checked={selectedPaymentMethod === 'crypto'}
+                                            onChange={(e) => setSelectedPaymentMethod(e.target.value)}
+                                        />
+                                        <div className={styles.optionIcon}>
+                                            <Coins size={24} />
+                                        </div>
+                                        <div className={styles.optionContent}>
+                                            <div className={styles.optionTitle}>USDT TRC20</div>
+                                            <div className={styles.optionDescription}>Cryptocurrency payment</div>
+                                        </div>
+                                    </label>
                                 </div>
+                            </div>
+
+                            {/* Bank Transfer Section */}
+                            {selectedPaymentMethod === 'bank' && (
+                                <div className={styles.paymentSection}>
+                                    <div className={styles.sectionHeader}>
+                                        <Banknote className={styles.icon} />
+                                        <h3>Bank Transfer Details</h3>
+                                    </div>
                                 <div className={styles.bankDetails}>
                                     <div className={styles.bankDetailItem}>
                                         <label>Account Name:</label>
@@ -232,38 +291,41 @@ const Packages = () => {
                                         <li>Your subscription will be activated within 24 hours</li>
                                     </ol>
                                 </div>
-                            </div>
+                            )}
 
-                            {/* Online Payment Section */}
-                            <div className={styles.paymentSection}>
-                                <div className={styles.sectionHeader}>
-                                    <CreditCard className={styles.icon} />
-                                    <h3>Online Payment</h3>
+                            {/* Credit/Debit Card Section */}
+                            {selectedPaymentMethod === 'card' && (
+                                <div className={styles.paymentSection}>
+                                    <div className={styles.sectionHeader}>
+                                        <CreditCard className={styles.icon} />
+                                        <h3>Credit/Debit Card Payment</h3>
+                                    </div>
+                                    <div className={styles.onlinePayment}>
+                                        <p>Click the button below to complete your payment securely:</p>
+                                        <a 
+                                            href={selectedPackage.paymentLink}
+                                            target="_blank"
+                                            rel="noopener noreferrer"
+                                            className={styles.paymentLinkButton}
+                                            style={{ background: colorCode }}
+                                        >
+                                            <ExternalLink size={20} />
+                                            Pay ${selectedPackage.price} Online
+                                        </a>
+                                        <p className={styles.paymentNote}>
+                                            You will be redirected to our secure payment gateway
+                                        </p>
+                                    </div>
                                 </div>
-                                <div className={styles.onlinePayment}>
-                                    <p>Click the button below to complete your payment securely:</p>
-                                    <a 
-                                        href={selectedPackage.paymentLink}
-                                        target="_blank"
-                                        rel="noopener noreferrer"
-                                        className={styles.paymentLinkButton}
-                                        style={{ background: colorCode }}
-                                    >
-                                        <ExternalLink size={20} />
-                                        Pay ${selectedPackage.price} Online
-                                    </a>
-                                    <p className={styles.paymentNote}>
-                                        You will be redirected to our secure payment gateway
-                                    </p>
-                                </div>
-                            </div>
+                            )}
 
                             {/* Cryptocurrency Payment Section */}
-                            <div className={styles.paymentSection}>
-                                <div className={styles.sectionHeader}>
-                                    <Coins className={styles.icon} />
-                                    <h3>USDT TRC20 Payment</h3>
-                                </div>
+                            {selectedPaymentMethod === 'crypto' && (
+                                <div className={styles.paymentSection}>
+                                    <div className={styles.sectionHeader}>
+                                        <Coins className={styles.icon} />
+                                        <h3>USDT TRC20 Payment</h3>
+                                    </div>
                                 <div className={styles.cryptoPayment}>
                                     <p>Pay securely with USDT TRC20. Scan QR code or copy wallet address below.</p>
                                     
@@ -308,7 +370,7 @@ const Packages = () => {
                                         </div>
                                     </div>
                                 </div>
-                            </div>
+                            )}
                         </div>
                     </div>
                 </div>
