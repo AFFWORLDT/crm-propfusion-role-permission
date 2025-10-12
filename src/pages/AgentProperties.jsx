@@ -5,6 +5,8 @@ import styles from "./AgentProperties.module.css";
 import TabBar from "../ui/TabBar";
 import { DASHBAORDTABS } from "../utils/constants";
 import { useNavigate } from "react-router-dom";
+import { useAuth } from "../context/AuthContext";
+import useAllDetails from "../features/all-details/useAllDetails";
 import { FaSearch, FaUsers, FaChartBar, FaEye, FaBuilding } from 'react-icons/fa';
 import useAgentPropertiesReport from "../features/dashboard/useAgentPropertiesReport";
 import { DashboardCard, DashboardChartCard } from "../components/dashboard/DashboardCards";
@@ -33,8 +35,23 @@ function mapObjectToChartData(obj, labelKey = "type", valueKey = "value") {
 
 const AgentProperties = () => {
     const navigate = useNavigate();
+    const { currentUser } = useAuth();
     const [searchTerm, setSearchTerm] = useState("");
     const [selectedAgent, setSelectedAgent] = useState(null);
+
+    const { data: allDetailsData } = useAllDetails();
+    const currentUserDetails = allDetailsData?.current_user_details;
+    
+    // Filter dashboard tabs based on role_id 108
+    const filteredDashboardTabs = useMemo(() => {
+        if (currentUserDetails?.role_id === 108) {
+            // Hide Agent Leads, Agent Properties, and New Projects Report for role_id 108
+            return DASHBAORDTABS.filter(tab => 
+                !['AgentLeads', 'AgentProperties', 'NewProjectsReport'].includes(tab.id)
+            );
+        }
+        return DASHBAORDTABS;
+    }, [currentUserDetails?.role_id]);
 
     const { data: report, isLoading, error } = useAgentPropertiesReport();
 
@@ -63,9 +80,9 @@ const AgentProperties = () => {
                 <SectionTop>
                     <TabBar
                         activeTab="AgentProperties"
-                        tabs={DASHBAORDTABS}
+                        tabs={filteredDashboardTabs}
                         onTabClick={(tabId) => {
-                            const tab = DASHBAORDTABS.find((t) => t.id === tabId);
+                            const tab = filteredDashboardTabs.find((t) => t.id === tabId);
                             if (tab?.path) {
                                 navigate(tab.path);
                             }
@@ -93,9 +110,9 @@ const AgentProperties = () => {
                 <SectionTop>
                     <TabBar
                         activeTab="AgentProperties"
-                        tabs={DASHBAORDTABS}
+                        tabs={filteredDashboardTabs}
                         onTabClick={(tabId) => {
-                            const tab = DASHBAORDTABS.find((t) => t.id === tabId);
+                            const tab = filteredDashboardTabs.find((t) => t.id === tabId);
                             if (tab?.path) {
                                 navigate(tab.path);
                             }
@@ -238,9 +255,9 @@ const AgentProperties = () => {
             <SectionTop>
                 <TabBar
                     activeTab="AgentProperties"
-                    tabs={DASHBAORDTABS}
+                    tabs={filteredDashboardTabs}
                     onTabClick={(tabId) => {
-                        const tab = DASHBAORDTABS.find((t) => t.id === tabId);
+                        const tab = filteredDashboardTabs.find((t) => t.id === tabId);
                         if (tab?.path) {
                             navigate(tab.path);
                         }

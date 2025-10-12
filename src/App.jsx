@@ -106,7 +106,6 @@ import GCalendar from "./pages/calendar/GCalendar";
 import AgreementTable from "./pages/Contract/AgreementTable";
 import AgentContract from "./pages/Contract/AgentContract";
 import HrCalendar from "./pages/calendar/HrCalander";
-import ChatWidget from "./components/ChatWidget";
 // import AutoPopup from "./components/AutoPopup";
 
 // Games imports
@@ -1564,7 +1563,6 @@ function App() {
                             },
                         }}
                     />
-                    <ChatWidget />
                     <VoiceConversionWidget />
                     {/* <AutoPopup /> */}
                 </SelectedPropertiesProvider>

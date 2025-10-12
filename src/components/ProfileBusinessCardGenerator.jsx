@@ -35,17 +35,17 @@ const ProfileBusinessCardGenerator = ({ currentUser, colorCode }) => {
         fetchCurrentLoggedInUserAllData()
       ]);
 
-      const company = allData?.company || {};
+      const companySettings = allData?.company_settings || {};
 
-      // Prepare card data with fallbacks (removed role, address, company_tagline)
+      // Prepare card data with dynamic values from API
       const cardData = {
         name: agent.name || 'Admin',
         email: agent.email || 'user@example.com',
         phone: agent.phone || '+91 952932 8188',
-        website: company.website || 'www.ethosrealestate.ae',
-        company_name: company.company_name || 'Ethos Real Estate',
-        company_logo_url: company.company_logo_url || 
-          'https://meja.blob.core.windows.net/affx/ethos/company/Logo_Mark___Copy_K5YBEx.png',
+        website: companySettings.website || 'www.example.com',
+        company_name: companySettings.company_name || 'Company Name',
+        company_logo_url: companySettings.company_logo_url || 
+          'https://via.placeholder.com/150x150?text=Logo',
       };
 
       setCardData(cardData);
