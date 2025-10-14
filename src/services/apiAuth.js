@@ -49,3 +49,90 @@ export async function getSubscriptionStatus() {
         throw new Error(err.message);
     }
 }
+
+/**
+ * Request password reset OTP
+ * @param {string} email - User email address
+ * @returns {Promise} API response
+ */
+export async function requestPasswordReset(email) {
+    try {
+        const res = await fetch(`${getApiUrl()}/agent/password-reset/request`, {
+            method: "POST",
+            headers: {
+                Accept: "application/json",
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({ email }),
+        });
+
+        const data = await res.json();
+        
+        if (res.ok) {
+            return data;
+        } else {
+            throw new Error(data.message || "Failed to send password reset OTP");
+        }
+    } catch (err) {
+        throw new Error(err.message);
+    }
+}
+
+/**
+ * Resend password reset OTP
+ * @param {string} email - User email address
+ * @returns {Promise} API response
+ */
+export async function resendPasswordResetOtp(email) {
+    try {
+        const res = await fetch(`${getApiUrl()}/agent/password-reset/resend`, {
+            method: "POST",
+            headers: {
+                Accept: "application/json",
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({ email }),
+        });
+
+        const data = await res.json();
+        
+        if (res.ok) {
+            return data;
+        } else {
+            throw new Error(data.message || "Failed to resend OTP");
+        }
+    } catch (err) {
+        throw new Error(err.message);
+    }
+}
+
+/**
+ * Verify OTP and reset password
+ * @param {Object} resetData - Reset data containing email, otp, and new_password
+ * @param {string} resetData.email - User email address
+ * @param {string} resetData.otp - OTP code received via email
+ * @param {string} resetData.new_password - New password to set
+ * @returns {Promise} API response
+ */
+export async function verifyPasswordReset(resetData) {
+    try {
+        const res = await fetch(`${getApiUrl()}/agent/password-reset/verify`, {
+            method: "POST",
+            headers: {
+                Accept: "application/json",
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify(resetData),
+        });
+
+        const data = await res.json();
+        
+        if (res.ok) {
+            return data;
+        } else {
+            throw new Error(data.message || "Failed to reset password");
+        }
+    } catch (err) {
+        throw new Error(err.message);
+    }
+}

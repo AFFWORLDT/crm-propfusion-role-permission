@@ -2,8 +2,6 @@ import { createContext, useContext, useEffect, useState } from "react";
 import { Outlet, useNavigate } from "react-router-dom";
 import Cookies from "universal-cookie";
 import { getApiUrl } from "../utils/getApiUrl";
-import { useQueryClient } from "@tanstack/react-query";
-// Removed clearCachedPermissions - no longer using localStorage caching
 
 const cookies = new Cookies();
 const AuthContext = createContext();
@@ -12,10 +10,9 @@ function AuthProvider() {
     const [currentUser, setCurrentUser] = useState(null);
     const [isLoading, setIsLoading] = useState(true);
     const navigate = useNavigate();
-    const queryClient = useQueryClient();
 
     function login(data) {
-        const userData = typeof data === 'string' ? JSON.parse(data) : data;
+        const userData = typeof data === "string" ? JSON.parse(data) : data;
         cookies.set("USER", userData, {
             path: "/",
         });
@@ -29,17 +26,8 @@ function AuthProvider() {
         cookies.remove("USER", { path: "/" });
         localStorage.removeItem("CRMUSER");
         localStorage.removeItem(`app_features-${getApiUrl()}`);
-        
-        // Invalidate all React Query queries to ensure fresh data on next login
-        queryClient.clear();
-        
-        // Also invalidate specific query keys to ensure they refetch on next login
-        queryClient.invalidateQueries(['userPermissions']);
-        queryClient.invalidateQueries(['features']);
-        queryClient.invalidateQueries(['allDetails']);
-        
         navigate("/login", { replace: true });
-    }   
+    }
 
     useEffect(() => {
         try {
