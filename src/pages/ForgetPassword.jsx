@@ -103,7 +103,7 @@ function ForgetPassword() {
                                 Check Your Email
                             </Typography>
                             <Typography variant="body1" color="#64748b" mb={3}>
-                                We've sent a password reset OTP to <strong>{email}</strong>
+                                We&apos;ve sent a password reset OTP to <strong>{email}</strong>
                             </Typography>
                             
                             <Alert severity="success" sx={{ mb: 3, textAlign: 'left' }}>
@@ -172,7 +172,7 @@ function ForgetPassword() {
                             Forgot Password?
                         </Typography>
                         <Typography variant="body1" color="#64748b" mb={4}>
-                            No worries! Enter your email address and we'll send you an OTP to reset your password.
+                            No worries! Enter your email address and we&apos;ll send you an OTP to reset your password.
                         </Typography>
 
                         <Box component="form" onSubmit={handleSubmit} sx={{ width: '100%' }}>
