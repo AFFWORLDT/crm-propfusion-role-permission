@@ -138,7 +138,7 @@ import RentalAgreementDetails from "./pages/rental-agreement/RentalAgreementDeta
 import Whatsapp from "./pages/Whatsapp";
 import Transactions from "./pages/Transactions";
 import EditNewBuilding from "./pages/building/EditNewBuilding";
-import PremiumShareProperty from "./pages/properties/share-premium/PremiumShareProperty";
+import PremiumShareProperty from "./pages/properties/share-premium/PremiumShareProperty"; 
 import BulkSharePremium from "./pages/properties/bulk-share-premium/BulkSharePremium";
 import PropertyGalleryDemo from "./pages/PropertyGalleryDemo";
 import UserManual from "./pages/UserManual/UserManual";
