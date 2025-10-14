@@ -111,7 +111,7 @@ function LoginForm() {
                 <Typography fontWeight={500} fontSize={16} color="#222">
                     Password
                 </Typography>
-                <Link to="#" style={{ color: '#757575', textDecoration: 'none', fontSize: 14 }}>
+                <Link to="/password-reset/request" style={{ color: '#757575', textDecoration: 'none', fontSize: 14 }}>
                     Forgot your password?
                 </Link>
             </Box>

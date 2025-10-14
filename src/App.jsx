@@ -88,6 +88,8 @@ import ResolveRequest from "./pages/general/ResolveRequest";
 import AgentRegistration from "./pages/AgentRegistration/AgentRegistration";
 import OwnerRegistration from "./pages/OwnerRegistration/OwnerRegistration";
 import TenantRegistration from "./pages/TenantRegistration/TenantRegistration";
+import ForgetPassword from "./pages/ForgetPassword";
+import ResetPassword from "./pages/ResetPassword";
 
 import Updates from "./pages/general/Updates";
 import WebApis from "./pages/general/WebApis";
@@ -135,7 +137,7 @@ import RentalAgreementDetails from "./pages/rental-agreement/RentalAgreementDeta
 import Whatsapp from "./pages/Whatsapp";
 import Transactions from "./pages/Transactions";
 import EditNewBuilding from "./pages/building/EditNewBuilding";
-import PremiumShareProperty from "./pages/properties/share-premium/PremiumShareProperty";
+import PremiumShareProperty from "./pages/properties/share-premium/PremiumShareProperty"; 
 import BulkSharePremium from "./pages/properties/bulk-share-premium/BulkSharePremium";
 import PropertyGalleryDemo from "./pages/PropertyGalleryDemo";
 import UserManual from "./pages/UserManual/UserManual";
@@ -254,6 +256,8 @@ function App() {
                                 path="/tenant-registration"
                                 element={<TenantRegistration />}
                             />
+                            <Route path="/password-reset/request" element={<ForgetPassword />} />
+                            <Route path="/password-reset/verify" element={<ResetPassword />} />
                             <Route element={<AuthProvider />}>
                                 <Route path="/login" element={<Login />} />
                                 <Route element={<SubscriptionCheck />}>
