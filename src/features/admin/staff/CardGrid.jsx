@@ -1,6 +1,5 @@
 import { useEffect } from "react";
 import CustomCard from "../../../ui/CustomCard";
-import useStaff from "./useStaff";
 import useRoles from "../teams/useRoles";
 import Grid from '@mui/material/Grid';
 import CircularProgress from '@mui/material/CircularProgress';
@@ -10,10 +9,8 @@ import { useState } from 'react';
 import { useTheme } from '@mui/material/styles';
 import useMediaQuery from '@mui/material/useMediaQuery';
 
-const CardGrid = () => {
+const CardGrid = ({ data = [], isLoading = false, error = null }) => {
     useRoles();
-
-    const { isLoading, data, error } = useStaff();
     const [open, setOpen] = useState(false);
     const theme = useTheme();
     const isXs = useMediaQuery(theme.breakpoints.only('xs'));
