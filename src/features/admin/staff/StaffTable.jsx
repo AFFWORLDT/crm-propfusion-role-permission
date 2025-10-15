@@ -2,11 +2,9 @@ import { useEffect } from "react";
 import Spinner from "../../../ui/Spinner";
 import Table from "../../../ui/Table";
 import StaffRow from "./StaffRow";
-import useStaff from "./useStaff";
 import toast from "react-hot-toast";
 
-function StaffTable() {
-    const { isLoading, data, error } = useStaff();
+function StaffTable({ data = [], isLoading = false, error = null }) {
 
     useEffect(() => {
         if (error) toast.error(error.message);
