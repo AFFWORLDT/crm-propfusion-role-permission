@@ -1,6 +1,7 @@
 import { PORTAL_OPTIONS_FOR_WHATSAPP_LEAD } from "../../../utils/constants";
 import Filter from "../../../ui/Filter";
 import useStaff from "../../admin/staff/useStaff";
+import useAllDetails from "../../all-details/useAllDetails";
 
 const defaultValues = {
     title: "",
@@ -15,8 +16,9 @@ const defaultValues = {
 };
 
 function WhatsappLeadsFilter() {
-
-    const { data: agentData, isLoading: isAgentLoading } = useStaff()
+    const { data: agentData, isLoading: isAgentLoading } = useStaff();
+    const { data } = useAllDetails();
+    const currentUserDetails = data?.current_user_details;
 
 
 
@@ -28,9 +30,9 @@ function WhatsappLeadsFilter() {
         <Filter defaultValues={defaultValues}>
 
             <ExtraFilters
-
                 agentOptions={agentOptions}
                 isAgentLoading={isAgentLoading}
+                currentUserDetails={currentUserDetails}
             />
 
         </Filter>
@@ -41,6 +43,7 @@ function ExtraFilters({
     isDeveloperLoading,
     agentOptions,
     isAgentLoading,
+    currentUserDetails,
 }) {
     return (
         <>
@@ -70,12 +73,14 @@ function ExtraFilters({
             />
 
 
-            <Filter.InputDataList
-                registerName="agent_Id"
-                placeholder="Agent"
-                data={agentOptions}
-                isLoading={isAgentLoading}
-            />
+            {currentUserDetails?.role_id !== 108 && (
+                <Filter.InputDataList
+                    registerName="agent_Id"
+                    placeholder="Agent"
+                    data={agentOptions}
+                    isLoading={isAgentLoading}
+                />
+            )}
 
             <Filter.InputDataList
                 registerName="portal"

@@ -1,6 +1,6 @@
 {
-    "name": "Prop Fusion",
-    "short_name": "PFCRM",
+    "name": "ONEX Properties",
+    "short_name": "ONEX",
     "icons": [
         {
             "src": "/android-chrome-192x192.png",
@@ -13,7 +13,7 @@
             "type": "image/png"
         }
     ],
-    "theme_color": "#ffffff",
+    "theme_color": "#2563eb",
     "background_color": "#ffffff",
     "display": "standalone"
 }

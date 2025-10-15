@@ -13,6 +13,7 @@ import useTags from "../tags/useTags";
 import { formatForumOptionsForLeades, formatLocationsCommunityOptionsForProperties } from "../../utils/utils";
 import { getLocation } from "../../services/apiLocations";
 import { useSearchParams } from "react-router-dom";
+import useAllDetails from "../all-details/useAllDetails";
 
 const defaultValues = {
     name: "",
@@ -35,6 +36,8 @@ function LeadsFilter() {
     const { data: staffData, isLoading: isStaffLoading } = useStaff();
     const { data: tagData, isLoading: isTagLoading } = useTags("leads");
     const { data: stagesData, isLoading: isStagesLoading } = useStages("leads");
+    const { data } = useAllDetails();
+    const currentUserDetails = data?.current_user_details;
     // const { data: groupsData, isLoading: isGroupsLoading } = useGroups("leads");
 
     const tagOptions =
@@ -72,6 +75,7 @@ function LeadsFilter() {
                 isTagLoading={isTagLoading}
                 stagesOptions={stagesOptions}
                 isStagesLoading={isStagesLoading}
+                currentUserDetails={currentUserDetails}
                 // groupsOptions={groupsOptions}
                 // isGroupsLoading={isGroupsLoading}
             />
@@ -86,6 +90,7 @@ function ExtraFilters({
     isTagLoading,
     stagesOptions,
     isStagesLoading,
+    currentUserDetails,
     // groupsOptions,
     // isGroupsLoading,
 }) {
@@ -105,12 +110,14 @@ function ExtraFilters({
                 registerName="date_to"
                 placeholder="End Date"
             />
-            <Filter.InputDataList
-                registerName="agent_id"
-                data={staffOptions}
-                isLoading={isStaffLoading}
-                placeholder="Select Agent"
-            />
+            {currentUserDetails?.role_id !== 108 && (
+                <Filter.InputDataList
+                    registerName="agent_id"
+                    data={staffOptions}
+                    isLoading={isStaffLoading}
+                    placeholder="Select Agent"
+                />
+            )}
             <Filter.Input registerName="phone" placeholder="Phone" />
             <Filter.InputDataList
                 registerName="property_type"

@@ -1,6 +1,6 @@
 import { PlusIcon } from "lucide-react";
 import useCreateLead from "../leads/useCreateLead";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useAuth } from "../../context/AuthContext";
 import useStaff from "../admin/staff/useStaff";
 import FormInputDataList from "../../ui/FormInputDataList";
@@ -18,6 +18,19 @@ function AddLead({ data }) {
         label: item?.name,
         value: item?.id,
     }));
+
+    // Automatically set current user as selected staff
+    useEffect(() => {
+        if (currentUser && staffData && staffData.length > 0) {
+            const currentUserStaff = staffData.find(staff => staff.id === currentUser.id);
+            if (currentUserStaff) {
+                control.setValue("staff", {
+                    value: currentUserStaff.id,
+                    label: currentUserStaff.name
+                });
+            }
+        }
+    }, [currentUser, staffData, control]);
 
     const commonButtonStyles = {
         padding: "6px 12px",
@@ -127,7 +140,7 @@ function AddLead({ data }) {
         payload.status = "ACTIVE";
         payload.isClaim = "NO";
         payload.clientType = clientType;
-        payload.agent_Id = control._formValues.staff?.value || currentUser?.id;
+        payload.agent_Id = currentUser?.id;
         
         addLead(payload);
         setShowModal(false);
@@ -168,6 +181,7 @@ function AddLead({ data }) {
                                 placeholder="Select Staff Member"
                                 isLoading={staffLoading}
                                 required={true}
+                                isDisabled={true}
                             />
                         </div>
                         <div style={buttonGroupStyles}>

@@ -5,6 +5,8 @@ import styles from "./NewProjectsReport.module.css";
 import TabBar from "../ui/TabBar";
 import { DASHBAORDTABS } from "../utils/constants";
 import { useNavigate } from "react-router-dom";
+import { useAuth } from "../context/AuthContext";
+import useAllDetails from "../features/all-details/useAllDetails";
 import { FaBuilding, FaChartBar, FaCalendar, FaMapMarkerAlt, FaIndustry, FaSwimmingPool, FaMoneyBillWave } from 'react-icons/fa';
 import useProjectsReport from "../features/dashboard/useProjectsReport";
 import { DashboardCard, DashboardChartCard } from "../components/dashboard/DashboardCards";
@@ -43,6 +45,22 @@ function formatPriceRange(range) {
 
 const NewProjectsReport = () => {
     const navigate = useNavigate();
+    const { currentUser } = useAuth();
+    
+    const { data: allDetailsData } = useAllDetails();
+    const currentUserDetails = allDetailsData?.current_user_details;
+    
+    // Filter dashboard tabs based on role_id 108
+    const filteredDashboardTabs = useMemo(() => {
+        if (currentUserDetails?.role_id === 108) {
+            // Hide Agent Leads, Agent Properties, and New Projects Report for role_id 108
+            return DASHBAORDTABS.filter(tab => 
+                !['AgentLeads', 'AgentProperties', 'NewProjectsReport'].includes(tab.id)
+            );
+        }
+        return DASHBAORDTABS;
+    }, [currentUserDetails?.role_id]);
+
     const { data: report, isLoading, error } = useProjectsReport();
 
     const totalProjects = report?.total_projects || 0;
@@ -142,9 +160,9 @@ const NewProjectsReport = () => {
                 <SectionTop>
                     <TabBar
                         activeTab="NewProjectsReport"
-                        tabs={DASHBAORDTABS}
+                        tabs={filteredDashboardTabs}
                         onTabClick={(tabId) => {
-                            const tab = DASHBAORDTABS.find((t) => t.id === tabId);
+                            const tab = filteredDashboardTabs.find((t) => t.id === tabId);
                             if (tab?.path) {
                                 navigate(tab.path);
                             }
@@ -172,9 +190,9 @@ const NewProjectsReport = () => {
                 <SectionTop>
                     <TabBar
                         activeTab="NewProjectsReport"
-                        tabs={DASHBAORDTABS}
+                        tabs={filteredDashboardTabs}
                         onTabClick={(tabId) => {
-                            const tab = DASHBAORDTABS.find((t) => t.id === tabId);
+                            const tab = filteredDashboardTabs.find((t) => t.id === tabId);
                             if (tab?.path) {
                                 navigate(tab.path);
                             }
@@ -196,9 +214,9 @@ const NewProjectsReport = () => {
             <SectionTop>
                 <TabBar
                     activeTab="NewProjectsReport"
-                    tabs={DASHBAORDTABS}
+                    tabs={filteredDashboardTabs}
                     onTabClick={(tabId) => {
-                        const tab = DASHBAORDTABS.find((t) => t.id === tabId);
+                        const tab = filteredDashboardTabs.find((t) => t.id === tabId);
                         if (tab?.path) {
                             navigate(tab.path);
                         }

@@ -46,6 +46,7 @@ import Watermark from "./pages/admin/Watermark";
 import Notifications from "./pages/Notifications";
 import DataImport from "./pages/admin/DataImport";
 import Profile from "./pages/Profile";
+import Packages from "./pages/Packages";
 import Requirements from "./pages/requirements/Requirements";
 import RequirementForm from "./pages/requirements/RequirementForm";
 import RequirementDetail from "./pages/requirements/RequirementDetail";
@@ -108,7 +109,6 @@ import GCalendar from "./pages/calendar/GCalendar";
 import AgreementTable from "./pages/Contract/AgreementTable";
 import AgentContract from "./pages/Contract/AgentContract";
 import HrCalendar from "./pages/calendar/HrCalander";
-import ChatWidget from "./components/ChatWidget";
 // import AutoPopup from "./components/AutoPopup";
 
 // Games imports
@@ -123,7 +123,6 @@ import {
 } from "./pages/Games";
 import DubaiMonopolyGame from "./pages/Games/DubaiMonopolyGame";
 import DesignSystem from "./pages/DesignSystem";
-import VoiceConversionWidget from "./components/VoiceConversionWidget";
 import AgentFeed from "./features/feed/AgentFeed";
 import PhoneView from "./pages/leads/Phone/PhoneView";
 import SmsView from "./pages/leads/Phone/SmsView";
@@ -989,6 +988,10 @@ function App() {
                                             element={<Profile />}
                                         ></Route>
                                         <Route
+                                            path="/packages"
+                                            element={<Packages />}
+                                        ></Route>
+                                        <Route
                                             path="/wallet"
                                             element={<Wallet />}
                                         ></Route>
@@ -1568,8 +1571,6 @@ function App() {
                             },
                         }}
                     />
-                    <ChatWidget />
-                    <VoiceConversionWidget />
                     {/* <AutoPopup /> */}
                 </SelectedPropertiesProvider>
             </QueryClientProvider>

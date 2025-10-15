@@ -1,0 +1,815 @@
+.packagesContainer {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+.packagesHeader {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.packagesHeader h2 {
+    font-size: 2.5rem;
+    font-weight: 600;
+    color: #1f2937;
+    margin-bottom: 16px;
+    font-family: 'Inter', sans-serif;
+}
+
+.packagesHeader p {
+    font-size: 1.1rem;
+    color: #6b7280;
+    max-width: 600px;
+    margin: 0 auto;
+    font-family: 'Inter', sans-serif;
+}
+
+.packagesGrid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 30px;
+    margin-bottom: 60px;
+}
+
+.packageCard {
+    background: #ffffff;
+    border: 2px solid #e5e7eb;
+    border-radius: 16px;
+    padding: 32px;
+    position: relative;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    font-family: 'Inter', sans-serif;
+}
+
+.packageCard:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+}
+
+.packageCard.popular {
+    border-color: #020079;
+    transform: scale(1.05);
+}
+
+.packageCard.popular:hover {
+    transform: scale(1.05) translateY(-4px);
+}
+
+.popularBadge {
+    position: absolute;
+    top: -12px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: linear-gradient(135deg, #020079, #020079);
+    color: white;
+    padding: 8px 24px;
+    border-radius: 20px;
+    font-size: 0.875rem;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    box-shadow: 0 4px 6px -1px rgba(2, 0, 121, 0.3);
+    font-family: 'Inter', sans-serif;
+}
+
+.packageHeader {
+    text-align: center;
+    margin-bottom: 32px;
+}
+
+.packageHeader h3 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #1f2937;
+    margin-bottom: 16px;
+    font-family: 'Inter', sans-serif;
+}
+
+.price {
+    display: flex;
+    align-items: baseline;
+    justify-content: center;
+    margin-bottom: 16px;
+    gap: 4px;
+}
+
+.currency {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: #6b7280;
+    font-family: 'Inter', sans-serif;
+}
+
+.amount {
+    font-size: 3rem;
+    font-weight: 700;
+    color: #1f2937;
+    line-height: 1;
+    font-family: 'Inter', sans-serif;
+}
+
+.duration {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: #6b7280;
+    font-family: 'Inter', sans-serif;
+}
+
+.description {
+    color: #6b7280;
+    font-size: 1rem;
+    line-height: 1.5;
+    font-family: 'Inter', sans-serif;
+}
+
+.refund {
+    background: linear-gradient(135deg, #020079, #020079);
+    color: white;
+    padding: 8px 16px;
+    border-radius: 20px;
+    font-size: 0.875rem;
+    font-weight: 600;
+    text-align: center;
+    margin: 16px 0;
+    box-shadow: 0 4px 6px -1px rgba(2, 0, 121, 0.3);
+    font-family: 'Inter', sans-serif;
+}
+
+.features {
+    margin-bottom: 32px;
+}
+
+.features h4 {
+    font-size: 1.125rem;
+    font-weight: 600;
+    color: #1f2937;
+    margin-bottom: 16px;
+    font-family: 'Inter', sans-serif;
+}
+
+.features ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.features li {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    margin-bottom: 12px;
+    font-size: 0.95rem;
+    color: #4b5563;
+    line-height: 1.5;
+    font-family: 'Inter', sans-serif;
+}
+
+.checkIcon {
+    color: #020079;
+    margin-top: 2px;
+    flex-shrink: 0;
+}
+
+.selectButton {
+    width: 100%;
+    padding: 14px 24px;
+    border: 2px solid transparent;
+    border-radius: 8px;
+    color: white;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    font-family: 'Inter', sans-serif;
+}
+
+.selectButton:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+}
+
+.packagesFooter {
+    text-align: center;
+    padding: 40px;
+    background: #f9fafb;
+    border-radius: 16px;
+    margin-top: 40px;
+}
+
+.packagesFooter h3 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #1f2937;
+    margin-bottom: 12px;
+    font-family: 'Inter', sans-serif;
+}
+
+.packagesFooter p {
+    color: #6b7280;
+    margin-bottom: 24px;
+    font-size: 1.1rem;
+    font-family: 'Inter', sans-serif;
+}
+
+.contactButton {
+    background: #020079;
+    color: white;
+    border: none;
+    padding: 12px 32px;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-family: 'Inter', sans-serif;
+}
+
+.contactButton:hover {
+    background: #010056;
+    transform: translateY(-2px);
+}
+
+/* Payment Details Styles */
+.paymentContainer {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.paymentHeader {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.backButton {
+    background: #6b7280;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 6px;
+    font-size: 0.875rem;
+    cursor: pointer;
+    margin-bottom: 20px;
+    transition: all 0.3s ease;
+}
+
+.backButton:hover {
+    background: #4b5563;
+}
+
+.paymentHeader h2 {
+    font-size: 2rem;
+    font-weight: 700;
+    color: #1f2937;
+    margin-bottom: 20px;
+}
+
+.selectedPackage {
+    background: #f9fafb;
+    padding: 20px;
+    border-radius: 12px;
+    border: 2px solid #e5e7eb;
+}
+
+.selectedPackage h3 {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #1f2937;
+    margin-bottom: 8px;
+}
+
+.paymentMethods {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+}
+
+.paymentSection {
+    background: #ffffff;
+    border: 2px solid #e5e7eb;
+    border-radius: 12px;
+    padding: 24px;
+}
+
+.sectionHeader {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 20px;
+    padding-bottom: 12px;
+    border-bottom: 2px solid #e5e7eb;
+}
+
+.sectionHeader h3 {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: #1f2937;
+    margin: 0;
+}
+
+.icon {
+    color: #6b7280;
+}
+
+.bankDetails {
+    margin-bottom: 24px;
+}
+
+.bankDetailItem {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 0;
+    border-bottom: 1px solid #f3f4f6;
+}
+
+.bankDetailItem:last-child {
+    border-bottom: none;
+}
+
+.bankDetailItem label {
+    font-weight: 600;
+    color: #374151;
+    font-size: 0.95rem;
+}
+
+.detailValue {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.detailValue span {
+    font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+    background: #f3f4f6;
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-size: 0.875rem;
+    color: #1f2937;
+}
+
+.copyButton {
+    background: linear-gradient(135deg, #6b7280 0%, #4b5563 100%);
+    color: white;
+    border: 2px solid #6b7280;
+    padding: 16px 24px;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 2px 4px -1px rgba(107, 114, 128, 0.3);
+    font-weight: 600;
+    font-family: 'Inter', sans-serif;
+    font-size: 1rem;
+    white-space: nowrap;
+}
+
+.copyButton:hover {
+    background: linear-gradient(135deg, #4b5563 0%, #374151 100%);
+    border-color: #4b5563;
+    transform: translateY(-2px) scale(1.05);
+    box-shadow: 0 4px 8px -2px rgba(107, 114, 128, 0.4);
+}
+
+.paymentInstructions {
+    background: #fef3c7;
+    border: 1px solid #f59e0b;
+    border-radius: 8px;
+    padding: 16px;
+}
+
+.paymentInstructions h4 {
+    color: #92400e;
+    font-weight: 600;
+    margin-bottom: 12px;
+    font-size: 1rem;
+}
+
+.paymentInstructions ol {
+    color: #92400e;
+    padding-left: 20px;
+    margin: 0;
+}
+
+.paymentInstructions li {
+    margin-bottom: 6px;
+    font-size: 0.9rem;
+}
+
+.onlinePayment {
+    text-align: center;
+}
+
+.onlinePayment p {
+    color: #6b7280;
+    margin-bottom: 20px;
+    font-size: 0.95rem;
+}
+
+.paymentLinkButton {
+    background: #3b82f6;
+    color: white;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin: 0 auto 16px;
+}
+
+.paymentLinkButton:hover {
+    background: #2563eb;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 15px rgba(59, 130, 246, 0.3);
+}
+
+.paymentNote {
+    color: #9ca3af;
+    font-size: 0.875rem;
+    font-style: italic;
+    margin: 0;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .packagesGrid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+    
+    .packageCard.popular {
+        transform: none;
+    }
+    
+    .packageCard.popular:hover {
+        transform: translateY(-4px);
+    }
+    
+    .paymentMethods {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+    
+    .packagesHeader h2 {
+        font-size: 2rem;
+    }
+    
+    .amount {
+        font-size: 2.5rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .packagesContainer,
+    .paymentContainer {
+        padding: 15px;
+    }
+    
+    .packageCard {
+        padding: 24px;
+    }
+    
+    .packagesHeader h2 {
+        font-size: 1.75rem;
+    }
+    
+    .amount {
+        font-size: 2rem;
+    }
+}
+
+/* Cryptocurrency Payment Styles - Modern Redesign */
+.cryptoPayment {
+    padding: 40px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    border-radius: 24px;
+    border: 3px solid #4f46e5;
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+    margin-top: 32px;
+    position: relative;
+    overflow: hidden;
+}
+
+.cryptoPayment::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.05) 100%);
+    pointer-events: none;
+}
+
+.cryptoPayment p {
+    color: #ffffff;
+    margin-bottom: 32px;
+    font-size: 1.4rem;
+    font-family: 'Inter', sans-serif;
+    font-weight: 600;
+    text-align: center;
+    background: rgba(255, 255, 255, 0.15);
+    padding: 20px;
+    border-radius: 16px;
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(10px);
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.cryptoDetails {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 32px;
+    margin-bottom: 40px;
+    position: relative;
+    z-index: 1;
+}
+
+.cryptoAddress,
+.qrCodeSection {
+    background: rgba(255, 255, 255, 0.95);
+    padding: 32px;
+    border-radius: 20px;
+    border: 3px solid rgba(255, 255, 255, 0.3);
+    box-shadow: 0 8px 32px -8px rgba(0, 0, 0, 0.2);
+    transition: all 0.4s ease;
+    backdrop-filter: blur(10px);
+}
+
+.cryptoAddress:hover,
+.qrCodeSection:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 16px 48px -8px rgba(0, 0, 0, 0.3);
+    border-color: rgba(255, 255, 255, 0.6);
+}
+
+.cryptoAddress label,
+.qrCodeSection label {
+    display: block;
+    font-weight: 800;
+    color: #1e293b;
+    margin-bottom: 20px;
+    font-size: 1.2rem;
+    font-family: 'Inter', sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    text-align: left;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.addressInputContainer {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 24px;
+}
+
+.cryptoAddressInput {
+    flex: 1;
+    padding: 16px 20px;
+    border: 2px solid #e2e8f0;
+    border-radius: 12px;
+    font-family: 'JetBrains Mono', 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+    font-size: 1rem;
+    color: #1e293b;
+    background: white;
+    outline: none;
+    transition: all 0.3s ease;
+    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.cryptoAddressInput:focus {
+    border-color: #3b82f6;
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+}
+
+.cryptoAddressInput:hover {
+    border-color: #3b82f6;
+}
+
+.qrContainer {
+    text-align: center;
+    background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+    padding: 24px;
+    border-radius: 16px;
+    border: 2px solid #cbd5e1;
+    transition: all 0.3s ease;
+}
+
+.qrContainer:hover {
+    border-color: #3b82f6;
+    background: linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%);
+    transform: scale(1.02);
+}
+
+.qrCode {
+    max-width: 240px;
+    width: 100%;
+    height: auto;
+    border: 4px solid #ffffff;
+    border-radius: 16px;
+    margin-bottom: 20px;
+    box-shadow: 0 12px 24px -4px rgba(0, 0, 0, 0.3), 0 8px 16px -8px rgba(0, 0, 0, 0.2);
+    background: white;
+    padding: 12px;
+    transition: all 0.3s ease;
+}
+
+.qrCode:hover {
+    transform: scale(1.05);
+    box-shadow: 0 16px 32px -4px rgba(0, 0, 0, 0.4);
+}
+
+.qrNote {
+    color: #1e293b;
+    font-size: 1.1rem;
+    font-family: 'Inter', sans-serif;
+    font-weight: 600;
+    margin: 0;
+    background: white;
+    padding: 12px 20px;
+    border-radius: 12px;
+    border: 2px solid #e2e8f0;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.cryptoInstructions {
+    background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
+    border: 2px solid #f59e0b;
+    border-radius: 16px;
+    padding: 24px;
+    margin-top: 24px;
+    position: relative;
+    overflow: hidden;
+}
+
+.cryptoInstructions h4 {
+    color: #92400e;
+    margin-bottom: 16px;
+    font-size: 1.2rem;
+    font-weight: 800;
+    font-family: 'Inter', sans-serif;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.cryptoInstructions h4::before {
+    content: '⚠️';
+    font-size: 1.2rem;
+}
+
+.cryptoInstructions ul {
+    margin: 0;
+    padding-left: 20px;
+    color: #92400e;
+    font-family: 'Inter', sans-serif;
+    font-size: 1rem;
+    line-height: 1.6;
+}
+
+.cryptoInstructions li {
+    margin-bottom: 8px;
+    line-height: 1.6;
+    font-weight: 500;
+}
+
+.cryptoInstructions strong {
+    color: #92400e;
+    font-weight: 700;
+}
+
+/* Responsive Design for Crypto Payment */
+@media (max-width: 1024px) {
+    .cryptoDetails {
+        gap: 24px;
+    }
+
+    .cryptoPayment {
+        padding: 32px;
+        margin-top: 24px;
+    }
+
+    .qrCode {
+        max-width: 200px;
+    }
+}
+
+@media (max-width: 768px) {
+    .cryptoDetails {
+        grid-template-columns: 1fr;
+        gap: 24px;
+    }
+
+    .cryptoPayment {
+        padding: 24px;
+        margin-top: 20px;
+        border-radius: 20px;
+    }
+
+    .cryptoPayment p {
+        font-size: 1.2rem;
+        padding: 16px;
+    }
+
+    .cryptoAddress,
+    .qrCodeSection {
+        padding: 24px;
+    }
+
+    .qrCode {
+        max-width: 180px;
+    }
+
+    .addressInputContainer {
+        flex-direction: column;
+        gap: 12px;
+    }
+
+    .cryptoAddressInput {
+        font-size: 0.9rem;
+        padding: 14px 16px;
+    }
+
+    .copyButton {
+        padding: 14px 20px;
+        font-size: 0.9rem;
+    }
+
+    .cryptoInstructions {
+        padding: 20px;
+        margin-top: 20px;
+    }
+
+    .cryptoInstructions h4 {
+        font-size: 1.1rem;
+    }
+
+    .cryptoInstructions ul {
+        font-size: 0.9rem;
+        padding-left: 18px;
+    }
+}
+
+@media (max-width: 480px) {
+    .cryptoPayment {
+        padding: 20px;
+        border-radius: 16px;
+    }
+
+    .cryptoAddress,
+    .qrCodeSection {
+        padding: 20px;
+    }
+
+    .qrCode {
+        max-width: 160px;
+        padding: 8px;
+    }
+
+    .addressInputContainer {
+        gap: 10px;
+    }
+
+    .cryptoAddressInput {
+        font-size: 0.85rem;
+        padding: 12px 14px;
+    }
+
+    .copyButton {
+        padding: 12px 16px;
+        font-size: 0.85rem;
+    }
+
+    .cryptoInstructions {
+        padding: 18px;
+        margin-top: 18px;
+    }
+
+    .cryptoInstructions h4 {
+        font-size: 1rem;
+    }
+
+    .cryptoInstructions ul {
+        font-size: 0.85rem;
+        padding-left: 16px;
+    }
+}

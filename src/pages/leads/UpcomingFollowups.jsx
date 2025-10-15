@@ -7,6 +7,7 @@ import SectionTop from "../../ui/SectionTop";
 import Calendar from "react-calendar";
 import 'react-calendar/dist/Calendar.css';
 import { Calendar as CalendarIcon, List as ListIcon } from 'lucide-react';
+import useAllDetails from "../../features/all-details/useAllDetails";
 // MUI imports
 import {
   Box, Container, Grid, Card, CardHeader, CardContent, Avatar, Typography, Chip, Stack, Button, ToggleButton, ToggleButtonGroup, FormControl, InputLabel, Select, MenuItem, FormControlLabel, Checkbox, Paper, CircularProgress
@@ -18,6 +19,8 @@ function UpcomingFollowups() {
         queryKey: ["allLeadFollowups"],
         queryFn: getAllLeadFollowUps,
     });
+    const { data } = useAllDetails();
+    const currentUserDetails = data?.current_user_details;
     const [selectedAgent, setSelectedAgent] = useState("all");
     const [showPast, setShowPast] = useState(false);
     const [viewMode, setViewMode] = useState("list"); // 'list' or 'calendar'
@@ -105,29 +108,31 @@ function UpcomingFollowups() {
         <Container maxWidth="xl" sx={{ py: 0, px: 0, minHeight: '100vh', bgcolor: '#f5f6fa' }}>
             <SectionTop heading="Followup Manager">
                 <Grid container spacing={2} alignItems="center">
-                    <Grid item>
-                        <FormControl size="small">
-                            <InputLabel id="agentFilter-label">Agent</InputLabel>
-                            <Select
-                                labelId="agentFilter-label"
-                                id="agentFilter"
-                                value={selectedAgent}
-                                label="Agent"
-                                onChange={e => setSelectedAgent(e.target.value)}
-                                sx={{ minWidth: 160 }}
-                            >
-                                <MenuItem value="all">All Agents</MenuItem>
-                                {agents.map(agent => (
-                                    <MenuItem key={agent.agent_id} value={agent.agent_id}>
-                                        <Stack direction="row" alignItems="center" gap={1}>
-                                            {agent.agent_avatar && <Avatar src={agent.agent_avatar} sx={{ width: 24, height: 24 }} />}
-                                            {agent.agent_name}
-                                        </Stack>
-                                    </MenuItem>
-                                ))}
-                            </Select>
-                        </FormControl>
-                    </Grid>
+                    {currentUserDetails?.role_id !== 108 && (
+                        <Grid item>
+                            <FormControl size="small">
+                                <InputLabel id="agentFilter-label">Agent</InputLabel>
+                                <Select
+                                    labelId="agentFilter-label"
+                                    id="agentFilter"
+                                    value={selectedAgent}
+                                    label="Agent"
+                                    onChange={e => setSelectedAgent(e.target.value)}
+                                    sx={{ minWidth: 160 }}
+                                >
+                                    <MenuItem value="all">All Agents</MenuItem>
+                                    {agents.map(agent => (
+                                        <MenuItem key={agent.agent_id} value={agent.agent_id}>
+                                            <Stack direction="row" alignItems="center" gap={1}>
+                                                {agent.agent_avatar && <Avatar src={agent.agent_avatar} sx={{ width: 24, height: 24 }} />}
+                                                {agent.agent_name}
+                                            </Stack>
+                                        </MenuItem>
+                                    ))}
+                                </Select>
+                            </FormControl>
+                        </Grid>
+                    )}
                     <Grid item>
                         <FormControlLabel
                             control={<Checkbox checked={showPast} onChange={e => setShowPast(e.target.checked)} color="primary" />}

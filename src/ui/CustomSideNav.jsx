@@ -6,6 +6,7 @@ import { getFeatures } from "../services/apiSidebar";
 import { usePermissionCheck, useManagePermission } from "../hooks/usePermissionCheck";
 import { useQuery } from "@tanstack/react-query";
 import { getSidebarPermissions } from "../utils/permissionMapping";
+import { useAuth } from "../context/AuthContext";
 // Removed unused sidebar utility imports
 import { Phone } from "lucide-react";
 
@@ -22,6 +23,8 @@ function CustomSideNav() {
         refetchOnWindowFocus: true,
     });
     const { data } = useAllDetails();
+    const { currentUser } = useAuth();
+    const currentUserDetails = data?.current_user_details;
     
     // Permission hooks
     const { hasPermission } = usePermissionCheck();
@@ -132,7 +135,7 @@ function CustomSideNav() {
                                 </NavLink>
                             </li>
 
-                            {propertiesPermission.canView && (
+                            {propertiesPermission.canView && currentUserDetails?.role_id !== 108 && (
                                 <>
                                     <li>
                                         <NavLink to="/for-sell/new-list">
@@ -287,7 +290,7 @@ function CustomSideNav() {
                                 
                                 @component Portal Leads Nav Item
                             */}
-                            {(leadsPermission.canView || leadsPermission.canManage || hasPermission("basic_affiliate")) && (
+                            {(leadsPermission.canView || leadsPermission.canManage || hasPermission("basic_affiliate")) && currentUserDetails?.role_id !== 108 && (
                                 <li>
                                     <NavLink to="/leads/portal-calls">
                                         {/* Phone icon representing call/portal functionality */}
@@ -415,7 +418,7 @@ function CustomSideNav() {
 
                             <div className={styles.divider} />
 
-                            {hasPermission("view_kpi") && (
+                            {hasPermission("view_kpi") && currentUserDetails?.role_id !== 108 && (
                                 <li>
                                     <NavLink to="/kpi-submissions">
                                         <img src="/icons/kpi.svg" alt="KPI Icon" />
@@ -436,7 +439,7 @@ function CustomSideNav() {
                                 </li>
                             )}
 
-                            {reportsPermission.canView && (
+                            {reportsPermission.canView && currentUserDetails?.role_id !== 108 && (
                                 <li>
                                     <NavLink to="/followup-report">
                                         <img
@@ -500,7 +503,7 @@ function CustomSideNav() {
                                 </>
                             )}
 
-                            {agentPermission.canManage && (
+                            {agentPermission.canManage && currentUserDetails?.role_id !== 108 && (
                                 <>
                                     <div className={styles.divider} />
                                     <li>

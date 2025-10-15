@@ -169,6 +169,7 @@ function LeadForm({ leadType }) {
                         placeholder="Select Agent"
                         label="Agent"
                         required={true}
+                        isDisabled={true}
                     />
                 </div>
             </div>

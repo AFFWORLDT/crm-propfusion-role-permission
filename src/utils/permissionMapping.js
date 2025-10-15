@@ -23,13 +23,13 @@ export const ROUTE_PERMISSIONS = {
     "/leads": ["manage_leads", "view_leads"],
     "/leads/sell": ["view_leads"],
     "/leads/rent": ["view_leads"],
-    "/leads/portal-calls": ["view_leads"],
+    "/leads/portal-calls": ["view_portal_calls", "manage_leads", "view_leads"],
     "/leads/whatsapp-leads": ["view_leads"],
     "/leads/add": ["create_leads"],
     "/leads/edit": ["update_leads"],
     
     // Bayut Leads
-    "/bayut-leads": ["view_leads"],
+    "/bayut-leads": ["view_portal_calls", "view_leads"],
     
     // Customers/Database
     "/database": ["manage_customers", "view_customers"],

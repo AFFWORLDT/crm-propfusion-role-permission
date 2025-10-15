@@ -45,6 +45,7 @@ const ProfileBusinessCardGenerator = ({ currentUser, colorCode }) => {
                 company_logo_url: company.company_logo_url,
             };
 
+
             setCardData(cardData);
             setShowDialog(true);
         } catch (error) {

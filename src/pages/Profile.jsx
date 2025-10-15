@@ -580,6 +580,22 @@ function Profile() {
                                     <li>
                                         <p>
                                             <img src="/icons/person.svg" />
+                                            <span>User ID</span>
+                                        </p>
+                                        <span
+                                            style={{
+                                                fontWeight: "600",
+                                                color: "#1976d2",
+                                                textTransform: "uppercase",
+                                                letterSpacing: "0.5px",
+                                            }}
+                                        >
+                                            {currentUser?.id || "N/A"}
+                                        </span>
+                                    </li>
+                                    <li>
+                                        <p>
+                                            <img src="/icons/person.svg" />
                                             <span>Designation</span>
                                         </p>
                                         <span
@@ -592,6 +608,26 @@ function Profile() {
                                         >
                                             {userData?.designation ||
                                                 "Not Specified"}
+                                        </span>
+                                    </li>
+                                    <li>
+                                        <p>
+                                            <img src="/icons/person.svg" />
+                                            <span>User ID</span>
+                                        </p>
+                                        <span
+                                            style={{
+                                                fontWeight: "600",
+                                                color: "#059669",
+                                                fontSize: "14px",
+                                                fontFamily: "monospace",
+                                                backgroundColor: "#f0fdf4",
+                                                padding: "4px 8px",
+                                                borderRadius: "4px",
+                                                border: "1px solid #bbf7d0",
+                                            }}
+                                        >
+                                            {data?.current_user_details?.id || "N/A"}
                                         </span>
                                     </li>
                                 </ul>
@@ -617,6 +653,18 @@ function Profile() {
                                         onClick={handleWallet}
                                     >
                                         Ledger
+                                    </button>
+                                </div>
+
+                                <div className={styles.profileActions}>
+                                    <button
+                                        style={{
+                                            background: colorCode,
+                                        }}
+                                        className={styles.portfolioButton}
+                                        onClick={() => navigate('/packages')}
+                                    >
+                                        Packages
                                     </button>
                                 </div>
 

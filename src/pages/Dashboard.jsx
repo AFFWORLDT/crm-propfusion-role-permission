@@ -1,8 +1,10 @@
-import { useEffect, lazy, Suspense } from "react";
+import { useEffect, lazy, Suspense, useMemo } from "react";
 import { useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
 import styles from "./Dashboard.module.css";
 import useDashboardStats from "../features/dashboard/useDashboardStats";
+import { useAuth } from "../context/AuthContext";
+import useAllDetails from "../features/all-details/useAllDetails";
 // Permission checks removed - dashboard shows all content for all users
 
 import SectionTop from "../ui/SectionTop";
@@ -47,6 +49,20 @@ const SectionLoader = () => (
 
 function Dashboard() {
     const navigate = useNavigate();
+    const { currentUser } = useAuth();
+    const { data: allDetailsData } = useAllDetails();
+    const currentUserDetails = allDetailsData?.current_user_details;
+    
+    // Filter dashboard tabs based on role_id 108
+    const filteredDashboardTabs = useMemo(() => {
+        if (currentUserDetails?.role_id === 108) {
+            // Hide Agent Leads, Agent Properties, and New Projects Report for role_id 108
+            return DASHBAORDTABS.filter(tab => 
+                !['AgentLeads', 'AgentProperties', 'NewProjectsReport'].includes(tab.id)
+            );
+        }
+        return DASHBAORDTABS;
+    }, [currentUserDetails?.role_id]);
     
     // Dashboard shows all content for all users - no permission checks needed
     
@@ -340,9 +356,9 @@ function Dashboard() {
                 <SectionTop>
                     <TabBar
                         activeTab="DASHBOARD"
-                        tabs={DASHBAORDTABS}
+                        tabs={filteredDashboardTabs}
                         onTabClick={(tabId) => {
-                            const tab = DASHBAORDTABS.find(
+                            const tab = filteredDashboardTabs.find(
                                 (t) => t.id === tabId
                             );
                             if (tab?.path) {
@@ -371,9 +387,9 @@ function Dashboard() {
             <SectionTop>
                 <TabBar
                     activeTab="DASHBOARD"
-                    tabs={DASHBAORDTABS}
+                    tabs={filteredDashboardTabs}
                     onTabClick={(tabId) => {
-                        const tab = DASHBAORDTABS.find((t) => t.id === tabId);
+                        const tab = filteredDashboardTabs.find((t) => t.id === tabId);
                         if (tab?.path) {
                             navigate(tab.path);
                         }

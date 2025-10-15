@@ -34,6 +34,19 @@ function BulkAddLead({ selectedCustomerIds, allCustomers, onAdd }) {
         value: item?.id
     })) || [];
 
+    // Automatically set current user as selected staff
+    useEffect(() => {
+        if (currentUser && staffData && staffData.length > 0) {
+            const currentUserStaff = staffData.find(staff => staff.id === currentUser.id);
+            if (currentUserStaff) {
+                control.setValue("staff", {
+                    value: currentUserStaff.id,
+                    label: currentUserStaff.name
+                });
+            }
+        }
+    }, [currentUser, staffData, control]);
+
     const handleBulkAdd = async () => {
         setIsProcessing(true);
         for (const id of selectedCustomerIds) {
@@ -48,7 +61,7 @@ function BulkAddLead({ selectedCustomerIds, allCustomers, onAdd }) {
             payload.status = "ACTIVE";
             payload.isClaim = "NO";
             payload.clientType = mode;
-            payload.agent_Id = control._formValues.staff?.value || currentUser?.id;
+            payload.agent_Id = currentUser?.id;
             await new Promise(resolve => addLead(payload, { onSettled: resolve }));
         }
         setIsProcessing(false);
@@ -80,6 +93,7 @@ function BulkAddLead({ selectedCustomerIds, allCustomers, onAdd }) {
                                     data={staffDataOptions}
                                     placeholder="Select Staff"
                                     isLoading={staffLoading}
+                                    isDisabled={true}
                                 />
                                 <button
                                     onClick={() => setMode("SELL")}
