@@ -72,7 +72,7 @@ const BusinessCard = ({ data, side = 'front' }) => {
           </div>
           
           {/* Company Name */}
-          <div style={{ 
+          {/* <div style={{ 
             fontWeight: 900, 
             fontSize: 36, 
             marginBottom: 15,
@@ -84,7 +84,7 @@ const BusinessCard = ({ data, side = 'front' }) => {
             textShadow: '0 2px 4px rgba(0,0,0,0.1)',
           }}>
             {data.company_name}
-          </div>
+          </div> */}
           
         </div>
         
@@ -349,7 +349,7 @@ const BusinessCard = ({ data, side = 'front' }) => {
           </div>
           
           {/* Company Name */}
-          <div style={{ 
+          {/* <div style={{ 
             fontWeight: 800, 
             fontSize: 16, 
             marginBottom: 8,
@@ -366,7 +366,7 @@ const BusinessCard = ({ data, side = 'front' }) => {
             fontFamily: '"Inter", "SF Pro Display", -apple-system, BlinkMacSystemFont, sans-serif',
           }}>
             {data.company_name}
-          </div>
+          </div> */}
           
         </div>
       </div>
