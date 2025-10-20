@@ -66,4 +66,49 @@ input[type="number"]::-webkit-outer-spin-button,
 input[type="number"]::-webkit-inner-spin-button {
   -webkit-appearance: none;
   margin: 0;
+}
+
+/* Global Footer Styles for Better Visibility */
+footer {
+  background-color: hsl(222 47% 11%) !important;
+  color: #ffffff !important;
+  padding: 32px 20px calc(36px + env(safe-area-inset-bottom, 0)) !important;
+  border-top: 1px solid rgba(255,255,255,0.1) !important;
+  box-shadow: 0 -8px 24px rgba(0,0,0,0.35) !important;
+  position: relative !important;
+  z-index: 10 !important;
+  margin-top: auto !important;
+}
+
+footer h3 {
+  color: #ffffff !important;
+  font-weight: 600 !important;
+  margin-bottom: 12px !important;
+}
+
+footer p {
+  color: #ffffff !important;
+  opacity: 0.9 !important;
+  line-height: 1.6 !important;
+}
+
+footer a {
+  color: #ffffff !important;
+  text-decoration: underline !important;
+  text-underline-offset: 3px !important;
+}
+
+footer a:hover {
+  opacity: 0.8 !important;
+}
+
+/* Ensure footer is always visible at bottom */
+body {
+  min-height: 100vh !important;
+  display: flex !important;
+  flex-direction: column !important;
+}
+
+main, .main, .content, .container {
+  flex: 1 !important;
 } 
