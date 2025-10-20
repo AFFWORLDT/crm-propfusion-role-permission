@@ -15,7 +15,7 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     marginBottom: 30,
     color: '#2d4263',
-    fontFamily: 'Helvetica-Bold',
+    fontFamily: 'Helvetica',
   },
   subtitle: {
     fontSize: 16,
@@ -37,13 +37,18 @@ const styles = StyleSheet.create({
     overflow: 'hidden',
     boxShadow: '0 4px 12px rgba(0,0,0,0.1)',
   },
+  cardImage: {
+    width: '100%',
+    height: '100%',
+    objectFit: 'cover'
+  },
   cardLabel: {
     fontSize: 14,
     fontWeight: 'bold',
     textAlign: 'center',
     marginBottom: 10,
     color: '#2d4263',
-    fontFamily: 'Helvetica-Bold',
+    fontFamily: 'Helvetica',
   },
   // Front card styles
   frontCard: {
@@ -87,7 +92,7 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     color: '#ffffff',
     marginBottom: 8,
-    fontFamily: 'Helvetica-Bold',
+    fontFamily: 'Helvetica',
   },
   contactInfo: {
     marginTop: 10,
@@ -120,7 +125,7 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     color: '#2d4263',
     textAlign: 'center',
-    fontFamily: 'Helvetica-Bold',
+    fontFamily: 'Helvetica',
   },
   // Back card styles
   backCard: {
@@ -149,7 +154,7 @@ const styles = StyleSheet.create({
     color: '#1a1a1a',
     textAlign: 'center',
     marginBottom: 10,
-    fontFamily: 'Helvetica-Bold',
+    fontFamily: 'Helvetica',
   },
   backWebsite: {
     position: 'absolute',
@@ -166,7 +171,7 @@ const styles = StyleSheet.create({
     fontSize: 10,
     fontWeight: 'bold',
     textAlign: 'center',
-    fontFamily: 'Helvetica-Bold',
+    fontFamily: 'Helvetica',
   },
   // Details section
   detailsSection: {
@@ -180,7 +185,7 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     marginBottom: 20,
     color: '#2d4263',
-    fontFamily: 'Helvetica-Bold',
+    fontFamily: 'Helvetica',
   },
   detailsGrid: {
     flexDirection: 'row',
@@ -198,7 +203,7 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     color: '#333333',
     marginRight: 8,
-    fontFamily: 'Helvetica-Bold',
+    fontFamily: 'Helvetica',
     width: 80,
   },
   detailValue: {
@@ -210,6 +215,7 @@ const styles = StyleSheet.create({
 });
 
 const BusinessCardPDFDocument = ({ data }) => {
+  const themeColor = data?.themeColor || '#2d4263';
   return (
     <Document>
       <Page size="A4" style={styles.page}>
@@ -224,45 +230,16 @@ const BusinessCardPDFDocument = ({ data }) => {
           <View>
             <Text style={styles.cardLabel}>Front Side</Text>
             <View style={styles.cardWrapper}>
-              <View style={styles.frontCard}>
-                {/* Wave background */}
-                <View style={styles.frontWaveBackground} />
-                
-                {/* Personal information section */}
-                <View style={styles.frontPersonalInfo}>
-                  <Text style={styles.personalName}>
-                    {data.name}
-                  </Text>
-                  
-                  <View style={styles.contactInfo}>
-                    <View style={styles.contactItem}>
-                      <Text style={styles.contactIcon}>📞</Text>
-                      <Text style={styles.contactText}>{data.phone}</Text>
-                    </View>
-                    <View style={styles.contactItem}>
-                      <Text style={styles.contactIcon}>✉</Text>
-                      <Text style={styles.contactText}>{data.email}</Text>
-                    </View>
-                    <View style={styles.contactItem}>
-                      <Text style={styles.contactIcon}>🌐</Text>
-                      <Text style={styles.contactText}>{data.website}</Text>
-                    </View>
+              {data.frontImg ? (
+                <Image src={data.frontImg} style={styles.cardImage} />
+              ) : (
+                <View style={styles.frontCard}>
+                  <View style={{...styles.frontWaveBackground, backgroundColor: themeColor}} />
+                  <View style={{...styles.backWebsite, backgroundColor: themeColor, height: 18}}>
+                    <Text style={styles.backWebsiteText}>ONEXPROPERTY.COM</Text>
                   </View>
                 </View>
-
-                {/* Company branding section */}
-                <View style={styles.frontWhiteSection}>
-                  {data.company_logo_url && (
-                    <Image
-                      src={data.company_logo_url}
-                      style={styles.companyLogo}
-                    />
-                  )}
-                  <Text style={styles.companyName}>
-                    {data.company_name}
-                  </Text>
-                </View>
-              </View>
+              )}
             </View>
           </View>
 
@@ -270,54 +247,20 @@ const BusinessCardPDFDocument = ({ data }) => {
           <View>
             <Text style={styles.cardLabel}>Back Side</Text>
             <View style={styles.cardWrapper}>
-              <View style={styles.backCard}>
-                <View style={styles.backContent}>
-                  {data.company_logo_url && (
-                    <Image
-                      src={data.company_logo_url}
-                      style={styles.backLogo}
-                    />
-                  )}
-                  <Text style={styles.backCompanyName}>
-                    {data.company_name}
-                  </Text>
+              {data.backImg ? (
+                <Image src={data.backImg} style={styles.cardImage} />
+              ) : (
+                <View style={styles.backCard}>
+                  <View style={{...styles.backWebsite, backgroundColor: themeColor}}>
+                    <Text style={styles.backWebsiteText}>ONEXPROPERTY.COM</Text>
+                  </View>
                 </View>
-                <View style={styles.backWebsite}>
-                  <Text style={styles.backWebsiteText}>
-                    {data.website}
-                  </Text>
-                </View>
-              </View>
+              )}
             </View>
           </View>
         </View>
 
-        {/* Detailed Information Section */}
-        <View style={styles.detailsSection}>
-          <Text style={styles.detailsTitle}>Contact Information</Text>
-          <View style={styles.detailsGrid}>
-            <View style={styles.detailItem}>
-              <Text style={styles.detailLabel}>Full Name:</Text>
-              <Text style={styles.detailValue}>{data.name}</Text>
-            </View>
-            <View style={styles.detailItem}>
-              <Text style={styles.detailLabel}>Email:</Text>
-              <Text style={styles.detailValue}>{data.email}</Text>
-            </View>
-            <View style={styles.detailItem}>
-              <Text style={styles.detailLabel}>Phone:</Text>
-              <Text style={styles.detailValue}>{data.phone}</Text>
-            </View>
-            <View style={styles.detailItem}>
-              <Text style={styles.detailLabel}>Website:</Text>
-              <Text style={styles.detailValue}>{data.website}</Text>
-            </View>
-            <View style={styles.detailItem}>
-              <Text style={styles.detailLabel}>Company:</Text>
-              <Text style={styles.detailValue}>{data.company_name}</Text>
-            </View>
-          </View>
-        </View>
+        {/* Removed contact details grid as requested */}
       </Page>
     </Document>
   );

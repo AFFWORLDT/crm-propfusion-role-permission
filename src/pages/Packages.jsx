@@ -29,19 +29,16 @@ const Packages = () => {
             name: "Essential",
             price: "100",
             currency: "USD",
-            description: "Build a global team starting from $100 only",
-            refund: "$100 Refund After First Property Sale",
+            description: "",
+            refund: "Bonus $100 refund after first property sale.",
             features: [
-                "Build a global team starting from $100 only",
-                "Income from both property sales and the team",
-                "Commission on both packages & property sales",
+                "10% Commission on property sales",
+                "3 qualified leads per year",
+                "Refer & Earn Commission on Membership packages",
                 "6-Level Income on team sales",
-                "Training & Certification via Kings Global Academy UK",
-                "Co-Branding & Promotional Material",
-                "Monthly Performance Reports to track earnings",
-                "Fully sponsored International Trips & Recognition Awards",
-                "Access to Global Team Building Strategy (Earn worldwide)",
-                "Technology Ecosystem: Real-time commission tracking, dashboards & mobile app"
+                "Bonus $100 refund after first property sale.",
+                "Training through ONEX Academy (from basics to leadership)",
+                "Access for CRM Software"
             ],
             paymentLink: "https://business.mamopay.com/pay/affworldfzllc-c431ba",
             popular: false,
@@ -61,7 +58,7 @@ const Packages = () => {
                 "Award with Bollywood Celebrity",
                 "Bonus $1500 Refund After First Property Sale",
                 "Up to 80% Commission",
-                "9 Qualifies Leads Per Year",
+                "9 qualified leads per year",
                 "Membership Packages Commission - Earn 10% Commission For Every Package Sale",
                 "Weekly Payout",
                 "CRM of Choice: Now in your OneX tech stack!",
@@ -81,12 +78,12 @@ const Packages = () => {
             refund: "Bonus $3000 Refund After First Property Sale",
             features: [
                 "All Premium features included",
-                "Kings Global Academy UK Real Estate Manager Certified Course",
+                "Kings Global Academy UK Real Estate Expert Certified Course",
                 "International Tour 3N/4D Fully (UK/Europe)",
                 "Award with Bollywood Celebrity",
                 "Bonus $3000 Refund After First Property Sale",
                 "Up to 80% Commission",
-                "15 Qualifies Leads Per Year",
+                "15 qualified leads per year",
                 "Membership Packages Commission - Earn 10% Commission For Every Package Sale",
                 "Weekly Payout",
                 "CRM of Choice: Now in your OneX tech stack!",
@@ -258,57 +255,7 @@ const Packages = () => {
                                 </div>
                             </div>
 
-                            {/* Cryptocurrency Payment Section */}
-                            <div className={styles.paymentSection}>
-                                <div className={styles.sectionHeader}>
-                                    <Coins className={styles.icon} />
-                                    <h3>USDT TRC20 Payment</h3>
-                                </div>
-                                <div className={styles.cryptoPayment}>
-                                    <p>Pay securely with USDT TRC20. Scan QR code or copy wallet address below.</p>
-                                    
-                                    <div className={styles.cryptoDetails}>
-                                        <div className={styles.qrCodeSection}>
-                                            <div className={styles.qrContainer}>
-                                                <img 
-                                                    src="/images/trc20.jpeg" 
-                                                    alt="USDT TRC20 QR Code" 
-                                                    className={styles.qrCode}
-                                                />
-                                                <p className={styles.qrNote}>Scan QR code with your USDT wallet</p>
-                                            </div>
-                                        </div>
-                                        
-                                        <div className={styles.cryptoAddress}>
-                                            <label>USDT TRC20 Wallet Address:</label>
-                                            <div className={styles.addressInputContainer}>
-                                                <input 
-                                                    type="text" 
-                                                    value="TQBMmDHfpeJ5R2PMLW3usqePTqvZ3WQpM6"
-                                                    readOnly
-                                                    className={styles.cryptoAddressInput}
-                                                />
-                                                <button 
-                                                    className={styles.copyButton}
-                                                    onClick={() => copyToClipboard('TQBMmDHfpeJ5R2PMLW3usqePTqvZ3WQpM6', 'USDT TRC20 Address')}
-                                                >
-                                                    Copy
-                                                </button>
-                                            </div>
-                                            
-                                            <div className={styles.cryptoInstructions}>
-                                                <h4>Important:</h4>
-                                                <ul>
-                                                    <li>Send exactly <strong>{selectedPackage.currency} {selectedPackage.price}</strong> USDT</li>
-                                                    <li>Use <strong>TRC20 network only</strong></li>
-                                                    <li>Include your user ID (<strong>{data?.current_user_details?.id || currentUser?.id || 'Loading...'}</strong>) in memo</li>
-                                                    <li>Payment confirmation may take 10-30 minutes</li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                            {/* Cryptocurrency Payment Section removed as per request */}
                         </div>
                     </div>
                 </div>
