@@ -1,7 +1,7 @@
 import React from 'react';
 import { Document, Page, Text, View, Image, StyleSheet } from '@react-pdf/renderer';
 
-// Create styles for A4 PDF with business card layout
+// Create styles matching the actual BusinessCard component
 const styles = StyleSheet.create({
   page: {
     flexDirection: 'column',
@@ -35,7 +35,6 @@ const styles = StyleSheet.create({
     border: '2px solid #e0e0e0',
     borderRadius: 8,
     overflow: 'hidden',
-    boxShadow: '0 4px 12px rgba(0,0,0,0.1)',
   },
   cardImage: {
     width: '100%',
@@ -50,26 +49,22 @@ const styles = StyleSheet.create({
     color: '#2d4263',
     fontFamily: 'Helvetica',
   },
-  // Front card styles
+  
+  // Front card styles - matching the wave design
   frontCard: {
     width: '100%',
     height: '100%',
-    position: 'relative',
+    flexDirection: 'row',
     backgroundColor: '#ffffff',
-    overflow: 'hidden',
   },
-  frontWaveBackground: {
-    position: 'absolute',
-    top: 0,
-    left: 0,
+  frontLeftSection: {
     width: '75%',
     height: '100%',
     backgroundColor: '#2d4263',
+    padding: 12,
+    justifyContent: 'center',
   },
-  frontWhiteSection: {
-    position: 'absolute',
-    top: 0,
-    right: 0,
+  frontRightSection: {
     width: '25%',
     height: '100%',
     backgroundColor: '#ffffff',
@@ -77,46 +72,34 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
   },
-  frontPersonalInfo: {
-    position: 'absolute',
-    left: 0,
-    top: 0,
-    width: '75%',
-    height: '100%',
-    padding: 12,
-    justifyContent: 'center',
-    zIndex: 2,
-  },
   personalName: {
-    fontSize: 18,
+    fontSize: 16,
     fontWeight: 'bold',
     color: '#ffffff',
     marginBottom: 8,
     fontFamily: 'Helvetica',
   },
   contactInfo: {
-    marginTop: 10,
+    marginTop: 8,
   },
   contactItem: {
     flexDirection: 'row',
     alignItems: 'center',
-    marginBottom: 6,
+    marginBottom: 5,
   },
   contactIcon: {
-    fontSize: 12,
-    marginRight: 8,
+    fontSize: 10,
+    marginRight: 6,
     color: '#ffffff',
-    width: 15,
   },
   contactText: {
-    fontSize: 10,
+    fontSize: 9,
     color: '#ffffff',
     fontFamily: 'Helvetica',
-    flex: 1,
   },
   companyLogo: {
-    width: 50,
-    height: 35,
+    width: 45,
+    height: 30,
     objectFit: 'contain',
     marginBottom: 8,
   },
@@ -127,26 +110,24 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     fontFamily: 'Helvetica',
   },
-  // Back card styles
+  
+  // Back card styles - matching the grid pattern design
   backCard: {
     width: '100%',
     height: '100%',
-    position: 'relative',
-    backgroundColor: '#ffffff',
-    overflow: 'hidden',
+    flexDirection: 'column',
+    backgroundColor: '#f5f5f5',
   },
-  backContent: {
-    width: '100%',
-    height: '100%',
+  backMainContent: {
+    flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
     padding: 15,
   },
   backLogo: {
-    width: 80,
-    height: 60,
+    width: 70,
+    height: 50,
     objectFit: 'contain',
-    marginBottom: 15,
   },
   backCompanyName: {
     fontSize: 16,
@@ -173,6 +154,7 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     fontFamily: 'Helvetica',
   },
+  
   // Details section
   detailsSection: {
     marginTop: 50,
