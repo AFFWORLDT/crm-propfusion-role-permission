@@ -1,4 +1,6 @@
 // Utility function to convert image URL to base64 for react-pdf
+const imageCache = new Map();
+
 export const convertImageToBase64 = async (imageUrl) => {
   try {
     // If it's already a base64 data URL, return as is
@@ -11,7 +13,33 @@ export const convertImageToBase64 = async (imageUrl) => {
       return imageUrl;
     }
 
-    // Create a new image element
+    // Cache hit
+    if (imageCache.has(imageUrl)) {
+      return imageCache.get(imageUrl);
+    }
+
+    // Try fetch->blob->FileReader first (better for CORS)
+    try {
+      const controller = new AbortController();
+      const timer = setTimeout(() => controller.abort(), 10000);
+      const res = await fetch(imageUrl, { mode: 'cors', signal: controller.signal });
+      clearTimeout(timer);
+      if (res.ok) {
+        const blob = await res.blob();
+        const dataUrl = await new Promise((resolve, reject) => {
+          const reader = new FileReader();
+          reader.onloadend = () => resolve(reader.result);
+          reader.onerror = reject;
+          reader.readAsDataURL(blob);
+        });
+        imageCache.set(imageUrl, dataUrl);
+        return dataUrl;
+      }
+    } catch (e) {
+      // fall back to image/canvas path
+    }
+
+    // Fallback: Create a new image element and draw to canvas
     const img = new Image();
     img.crossOrigin = 'anonymous';
     
@@ -35,7 +63,7 @@ export const convertImageToBase64 = async (imageUrl) => {
           
           // Convert to base64
           const base64 = canvas.toDataURL('image/png');
-          console.log('Successfully converted image to base64:', imageUrl);
+          imageCache.set(imageUrl, base64);
           resolve(base64);
         } catch (error) {
           console.warn('Failed to convert image to base64:', error);
