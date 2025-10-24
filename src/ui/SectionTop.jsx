@@ -443,14 +443,14 @@ function SectionTop({ heading, children }) {
                         )}
                         
                         {/* Affiliate Wallet - show for users with manage_agent or basic_affiliate permission */}
-                        {(agentPermission.canManage || hasPermission("manage_agent") || hasPermission("basic_affiliate")) && (
+                        {/* {(agentPermission.canManage || hasPermission("manage_agent") || hasPermission("basic_affiliate")) && (
                             <Menus.Button
                                 onClick={() => navigate(`/admin/affiliate-wallet`)}
                                 icon="/icons/wallet.svg"
                             >
                                 <span>Affiliate Wallet</span>
                             </Menus.Button>
-                        )}
+                        )} */}
                         
                         {/* QR Code - show for users with manage_agent or basic_affiliate permission */}
                         {(agentPermission.canManage || hasPermission("manage_agent") || hasPermission("basic_affiliate")) && (
