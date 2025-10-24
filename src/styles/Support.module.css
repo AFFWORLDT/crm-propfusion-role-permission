@@ -114,6 +114,86 @@
   margin-bottom: 0.5rem;
 }
 
+/* Department Numbers Table */
+.departmentNumbers {
+  background-color: var(--card-background);
+  border-radius: var(--border-radius);
+  padding: 2rem;
+  margin-bottom: 2rem;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.departmentNumbers h2 {
+  color: var(--gradient-blue-start);
+  margin-bottom: 1.5rem;
+  font-weight: 600;
+  text-align: center;
+  font-size: 1.5rem;
+}
+
+.departmentTable {
+  overflow-x: auto;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.departmentTable table {
+  width: 100%;
+  border-collapse: collapse;
+  background-color: white;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.departmentTable thead {
+  background: linear-gradient(to right, var(--gradient-blue-start), var(--gradient-blue-end));
+  color: white;
+}
+
+.departmentTable th {
+  padding: 1rem;
+  text-align: left;
+  font-weight: 600;
+  font-size: 1rem;
+  letter-spacing: 0.5px;
+}
+
+.departmentTable td {
+  padding: 1rem;
+  border-bottom: 1px solid #e5e7eb;
+  color: var(--text-color);
+  font-size: 0.95rem;
+}
+
+.departmentTable tbody tr {
+  transition: all 0.3s ease;
+}
+
+.departmentTable tbody tr:hover {
+  background-color: #f8fafc;
+  transform: scale(1.01);
+}
+
+.departmentTable tbody tr:last-child td {
+  border-bottom: none;
+}
+
+.phoneLink {
+  color: var(--gradient-blue-start);
+  text-decoration: none;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  padding: 0.25rem 0.5rem;
+  border-radius: 4px;
+  display: inline-block;
+}
+
+.phoneLink:hover {
+  background-color: var(--gradient-blue-start);
+  color: white;
+  transform: scale(1.05);
+}
+
 .faq {
   background-color: var(--card-background);
   border-radius: 10px;
@@ -282,6 +362,16 @@
   .guideStep::before {
     width: 30px;
     height: 30px;
+    font-size: 0.9rem;
+  }
+
+  .departmentNumbers {
+    padding: 1rem;
+  }
+
+  .departmentTable th,
+  .departmentTable td {
+    padding: 0.75rem 0.5rem;
     font-size: 0.9rem;
   }
 }
