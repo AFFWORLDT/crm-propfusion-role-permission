@@ -8,7 +8,7 @@ import toast from "react-hot-toast";
 import { pdf } from "@react-pdf/renderer";
 import * as htmlToImage from "html-to-image";
 
-const ProfileBusinessCardGenerator = ({ currentUser, colorCode }) => {
+const ProfileBusinessCardGenerator = ({ currentUser, colorCode, isLuxury = false }) => {
     const [cardData, setCardData] = useState(null);
     const [showDialog, setShowDialog] = useState(false);
     const [loading, setLoading] = useState(false);
@@ -162,28 +162,38 @@ const ProfileBusinessCardGenerator = ({ currentUser, colorCode }) => {
     return (
         <div>
             {/* Generate Business Card Button */}
-            <div className="profileActions" style={{ marginTop: "16px" }}>
+            <div className="profileActions" style={{ marginTop: isLuxury ? "0" : "16px" }}>
                 <button
                     style={{
-                        background: colorCode,
+                        background: isLuxury ? "rgba(255, 255, 255, 0.2)" : colorCode,
+                        backdropFilter: isLuxury ? "blur(10px)" : "none",
+                        border: isLuxury ? "1px solid rgba(255, 255, 255, 0.3)" : "none",
                         width: "100%",
-                        padding: "12px",
-                        borderRadius: "5px",
+                        padding: isLuxury ? "0.8rem 1.5rem" : "12px",
+                        borderRadius: isLuxury ? "12px" : "5px",
                         color: "#fff",
                         fontWeight: 600,
-                        fontSize: "16px",
-                        border: "none",
+                        fontSize: isLuxury ? "0.95rem" : "16px",
                         cursor: "pointer",
                         transition: "all 0.3s ease",
+                        position: "relative",
+                        overflow: "hidden",
                     }}
                     onClick={fetchData}
                     disabled={loading}
                     onMouseEnter={(e) => {
-                        e.target.style.transform = "translateY(-2px)";
-                        e.target.style.boxShadow = "0 4px 12px rgba(0,0,0,0.2)";
+                        if (!isLuxury) {
+                            e.target.style.transform = "translateY(-2px)";
+                            e.target.style.boxShadow = "0 4px 12px rgba(0,0,0,0.2)";
+                        } else {
+                            e.target.style.transform = "translateY(-2px)";
+                            e.target.style.background = "rgba(255, 255, 255, 0.3)";
+                            e.target.style.boxShadow = "0 8px 24px rgba(0, 0, 0, 0.15), inset 0 1px 0 rgba(255, 255, 255, 0.2)";
+                        }
                     }}
                     onMouseLeave={(e) => {
                         e.target.style.transform = "translateY(0)";
+                        e.target.style.background = isLuxury ? "rgba(255, 255, 255, 0.2)" : colorCode;
                         e.target.style.boxShadow = "none";
                     }}
                 >
