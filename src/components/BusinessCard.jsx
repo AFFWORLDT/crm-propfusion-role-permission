@@ -156,34 +156,21 @@ const BusinessCard = ({ data, side = 'front' }) => {
 
       {/* Main Content Area */}
       <div style={{
-        padding: '30px 40px',
+        padding: '40px',
         height: 'calc(100% - 100px)',
         display: 'flex',
         flexDirection: 'column',
         justifyContent: 'center',
+        alignItems: 'center',
         position: 'relative',
         zIndex: 2,
       }}>
-        {/* Personal Name */}
-        <div style={{
-          fontSize: 36,
-          fontWeight: 700,
-          color: '#ffffff',
-          marginBottom: '8px',
-          letterSpacing: '-0.5px',
-          lineHeight: 1.2,
-          textAlign: 'center',
-          textShadow: '0 2px 4px rgba(0,0,0,0.3)',
-        }}>
-          {data.name}
-        </div>
-        
         {/* Title/Position */}
         <div style={{
-          fontSize: 18,
-          color: 'rgba(255,255,255,0.8)',
-          marginBottom: '30px',
-          fontWeight: 500,
+          fontSize: 24,
+          color: 'rgba(255,255,255,0.9)',
+          marginBottom: '40px',
+          fontWeight: 600,
           textAlign: 'center',
         }}>
           Real Estate Professional
@@ -193,28 +180,33 @@ const BusinessCard = ({ data, side = 'front' }) => {
         <div style={{
           display: 'flex',
           flexDirection: 'column',
-          gap: '16px',
+          gap: '20px',
           alignItems: 'center',
+          width: '100%',
+          maxWidth: '400px',
         }}>
           <div style={{
             display: 'flex',
             alignItems: 'center',
             fontSize: 16,
             color: '#ffffff',
+            width: '100%',
+            justifyContent: 'center',
           }}>
             <div style={{
-              width: '24px',
-              height: '24px',
-              marginRight: '16px',
+              width: '28px',
+              height: '28px',
+              marginRight: '20px',
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'center',
               color: '#ffffff',
-              fontSize: '18px',
+              fontSize: '20px',
+              flexShrink: 0,
             }}>
               📞
             </div>
-            <span style={{ fontWeight: 500 }}>{data.phone}</span>
+            <span style={{ fontWeight: 500, textAlign: 'left', flex: 1 }}>{data.phone}</span>
           </div>
           
           <div style={{
@@ -222,20 +214,23 @@ const BusinessCard = ({ data, side = 'front' }) => {
             alignItems: 'center',
             fontSize: 16,
             color: '#ffffff',
+            width: '100%',
+            justifyContent: 'center',
           }}>
             <div style={{
-              width: '24px',
-              height: '24px',
-              marginRight: '16px',
+              width: '28px',
+              height: '28px',
+              marginRight: '20px',
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'center',
               color: '#ffffff',
-              fontSize: '18px',
+              fontSize: '20px',
+              flexShrink: 0,
             }}>
               ✉
             </div>
-            <span style={{ fontWeight: 500, wordBreak: 'break-all' }}>{data.email}</span>
+            <span style={{ fontWeight: 500, wordBreak: 'break-all', textAlign: 'left', flex: 1 }}>{data.email}</span>
           </div>
           
           <div style={{
@@ -243,20 +238,23 @@ const BusinessCard = ({ data, side = 'front' }) => {
             alignItems: 'center',
             fontSize: 16,
             color: '#ffffff',
+            width: '100%',
+            justifyContent: 'center',
           }}>
             <div style={{
-              width: '24px',
-              height: '24px',
-              marginRight: '16px',
+              width: '28px',
+              height: '28px',
+              marginRight: '20px',
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'center',
               color: '#ffffff',
-              fontSize: '18px',
+              fontSize: '20px',
+              flexShrink: 0,
             }}>
               🌐
             </div>
-            <span style={{ fontWeight: 500 }}>ONEXPROPERTY.COM</span>
+            <span style={{ fontWeight: 500, textAlign: 'left', flex: 1 }}>ONEXPROPERTY.COM</span>
           </div>
         </div>
       </div>
