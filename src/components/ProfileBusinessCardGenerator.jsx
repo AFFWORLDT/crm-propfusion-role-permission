@@ -1,4 +1,5 @@
 import React, { useState, useRef } from "react";
+import { createPortal } from "react-dom";
 import { getStaff } from "../services/apiStaff";
 import { fetchCurrentLoggedInUserAllData } from "../services/apiAllData";
 import BusinessCard from "./BusinessCard";
@@ -25,6 +26,8 @@ const ProfileBusinessCardGenerator = ({ currentUser, colorCode, isLuxury = false
     const [lastTap, setLastTap] = useState(0);
 
     const fetchData = async () => {
+        console.log("Business card button clicked!", { currentUser, colorCode, isLuxury });
+        
         if (!currentUser?.id) {
             toast.error("User ID not found. Please try logging in again.");
             return;
@@ -32,11 +35,13 @@ const ProfileBusinessCardGenerator = ({ currentUser, colorCode, isLuxury = false
 
         setLoading(true);
         try {
+            console.log("Starting data fetch for business card...");
             // Fetch agent data and company data in parallel using existing API services
             const [agent, allData] = await Promise.all([
                 getStaff(currentUser.id),
                 fetchCurrentLoggedInUserAllData(),
             ]);
+            console.log("Data fetched successfully:", { agent, allData });
             const company = allData?.company_settings || {};
 
             // Prepare card data with fallbacks (removed role, address, company_tagline)
@@ -53,6 +58,7 @@ const ProfileBusinessCardGenerator = ({ currentUser, colorCode, isLuxury = false
 
             setCardData(cardData);
             setShowDialog(true);
+            console.log("Business card data set and dialog should open:", cardData);
         } catch (error) {
             console.error("Error fetching data:", error);
             toast.error(
@@ -64,26 +70,83 @@ const ProfileBusinessCardGenerator = ({ currentUser, colorCode, isLuxury = false
     };
 
     const handleDownloadPDF = async () => {
-        if (!cardData) return;
+        console.log("PDF download initiated", { cardData, frontRef: frontRef.current, backRef: backRef.current });
+        if (!cardData) {
+            console.error("No card data available for PDF generation");
+            toast.error("No card data available for PDF generation");
+            return;
+        }
 
         try {
             setIsDownloading(true);
+            console.log("Starting PDF download process...");
             toast.loading("Preparing PDF...", { id: "pdf-loading" });
 
             // Prepare card data with converted images
+            console.log("Preparing card data for PDF...");
             const preparedData = await prepareCardDataForPDF({ ...cardData, themeColor: colorCode });
+            console.log("Card data prepared:", preparedData);
 
             // Capture front/back previews as images for exact-match PDF
+            console.log("Checking refs before image capture:", { 
+                frontRef: frontRef.current, 
+                backRef: backRef.current,
+                frontRefExists: !!frontRef.current,
+                backRefExists: !!backRef.current
+            });
+            
+            if (!frontRef.current || !backRef.current) {
+                console.warn("Card elements not found for image capture, using fallback approach");
+                // Fallback: Generate PDF without images
+                const blob = await pdf(
+                    <BusinessCardPDFDocument data={{ ...preparedData, frontImg: "", backImg: "" }} />
+                ).toBlob();
+                
+                console.log("PDF blob generated (fallback):", { blobSize: blob.size, blobType: blob.type });
+                
+                // Create download link
+                const url = URL.createObjectURL(blob);
+                const link = document.createElement("a");
+                link.href = url;
+                link.download = "business-card-a4.pdf";
+                document.body.appendChild(link);
+                console.log("Triggering download (fallback)...");
+                link.click();
+                document.body.removeChild(link);
+                URL.revokeObjectURL(url);
+                
+                toast.success("Business card PDF downloaded successfully!", {
+                    id: "pdf-loading",
+                });
+                return;
+            }
+            
             const toPngOptions = { pixelRatio: 3, cacheBust: true, backgroundColor: '#ffffff' };
             const [frontImg, backImg] = await Promise.all([
                 htmlToImage.toPng(frontRef.current, toPngOptions),
                 htmlToImage.toPng(backRef.current, toPngOptions),
             ]);
+            
+            console.log("Images captured successfully:", { frontImg: frontImg.substring(0, 50) + "...", backImg: backImg.substring(0, 50) + "..." });
 
             // Generate PDF using captured images
-            const blob = await pdf(
-                <BusinessCardPDFDocument data={{ ...preparedData, frontImg, backImg }} />
-            ).toBlob();
+            console.log("Generating PDF with data:", { preparedData, frontImgLength: frontImg.length, backImgLength: backImg.length });
+            
+            let blob;
+            try {
+                blob = await pdf(
+                    <BusinessCardPDFDocument data={{ ...preparedData, frontImg, backImg }} />
+                ).toBlob();
+                
+                console.log("PDF blob generated:", { blobSize: blob.size, blobType: blob.type });
+                
+                if (blob.size === 0) {
+                    throw new Error("Generated PDF blob is empty");
+                }
+            } catch (pdfError) {
+                console.error("PDF generation failed:", pdfError);
+                throw new Error(`PDF generation failed: ${pdfError.message}`);
+            }
 
             // Create download link
             const url = URL.createObjectURL(blob);
@@ -91,6 +154,7 @@ const ProfileBusinessCardGenerator = ({ currentUser, colorCode, isLuxury = false
             link.href = url;
             link.download = "business-card-a4.pdf";
             document.body.appendChild(link);
+            console.log("Triggering download...");
             link.click();
             document.body.removeChild(link);
             URL.revokeObjectURL(url);
@@ -159,10 +223,17 @@ const ProfileBusinessCardGenerator = ({ currentUser, colorCode, isLuxury = false
         }
     };
 
+    console.log("ProfileBusinessCardGenerator rendering", { currentUser, colorCode, isLuxury, loading });
+    
     return (
         <div>
             {/* Generate Business Card Button */}
-            <div className="profileActions" style={{ marginTop: isLuxury ? "0" : "16px" }}>
+            <div className="profileActions" style={{ 
+                marginTop: isLuxury ? "0" : "16px",
+                position: "relative",
+                zIndex: 10,
+                pointerEvents: "auto"
+            }}>
                 <button
                     style={{
                         background: isLuxury ? "rgba(255, 255, 255, 0.2)" : colorCode,
@@ -178,8 +249,23 @@ const ProfileBusinessCardGenerator = ({ currentUser, colorCode, isLuxury = false
                         transition: "all 0.3s ease",
                         position: "relative",
                         overflow: "hidden",
+                        minHeight: "40px", // Ensure minimum height
+                        display: "flex",
+                        alignItems: "center",
+                        justifyContent: "center",
+                        boxShadow: "0 4px 12px rgba(0, 0, 0, 0.2)",
+                        zIndex: 10,
+                        pointerEvents: "auto",
                     }}
-                    onClick={fetchData}
+                    onClick={(e) => {
+                        e.preventDefault();
+                        e.stopPropagation();
+                        console.log("Button clicked!", e);
+                        console.log("Current user:", currentUser);
+                        console.log("Color code:", colorCode);
+                        console.log("Is luxury:", isLuxury);
+                        fetchData();
+                    }}
                     disabled={loading}
                     onMouseEnter={(e) => {
                         if (!isLuxury) {
@@ -202,7 +288,7 @@ const ProfileBusinessCardGenerator = ({ currentUser, colorCode, isLuxury = false
             </div>
 
             {/* Business Card Modal */}
-            {showDialog && cardData && (
+            {showDialog && cardData && createPortal(
                 <div
                     style={{
                         position: "fixed",
@@ -214,7 +300,7 @@ const ProfileBusinessCardGenerator = ({ currentUser, colorCode, isLuxury = false
                         display: "flex",
                         alignItems: "center",
                         justifyContent: "center",
-                        zIndex: 9999,
+                        zIndex: 99999,
                         backdropFilter: "blur(4px)",
                     }}
                 >
@@ -228,6 +314,7 @@ const ProfileBusinessCardGenerator = ({ currentUser, colorCode, isLuxury = false
                             boxShadow: "0 20px 60px rgba(0,0,0,0.3)",
                             position: "relative",
                             overflow: "hidden",
+                            zIndex: 100000,
                         }}
                     >
                         {/* Close button */}
@@ -556,7 +643,13 @@ const ProfileBusinessCardGenerator = ({ currentUser, colorCode, isLuxury = false
                         >
                             <button
                                 aria-label="Download A4 Business Card PDF"
-                                onClick={handleDownloadPDF}
+                                onClick={(e) => {
+                                    e.preventDefault();
+                                    e.stopPropagation();
+                                    console.log("Download button clicked!");
+                                    alert("Download button clicked! Check console for details.");
+                                    handleDownloadPDF();
+                                }}
                                 style={{
                                     padding: "12px 24px",
                                     borderRadius: "8px",
@@ -613,7 +706,8 @@ const ProfileBusinessCardGenerator = ({ currentUser, colorCode, isLuxury = false
                             </button>
                         </div>
                     </div>
-                </div>
+                </div>,
+                document.body
             )}
         </div>
     );

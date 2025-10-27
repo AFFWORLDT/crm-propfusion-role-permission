@@ -47,7 +47,7 @@ const LuxuryProfileActions = ({ colorCode }) => {
             title: "Generate Business Card",
             description: "Create your digital business card",
             icon: CreditCard,
-            onClick: null
+            onClick: () => {} // This will be handled by the ProfileBusinessCardGenerator component
         }
     ];
 
