@@ -703,22 +703,22 @@ function StaffDetails() {
                                         }}
                                     >
                                         <option value="">Select Staff Level</option>
-                                        <option value="Silver">Silver</option>
-                                        <option value="Gold">Gold</option>
-                                        <option value="Diamond">Diamond</option>
+                                        <option value="Essential">Essential</option>
+                                        <option value="Premium">Premium</option>
+                                        <option value="Exclusive">Exclusive</option>
                                     </select>
                                 ) : (
                                     <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
                                         {staffData.staff_level ? (
                                             <span 
                                                 style={{ 
-                                                    background: staffData.staff_level === 'Diamond' ? 'linear-gradient(135deg, #e3f2fd, #bbdefb)' : 
-                                                               staffData.staff_level === 'Gold' ? 'linear-gradient(135deg, #fff3e0, #ffcc80)' : 
+                                                    background: staffData.staff_level === 'Exclusive' ? 'linear-gradient(135deg, #e3f2fd, #bbdefb)' : 
+                                                               staffData.staff_level === 'Premium' ? 'linear-gradient(135deg, #fff3e0, #ffcc80)' : 
                                                                'linear-gradient(135deg, #f3e5f5, #e1bee7)',
-                                                    color: staffData.staff_level === 'Diamond' ? '#1976d2' : 
-                                                           staffData.staff_level === 'Gold' ? '#f57c00' : '#7b1fa2',
-                                                    border: staffData.staff_level === 'Diamond' ? '2px solid #1976d2' : 
-                                                            staffData.staff_level === 'Gold' ? '2px solid #f57c00' : '2px solid #7b1fa2',
+                                                    color: staffData.staff_level === 'Exclusive' ? '#1976d2' : 
+                                                           staffData.staff_level === 'Premium' ? '#f57c00' : '#7b1fa2',
+                                                    border: staffData.staff_level === 'Exclusive' ? '2px solid #1976d2' : 
+                                                            staffData.staff_level === 'Premium' ? '2px solid #f57c00' : '2px solid #7b1fa2',
                                                     padding: '0.75rem 1.5rem',
                                                     borderRadius: '25px',
                                                     fontWeight: '700',
@@ -736,8 +736,8 @@ function StaffDetails() {
                                                     left: 0,
                                                     right: 0,
                                                     height: '2px',
-                                                    background: staffData.staff_level === 'Diamond' ? 'linear-gradient(90deg, #1976d2, #42a5f5)' : 
-                                                               staffData.staff_level === 'Gold' ? 'linear-gradient(90deg, #f57c00, #ffb74d)' : 
+                                                    background: staffData.staff_level === 'Exclusive' ? 'linear-gradient(90deg, #1976d2, #42a5f5)' : 
+                                                               staffData.staff_level === 'Premium' ? 'linear-gradient(90deg, #f57c00, #ffb74d)' : 
                                                                'linear-gradient(90deg, #7b1fa2, #ba68c8)'
                                                 }}></span>
                                                 {staffData.staff_level}

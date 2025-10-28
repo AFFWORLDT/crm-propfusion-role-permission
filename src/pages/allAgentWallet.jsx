@@ -92,9 +92,9 @@ function AllAgentWallet() {
 
     const getStaffLevelColor = (level) => {
         switch(level.toLowerCase()) {
-            case 'gold': return '#fbbf24';
-            case 'silver': return '#9ca3af';
-            case 'bronze': return '#cd7f32';
+            case 'exclusive': return '#fbbf24';
+            case 'premium': return '#9ca3af';
+            case 'essential': return '#cd7f32';
             default: return '#6b7280';
         }
     };
