@@ -35,16 +35,29 @@ function Staff() {
     // Debug: Log the actual data structure
     console.log("Staff Data Sample:", allStaffData?.[0]);
     console.log("Roles Data:", rolesData);
+    
+    // Debug: Log all unique role_id values in staff data
+    if (allStaffData) {
+        const uniqueRoleIds = [...new Set(allStaffData.map(staff => staff.role_id))].sort((a, b) => a - b);
+        console.log("Unique Role IDs in staff data:", uniqueRoleIds);
+    }
 
     // Helper function to get package level for a staff member
     const getStaffPackageLevel = (staff) => {
         if (!staff.role_id) return "Essential";
         
-        // Static mapping fallback
+        // Static mapping fallback - updated to handle higher role_id values
         const roleIdToPackageMapping = {
+            // Essential roles - broader range
             1: "Essential", 2: "Essential", 3: "Essential", 4: "Essential", 5: "Essential",
+            100: "Essential", 101: "Essential", 102: "Essential", 103: "Essential", 104: "Essential", 105: "Essential",
+            106: "Essential", 107: "Essential", 108: "Essential", 109: "Essential", 110: "Essential",
+            // Premium roles
             6: "Premium", 7: "Premium", 8: "Premium", 9: "Premium", 10: "Premium",
+            111: "Premium", 112: "Premium", 113: "Premium", 114: "Premium", 115: "Premium",
+            // Exclusive roles
             11: "Exclusive", 12: "Exclusive", 13: "Exclusive", 14: "Exclusive", 15: "Exclusive",
+            116: "Exclusive", 117: "Exclusive", 118: "Exclusive", 119: "Exclusive", 120: "Exclusive",
         };
 
         // Dynamic mapping from roles data
@@ -90,10 +103,17 @@ function Staff() {
 
         // Apply package filter based on role_id
         if (packageFilter !== "all") {
+            console.log(`Filtering by package: ${packageFilter}`);
+            const packageCounts = {};
+            
             filtered = filtered.filter((staff) => {
                 const staffPackage = getStaffPackageLevel(staff);
+                packageCounts[staffPackage] = (packageCounts[staffPackage] || 0) + 1;
                 return staffPackage === packageFilter;
             });
+            
+            console.log("Package level distribution:", packageCounts);
+            console.log(`Filtered to ${filtered.length} staff members for ${packageFilter}`);
         }
 
         // Apply sorting
