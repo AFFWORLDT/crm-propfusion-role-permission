@@ -142,15 +142,6 @@ const BusinessCard = ({ data, side = 'front' }) => {
               e.target.style.display = 'none';
             }}
           />
-          <div style={{
-            color: '#ffffff',
-            fontSize: 16,
-            fontWeight: 600,
-            letterSpacing: '1px',
-            textAlign: 'center',
-          }}>
-            {data.company_name}
-          </div>
         </div>
       </div>
 
@@ -165,6 +156,18 @@ const BusinessCard = ({ data, side = 'front' }) => {
         position: 'relative',
         zIndex: 2,
       }}>
+        {/* Agent Name */}
+        <div style={{
+          fontSize: 20,
+          color: 'rgba(255,255,255,0.95)',
+          marginBottom: '20px',
+          fontWeight: 700,
+          textAlign: 'center',
+          letterSpacing: '0.5px',
+        }}>
+          {data.name}
+        </div>
+
         {/* Title/Position */}
         <div style={{
           fontSize: 24,
