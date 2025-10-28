@@ -32,6 +32,38 @@ function Staff() {
     const { isLoading, data: allStaffData, error } = useStaff();
     const { data: rolesData } = useRoles();
 
+    // Debug: Log the actual data structure
+    console.log("Staff Data Sample:", allStaffData?.[0]);
+    console.log("Roles Data:", rolesData);
+
+    // Helper function to get package level for a staff member
+    const getStaffPackageLevel = (staff) => {
+        if (!staff.role_id) return "Essential";
+        
+        // Static mapping fallback
+        const roleIdToPackageMapping = {
+            1: "Essential", 2: "Essential", 3: "Essential", 4: "Essential", 5: "Essential",
+            6: "Premium", 7: "Premium", 8: "Premium", 9: "Premium", 10: "Premium",
+            11: "Exclusive", 12: "Exclusive", 13: "Exclusive", 14: "Exclusive", 15: "Exclusive",
+        };
+
+        // Dynamic mapping from roles data
+        if (rolesData?.roles) {
+            const roleNameToPackageMapping = {
+                "Essential": "Essential", "Basic": "Essential", "Starter": "Essential", "Agent": "Essential", "Sales": "Essential",
+                "Premium": "Premium", "Advanced": "Premium", "Professional": "Premium", "Manager": "Premium", "Senior": "Premium",
+                "Exclusive": "Exclusive", "VIP": "Exclusive", "Elite": "Exclusive", "Director": "Exclusive", "Executive": "Exclusive",
+            };
+
+            const staffRole = rolesData.roles.find(role => role.role_id === staff.role_id);
+            if (staffRole) {
+                return roleNameToPackageMapping[staffRole.name] || "Essential";
+            }
+        }
+
+        return roleIdToPackageMapping[staff.role_id] || "Essential";
+    };
+
     // Filter and sort staff data
     const filteredStaffData = useMemo(() => {
         if (!allStaffData) {
@@ -57,31 +89,9 @@ function Staff() {
         }
 
         // Apply package filter based on role_id
-        if (packageFilter !== "all" && rolesData?.roles) {
-            // Create a mapping of role names to package levels
-            // This mapping should be updated based on your actual role names
-            const roleNameToPackageMapping = {
-                // Essential roles
-                "Essential": "Essential",
-                "Basic": "Essential",
-                "Starter": "Essential",
-                // Premium roles
-                "Premium": "Premium",
-                "Advanced": "Premium",
-                "Professional": "Premium",
-                // Exclusive roles
-                "Exclusive": "Exclusive",
-                "VIP": "Exclusive",
-                "Elite": "Exclusive",
-            };
-
+        if (packageFilter !== "all") {
             filtered = filtered.filter((staff) => {
-                // Find the role name for this staff member's role_id
-                const staffRole = rolesData.roles.find(role => role.role_id === staff.role_id);
-                const roleName = staffRole?.name || "";
-                
-                // Map role name to package level
-                const staffPackage = roleNameToPackageMapping[roleName] || "Essential"; // Default to Essential
+                const staffPackage = getStaffPackageLevel(staff);
                 return staffPackage === packageFilter;
             });
         }
