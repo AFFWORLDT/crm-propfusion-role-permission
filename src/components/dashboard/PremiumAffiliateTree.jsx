@@ -31,6 +31,7 @@ const PremiumAffiliateTree = ({ colorCode }) => {
   const [searchQuery, setSearchQuery] = useState('');
   const [searchType, setSearchType] = useState('all'); // 'all', 'name', 'email', 'phone'
   const [filteredTreeData, setFilteredTreeData] = useState(null);
+  const [searchResultsCount, setSearchResultsCount] = useState(0);
   const cookies = useRef(new Cookies());
 
   // API call function
@@ -141,12 +142,61 @@ const PremiumAffiliateTree = ({ colorCode }) => {
     fetchAffiliateTree();
   };
 
-  // Search functionality
+  // Enhanced search functionality that finds all matching nodes
   const searchInTree = useCallback((query, type, tree) => {
     if (!query.trim() || !tree) return tree;
 
     const searchLower = query.toLowerCase();
+    const foundNodes = new Set(); // Track all found node IDs
+    const nodesToExpand = new Set(); // Track nodes that need to be expanded
     
+    const searchAllNodes = (node, parentPath = []) => {
+      let matches = false;
+      
+      switch (type) {
+        case 'name':
+          matches = node.name?.toLowerCase().includes(searchLower);
+          break;
+        case 'email':
+          matches = node.email?.toLowerCase().includes(searchLower);
+          break;
+        case 'phone':
+          matches = node.phone?.toLowerCase().includes(searchLower);
+          break;
+        case 'all':
+        default:
+          matches = 
+            node.name?.toLowerCase().includes(searchLower) ||
+            node.email?.toLowerCase().includes(searchLower) ||
+            node.phone?.toLowerCase().includes(searchLower);
+          break;
+      }
+
+      if (matches) {
+        foundNodes.add(node.agent_id);
+        // Add all parent nodes to expansion list
+        parentPath.forEach(parentId => nodesToExpand.add(parentId));
+      }
+
+      // Continue searching in children
+      if (node.children && node.children.length > 0) {
+        const newParentPath = [...parentPath, node.agent_id];
+        node.children.forEach(child => searchAllNodes(child, newParentPath));
+      }
+    };
+
+    // First pass: find all matching nodes and their parent paths
+    searchAllNodes(tree);
+    
+    // Auto-expand all necessary nodes
+    if (foundNodes.size > 0) {
+      setExpandedNodes(prev => new Set([...prev, ...nodesToExpand]));
+    }
+    
+    // Update search results count
+    setSearchResultsCount(foundNodes.size);
+
+    // Second pass: build filtered tree with found nodes
     const filterNode = (node) => {
       let matches = false;
       
@@ -195,19 +245,6 @@ const PremiumAffiliateTree = ({ colorCode }) => {
     if (treeData) {
       const filtered = searchInTree(searchQuery, searchType, treeData);
       setFilteredTreeData(filtered);
-      
-      // Auto-expand nodes that contain search results
-      if (searchQuery.trim()) {
-        const expandSearchResults = (node) => {
-          if (node.children && node.children.length > 0) {
-            setExpandedNodes(prev => new Set([...prev, node.agent_id]));
-            node.children.forEach(child => expandSearchResults(child));
-          }
-        };
-        if (filtered) {
-          expandSearchResults(filtered);
-        }
-      }
     }
   }, [searchQuery, searchType, treeData, searchInTree]);
 
@@ -215,6 +252,7 @@ const PremiumAffiliateTree = ({ colorCode }) => {
     setSearchQuery('');
     setSearchType('all');
     setFilteredTreeData(null);
+    setSearchResultsCount(0);
   };
 
   // Analytics helper functions
