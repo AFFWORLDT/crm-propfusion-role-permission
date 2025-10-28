@@ -4,19 +4,11 @@ import {
   Search, 
   Filter, 
   UserCheck, 
-  UserX, 
   Crown,
   TrendingUp,
-  Eye,
-  Download,
   RefreshCw,
   AlertCircle,
-  ChevronDown,
-  Wallet,
-  X,
-  Mail,
-  Phone,
-  User
+  X
 } from 'lucide-react';
 import { getApiUrl } from '../utils/getApiUrl';
 import Cookies from 'universal-cookie';
@@ -74,7 +66,7 @@ const AffiliateTree = () => {
     } finally {
       setLoading(false);
     }
-  }, []); // No dependencies to prevent recreation
+  }, [mockData]); // Include mockData dependency
 
   // Mock data - fallback for development
   const mockData = {
@@ -116,7 +108,7 @@ const AffiliateTree = () => {
 
   useEffect(() => {
     fetchAffiliateTree();
-  }, []);
+  }, [fetchAffiliateTree]);
 
   // Enhanced search functionality that finds all matching nodes
   const searchInTree = useCallback((query, type, tree) => {
@@ -349,56 +341,6 @@ const AffiliateTree = () => {
     );
   };
 
-  const renderGridView = () => {
-    const allAgents = [];
-    const collectAgents = (agents) => {
-      agents.forEach(agent => {
-        if (agent.agent_id !== 0) {
-          allAgents.push(agent);
-        }
-        if (agent.children) {
-          collectAgents(agent.children);
-        }
-      });
-    };
-
-    if (treeData?.root_agent?.children) {
-      collectAgents(treeData.root_agent.children);
-    }
-
-    const filteredAgents = allAgents;
-
-    return (
-      <div className="grid-view">
-        <div className="grid-header">
-          <h3>All Agents ({filteredAgents.length})</h3>
-        </div>
-        <div className="agents-grid">
-          {filteredAgents.map(agent => (
-            <div key={agent.agent_id} className="grid-agent-card">
-              <div className="grid-avatar">
-                {agent.avatar ? (
-                  <img 
-                    src={agent.avatar} 
-                    alt={agent.name}
-                    className="grid-avatar-image"
-                    onError={(e) => {
-                      e.target.style.display = 'none';
-                      e.target.nextSibling.style.display = 'flex';
-                    }}
-                  />
-                ) : null}
-                <div className="grid-avatar-circle" style={{ display: agent.avatar ? 'none' : 'flex' }}>
-                  {agent.name.charAt(0).toUpperCase()}
-                </div>
-              </div>
-              <h4 className="grid-name">{agent.name}</h4>
-            </div>
-          ))}
-        </div>
-      </div>
-    );
-  };
 
   if (loading) {
     return (
@@ -529,7 +471,7 @@ const AffiliateTree = () => {
         )}
         
         {/* Debug info */}
-        {process.env.NODE_ENV === 'development' && (
+        {import.meta.env.DEV && (
           <div style={{ 
             background: '#f0f0f0', 
             padding: '10px', 
@@ -538,7 +480,7 @@ const AffiliateTree = () => {
             fontSize: '12px'
           }}>
             <strong>Debug Info:</strong><br/>
-            Search Query: "{searchQuery}"<br/>
+            Search Query: &quot;{searchQuery}&quot;<br/>
             Search Type: {searchType}<br/>
             Results Count: {searchResultsCount}<br/>
             Tree Data Available: {treeData ? 'Yes' : 'No'}<br/>
