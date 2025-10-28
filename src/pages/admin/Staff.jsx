@@ -13,6 +13,7 @@ import { X, Check, Download, Search, Filter, SortAsc, SortDesc, Package } from "
 import axiosInstance from "../../utils/axiosInstance";
 import QRCode from "qrcode";
 import useStaff from "../../features/admin/staff/useStaff";
+import useRoles from "../../features/admin/teams/useRoles";
 
 function Staff() {
     const [activeView, setActiveView] = useState("grid");
@@ -27,8 +28,9 @@ function Staff() {
     const [packageFilter, setPackageFilter] = useState("all"); // all, Essential, Premium, Exclusive
     const [showFilters, setShowFilters] = useState(false);
 
-    // Fetch staff data
+    // Fetch staff data and roles
     const { isLoading, data: allStaffData, error } = useStaff();
+    const { data: rolesData } = useRoles();
 
     // Filter and sort staff data
     const filteredStaffData = useMemo(() => {
@@ -54,11 +56,34 @@ function Staff() {
             });
         }
 
-        // Apply package filter
-        if (packageFilter !== "all") {
-            filtered = filtered.filter((staff) => 
-                staff.staff_level === packageFilter
-            );
+        // Apply package filter based on role_id
+        if (packageFilter !== "all" && rolesData?.roles) {
+            // Create a mapping of role names to package levels
+            // This mapping should be updated based on your actual role names
+            const roleNameToPackageMapping = {
+                // Essential roles
+                "Essential": "Essential",
+                "Basic": "Essential",
+                "Starter": "Essential",
+                // Premium roles
+                "Premium": "Premium",
+                "Advanced": "Premium",
+                "Professional": "Premium",
+                // Exclusive roles
+                "Exclusive": "Exclusive",
+                "VIP": "Exclusive",
+                "Elite": "Exclusive",
+            };
+
+            filtered = filtered.filter((staff) => {
+                // Find the role name for this staff member's role_id
+                const staffRole = rolesData.roles.find(role => role.role_id === staff.role_id);
+                const roleName = staffRole?.name || "";
+                
+                // Map role name to package level
+                const staffPackage = roleNameToPackageMapping[roleName] || "Essential"; // Default to Essential
+                return staffPackage === packageFilter;
+            });
         }
 
         // Apply sorting
@@ -74,7 +99,7 @@ function Staff() {
         });
 
         return filtered;
-    }, [allStaffData, searchTerm, sortBy, packageFilter]);
+    }, [allStaffData, searchTerm, sortBy, packageFilter, rolesData]);
 
     // Role selection modal state
     const [showRoleModal, setShowRoleModal] = useState(false);
