@@ -113,9 +113,9 @@ const BusinessCard = ({ data, side = 'front' }) => {
         zIndex: 1,
       }} />
 
-      {/* Header Section with White Logo */}
+      {/* Header Section with Logo */}
       <div style={{
-        height: '100px',
+        height: '80px',
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
@@ -123,35 +123,27 @@ const BusinessCard = ({ data, side = 'front' }) => {
         position: 'relative',
         zIndex: 2,
       }}>
-        {/* Company Logo - White on Dark Background */}
-        <div style={{ 
-          display: 'flex', 
-          alignItems: 'center',
-          flexDirection: 'column',
-          gap: '8px',
-        }}>
-          <img
-            src={data.company_logo_url}
-            alt="Company Logo"
-            crossOrigin="anonymous"
-            style={{ 
-              height: 60, 
-              maxWidth: '200px',
-              objectFit: 'contain',
-              filter: 'brightness(0) invert(1)',
-            }}
-            onError={(e) => {
-              console.warn('Failed to load company logo:', data.company_logo_url);
-              e.target.style.display = 'none';
-            }}
-          />
-        </div>
+        <img
+          src={data.company_logo_url}
+          alt="Company Logo"
+          crossOrigin="anonymous"
+          style={{ 
+            height: 45, 
+            maxWidth: '160px',
+            objectFit: 'contain',
+            filter: 'brightness(0) invert(1)',
+          }}
+          onError={(e) => {
+            console.warn('Failed to load company logo:', data.company_logo_url);
+            e.target.style.display = 'none';
+          }}
+        />
       </div>
 
       {/* Main Content Area */}
       <div style={{
-        padding: '40px',
-        height: 'calc(100% - 100px)',
+        padding: '0 40px',
+        height: 'calc(100% - 80px)',
         display: 'flex',
         flexDirection: 'column',
         justifyContent: 'center',
@@ -159,25 +151,28 @@ const BusinessCard = ({ data, side = 'front' }) => {
         position: 'relative',
         zIndex: 2,
       }}>
+        
         {/* Agent Name */}
         <div style={{
-          fontSize: 20,
+          fontSize: 24,
           color: 'rgba(255,255,255,0.95)',
-          marginBottom: '20px',
+          marginBottom: '8px',
           fontWeight: 700,
           textAlign: 'center',
-          letterSpacing: '0.5px',
+          letterSpacing: '1px',
+          textTransform: 'uppercase',
         }}>
           {data.name || "Agent Name"}
         </div>
 
         {/* Title/Position */}
         <div style={{
-          fontSize: 24,
-          color: 'rgba(255,255,255,0.9)',
-          marginBottom: '40px',
-          fontWeight: 600,
+          fontSize: 16,
+          color: 'rgba(255,255,255,0.8)',
+          marginBottom: '50px',
+          fontWeight: 500,
           textAlign: 'center',
+          letterSpacing: '0.5px',
         }}>
           Real Estate Professional
         </div>
@@ -189,25 +184,25 @@ const BusinessCard = ({ data, side = 'front' }) => {
           gap: '20px',
           alignItems: 'center',
           width: '100%',
-          maxWidth: '400px',
+          maxWidth: '350px',
         }}>
           <div style={{
             display: 'flex',
             alignItems: 'center',
-            fontSize: 16,
+            fontSize: 14,
             color: '#ffffff',
             width: '100%',
             justifyContent: 'center',
           }}>
             <div style={{
-              width: '28px',
-              height: '28px',
-              marginRight: '20px',
+              width: '20px',
+              height: '20px',
+              marginRight: '12px',
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'center',
               color: '#ffffff',
-              fontSize: '20px',
+              fontSize: '14px',
               flexShrink: 0,
             }}>
               📞
@@ -218,49 +213,25 @@ const BusinessCard = ({ data, side = 'front' }) => {
           <div style={{
             display: 'flex',
             alignItems: 'center',
-            fontSize: 16,
+            fontSize: 14,
             color: '#ffffff',
             width: '100%',
             justifyContent: 'center',
           }}>
             <div style={{
-              width: '28px',
-              height: '28px',
-              marginRight: '20px',
+              width: '20px',
+              height: '20px',
+              marginRight: '12px',
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'center',
               color: '#ffffff',
-              fontSize: '20px',
+              fontSize: '14px',
               flexShrink: 0,
             }}>
               ✉
             </div>
             <span style={{ fontWeight: 500, wordBreak: 'break-all', textAlign: 'left', flex: 1 }}>{data.email}</span>
-          </div>
-          
-          <div style={{
-            display: 'flex',
-            alignItems: 'center',
-            fontSize: 16,
-            color: '#ffffff',
-            width: '100%',
-            justifyContent: 'center',
-          }}>
-            <div style={{
-              width: '28px',
-              height: '28px',
-              marginRight: '20px',
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-              color: '#ffffff',
-              fontSize: '20px',
-              flexShrink: 0,
-            }}>
-              🌐
-            </div>
-            <span style={{ fontWeight: 500, textAlign: 'left', flex: 1 }}>ONEXPROPERTY.COM</span>
           </div>
         </div>
       </div>
