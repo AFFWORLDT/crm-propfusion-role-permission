@@ -47,13 +47,16 @@ const ProfileBusinessCardGenerator = ({ currentUser, colorCode, isLuxury = false
             // Prepare card data with fallbacks (removed role, address, company_tagline)
             const safe = (v, fb = "") => (v === null || v === undefined || v === "null" ? fb : v);
             const cardData = {
-                name: safe(agent?.name, "Admin"),
+                name: safe(agent?.name || agent?.agent_name, "Admin"),
                 email: safe(agent?.email, "user@example.com"),
                 phone: safe(agent?.phone, "+91 00000 00000"),
                 website: safe(company?.crm_url, safe(company?.website, "example.com")),
                 company_name: safe(company?.company_name, "Your Company"),
                 company_logo_url: safe(company?.company_logo_url, ""),
             };
+            
+            console.log("Card data prepared:", cardData);
+            console.log("Agent name specifically:", agent?.name);
 
 
             setCardData(cardData);

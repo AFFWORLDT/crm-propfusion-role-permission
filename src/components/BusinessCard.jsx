@@ -1,6 +1,9 @@
 import React from 'react';
 
 const BusinessCard = ({ data, side = 'front' }) => {
+  console.log("BusinessCard received data:", data);
+  console.log("Agent name in BusinessCard:", data?.name);
+  
   if (side === 'back') {
     return (
       <div
@@ -165,7 +168,7 @@ const BusinessCard = ({ data, side = 'front' }) => {
           textAlign: 'center',
           letterSpacing: '0.5px',
         }}>
-          {data.name}
+          {data.name || "Agent Name"}
         </div>
 
         {/* Title/Position */}
