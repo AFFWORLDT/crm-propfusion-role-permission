@@ -193,6 +193,9 @@ const PremiumAffiliateTree = ({ colorCode }) => {
       setExpandedNodes(prev => new Set([...prev, ...nodesToExpand]));
     }
     
+    console.log("Premium Tree - Search results - Found nodes:", Array.from(foundNodes));
+    console.log("Premium Tree - Nodes to expand:", Array.from(nodesToExpand));
+    
     // Update search results count
     setSearchResultsCount(foundNodes.size);
 
@@ -242,8 +245,9 @@ const PremiumAffiliateTree = ({ colorCode }) => {
 
   // Update filtered data when search changes
   useEffect(() => {
-    if (treeData) {
-      const filtered = searchInTree(searchQuery, searchType, treeData);
+    if (treeData && treeData.root_agent) {
+      console.log("Premium Tree - Searching with query:", searchQuery, "Type:", searchType);
+      const filtered = searchInTree(searchQuery, searchType, treeData.root_agent);
       setFilteredTreeData(filtered);
     }
   }, [searchQuery, searchType, treeData, searchInTree]);

@@ -164,6 +164,9 @@ const AffiliateTree = () => {
     // First pass: find all matching nodes and their parent paths
     searchAllNodes(tree);
     
+    console.log("Search results - Found nodes:", Array.from(foundNodes));
+    console.log("Nodes to expand:", Array.from(nodesToExpand));
+    
     // Auto-expand all necessary nodes
     if (foundNodes.size > 0) {
       setExpandedNodes(prev => new Set([...prev, ...nodesToExpand]));
@@ -218,8 +221,10 @@ const AffiliateTree = () => {
 
   // Update filtered data when search changes
   useEffect(() => {
-    if (treeData) {
-      const filtered = searchInTree(searchQuery, searchType, treeData);
+    if (treeData && treeData.root_agent) {
+      console.log("Searching with query:", searchQuery, "Type:", searchType);
+      console.log("Tree data structure:", treeData);
+      const filtered = searchInTree(searchQuery, searchType, treeData.root_agent);
       setFilteredTreeData(filtered);
     }
   }, [searchQuery, searchType, treeData, searchInTree]);
@@ -522,13 +527,31 @@ const AffiliateTree = () => {
             </span>
           </div>
         )}
+        
+        {/* Debug info */}
+        {process.env.NODE_ENV === 'development' && (
+          <div style={{ 
+            background: '#f0f0f0', 
+            padding: '10px', 
+            margin: '10px 0', 
+            borderRadius: '5px',
+            fontSize: '12px'
+          }}>
+            <strong>Debug Info:</strong><br/>
+            Search Query: "{searchQuery}"<br/>
+            Search Type: {searchType}<br/>
+            Results Count: {searchResultsCount}<br/>
+            Tree Data Available: {treeData ? 'Yes' : 'No'}<br/>
+            Filtered Data Available: {filteredTreeData ? 'Yes' : 'No'}
+          </div>
+        )}
       </div>
 
       {/* Tree Content */}
       <div className="tree-content">
         <div className="tree-view">
-          {(filteredTreeData?.root_agent || treeData?.root_agent) && 
-            renderAgentCard(filteredTreeData?.root_agent || treeData.root_agent)}
+          {(filteredTreeData || treeData?.root_agent) && 
+            renderAgentCard(filteredTreeData || treeData.root_agent)}
         </div>
       </div>
     </div>
