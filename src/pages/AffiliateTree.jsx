@@ -15,61 +15,8 @@ import Cookies from 'universal-cookie';
 import './AffiliateTree.css';
 import SectionTop from '../ui/SectionTop';
 
-const AffiliateTree = () => {
-  const [treeData, setTreeData] = useState(null);
-  const [expandedNodes, setExpandedNodes] = useState(new Set());
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
-  const [searchQuery, setSearchQuery] = useState('');
-  const [searchType, setSearchType] = useState('all'); // 'all', 'name', 'email', 'phone'
-  const [filteredTreeData, setFilteredTreeData] = useState(null);
-  const [searchResultsCount, setSearchResultsCount] = useState(0);
-  const cookies = useRef(new Cookies());
-
-  // API call function
-  const fetchAffiliateTree = useCallback(async () => {
-    try {
-      setLoading(true);
-      setError(null);
-      
-      const token = cookies.current.get("USER")?.access_token;
-      if (!token) {
-        throw new Error('No authentication token found');
-      }
-
-      const apiUrl = getApiUrl();
-      const response = await fetch(`${apiUrl}/agent/affiliate-tree`, {
-        method: 'GET',
-        headers: {
-          'accept': 'application/json',
-          'Authorization': `Bearer ${token}`,
-          'Content-Type': 'application/json'
-        }
-      });
-
-      if (!response.ok) {
-        throw new Error(`HTTP error! status: ${response.status}`);
-      }
-
-      const data = await response.json();
-      setTreeData(data);
-      
-      // Auto-expand first level
-      if (data?.root_agent?.children) {
-        setExpandedNodes(new Set([data.root_agent.agent_id]));
-      }
-    } catch (err) {
-      console.error('Error fetching affiliate tree:', err);
-      setError(err.message);
-      // Fallback to mock data for development
-      setTreeData(mockData);
-    } finally {
-      setLoading(false);
-    }
-  }, [mockData]); // Include mockData dependency
-
-  // Mock data - fallback for development
-  const mockData = {
+// Mock data - fallback for development
+const mockData = {
     "root_agent": {
       "agent_id": 6035,
       "name": "Marcus Chen",
@@ -106,13 +53,69 @@ const AffiliateTree = () => {
     "tree_depth": 3
   };
 
+const AffiliateTree = () => {
+  const [treeData, setTreeData] = useState(null);
+  const [expandedNodes, setExpandedNodes] = useState(new Set());
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+  const [searchQuery, setSearchQuery] = useState('');
+  const [searchType, setSearchType] = useState('all'); // 'all', 'name', 'email', 'phone'
+  const [filteredTreeData, setFilteredTreeData] = useState(null);
+  const [searchResultsCount, setSearchResultsCount] = useState(0);
+  const cookies = useRef(new Cookies());
+
+  // API call function
+  const fetchAffiliateTree = useCallback(async () => {
+    try {
+      setLoading(true);
+      setError(null);
+      
+      const token = cookies.current.get("USER")?.access_token;
+      if (!token) {
+        console.warn('No authentication token found, using mock data');
+        setTreeData(mockData);
+        setLoading(false);
+        return;
+      }
+
+      const apiUrl = getApiUrl();
+      const response = await fetch(`${apiUrl}/agent/affiliate-tree`, {
+        method: 'GET',
+        headers: {
+          'accept': 'application/json',
+          'Authorization': `Bearer ${token}`,
+          'Content-Type': 'application/json'
+        }
+      });
+
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+
+      const data = await response.json();
+      setTreeData(data);
+      
+      // Auto-expand first level
+      if (data?.root_agent?.children) {
+        setExpandedNodes(new Set([data.root_agent.agent_id]));
+      }
+    } catch (err) {
+      console.error('Error fetching affiliate tree:', err);
+      setError(err.message);
+      // Fallback to mock data
+      setTreeData(mockData);
+    } finally {
+      setLoading(false);
+    }
+  }, []); // No dependencies needed
+
   useEffect(() => {
     fetchAffiliateTree();
   }, [fetchAffiliateTree]);
 
   // Enhanced search functionality that finds all matching nodes
   const searchInTree = useCallback((query, type, tree) => {
-    if (!query.trim() || !tree) return tree;
+    if (!query || !query.trim() || !tree) return tree;
 
     const searchLower = query.toLowerCase();
     const foundNodes = new Set(); // Track all found node IDs
