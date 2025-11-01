@@ -94,7 +94,7 @@ function Login() {
           </Box>
           <LoginForm />
           <Typography align="center" color="#64748b" fontSize={15} mt={3} sx={{ fontWeight: 500 }}>
-            By signing in, you agree to our <Link href="https://www.propfusion.io/terms" underline="hover" target="_blank" rel="noopener noreferrer">Terms of Service</Link> and <Link href="https://www.propfusion.io/privacy" underline="hover" target="_blank" rel="noopener noreferrer">Privacy Policy</Link>
+            By signing in, you agree to our <Link href="https://www.onexproperty.com/terms" underline="hover" target="_blank" rel="noopener noreferrer">Terms of Service</Link> and <Link href="https://www.onexproperty.com/privacy" underline="hover" target="_blank" rel="noopener noreferrer">Privacy Policy</Link>
           </Typography>
         </Box>
       </Box>
