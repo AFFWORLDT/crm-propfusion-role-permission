@@ -382,8 +382,13 @@ function SectionTop({ heading, children }) {
                                 unseenNotificationCount?.current_user_details
                                     ?.avatar || DummyImage
                             }
-                            width={32}
-                            height={32}
+                            style={{
+                                width: '100%',
+                                height: '100%',
+                                borderRadius: '50%',
+                                objectFit: 'cover',
+                                display: 'block'
+                            }}
                             onError={(e) => {
                                 e.currentTarget.src = DummyImage;
                             }}
