@@ -410,7 +410,7 @@ function Dashboard() {
                 <LuxuryProfileActions colorCode={allDetailsData?.company_settings?.sidebar_color_code || "#020079"} />
                 
                 {/* Social Media Links - Connect With Us */}
-                <SocialMediaLinks colorCode={allDetailsData?.company_settings?.sidebar_color_code || "#020079"} />
+                <SocialMediaLinks />
                 
                 {/* Premium Wallet Balance - Financial Overview */}
                 <PremiumWalletBalance colorCode={allDetailsData?.company_settings?.sidebar_color_code || "#020079"} />

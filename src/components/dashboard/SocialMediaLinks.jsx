@@ -1,11 +1,11 @@
-import React, { useEffect } from "react";
+import { useEffect } from "react";
 import { 
     Sparkles,
     ExternalLink
 } from "lucide-react";
 import styles from "./SocialMediaLinks.module.css";
 
-const SocialMediaLinks = ({ colorCode }) => {
+const SocialMediaLinks = () => {
     // Load Facebook SDK
     useEffect(() => {
         if (window.FB) {
@@ -88,10 +88,6 @@ const SocialMediaLinks = ({ colorCode }) => {
         }
     ];
 
-    const handleSocialClick = (url) => {
-        window.open(url, '_blank', 'noopener,noreferrer');
-    };
-
     return (
         <div className={styles.socialMediaLinks}>
             <div className={styles.header}>
@@ -164,7 +160,6 @@ const SocialMediaLinks = ({ colorCode }) => {
                                         height="500"
                                         frameBorder="0"
                                         scrolling="no"
-                                        allowTransparency={true}
                                         allow="encrypted-media"
                                         title="Instagram Profile"
                                     ></iframe>
