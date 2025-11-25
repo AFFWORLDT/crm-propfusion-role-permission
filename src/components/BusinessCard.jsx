@@ -230,7 +230,7 @@ const BusinessCard = ({ data, side = 'front' }) => {
               textShadow: '0 2px 4px rgba(0,0,0,0.3)',
               fontWeight: 500,
               fontFamily: '"Inter", "SF Pro Display", -apple-system, BlinkMacSystemFont, sans-serif',
-            }}>{"ONEXPROPERTY.COM"}</span>
+            }}>{"ONEXPROPERTY.COM"}</div>
           </div>
         </div>
       </div>

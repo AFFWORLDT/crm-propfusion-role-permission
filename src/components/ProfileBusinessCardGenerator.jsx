@@ -7,7 +7,7 @@ import BusinessCardPDFDocument from "./BusinessCardPDFDocument";
 import { prepareCardDataForPDF } from "../utils/pdfUtils";
 import toast from "react-hot-toast";
 import { pdf } from "@react-pdf/renderer";
-import * as htmlToImage from "html-to-image";
+import { toPng } from "html-to-image";
 
 const ProfileBusinessCardGenerator = ({ currentUser, colorCode, isLuxury = false }) => {
     const [cardData, setCardData] = useState(null);
@@ -90,8 +90,8 @@ const ProfileBusinessCardGenerator = ({ currentUser, colorCode, isLuxury = false
             // Capture front/back previews as images for exact-match PDF
             const toPngOptions = { pixelRatio: 3, cacheBust: true, backgroundColor: '#ffffff' };
             const [frontImg, backImg] = await Promise.all([
-                htmlToImage.toPng(frontRef.current, toPngOptions),
-                htmlToImage.toPng(backRef.current, toPngOptions),
+                toPng(frontRef.current, toPngOptions),
+                toPng(backRef.current, toPngOptions),
             ]);
 
             // Generate PDF using captured images
