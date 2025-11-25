@@ -111,7 +111,7 @@ const BusinessCard = ({ data, side = 'front' }) => {
             transform: 'none',
             textShadow: '0 2px 4px rgba(0,0,0,0.3)',
           }}>
-            {data.website}
+            {"ONEXPROPERTY.COM"}
           </div>
         </div>
       </div>
@@ -278,7 +278,7 @@ const BusinessCard = ({ data, side = 'front' }) => {
               textShadow: '0 2px 4px rgba(0,0,0,0.3)',
               fontWeight: 500,
               fontFamily: '"Inter", "SF Pro Display", -apple-system, BlinkMacSystemFont, sans-serif',
-            }}>{data.website}</span>
+            }}>{"ONEXPROPERTY.COM"}</span>
           </div>
         </div>
       </div>

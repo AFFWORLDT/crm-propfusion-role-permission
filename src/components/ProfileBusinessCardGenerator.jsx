@@ -6,6 +6,7 @@ import BusinessCardPDFDocument from "./BusinessCardPDFDocument";
 import { prepareCardDataForPDF } from "../utils/pdfUtils";
 import toast from "react-hot-toast";
 import { pdf } from "@react-pdf/renderer";
+import * as htmlToImage from "html-to-image";
 
 const ProfileBusinessCardGenerator = ({ currentUser, colorCode }) => {
     const [cardData, setCardData] = useState(null);
@@ -13,7 +14,10 @@ const ProfileBusinessCardGenerator = ({ currentUser, colorCode }) => {
     const [loading, setLoading] = useState(false);
     const [currentSide, setCurrentSide] = useState("front");
     const [isFlipping, setIsFlipping] = useState(false);
+    const [isDownloading, setIsDownloading] = useState(false);
     const cardRef = useRef();
+    const frontRef = useRef();
+    const backRef = useRef();
 
     // Touch/swipe handling
     const [touchStart, setTouchStart] = useState(null);
@@ -36,13 +40,14 @@ const ProfileBusinessCardGenerator = ({ currentUser, colorCode }) => {
             const company = allData?.company_settings || {};
 
             // Prepare card data with fallbacks (removed role, address, company_tagline)
+            const safe = (v, fb = "") => (v === null || v === undefined || v === "null" ? fb : v);
             const cardData = {
-                name: agent.name,
-                email: agent.email,
-                phone: agent.phone,
-                website: company.crm_url,
-                company_name: company.company_name,
-                company_logo_url: company.company_logo_url,
+                name: safe(agent?.name, "Admin"),
+                email: safe(agent?.email, "user@example.com"),
+                phone: safe(agent?.phone, "+91 00000 00000"),
+                website: safe(company?.crm_url, safe(company?.website, "example.com")),
+                company_name: safe(company?.company_name, "Your Company"),
+                company_logo_url: safe(company?.company_logo_url, ""),
             };
 
 
@@ -62,14 +67,22 @@ const ProfileBusinessCardGenerator = ({ currentUser, colorCode }) => {
         if (!cardData) return;
 
         try {
+            setIsDownloading(true);
             toast.loading("Preparing PDF...", { id: "pdf-loading" });
 
             // Prepare card data with converted images
-            const preparedData = await prepareCardDataForPDF(cardData);
+            const preparedData = await prepareCardDataForPDF({ ...cardData, themeColor: colorCode });
 
-            // Generate PDF using react-pdf
+            // Capture front/back previews as images for exact-match PDF
+            const toPngOptions = { pixelRatio: 3, cacheBust: true, backgroundColor: '#ffffff' };
+            const [frontImg, backImg] = await Promise.all([
+                htmlToImage.toPng(frontRef.current, toPngOptions),
+                htmlToImage.toPng(backRef.current, toPngOptions),
+            ]);
+
+            // Generate PDF using captured images
             const blob = await pdf(
-                <BusinessCardPDFDocument data={preparedData} />
+                <BusinessCardPDFDocument data={{ ...preparedData, frontImg, backImg }} />
             ).toBlob();
 
             // Create download link
@@ -90,6 +103,9 @@ const ProfileBusinessCardGenerator = ({ currentUser, colorCode }) => {
             toast.error("Failed to download PDF. Please try again.", {
                 id: "pdf-loading",
             });
+        }
+        finally {
+            setIsDownloading(false);
         }
     };
 
@@ -401,6 +417,7 @@ const ProfileBusinessCardGenerator = ({ currentUser, colorCode }) => {
                                     boxShadow:
                                         "0 4px 12px rgba(45, 66, 99, 0.3)",
                                 }}
+                                aria-label="Previous Side"
                                 onMouseEnter={(e) => {
                                     if (!isFlipping) {
                                         e.target.style.transform = "scale(1.1)";
@@ -449,10 +466,21 @@ const ProfileBusinessCardGenerator = ({ currentUser, colorCode }) => {
                                 }}
                                 title="Double tap or swipe to flip card"
                             >
-                                <BusinessCard
-                                    data={cardData}
-                                    side={currentSide}
-                                />
+                                <div style={{ position: "relative" }}>
+                                    {/* Hidden offscreen mirrors for accurate image capture */}
+                                    <div style={{ position: "absolute", left: -99999, top: -99999 }}>
+                                        <div ref={frontRef}>
+                                            <BusinessCard data={{...cardData, themeColor: colorCode}} side="front" />
+                                        </div>
+                                        <div ref={backRef}>
+                                            <BusinessCard data={{...cardData, themeColor: colorCode}} side="back" />
+                                        </div>
+                                    </div>
+                                    <BusinessCard
+                                        data={{...cardData, themeColor: colorCode}}
+                                        side={currentSide}
+                                    />
+                                </div>
                             </div>
 
                             {/* Right Arrow Button */}
@@ -487,6 +515,7 @@ const ProfileBusinessCardGenerator = ({ currentUser, colorCode }) => {
                                     boxShadow:
                                         "0 4px 12px rgba(45, 66, 99, 0.3)",
                                 }}
+                                aria-label="Next Side"
                                 onMouseEnter={(e) => {
                                     if (!isFlipping) {
                                         e.target.style.transform = "scale(1.1)";
@@ -516,6 +545,7 @@ const ProfileBusinessCardGenerator = ({ currentUser, colorCode }) => {
                             }}
                         >
                             <button
+                                aria-label="Download A4 Business Card PDF"
                                 onClick={handleDownloadPDF}
                                 style={{
                                     padding: "12px 24px",
@@ -531,6 +561,7 @@ const ProfileBusinessCardGenerator = ({ currentUser, colorCode }) => {
                                     alignItems: "center",
                                     gap: "8px",
                                 }}
+                                disabled={isDownloading}
                                 onMouseEnter={(e) => {
                                     e.target.style.transform =
                                         "translateY(-2px)";
@@ -543,7 +574,7 @@ const ProfileBusinessCardGenerator = ({ currentUser, colorCode }) => {
                                 }}
                             >
                                 <span>📄</span>
-                                Download A4 Business Card PDF
+                                {isDownloading ? "Preparing..." : "Download A4 Business Card PDF"}
                             </button>
                             <button
                                 onClick={handleCloseDialog}

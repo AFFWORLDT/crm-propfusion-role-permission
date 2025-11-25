@@ -1,0 +1,30 @@
+.footer {
+  background-color: hsl(222 47% 11%);
+  color: #ffffff;
+  padding: 32px 20px calc(36px + env(safe-area-inset-bottom, 0));
+  border-top: 1px solid rgba(255,255,255,0.1);
+  box-shadow: 0 -8px 24px rgba(0,0,0,0.35);
+}
+
+.footerContent {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 24px;
+}
+
+.companyInfo, .contactInfo, .legalInfo { padding: 8px; }
+
+.companyLogo { width: 80px; height: 80px; object-fit: contain; margin-bottom: 10px; }
+.companyName { font-size: 20px; font-weight: 700; margin: 0 0 10px; }
+.companyDescription { opacity: .9; line-height: 1.6; margin: 0 0 8px; }
+
+.websiteLink { color: #fff; text-decoration: underline; text-underline-offset: 3px; }
+.copyright { opacity: .75; margin-top: 12px; }
+
+@media (max-width: 768px) {
+  .footerContent { grid-template-columns: 1fr; }
+}
+
+
