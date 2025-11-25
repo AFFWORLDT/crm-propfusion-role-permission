@@ -42,6 +42,11 @@ const styles = StyleSheet.create({
     height: '100%',
     objectFit: 'cover'
   },
+  cardImage: {
+    width: '100%',
+    height: '100%',
+    objectFit: 'cover'
+  },
   cardLabel: {
     fontSize: 12,
     fontWeight: 'bold',
@@ -111,8 +116,14 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     fontFamily: 'Helvetica',
   },
-  
-  // Back card styles - matching the grid pattern design
+  companyName: {
+    fontSize: 8,
+    fontWeight: 'bold',
+    color: '#2d4263',
+    textAlign: 'center',
+    fontFamily: 'Helvetica',
+  },
+  // Back card styles
   backCard: {
     width: '100%',
     height: '100%',

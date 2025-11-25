@@ -47,7 +47,7 @@ const ProfileBusinessCardGenerator = ({ currentUser, colorCode, isLuxury = false
             // Prepare card data with fallbacks (removed role, address, company_tagline)
             const safe = (v, fb = "") => (v === null || v === undefined || v === "null" ? fb : v);
             const cardData = {
-                name: safe(agent?.name || agent?.agent_name, "Admin"),
+                name: safe(agent?.name, "Admin"),
                 email: safe(agent?.email, "user@example.com"),
                 phone: safe(agent?.phone, "+91 00000 00000"),
                 website: safe(company?.crm_url, safe(company?.website, "example.com")),
@@ -82,74 +82,22 @@ const ProfileBusinessCardGenerator = ({ currentUser, colorCode, isLuxury = false
 
         try {
             setIsDownloading(true);
-            console.log("Starting PDF download process...");
             toast.loading("Preparing PDF...", { id: "pdf-loading" });
 
             // Prepare card data with converted images
-            console.log("Preparing card data for PDF...");
             const preparedData = await prepareCardDataForPDF({ ...cardData, themeColor: colorCode });
-            console.log("Card data prepared:", preparedData);
 
             // Capture front/back previews as images for exact-match PDF
-            console.log("Checking refs before image capture:", { 
-                frontRef: frontRef.current, 
-                backRef: backRef.current,
-                frontRefExists: !!frontRef.current,
-                backRefExists: !!backRef.current
-            });
-            
-            if (!frontRef.current || !backRef.current) {
-                console.warn("Card elements not found for image capture, using fallback approach");
-                // Fallback: Generate PDF without images
-                const blob = await pdf(
-                    <BusinessCardPDFDocument data={{ ...preparedData, frontImg: "", backImg: "" }} />
-                ).toBlob();
-                
-                console.log("PDF blob generated (fallback):", { blobSize: blob.size, blobType: blob.type });
-                
-                // Create download link
-                const url = URL.createObjectURL(blob);
-                const link = document.createElement("a");
-                link.href = url;
-                link.download = "business-card-a4.pdf";
-                document.body.appendChild(link);
-                console.log("Triggering download (fallback)...");
-                link.click();
-                document.body.removeChild(link);
-                URL.revokeObjectURL(url);
-                
-                toast.success("Business card PDF downloaded successfully!", {
-                    id: "pdf-loading",
-                });
-                return;
-            }
-            
             const toPngOptions = { pixelRatio: 3, cacheBust: true, backgroundColor: '#ffffff' };
             const [frontImg, backImg] = await Promise.all([
                 htmlToImage.toPng(frontRef.current, toPngOptions),
                 htmlToImage.toPng(backRef.current, toPngOptions),
             ]);
-            
-            console.log("Images captured successfully:", { frontImg: frontImg.substring(0, 50) + "...", backImg: backImg.substring(0, 50) + "..." });
 
             // Generate PDF using captured images
-            console.log("Generating PDF with data:", { preparedData, frontImgLength: frontImg.length, backImgLength: backImg.length });
-            
-            let blob;
-            try {
-                blob = await pdf(
-                    <BusinessCardPDFDocument data={{ ...preparedData, frontImg, backImg }} />
-                ).toBlob();
-                
-                console.log("PDF blob generated:", { blobSize: blob.size, blobType: blob.type });
-                
-                if (blob.size === 0) {
-                    throw new Error("Generated PDF blob is empty");
-                }
-            } catch (pdfError) {
-                console.error("PDF generation failed:", pdfError);
-                throw new Error(`PDF generation failed: ${pdfError.message}`);
-            }
+            const blob = await pdf(
+                <BusinessCardPDFDocument data={{ ...preparedData, frontImg, backImg }} />
+            ).toBlob();
 
             // Create download link
             const url = URL.createObjectURL(blob);
@@ -646,13 +594,7 @@ const ProfileBusinessCardGenerator = ({ currentUser, colorCode, isLuxury = false
                         >
                             <button
                                 aria-label="Download A4 Business Card PDF"
-                                onClick={(e) => {
-                                    e.preventDefault();
-                                    e.stopPropagation();
-                                    console.log("Download button clicked!");
-                                    alert("Download button clicked! Check console for details.");
-                                    handleDownloadPDF();
-                                }}
+                                onClick={handleDownloadPDF}
                                 style={{
                                     padding: "12px 24px",
                                     borderRadius: "8px",

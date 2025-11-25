@@ -77,7 +77,7 @@ const BusinessCard = ({ data, side = 'front' }) => {
             textAlign: 'center',
             marginTop: '20px',
           }}>
-            ONEXPROPERTY.COM
+            {"ONEXPROPERTY.COM"}
           </div>
         </div>
       </div>
@@ -226,12 +226,11 @@ const BusinessCard = ({ data, side = 'front' }) => {
               alignItems: 'center',
               justifyContent: 'center',
               color: '#ffffff',
-              fontSize: '14px',
-              flexShrink: 0,
-            }}>
-              ✉
-            </div>
-            <span style={{ fontWeight: 500, wordBreak: 'break-all', textAlign: 'left', flex: 1 }}>{data.email}</span>
+              transform: 'none',
+              textShadow: '0 2px 4px rgba(0,0,0,0.3)',
+              fontWeight: 500,
+              fontFamily: '"Inter", "SF Pro Display", -apple-system, BlinkMacSystemFont, sans-serif',
+            }}>{"ONEXPROPERTY.COM"}</span>
           </div>
         </div>
       </div>
