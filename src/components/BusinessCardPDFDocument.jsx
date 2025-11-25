@@ -1,4 +1,3 @@
-import React from 'react';
 import { Document, Page, Text, View, Image, StyleSheet } from '@react-pdf/renderer';
 
 // Create styles matching the new clean BusinessCard component
@@ -36,11 +35,6 @@ const styles = StyleSheet.create({
     borderRadius: 6,
     overflow: 'hidden',
     backgroundColor: '#ffffff',
-  },
-  cardImage: {
-    width: '100%',
-    height: '100%',
-    objectFit: 'cover'
   },
   cardImage: {
     width: '100%',
@@ -108,13 +102,6 @@ const styles = StyleSheet.create({
     height: 30,
     objectFit: 'contain',
     marginBottom: 8,
-  },
-  companyName: {
-    fontSize: 8,
-    fontWeight: 'bold',
-    color: '#2d4263',
-    textAlign: 'center',
-    fontFamily: 'Helvetica',
   },
   companyName: {
     fontSize: 8,
