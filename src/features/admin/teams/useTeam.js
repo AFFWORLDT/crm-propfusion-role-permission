@@ -5,6 +5,7 @@ function useTeam(id) {
     const { isLoading, data, error } = useQuery({
         queryKey: ["team", id],
         queryFn: () => getTeamById(id), 
+        enabled: !!id,
     });
 
     return { isLoading, data: data ?? {}, error };

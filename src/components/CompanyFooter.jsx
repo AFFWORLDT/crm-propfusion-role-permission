@@ -21,7 +21,7 @@ const CompanyFooter = ({ companyData }) => {
           <h3>Contact Us</h3>
           {companyData.address && <p>{companyData.address}</p>}
           {companyData.contact_number && <p>Phone: {companyData.contact_number}</p>}
-          <a href={companyData.website || '#'} target="_blank" rel="noopener noreferrer" className={styles.websiteLink}>
+          <a href={"https://www.onexproperty.com"} target="_blank" rel="noopener noreferrer" className={styles.websiteLink}>
             Visit our website
           </a>
         </div>
