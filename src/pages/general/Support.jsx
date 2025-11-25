@@ -79,6 +79,39 @@ function Support() {
     }
   ];
 
+  const departmentNumbers = [
+    {
+      department: "Affiliate",
+      plan: "100",
+      code: "+971",
+      nos: "528326321"
+    },
+    {
+      department: "Accounts",
+      plan: "50",
+      code: "+971",
+      nos: "581765861"
+    },
+    {
+      department: "Mortgage",
+      plan: "50",
+      code: "+971",
+      nos: "581765862"
+    },
+    {
+      department: "Academy",
+      plan: "50",
+      code: "+971",
+      nos: "581765863"
+    },
+    {
+      department: "Admin",
+      plan: "50",
+      code: "+971",
+      nos: "581765864"
+    }
+  ];
+
   const handleFaqToggle = (index) => {
     setOpenFaqIndex(openFaqIndex === index ? null : index);
   };
@@ -151,6 +184,36 @@ function Support() {
                 </ol>
               </div>
             ))}
+          </section>
+
+          <section className={styles.departmentNumbers}>
+            <h2>Department Contact Numbers</h2>
+            <div className={styles.departmentTable}>
+              <table>
+                <thead>
+                  <tr>
+                    <th>Department</th>
+                    <th>Plan</th>
+                    <th>Code</th>
+                    <th>Nos</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {departmentNumbers.map((dept, index) => (
+                    <tr key={index}>
+                      <td>{dept.department}</td>
+                      <td>{dept.plan}</td>
+                      <td>{dept.code}</td>
+                      <td>
+                        <a href={`tel:${dept.code}${dept.nos}`} className={styles.phoneLink}>
+                          {dept.nos}
+                        </a>
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
           </section>
 
           <section className={styles.contactSupport}>

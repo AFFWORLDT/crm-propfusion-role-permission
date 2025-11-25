@@ -1,40 +1,46 @@
 import React from 'react';
 import { Document, Page, Text, View, Image, StyleSheet } from '@react-pdf/renderer';
 
-// Create styles matching the actual BusinessCard component
+// Create styles matching the new clean BusinessCard component
 const styles = StyleSheet.create({
   page: {
     flexDirection: 'column',
     backgroundColor: '#ffffff',
-    padding: 30,
+    padding: 20,
     fontFamily: 'Helvetica',
   },
   title: {
-    fontSize: 28,
+    fontSize: 24,
     fontWeight: 'bold',
     textAlign: 'center',
-    marginBottom: 30,
+    marginBottom: 20,
     color: '#2d4263',
     fontFamily: 'Helvetica',
   },
   subtitle: {
-    fontSize: 16,
+    fontSize: 14,
     textAlign: 'center',
-    marginBottom: 40,
+    marginBottom: 30,
     color: '#666666',
     fontFamily: 'Helvetica',
   },
   cardContainer: {
     flexDirection: 'column',
     alignItems: 'center',
-    gap: 40,
+    gap: 30,
   },
   cardWrapper: {
     width: '85.6mm',
     height: '53.98mm',
-    border: '2px solid #e0e0e0',
-    borderRadius: 8,
+    border: '1px solid #e5e7eb',
+    borderRadius: 6,
     overflow: 'hidden',
+    backgroundColor: '#ffffff',
+  },
+  cardImage: {
+    width: '100%',
+    height: '100%',
+    objectFit: 'cover'
   },
   cardImage: {
     width: '100%',
@@ -42,10 +48,10 @@ const styles = StyleSheet.create({
     objectFit: 'cover'
   },
   cardLabel: {
-    fontSize: 14,
+    fontSize: 12,
     fontWeight: 'bold',
     textAlign: 'center',
-    marginBottom: 10,
+    marginBottom: 8,
     color: '#2d4263',
     fontFamily: 'Helvetica',
   },
@@ -101,6 +107,14 @@ const styles = StyleSheet.create({
     width: 45,
     height: 30,
     objectFit: 'contain',
+    marginBottom: 8,
+  },
+  companyName: {
+    fontSize: 8,
+    fontWeight: 'bold',
+    color: '#2d4263',
+    textAlign: 'center',
+    fontFamily: 'Helvetica',
   },
   companyName: {
     fontSize: 8,

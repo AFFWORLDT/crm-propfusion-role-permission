@@ -158,9 +158,9 @@ function LoginForm() {
             </Button>
             <Typography mt={2} color="#757575" fontSize={15} align="center" width="100%">
                 Don&apos;t have an account?{' '}
-                <Link to="/onboard" style={{ color: '#111', textDecoration: 'none', fontWeight: 600 }}>
+                <a href="https://partnership.onexproperty.com/apply" target="_blank" rel="noopener noreferrer" style={{ color: '#111', textDecoration: 'none', fontWeight: 600 }}>
                     Sign up
-                </Link>
+                </a>
             </Typography>
         </Box>
     ) : (

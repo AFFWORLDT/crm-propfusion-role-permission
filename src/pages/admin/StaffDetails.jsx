@@ -17,6 +17,24 @@ function StaffDetails() {
     const { staffId } = useParams();
     const queryClient = useQueryClient();
     
+    // Mapping functions for staff level conversion
+    // Convert new labels to old values when saving (for API compatibility)
+    const getOldStaffLevel = (value) => {
+        if (!value) return value;
+        const normalized = String(value).trim();
+        // If it's already an old value, return as is
+        if (['Silver', 'Gold', 'Diamond'].includes(normalized)) {
+            return normalized;
+        }
+        // Convert new labels to old values (if any new labels still exist)
+        const mapping = {
+            'Essential': 'Silver',
+            'Premium': 'Gold',
+            'Exclusive': 'Diamond'
+        };
+        return mapping[normalized] || normalized; // Return original if no mapping found
+    };
+    
     // State for edit mode
     const [isEditing, setIsEditing] = useState(false);
     const [editData, setEditData] = useState({
@@ -97,13 +115,14 @@ function StaffDetails() {
     };
 
     const handleEditClick = () => {
+        // Keep the original staff_level value (old values: Silver, Gold, Diamond)
         setEditData({
-            job_type: staffData.job_type || '',
-            payment_type: staffData.payment_type || '',
-            commission_percentage: staffData.commission_percentage || '0',
-            salary: staffData.salary || '0',
-            designation: staffData.designation || '',
-            staff_level: staffData.staff_level || ''
+            job_type: staffData?.job_type || '',
+            payment_type: staffData?.payment_type || '',
+            commission_percentage: staffData?.commission_percentage || '0',
+            salary: staffData?.salary || '0',
+            designation: staffData?.designation || '',
+            staff_level: staffData?.staff_level || ''
         });
         setIsEditing(true);
     };
@@ -121,10 +140,11 @@ function StaffDetails() {
     };
 
     const handleSaveEdit = () => {
+        // Staff level is already in old format (Silver, Gold, Diamond), no conversion needed
         // Prepare base payload
         const payload = {
             designation: editData.designation,
-            staff_level: editData.staff_level
+            staff_level: editData.staff_level || ''
         };
 
         // Only include job_type if it's selected
@@ -249,6 +269,7 @@ function StaffDetails() {
     useEffect(() => {
         if (deleteError) toast.error(deleteError.message);
     }, [deleteError]);
+
 
     if (isLoading) return <Spinner type="fullPage" />;
     if (!staffData) return null;
@@ -709,40 +730,46 @@ function StaffDetails() {
                                     </select>
                                 ) : (
                                     <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-                                        {staffData.staff_level ? (
-                                            <span 
-                                                style={{ 
-                                                    background: staffData.staff_level === 'Diamond' ? 'linear-gradient(135deg, #e3f2fd, #bbdefb)' : 
-                                                               staffData.staff_level === 'Gold' ? 'linear-gradient(135deg, #fff3e0, #ffcc80)' : 
-                                                               'linear-gradient(135deg, #f3e5f5, #e1bee7)',
-                                                    color: staffData.staff_level === 'Diamond' ? '#1976d2' : 
-                                                           staffData.staff_level === 'Gold' ? '#f57c00' : '#7b1fa2',
-                                                    border: staffData.staff_level === 'Diamond' ? '2px solid #1976d2' : 
-                                                            staffData.staff_level === 'Gold' ? '2px solid #f57c00' : '2px solid #7b1fa2',
-                                                    padding: '0.75rem 1.5rem',
-                                                    borderRadius: '25px',
-                                                    fontWeight: '700',
-                                                    fontSize: '1rem',
-                                                    textTransform: 'uppercase',
-                                                    letterSpacing: '0.5px',
-                                                    boxShadow: '0 4px 12px rgba(0,0,0,0.15)',
-                                                    position: 'relative',
-                                                    overflow: 'hidden'
-                                                }}
-                                            >
-                                                <span style={{
-                                                    position: 'absolute',
-                                                    top: 0,
-                                                    left: 0,
-                                                    right: 0,
-                                                    height: '2px',
-                                                    background: staffData.staff_level === 'Diamond' ? 'linear-gradient(90deg, #1976d2, #42a5f5)' : 
-                                                               staffData.staff_level === 'Gold' ? 'linear-gradient(90deg, #f57c00, #ffb74d)' : 
-                                                               'linear-gradient(90deg, #7b1fa2, #ba68c8)'
-                                                }}></span>
-                                                {staffData.staff_level}
-                                            </span>
-                                        ) : (
+                                        {staffData.staff_level ? (() => {
+                                            // Use old values for display (Silver, Gold, Diamond)
+                                            const displayLevel = staffData.staff_level;
+                                            const isDiamond = displayLevel === 'Diamond';
+                                            const isGold = displayLevel === 'Gold';
+                                            return (
+                                                <span 
+                                                    style={{ 
+                                                        background: isDiamond ? 'linear-gradient(135deg, #e3f2fd, #bbdefb)' : 
+                                                                   isGold ? 'linear-gradient(135deg, #fff3e0, #ffcc80)' : 
+                                                                   'linear-gradient(135deg, #f3e5f5, #e1bee7)',
+                                                        color: isDiamond ? '#1976d2' : 
+                                                               isGold ? '#f57c00' : '#7b1fa2',
+                                                        border: isDiamond ? '2px solid #1976d2' : 
+                                                                isGold ? '2px solid #f57c00' : '2px solid #7b1fa2',
+                                                        padding: '0.75rem 1.5rem',
+                                                        borderRadius: '25px',
+                                                        fontWeight: '700',
+                                                        fontSize: '1rem',
+                                                        textTransform: 'uppercase',
+                                                        letterSpacing: '0.5px',
+                                                        boxShadow: '0 4px 12px rgba(0,0,0,0.15)',
+                                                        position: 'relative',
+                                                        overflow: 'hidden'
+                                                    }}
+                                                >
+                                                    <span style={{
+                                                        position: 'absolute',
+                                                        top: 0,
+                                                        left: 0,
+                                                        right: 0,
+                                                        height: '2px',
+                                                        background: isDiamond ? 'linear-gradient(90deg, #1976d2, #42a5f5)' : 
+                                                                   isGold ? 'linear-gradient(90deg, #f57c00, #ffb74d)' : 
+                                                                   'linear-gradient(90deg, #7b1fa2, #ba68c8)'
+                                                    }}></span>
+                                                    {displayLevel}
+                                                </span>
+                                            );
+                                        })() : (
                                             <span style={{ 
                                                 color: '#9e9e9e', 
                                                 fontStyle: 'italic',

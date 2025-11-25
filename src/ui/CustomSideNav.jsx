@@ -117,6 +117,7 @@ function CustomSideNav() {
                         <img
                             className={styles.logo}
                             src={data?.company_settings?.menu_logo_url}
+                            alt={data?.company_settings?.company_name || "Company Logo"}
                         />
                     </Link>
                 </div>

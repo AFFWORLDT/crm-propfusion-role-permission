@@ -9,10 +9,11 @@ import { useState, useMemo } from "react";
 import { useMyPermissions } from "../../hooks/useHasPermission";
 import toast from "react-hot-toast";
 import { useAuth } from "../../context/AuthContext";
-import { X, Check, Download, Search } from "lucide-react";
+import { X, Check, Download, Search, Filter, SortAsc, SortDesc, Package } from "lucide-react";
 import axiosInstance from "../../utils/axiosInstance";
 import QRCode from "qrcode";
 import useStaff from "../../features/admin/staff/useStaff";
+import useRoles from "../../features/admin/teams/useRoles";
 
 function Staff() {
     const [activeView, setActiveView] = useState("grid");
@@ -21,29 +22,114 @@ function Staff() {
 
     // Search functionality
     const [searchTerm, setSearchTerm] = useState("");
+    
+    // Filter states
+    const [sortBy, setSortBy] = useState("newest"); // newest, oldest
+    const [packageFilter, setPackageFilter] = useState("all"); // all, Essential, Premium, Exclusive
+    const [showFilters, setShowFilters] = useState(false);
 
-    // Fetch staff data
+    // Fetch staff data and roles
     const { isLoading, data: allStaffData, error } = useStaff();
+    const { data: rolesData } = useRoles();
 
-    // Filter staff data based on search term
-    const filteredStaffData = useMemo(() => {
-        if (!allStaffData || !searchTerm.trim()) {
-            return allStaffData || [];
+    // Debug: Log the actual data structure
+    console.log("Staff Data Sample:", allStaffData?.[0]);
+    console.log("Roles Data:", rolesData);
+    
+    // Debug: Log all unique role_id values in staff data
+    if (allStaffData) {
+        const uniqueRoleIds = [...new Set(allStaffData.map(staff => staff.role_id))].sort((a, b) => a - b);
+        console.log("Unique Role IDs in staff data:", uniqueRoleIds);
+    }
+
+    // Helper function to get package level for a staff member
+    const getStaffPackageLevel = (staff) => {
+        if (!staff.role_id) return "Essential";
+        
+        // Static mapping fallback - updated to handle higher role_id values
+        const roleIdToPackageMapping = {
+            // Essential roles - broader range
+            1: "Essential", 2: "Essential", 3: "Essential", 4: "Essential", 5: "Essential",
+            100: "Essential", 101: "Essential", 102: "Essential", 103: "Essential", 104: "Essential", 105: "Essential",
+            106: "Essential", 107: "Essential", 108: "Essential", 109: "Essential", 110: "Essential",
+            // Premium roles
+            6: "Premium", 7: "Premium", 8: "Premium", 9: "Premium", 10: "Premium",
+            111: "Premium", 112: "Premium", 113: "Premium", 114: "Premium", 115: "Premium",
+            // Exclusive roles
+            11: "Exclusive", 12: "Exclusive", 13: "Exclusive", 14: "Exclusive", 15: "Exclusive",
+            116: "Exclusive", 117: "Exclusive", 118: "Exclusive", 119: "Exclusive", 120: "Exclusive",
+        };
+
+        // Dynamic mapping from roles data
+        if (rolesData?.roles) {
+            const roleNameToPackageMapping = {
+                "Essential": "Essential", "Basic": "Essential", "Starter": "Essential", "Agent": "Essential", "Sales": "Essential",
+                "Premium": "Premium", "Advanced": "Premium", "Professional": "Premium", "Manager": "Premium", "Senior": "Premium",
+                "Exclusive": "Exclusive", "VIP": "Exclusive", "Elite": "Exclusive", "Director": "Exclusive", "Executive": "Exclusive",
+            };
+
+            const staffRole = rolesData.roles.find(role => role.role_id === staff.role_id);
+            if (staffRole) {
+                return roleNameToPackageMapping[staffRole.name] || "Essential";
+            }
         }
 
-        const searchLower = searchTerm.toLowerCase().trim();
-        return allStaffData.filter((staff) => {
-            const name = staff.name?.toLowerCase() || "";
-            const email = staff.email?.toLowerCase() || "";
-            const phone = staff.phone?.toLowerCase() || "";
+        return roleIdToPackageMapping[staff.role_id] || "Essential";
+    };
 
-            return (
-                name.includes(searchLower) ||
-                email.includes(searchLower) ||
-                phone.includes(searchLower)
-            );
+    // Filter and sort staff data
+    const filteredStaffData = useMemo(() => {
+        if (!allStaffData) {
+            return [];
+        }
+
+        let filtered = [...allStaffData];
+
+        // Apply search filter
+        if (searchTerm.trim()) {
+            const searchLower = searchTerm.toLowerCase().trim();
+            filtered = filtered.filter((staff) => {
+                const name = staff.name?.toLowerCase() || "";
+                const email = staff.email?.toLowerCase() || "";
+                const phone = staff.phone?.toLowerCase() || "";
+
+                return (
+                    name.includes(searchLower) ||
+                    email.includes(searchLower) ||
+                    phone.includes(searchLower)
+                );
+            });
+        }
+
+        // Apply package filter based on role_id
+        if (packageFilter !== "all") {
+            console.log(`Filtering by package: ${packageFilter}`);
+            const packageCounts = {};
+            
+            filtered = filtered.filter((staff) => {
+                const staffPackage = getStaffPackageLevel(staff);
+                packageCounts[staffPackage] = (packageCounts[staffPackage] || 0) + 1;
+                return staffPackage === packageFilter;
+            });
+            
+            console.log("Package level distribution:", packageCounts);
+            console.log(`Filtered to ${filtered.length} staff members for ${packageFilter}`);
+        }
+
+        // Apply sorting
+        filtered.sort((a, b) => {
+            const dateA = new Date(a.created_at || a.updated_at || 0);
+            const dateB = new Date(b.created_at || b.updated_at || 0);
+            
+            if (sortBy === "newest") {
+                return dateB - dateA; // Newest first
+            } else {
+                return dateA - dateB; // Oldest first
+            }
         });
-    }, [allStaffData, searchTerm]);
+
+        return filtered;
+    }, [allStaffData, searchTerm, sortBy, packageFilter, rolesData]);
 
     // Role selection modal state
     const [showRoleModal, setShowRoleModal] = useState(false);
@@ -165,121 +251,339 @@ function Staff() {
                 }}
             >
                 <div style={{ backgroundColor: "#f5f4fa", boxShadow: "none" }}>
-                    {/* Search Bar */}
+                    {/* Search and Filters Section */}
                     <div
                         style={{
-                            display: "flex",
-                            justifyContent: "center",
                             marginTop: "2rem",
                             marginBottom: "1rem",
                         }}
                     >
+                        {/* Search Bar */}
                         <div
                             style={{
-                                position: "relative",
-                                width: "100%",
-                                maxWidth: "500px",
+                                display: "flex",
+                                justifyContent: "center",
+                                marginBottom: "1rem",
                             }}
                         >
-                            <Search
-                                size={20}
+                            <div
                                 style={{
-                                    position: "absolute",
-                                    left: "12px",
-                                    top: "50%",
-                                    transform: "translateY(-50%)",
-                                    color: "#6b7280",
-                                    zIndex: 1,
-                                }}
-                            />
-                            <input
-                                type="text"
-                                placeholder="Search by name, email, or phone..."
-                                value={searchTerm}
-                                onChange={(e) => setSearchTerm(e.target.value)}
-                                style={{
+                                    position: "relative",
                                     width: "100%",
-                                    padding: "12px 12px 12px 44px",
+                                    maxWidth: "500px",
+                                }}
+                            >
+                                <Search
+                                    size={20}
+                                    style={{
+                                        position: "absolute",
+                                        left: "12px",
+                                        top: "50%",
+                                        transform: "translateY(-50%)",
+                                        color: "#6b7280",
+                                        zIndex: 1,
+                                    }}
+                                />
+                                <input
+                                    type="text"
+                                    placeholder="Search by name, email, or phone..."
+                                    value={searchTerm}
+                                    onChange={(e) => setSearchTerm(e.target.value)}
+                                    style={{
+                                        width: "100%",
+                                        padding: "12px 12px 12px 44px",
+                                        border: "1px solid #d1d5db",
+                                        borderRadius: "8px",
+                                        fontSize: "14px",
+                                        backgroundColor: "white",
+                                        outline: "none",
+                                        transition: "border-color 0.2s ease",
+                                        boxShadow: "0 1px 3px rgba(0, 0, 0, 0.1)",
+                                    }}
+                                    onFocus={(e) => {
+                                        e.target.style.borderColor = "#3b82f6";
+                                        e.target.style.boxShadow =
+                                            "0 0 0 3px rgba(59, 130, 246, 0.1)";
+                                    }}
+                                    onBlur={(e) => {
+                                        e.target.style.borderColor = "#d1d5db";
+                                        e.target.style.boxShadow =
+                                            "0 1px 3px rgba(0, 0, 0, 0.1)";
+                                    }}
+                                />
+                                {searchTerm && (
+                                    <button
+                                        onClick={() => setSearchTerm("")}
+                                        style={{
+                                            position: "absolute",
+                                            right: "12px",
+                                            top: "50%",
+                                            transform: "translateY(-50%)",
+                                            background: "none",
+                                            border: "none",
+                                            cursor: "pointer",
+                                            color: "#6b7280",
+                                            padding: "4px",
+                                            borderRadius: "4px",
+                                            display: "flex",
+                                            alignItems: "center",
+                                            justifyContent: "center",
+                                        }}
+                                        onMouseEnter={(e) => {
+                                            e.currentTarget.style.backgroundColor =
+                                                "#f3f4f6";
+                                        }}
+                                        onMouseLeave={(e) => {
+                                            e.currentTarget.style.backgroundColor =
+                                                "transparent";
+                                        }}
+                                    >
+                                        <X size={16} />
+                                    </button>
+                                )}
+                            </div>
+                        </div>
+
+                        {/* Filter Controls */}
+                        <div
+                            style={{
+                                display: "flex",
+                                justifyContent: "center",
+                                alignItems: "center",
+                                gap: "1rem",
+                                flexWrap: "wrap",
+                                marginBottom: "1rem",
+                            }}
+                        >
+                            {/* Filter Toggle Button */}
+                            <button
+                                onClick={() => setShowFilters(!showFilters)}
+                                style={{
+                                    display: "flex",
+                                    alignItems: "center",
+                                    gap: "0.5rem",
+                                    padding: "8px 16px",
+                                    backgroundColor: showFilters ? "#3b82f6" : "white",
+                                    color: showFilters ? "white" : "#374151",
                                     border: "1px solid #d1d5db",
                                     borderRadius: "8px",
                                     fontSize: "14px",
-                                    backgroundColor: "white",
-                                    outline: "none",
-                                    transition: "border-color 0.2s ease",
+                                    fontWeight: "500",
+                                    cursor: "pointer",
+                                    transition: "all 0.2s ease",
                                     boxShadow: "0 1px 3px rgba(0, 0, 0, 0.1)",
                                 }}
-                                onFocus={(e) => {
-                                    e.target.style.borderColor = "#3b82f6";
-                                    e.target.style.boxShadow =
-                                        "0 0 0 3px rgba(59, 130, 246, 0.1)";
+                                onMouseEnter={(e) => {
+                                    if (!showFilters) {
+                                        e.target.style.backgroundColor = "#f9fafb";
+                                        e.target.style.borderColor = "#9ca3af";
+                                    }
                                 }}
-                                onBlur={(e) => {
-                                    e.target.style.borderColor = "#d1d5db";
-                                    e.target.style.boxShadow =
-                                        "0 1px 3px rgba(0, 0, 0, 0.1)";
+                                onMouseLeave={(e) => {
+                                    if (!showFilters) {
+                                        e.target.style.backgroundColor = "white";
+                                        e.target.style.borderColor = "#d1d5db";
+                                    }
                                 }}
-                            />
-                            {searchTerm && (
+                            >
+                                <Filter size={16} />
+                                Filters
+                                {(sortBy !== "newest" || packageFilter !== "all") && (
+                                    <div
+                                        style={{
+                                            width: "8px",
+                                            height: "8px",
+                                            backgroundColor: "#ef4444",
+                                            borderRadius: "50%",
+                                            marginLeft: "4px",
+                                        }}
+                                    />
+                                )}
+                            </button>
+
+                            {/* Quick Sort Buttons */}
+                            <div
+                                style={{
+                                    display: "flex",
+                                    gap: "0.5rem",
+                                }}
+                            >
                                 <button
-                                    onClick={() => setSearchTerm("")}
+                                    onClick={() => setSortBy("newest")}
                                     style={{
-                                        position: "absolute",
-                                        right: "12px",
-                                        top: "50%",
-                                        transform: "translateY(-50%)",
-                                        background: "none",
-                                        border: "none",
-                                        cursor: "pointer",
-                                        color: "#6b7280",
-                                        padding: "4px",
-                                        borderRadius: "4px",
                                         display: "flex",
                                         alignItems: "center",
-                                        justifyContent: "center",
-                                    }}
-                                    onMouseEnter={(e) => {
-                                        e.currentTarget.style.backgroundColor =
-                                            "#f3f4f6";
-                                    }}
-                                    onMouseLeave={(e) => {
-                                        e.currentTarget.style.backgroundColor =
-                                            "transparent";
+                                        gap: "0.5rem",
+                                        padding: "8px 12px",
+                                        backgroundColor: sortBy === "newest" ? "#10b981" : "white",
+                                        color: sortBy === "newest" ? "white" : "#374151",
+                                        border: "1px solid #d1d5db",
+                                        borderRadius: "6px",
+                                        fontSize: "13px",
+                                        fontWeight: "500",
+                                        cursor: "pointer",
+                                        transition: "all 0.2s ease",
+                                        boxShadow: "0 1px 2px rgba(0, 0, 0, 0.05)",
                                     }}
                                 >
-                                    <X size={16} />
+                                    <SortDesc size={14} />
+                                    Newest
                                 </button>
-                            )}
-                        </div>
-                    </div>
+                                <button
+                                    onClick={() => setSortBy("oldest")}
+                                    style={{
+                                        display: "flex",
+                                        alignItems: "center",
+                                        gap: "0.5rem",
+                                        padding: "8px 12px",
+                                        backgroundColor: sortBy === "oldest" ? "#10b981" : "white",
+                                        color: sortBy === "oldest" ? "white" : "#374151",
+                                        border: "1px solid #d1d5db",
+                                        borderRadius: "6px",
+                                        fontSize: "13px",
+                                        fontWeight: "500",
+                                        cursor: "pointer",
+                                        transition: "all 0.2s ease",
+                                        boxShadow: "0 1px 2px rgba(0, 0, 0, 0.05)",
+                                    }}
+                                >
+                                    <SortAsc size={14} />
+                                    Oldest
+                                </button>
+                            </div>
 
-                    {/* Search Results Count */}
-                    {searchTerm && (
-                        <div
-                            style={{
-                                textAlign: "center",
-                                marginBottom: "1rem",
-                                color: "#6b7280",
-                                fontSize: "14px",
-                            }}
-                        >
-                            {filteredStaffData.length === 0 ? (
-                                <span>
-                                    No staff members found matching &quot;
-                                    {searchTerm}&quot;
-                                </span>
-                            ) : (
-                                <span>
-                                    Found {filteredStaffData.length} staff
-                                    member
-                                    {filteredStaffData.length !== 1 ? "s" : ""}
-                                    {allStaffData &&
-                                        allStaffData.length !==
-                                            filteredStaffData.length &&
-                                        ` out of ${allStaffData.length} total`}
-                                </span>
-                            )}
+                            {/* Results Count */}
+                            <div
+                                style={{
+                                    fontSize: "14px",
+                                    color: "#6b7280",
+                                    fontWeight: "500",
+                                }}
+                            >
+                                {filteredStaffData.length} staff member{filteredStaffData.length !== 1 ? 's' : ''}
+                            </div>
                         </div>
-                    )}
+
+                        {/* Advanced Filters Panel */}
+                        {showFilters && (
+                            <div
+                                style={{
+                                    backgroundColor: "white",
+                                    border: "1px solid #e5e7eb",
+                                    borderRadius: "12px",
+                                    padding: "1.5rem",
+                                    marginBottom: "1rem",
+                                    boxShadow: "0 4px 6px rgba(0, 0, 0, 0.05)",
+                                }}
+                            >
+                                <div
+                                    style={{
+                                        display: "flex",
+                                        alignItems: "center",
+                                        gap: "0.5rem",
+                                        marginBottom: "1rem",
+                                    }}
+                                >
+                                    <Package size={18} color="#6b7280" />
+                                    <h3
+                                        style={{
+                                            margin: 0,
+                                            fontSize: "16px",
+                                            fontWeight: "600",
+                                            color: "#374151",
+                                        }}
+                                    >
+                                        Filter by Package Level
+                                    </h3>
+                                </div>
+
+                                <div
+                                    style={{
+                                        display: "flex",
+                                        gap: "0.75rem",
+                                        flexWrap: "wrap",
+                                    }}
+                                >
+                                    {[
+                                        { value: "all", label: "All Packages", color: "#6b7280" },
+                                        { value: "Essential", label: "Essential", color: "#7b1fa2" },
+                                        { value: "Premium", label: "Premium", color: "#f57c00" },
+                                        { value: "Exclusive", label: "Exclusive", color: "#1976d2" },
+                                    ].map((option) => (
+                                        <button
+                                            key={option.value}
+                                            onClick={() => setPackageFilter(option.value)}
+                                            style={{
+                                                padding: "8px 16px",
+                                                backgroundColor: packageFilter === option.value ? option.color : "white",
+                                                color: packageFilter === option.value ? "white" : option.color,
+                                                border: `2px solid ${option.color}`,
+                                                borderRadius: "20px",
+                                                fontSize: "14px",
+                                                fontWeight: "600",
+                                                cursor: "pointer",
+                                                transition: "all 0.2s ease",
+                                                textTransform: "uppercase",
+                                                letterSpacing: "0.5px",
+                                            }}
+                                            onMouseEnter={(e) => {
+                                                if (packageFilter !== option.value) {
+                                                    e.target.style.backgroundColor = option.color;
+                                                    e.target.style.color = "white";
+                                                }
+                                            }}
+                                            onMouseLeave={(e) => {
+                                                if (packageFilter !== option.value) {
+                                                    e.target.style.backgroundColor = "white";
+                                                    e.target.style.color = option.color;
+                                                }
+                                            }}
+                                        >
+                                            {option.label}
+                                        </button>
+                                    ))}
+                                </div>
+
+                                {/* Clear Filters */}
+                                {(sortBy !== "newest" || packageFilter !== "all") && (
+                                    <div
+                                        style={{
+                                            marginTop: "1rem",
+                                            paddingTop: "1rem",
+                                            borderTop: "1px solid #e5e7eb",
+                                        }}
+                                    >
+                                        <button
+                                            onClick={() => {
+                                                setSortBy("newest");
+                                                setPackageFilter("all");
+                                            }}
+                                            style={{
+                                                padding: "6px 12px",
+                                                backgroundColor: "transparent",
+                                                color: "#6b7280",
+                                                border: "1px solid #d1d5db",
+                                                borderRadius: "6px",
+                                                fontSize: "13px",
+                                                cursor: "pointer",
+                                                transition: "all 0.2s ease",
+                                            }}
+                                            onMouseEnter={(e) => {
+                                                e.target.style.backgroundColor = "#f9fafb";
+                                                e.target.style.borderColor = "#9ca3af";
+                                            }}
+                                            onMouseLeave={(e) => {
+                                                e.target.style.backgroundColor = "transparent";
+                                                e.target.style.borderColor = "#d1d5db";
+                                            }}
+                                        >
+                                            Clear All Filters
+                                        </button>
+                                    </div>
+                                )}
+                            </div>
+                        )}
+                    </div>
 
                     <div
                         style={{

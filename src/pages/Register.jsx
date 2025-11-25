@@ -325,7 +325,7 @@ function Register() {
                         >
                             By creating an account, you agree to our{" "}
                             <Link
-                                href="https://www.propfusion.io/terms"
+                                href="https://www.onexproperty.com/terms"
                                 underline="hover"
                                 target="_blank"
                                 rel="noopener noreferrer"
@@ -334,7 +334,7 @@ function Register() {
                             </Link>{" "}
                             and{" "}
                             <Link
-                                href="https://www.propfusion.io/privacy"
+                                href="https://www.onexproperty.com/privacy"
                                 underline="hover"
                                 target="_blank"
                                 rel="noopener noreferrer"

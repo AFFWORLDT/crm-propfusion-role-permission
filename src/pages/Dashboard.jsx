@@ -14,6 +14,10 @@ import useLeadReportsSummary from "../features/dashboard/useLeadReportsSummary";
 
 import TabBar from "../ui/TabBar";
 import { DASHBAORDTABS } from "../utils/constants";
+import LuxuryProfileActions from "../components/dashboard/LuxuryProfileActions";
+import PremiumWalletBalance from "../components/dashboard/PremiumWalletBalance";
+import PremiumAffiliateLink from "../components/dashboard/PremiumAffiliateLink";
+import SocialMediaLinks from "../components/dashboard/SocialMediaLinks";
 
 const DashboardSummary = lazy(
     () => import("../components/dashboard/sections/DashboardSummary")
@@ -402,6 +406,17 @@ function Dashboard() {
                     backgroundColor: "#ffffff",
                 }}
             >
+                {/* Luxury Profile Actions - Quick Access Tools */}
+                <LuxuryProfileActions colorCode={allDetailsData?.company_settings?.sidebar_color_code || "#020079"} />
+                
+                {/* Social Media Links - Connect With Us */}
+                <SocialMediaLinks />
+                
+                {/* Premium Wallet Balance - Financial Overview */}
+                <PremiumWalletBalance colorCode={allDetailsData?.company_settings?.sidebar_color_code || "#020079"} />
+                
+                {/* Premium Affiliate Link - Network Growth */}
+                <PremiumAffiliateLink colorCode={allDetailsData?.company_settings?.sidebar_color_code || "#020079"} />
                 
                 {/* Dashboard Summary - show for all users */}
                 <Suspense fallback={<SectionLoader />}>

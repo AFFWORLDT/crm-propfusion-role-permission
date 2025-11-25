@@ -382,8 +382,13 @@ function SectionTop({ heading, children }) {
                                 unseenNotificationCount?.current_user_details
                                     ?.avatar || DummyImage
                             }
-                            width={32}
-                            height={32}
+                            style={{
+                                width: '100%',
+                                height: '100%',
+                                borderRadius: '50%',
+                                objectFit: 'cover',
+                                display: 'block'
+                            }}
                             onError={(e) => {
                                 e.currentTarget.src = DummyImage;
                             }}
@@ -443,14 +448,14 @@ function SectionTop({ heading, children }) {
                         )}
                         
                         {/* Affiliate Wallet - show for users with manage_agent or basic_affiliate permission */}
-                        {(agentPermission.canManage || hasPermission("manage_agent") || hasPermission("basic_affiliate")) && (
+                        {/* {(agentPermission.canManage || hasPermission("manage_agent") || hasPermission("basic_affiliate")) && (
                             <Menus.Button
                                 onClick={() => navigate(`/admin/affiliate-wallet`)}
                                 icon="/icons/wallet.svg"
                             >
                                 <span>Affiliate Wallet</span>
                             </Menus.Button>
-                        )}
+                        )} */}
                         
                         {/* QR Code - show for users with manage_agent or basic_affiliate permission */}
                         {(agentPermission.canManage || hasPermission("manage_agent") || hasPermission("basic_affiliate")) && (

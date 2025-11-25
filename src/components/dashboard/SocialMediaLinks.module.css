@@ -1,0 +1,773 @@
+.socialMediaLinks {
+    margin: 2rem 0;
+    padding: 2rem;
+    background: #ffffff;
+    border-radius: 16px;
+    border: 1px solid #e5e7eb;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+    position: relative;
+}
+
+.header {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    margin-bottom: 2.5rem;
+    position: relative;
+    z-index: 2;
+}
+
+.headerIcon {
+    width: 60px;
+    height: 60px;
+    background: linear-gradient(135deg, #6366f1 0%, #4f46e5 50%, #3730a3 100%);
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 
+        0 8px 32px rgba(99, 102, 241, 0.25),
+        inset 0 1px 0 rgba(255, 255, 255, 0.2);
+    position: relative;
+    overflow: hidden;
+}
+
+.headerIcon::before {
+    content: "";
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(
+        45deg,
+        transparent,
+        rgba(255, 255, 255, 0.1),
+        transparent
+    );
+    animation: shimmer 3s infinite;
+}
+
+@keyframes shimmer {
+    0% {
+        transform: translateX(-100%) translateY(-100%) rotate(45deg);
+    }
+    100% {
+        transform: translateX(100%) translateY(100%) rotate(45deg);
+    }
+}
+
+.sparkleIcon {
+    width: 28px;
+    height: 28px;
+    color: white;
+    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2));
+    z-index: 1;
+}
+
+.headerContent {
+    flex: 1;
+}
+
+.title {
+    font-size: 2.2rem;
+    font-weight: 800;
+    background: linear-gradient(135deg, #1a1a1a 0%, #4a4a4a 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin: 0 0 0.5rem 0;
+    letter-spacing: -0.02em;
+}
+
+.subtitle {
+    font-size: 1.1rem;
+    color: #64748b;
+    margin: 0;
+    font-weight: 500;
+}
+
+.socialGrid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+    gap: 1.5rem;
+    position: relative;
+    z-index: 2;
+}
+
+.socialCard {
+    position: relative;
+    height: 160px;
+    perspective: 1000px;
+    cursor: pointer;
+}
+
+.cardBackground {
+    width: 100%;
+    height: 100%;
+    border-radius: 16px;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 
+        0 4px 12px rgba(0, 0, 0, 0.1),
+        0 2px 4px rgba(0, 0, 0, 0.06);
+}
+
+.cardBackground::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(
+        135deg,
+        rgba(255, 255, 255, 0.1) 0%,
+        rgba(255, 255, 255, 0.05) 100%
+    );
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.cardBackground:hover {
+    transform: translateY(-8px) scale(1.02);
+    box-shadow: 
+        0 20px 40px rgba(0, 0, 0, 0.15),
+        0 8px 16px rgba(0, 0, 0, 0.1);
+    border-color: rgba(255, 255, 255, 0.4);
+}
+
+.cardBackground:hover::before {
+    opacity: 1;
+}
+
+.cardContent {
+    padding: 1.5rem;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    position: relative;
+    z-index: 2;
+}
+
+.iconContainer {
+    width: 50px;
+    height: 50px;
+    background: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(10px);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    box-shadow: 
+        0 4px 16px rgba(0, 0, 0, 0.1),
+        inset 0 1px 0 rgba(255, 255, 255, 0.2);
+    transition: all 0.3s ease;
+}
+
+.cardBackground:hover .iconContainer {
+    transform: scale(1.1) rotate(5deg);
+    background: rgba(255, 255, 255, 0.3);
+    box-shadow: 
+        0 6px 20px rgba(0, 0, 0, 0.15),
+        inset 0 1px 0 rgba(255, 255, 255, 0.3);
+}
+
+.socialIcon {
+    width: 24px;
+    height: 24px;
+    color: white;
+    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2));
+    transition: all 0.3s ease;
+}
+
+.cardBackground:hover .socialIcon {
+    transform: scale(1.1);
+}
+
+.textContent {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: 0.75rem 0;
+}
+
+.socialName {
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: white;
+    margin: 0 0 0.25rem 0;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    line-height: 1.3;
+}
+
+.socialDescription {
+    font-size: 0.9rem;
+    color: rgba(255, 255, 255, 0.9);
+    margin: 0;
+    font-weight: 500;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+}
+
+.actionButton {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    margin-top: auto;
+}
+
+.externalIcon {
+    width: 20px;
+    height: 20px;
+    color: rgba(255, 255, 255, 0.8);
+    transition: all 0.3s ease;
+}
+
+.cardBackground:hover .externalIcon {
+    color: white;
+    transform: translateX(4px);
+}
+
+/* Individual social media color variations */
+.socialCard:nth-child(1) .cardBackground {
+    background: linear-gradient(135deg, #1877F2 0%, #1565C0 100%);
+}
+
+.socialCard:nth-child(2) .cardBackground {
+    background: linear-gradient(135deg, #E4405F 0%, #C13584 100%);
+}
+
+.socialCard:nth-child(3) .cardBackground {
+    background: linear-gradient(135deg, #FF0000 0%, #CC0000 100%);
+}
+
+.socialCard:nth-child(4) .cardBackground {
+    background: linear-gradient(135deg, #000000 0%, #1a1a1a 100%);
+}
+
+.socialCard:nth-child(5) .cardBackground {
+    background: linear-gradient(135deg, #BD081C 0%, #9B0718 100%);
+}
+
+.socialCard:nth-child(6) .cardBackground {
+    background: linear-gradient(135deg, #0077B5 0%, #005885 100%);
+}
+
+/* Float animation for cards */
+@keyframes float {
+    0%, 100% {
+        transform: translateY(0px);
+    }
+    50% {
+        transform: translateY(-10px);
+    }
+}
+
+.socialCard:nth-child(1) .cardBackground {
+    animation: float 6s ease-in-out infinite;
+}
+
+.socialCard:nth-child(2) .cardBackground {
+    animation: float 6s ease-in-out infinite 1s;
+}
+
+.socialCard:nth-child(3) .cardBackground {
+    animation: float 6s ease-in-out infinite 2s;
+}
+
+.socialCard:nth-child(4) .cardBackground {
+    animation: float 6s ease-in-out infinite 3s;
+}
+
+.socialCard:nth-child(5) .cardBackground {
+    animation: float 6s ease-in-out infinite 4s;
+}
+
+.socialCard:nth-child(6) .cardBackground {
+    animation: float 6s ease-in-out infinite 5s;
+}
+
+/* Embed Card Styles */
+.embedCard {
+    height: auto;
+    min-height: 550px;
+    background: #ffffff;
+    border-radius: 16px;
+    border: 1px solid #e5e7eb;
+    box-shadow: 
+        0 4px 12px rgba(0, 0, 0, 0.08),
+        0 2px 4px rgba(0, 0, 0, 0.04);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+}
+
+.embedCard:hover {
+    transform: translateY(-8px) scale(1.02);
+    box-shadow: 
+        0 20px 40px rgba(0, 0, 0, 0.12),
+        0 8px 16px rgba(0, 0, 0, 0.08);
+    border-color: #d1d5db;
+}
+
+.embedHeader {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem 1.5rem;
+    border-bottom: 1px solid #e5e7eb;
+    background: #f9fafb;
+}
+
+.embedTitle {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #1a1a1a;
+    margin: 0;
+}
+
+.embedLink {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    border-radius: 8px;
+    color: #6366f1;
+    transition: all 0.3s ease;
+    text-decoration: none;
+}
+
+.embedLink:hover {
+    background: #f3f4f6;
+    color: #4f46e5;
+}
+
+.embedIcon {
+    width: 18px;
+    height: 18px;
+}
+
+.embedContainer {
+    flex: 1;
+    width: 100%;
+    overflow: hidden;
+    position: relative;
+    background: #ffffff;
+}
+
+.embedContainer iframe {
+    width: 100%;
+    height: 100%;
+    min-height: 500px;
+    border: none;
+    display: block;
+}
+
+.embedContainer a {
+    display: block;
+    width: 100%;
+    height: 100%;
+    min-height: 500px;
+}
+
+/* Instagram Card Special Styles */
+.instagramCard {
+    height: auto;
+    min-height: 320px;
+    grid-column: span 1;
+}
+
+.instagramBackground {
+    width: 100%;
+    min-height: 320px;
+    background: #ffffff;
+    border-radius: 16px;
+    border: 1px solid #e5e7eb;
+    box-shadow: 
+        0 4px 12px rgba(0, 0, 0, 0.08),
+        0 2px 4px rgba(0, 0, 0, 0.04);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    overflow: hidden;
+    cursor: pointer;
+}
+
+.instagramBackground:hover {
+    transform: translateY(-8px) scale(1.02);
+    box-shadow: 
+        0 20px 40px rgba(0, 0, 0, 0.12),
+        0 8px 16px rgba(0, 0, 0, 0.08);
+    border-color: #d1d5db;
+}
+
+.instagramContent {
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+}
+
+.instagramHeader {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+}
+
+.instagramProfilePic {
+    flex-shrink: 0;
+}
+
+.instagramProfileBorder {
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    padding: 3px;
+    background: linear-gradient(
+        45deg,
+        #f09433 0%,
+        #e6683c 25%,
+        #dc2743 50%,
+        #cc2366 75%,
+        #bc1888 100%
+    );
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.instagramProfileInner {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    background: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.instagramProfileIcon {
+    width: 40px;
+    height: 40px;
+    color: #E4405F;
+}
+
+.instagramProfileInfo {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+}
+
+.instagramUsername {
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: #262626;
+    line-height: 1.2;
+}
+
+.instagramName {
+    font-size: 1rem;
+    font-weight: 400;
+    color: #262626;
+    line-height: 1.2;
+}
+
+.instagramStats {
+    display: flex;
+    gap: 1rem;
+    margin-top: 0.5rem;
+}
+
+.instagramStatItem {
+    font-size: 0.85rem;
+    color: #8e8e8e;
+    line-height: 1.2;
+}
+
+.instagramStatItem strong {
+    font-weight: 600;
+    color: #262626;
+}
+
+.instagramPostsGrid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0.5rem;
+    margin-top: 0.5rem;
+}
+
+.instagramPostThumb {
+    aspect-ratio: 1;
+    background: linear-gradient(
+        135deg,
+        #f5f5f5 0%,
+        #e0e0e0 100%
+    );
+    border-radius: 4px;
+    position: relative;
+    overflow: hidden;
+}
+
+.instagramPostThumb::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(
+        45deg,
+        rgba(240, 148, 51, 0.1) 0%,
+        rgba(230, 104, 60, 0.1) 25%,
+        rgba(220, 39, 67, 0.1) 50%,
+        rgba(204, 35, 102, 0.1) 75%,
+        rgba(188, 24, 136, 0.1) 100%
+    );
+}
+
+.instagramPostThumb:nth-child(1) {
+    background: linear-gradient(135deg, #e0f2fe 0%, #bae6fd 100%);
+}
+
+.instagramPostThumb:nth-child(2) {
+    background: linear-gradient(135deg, #fce7f3 0%, #fbcfe8 100%);
+}
+
+.instagramPostThumb:nth-child(3) {
+    background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+}
+
+.instagramFooter {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: 1rem;
+    border-top: 1px solid #e5e7eb;
+    margin-top: auto;
+}
+
+.instagramLinkText {
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: #6366f1;
+}
+
+.instagramExternalIcon {
+    width: 18px;
+    height: 18px;
+    color: #6366f1;
+    transition: all 0.3s ease;
+}
+
+.instagramBackground:hover .instagramExternalIcon {
+    transform: translateX(4px);
+    color: #4f46e5;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .socialMediaLinks {
+        padding: 1.5rem;
+        margin: 1.5rem 0;
+    }
+
+    .header {
+        gap: 1rem;
+        margin-bottom: 2rem;
+    }
+
+    .headerIcon {
+        width: 50px;
+        height: 50px;
+    }
+
+    .sparkleIcon {
+        width: 24px;
+        height: 24px;
+    }
+
+    .title {
+        font-size: 1.8rem;
+    }
+
+    .subtitle {
+        font-size: 1rem;
+    }
+
+    .socialGrid {
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 1.25rem;
+    }
+
+    .embedCard {
+        min-height: 450px;
+    }
+
+    .embedContainer iframe,
+    .embedContainer a {
+        min-height: 400px;
+    }
+
+    .socialCard {
+        height: 150px;
+    }
+
+    .cardContent {
+        padding: 1.25rem;
+    }
+
+    .socialName {
+        font-size: 1.2rem;
+    }
+
+    .socialDescription {
+        font-size: 0.85rem;
+    }
+
+    .instagramCard {
+        min-height: 280px;
+    }
+
+    .instagramContent {
+        padding: 1.25rem;
+    }
+
+    .instagramProfileBorder {
+        width: 60px;
+        height: 60px;
+    }
+
+    .instagramProfileIcon {
+        width: 35px;
+        height: 35px;
+    }
+
+    .instagramUsername {
+        font-size: 0.9rem;
+    }
+
+    .instagramName {
+        font-size: 0.95rem;
+    }
+
+    .instagramStats {
+        gap: 0.75rem;
+    }
+
+    .instagramStatItem {
+        font-size: 0.8rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .socialMediaLinks {
+        padding: 1rem;
+        margin: 1rem 0;
+    }
+
+    .header {
+        flex-direction: column;
+        text-align: center;
+        gap: 0.8rem;
+    }
+
+    .title {
+        font-size: 1.6rem;
+    }
+
+    .socialGrid {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+
+    .embedCard {
+        min-height: 400px;
+    }
+
+    .embedContainer iframe,
+    .embedContainer a {
+        min-height: 350px;
+    }
+
+    .embedHeader {
+        padding: 0.75rem 1rem;
+    }
+
+    .embedTitle {
+        font-size: 1rem;
+    }
+
+    .socialCard {
+        height: 140px;
+    }
+
+    .cardContent {
+        padding: 1rem;
+    }
+
+    .iconContainer {
+        width: 45px;
+        height: 45px;
+    }
+
+    .socialIcon {
+        width: 20px;
+        height: 20px;
+    }
+
+    .socialName {
+        font-size: 1.1rem;
+    }
+
+    .instagramCard {
+        min-height: 260px;
+    }
+
+    .instagramContent {
+        padding: 1rem;
+        gap: 1rem;
+    }
+
+    .instagramHeader {
+        gap: 0.75rem;
+    }
+
+    .instagramProfileBorder {
+        width: 55px;
+        height: 55px;
+    }
+
+    .instagramProfileIcon {
+        width: 30px;
+        height: 30px;
+    }
+
+    .instagramUsername {
+        font-size: 0.85rem;
+    }
+
+    .instagramName {
+        font-size: 0.9rem;
+    }
+
+    .instagramStats {
+        flex-direction: column;
+        gap: 0.25rem;
+        margin-top: 0.25rem;
+    }
+
+    .instagramStatItem {
+        font-size: 0.75rem;
+    }
+
+    .instagramPostsGrid {
+        gap: 0.4rem;
+    }
+}
+

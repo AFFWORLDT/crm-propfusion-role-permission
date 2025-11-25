@@ -1,0 +1,828 @@
+.premiumAffiliateTree {
+    margin: 2rem 0;
+    padding: 2rem;
+    background: #ffffff;
+    border-radius: 16px;
+    border: 1px solid #e5e7eb;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+    position: relative;
+}
+
+.premiumAffiliateTree::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    pointer-events: none;
+}
+
+.header {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    margin-bottom: 2.5rem;
+    position: relative;
+    z-index: 2;
+}
+
+.headerIcon {
+    width: 60px;
+    height: 60px;
+    background: #4A505C;
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 
+        0 8px 32px rgba(30, 41, 59, 0.25),
+        inset 0 1px 0 rgba(255, 255, 255, 0.2);
+    position: relative;
+    overflow: hidden;
+}
+
+.headerIcon::before {
+    content: "";
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    animation: shimmer 3s infinite;
+}
+
+.sparkleIcon {
+    width: 28px;
+    height: 28px;
+    color: white;
+    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2));
+    z-index: 1;
+}
+
+.headerContent {
+    flex: 1;
+}
+
+.title {
+    font-size: 2.2rem;
+    font-weight: 800;
+    background: #4A505C;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin: 0 0 0.5rem 0;
+    letter-spacing: -0.02em;
+}
+
+.subtitle {
+    font-size: 1.1rem;
+    color: #64748b;
+    margin: 0;
+    font-weight: 500;
+}
+
+.headerActions {
+    display: flex;
+    gap: 0.75rem;
+}
+
+.toggleButton,
+.refreshButton {
+    width: 48px;
+    height: 48px;
+    background: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #64748b;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.toggleButton:hover,
+.refreshButton:hover {
+    background: rgba(255, 255, 255, 0.3);
+    transform: scale(1.05);
+}
+
+.refreshButton:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.statsOverview {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+    position: relative;
+    z-index: 2;
+}
+
+.statCard {
+    background: rgba(255, 255, 255, 0.9);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 16px;
+    padding: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.05);
+}
+
+.statCard:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+}
+
+.statIcon {
+    width: 48px;
+    height: 48px;
+    background: #4A505C;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    box-shadow: 0 4px 12px rgba(55, 65, 81, 0.3);
+}
+
+.statContent {
+    flex: 1;
+}
+
+.statValue {
+    font-size: 1.8rem;
+    font-weight: 800;
+    color: #1e293b;
+    line-height: 1;
+    margin-bottom: 0.25rem;
+}
+
+.statLabel {
+    font-size: 0.9rem;
+    color: #64748b;
+    font-weight: 500;
+}
+
+.warningBanner {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    background: rgba(254, 243, 199, 0.9);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(245, 158, 11, 0.3);
+    border-radius: 12px;
+    padding: 1rem 1.5rem;
+    margin-bottom: 2rem;
+    color: #92400e;
+    position: relative;
+    z-index: 2;
+}
+
+.warningIcon {
+    width: 20px;
+    height: 20px;
+    flex-shrink: 0;
+    color: #f59e0b;
+}
+
+.warningContent {
+    flex: 1;
+    font-size: 0.9rem;
+}
+
+.warningContent strong {
+    color: #92400e;
+}
+
+.warningRefreshBtn {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: #f59e0b;
+    border: 1px solid #f59e0b;
+    border-radius: 8px;
+    padding: 0.5rem 1rem;
+    color: white;
+    font-size: 0.8rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.warningRefreshBtn:hover {
+    background: #d97706;
+    border-color: #d97706;
+}
+
+.warningRefreshIcon {
+    width: 14px;
+    height: 14px;
+}
+
+.treeContent {
+    background: rgba(255, 255, 255, 0.9);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 20px;
+    padding: 2rem;
+    position: relative;
+    z-index: 2;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.05);
+}
+
+.treeView {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 1rem 0;
+}
+
+.fullTree {
+    width: 100%;
+}
+
+.compactTree {
+    width: 100%;
+    max-height: 400px;
+    overflow-y: auto;
+}
+
+.agentNode {
+    margin-bottom: 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.agentCard {
+    background: #4A505C;
+    backdrop-filter: blur(10px);
+    border: 2px solid #6B7280;
+    border-radius: 16px;
+    padding: 1.5rem;
+    transition: all 0.3s ease;
+    position: relative;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+    min-width: 250px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+}
+
+.agentCard:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+    border-color: rgba(30, 41, 59, 0.3);
+}
+
+.rootCard {
+    background: #4A505C;
+    color: white;
+    border-color: rgba(255, 255, 255, 0.2);
+}
+
+.rootCard:hover {
+    border-color: rgba(255, 255, 255, 0.4);
+}
+
+.agentAvatar {
+    position: relative;
+}
+
+.avatarCircle {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background: #4A505C;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #374151;
+    border: 3px solid rgba(255, 255, 255, 0.8);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.rootCard .avatarCircle {
+    background: #4A505C;
+    color: white;
+    border-color: rgba(255, 255, 255, 0.3);
+}
+
+.avatarImage {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid rgba(255, 255, 255, 0.8);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.rootCard .avatarImage {
+    border-color: rgba(255, 255, 255, 0.3);
+}
+
+.crownIcon {
+    position: absolute;
+    top: -8px;
+    right: -8px;
+    width: 24px;
+    height: 24px;
+    color: #fbbf24;
+    background: white;
+    border-radius: 50%;
+    padding: 2px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.agentDetails {
+    flex: 1;
+}
+
+.agentName {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: #1e293b;
+    margin: 0 0 0.5rem 0;
+    text-align: center;
+}
+
+.rootCard .agentName {
+    color: white;
+}
+
+.agentEmail {
+    color: #64748b;
+    margin: 0 0 0.75rem 0;
+    font-size: 0.85rem;
+    text-align: center;
+}
+
+.rootCard .agentEmail {
+    color: rgba(255, 255, 255, 0.8);
+}
+
+.rootBadge {
+    background: #6B7280;
+    color: white;
+    padding: 0.25rem 0.75rem;
+    border-radius: 20px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    box-shadow: 0 2px 8px rgba(251, 191, 36, 0.3);
+}
+
+.expandButton {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: #4A505C;
+    border: 1px solid rgba(30, 41, 59, 0.3);
+    border-radius: 12px;
+    padding: 0.75rem 1.25rem;
+    color: white;
+    font-weight: 600;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 12px rgba(30, 41, 59, 0.2);
+}
+
+.expandButton:hover {
+    background: #4A505C;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(30, 41, 59, 0.3);
+}
+
+.rootCard .expandButton {
+    background: #6B7280;
+    border-color: rgba(255, 255, 255, 0.4);
+    color: white;
+    box-shadow: 0 4px 12px rgba(255, 255, 255, 0.1);
+}
+
+.rootCard .expandButton:hover {
+    background: #9CA3AF;
+    box-shadow: 0 6px 16px rgba(255, 255, 255, 0.2);
+}
+
+.childrenContainer {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1.5rem;
+    margin-top: 2rem;
+    position: relative;
+    padding: 1rem;
+    background: rgba(248, 250, 252, 0.5);
+    border-radius: 12px;
+    border: 1px solid rgba(226, 232, 240, 0.3);
+}
+
+.childrenContainer::before {
+    content: '';
+    position: absolute;
+    top: -2rem;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 3px;
+    height: 2rem;
+    background: #6B7280;
+    border-radius: 2px;
+}
+
+/* Search and Filter Controls */
+.searchControls {
+    margin-bottom: 2rem;
+    padding: 1.5rem;
+    background: #4A505C;
+    border-radius: 12px;
+    border: 1px solid #6B7280;
+}
+
+.searchContainer {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.searchInputWrapper {
+    position: relative;
+    flex: 1;
+    min-width: 300px;
+}
+
+.searchIcon {
+    position: absolute;
+    left: 1rem;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 18px;
+    height: 18px;
+    color: #9CA3AF;
+    z-index: 2;
+}
+
+.searchInput {
+    width: 100%;
+    padding: 0.75rem 1rem 0.75rem 3rem;
+    background: #2C303A;
+    border: 1px solid #6B7280;
+    border-radius: 8px;
+    color: #ffffff;
+    font-size: 0.95rem;
+    transition: all 0.3s ease;
+}
+
+.searchInput:focus {
+    outline: none;
+    border-color: #9CA3AF;
+    box-shadow: 0 0 0 3px rgba(156, 163, 175, 0.1);
+}
+
+.searchInput::placeholder {
+    color: #9CA3AF;
+}
+
+.clearButton {
+    position: absolute;
+    right: 0.75rem;
+    top: 50%;
+    transform: translateY(-50%);
+    background: #6B7280;
+    border: none;
+    border-radius: 4px;
+    color: #ffffff;
+    cursor: pointer;
+    padding: 0.25rem;
+    transition: all 0.3s ease;
+}
+
+.clearButton:hover {
+    background: #9CA3AF;
+}
+
+.filterContainer {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: #2C303A;
+    border: 1px solid #6B7280;
+    border-radius: 8px;
+    padding: 0.75rem 1rem;
+}
+
+.filterIcon {
+    width: 16px;
+    height: 16px;
+    color: #9CA3AF;
+}
+
+.filterSelect {
+    background: transparent;
+    border: none;
+    color: #ffffff;
+    font-size: 0.9rem;
+    cursor: pointer;
+    outline: none;
+}
+
+.filterSelect option {
+    background: #2C303A;
+    color: #ffffff;
+}
+
+.searchResults {
+    margin-top: 1rem;
+    padding: 0.75rem 1rem;
+    background: #2C303A;
+    border-radius: 8px;
+    border: 1px solid #6B7280;
+}
+
+.searchResultsText {
+    color: #9CA3AF;
+    font-size: 0.9rem;
+    font-weight: 500;
+}
+
+/* Agent Phone Styling */
+.agentPhone {
+    font-size: 0.85rem;
+    color: #9CA3AF;
+    margin: 0.25rem 0 0 0;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.agentPhone::before {
+    content: "📞";
+    font-size: 0.8rem;
+}
+
+.level2 .agentCard {
+    border-color: rgba(75, 85, 99, 0.3);
+}
+
+.level3 .agentCard {
+    border-color: rgba(107, 114, 128, 0.3);
+}
+
+/* Loading and Error States */
+.loadingContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 300px;
+    gap: 1rem;
+}
+
+.loadingSpinner {
+    width: 60px;
+    height: 60px;
+    background: #4A505C;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    animation: pulse 2s infinite;
+}
+
+.spinningIcon {
+    width: 24px;
+    height: 24px;
+    color: white;
+    animation: spin 1s linear infinite;
+}
+
+.loadingText {
+    font-size: 1.1rem;
+    color: #64748b;
+    font-weight: 500;
+}
+
+.errorContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 300px;
+    gap: 1rem;
+    text-align: center;
+}
+
+.errorIcon {
+    font-size: 3rem;
+}
+
+.errorText {
+    font-size: 1.1rem;
+    color: #ef4444;
+    font-weight: 500;
+}
+
+.retryButton {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.75rem 1.5rem;
+    background: #4A505C;
+    color: white;
+    border: none;
+    border-radius: 12px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.retryButton:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(30, 41, 59, 0.3);
+}
+
+/* Animations */
+@keyframes shimmer {
+    0% {
+        transform: translateX(-100%) translateY(-100%) rotate(45deg);
+    }
+    100% {
+        transform: translateX(100%) translateY(100%) rotate(45deg);
+    }
+}
+
+@keyframes spin {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes pulse {
+    0%, 100% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0.5;
+    }
+}
+
+@keyframes float {
+    0%, 100% {
+        transform: translateY(0px);
+    }
+    50% {
+        transform: translateY(-10px);
+    }
+}
+
+.statCard:nth-child(1) {
+    animation: float 6s ease-in-out infinite;
+}
+
+.statCard:nth-child(2) {
+    animation: float 6s ease-in-out infinite 1.5s;
+}
+
+.statCard:nth-child(3) {
+    animation: float 6s ease-in-out infinite 3s;
+}
+
+.statCard:nth-child(4) {
+    animation: float 6s ease-in-out infinite 4.5s;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .premiumAffiliateTree {
+        padding: 1.5rem;
+        margin: 1.5rem 0;
+    }
+
+    .header {
+        gap: 1rem;
+        margin-bottom: 2rem;
+    }
+
+    .headerIcon {
+        width: 50px;
+        height: 50px;
+    }
+
+    .sparkleIcon {
+        width: 24px;
+        height: 24px;
+    }
+
+    .title {
+        font-size: 1.8rem;
+    }
+
+    .subtitle {
+        font-size: 1rem;
+    }
+
+    .statsOverview {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1rem;
+    }
+
+    .statCard {
+        padding: 1rem;
+    }
+
+    .statValue {
+        font-size: 1.5rem;
+    }
+
+    .treeContent {
+        padding: 1.5rem;
+    }
+
+    .agentCard {
+        min-width: 160px;
+        padding: 1rem;
+    }
+
+    .avatarCircle {
+        width: 50px;
+        height: 50px;
+        font-size: 1.25rem;
+    }
+
+    .avatarImage {
+        width: 50px;
+        height: 50px;
+    }
+
+    .childrenContainer {
+        gap: 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .premiumAffiliateTree {
+        padding: 1rem;
+        margin: 1rem 0;
+    }
+
+    .header {
+        flex-direction: column;
+        text-align: center;
+        gap: 0.8rem;
+    }
+
+    .title {
+        font-size: 1.6rem;
+    }
+
+    .statsOverview {
+        grid-template-columns: 1fr;
+        gap: 0.75rem;
+    }
+
+    .treeContent {
+        padding: 1rem;
+    }
+
+    .agentCard {
+        min-width: 140px;
+        padding: 0.75rem;
+    }
+
+    .avatarCircle {
+        width: 40px;
+        height: 40px;
+        font-size: 1rem;
+    }
+
+    .avatarImage {
+        width: 40px;
+        height: 40px;
+    }
+
+    .agentName {
+        font-size: 1rem;
+    }
+
+    .agentEmail {
+        font-size: 0.8rem;
+    }
+}

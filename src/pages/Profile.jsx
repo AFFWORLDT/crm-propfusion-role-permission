@@ -478,26 +478,26 @@ function Profile() {
                                             style={{
                                                 background:
                                                     userData.staff_level ===
-                                                    "Diamond"
+                                                    "Exclusive"
                                                         ? "linear-gradient(135deg, #e3f2fd, #bbdefb)"
                                                         : userData.staff_level ===
-                                                            "Gold"
+                                                            "Premium"
                                                           ? "linear-gradient(135deg, #fff3e0, #ffcc80)"
                                                           : "linear-gradient(135deg, #f3e5f5, #e1bee7)",
                                                 color:
                                                     userData.staff_level ===
-                                                    "Diamond"
+                                                    "Exclusive"
                                                         ? "#1976d2"
                                                         : userData.staff_level ===
-                                                            "Gold"
+                                                            "Premium"
                                                           ? "#f57c00"
                                                           : "#7b1fa2",
                                                 border:
                                                     userData.staff_level ===
-                                                    "Diamond"
+                                                    "Exclusive"
                                                         ? "2px solid #1976d2"
                                                         : userData.staff_level ===
-                                                            "Gold"
+                                                            "Premium"
                                                           ? "2px solid #f57c00"
                                                           : "2px solid #7b1fa2",
                                                 padding: "0.3rem 0.8rem",

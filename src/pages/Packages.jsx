@@ -40,7 +40,7 @@ const Packages = () => {
                 "Training through ONEX Academy (from basics to leadership)",
                 "Access for CRM Software"
             ],
-            paymentLink: "https://business.mamopay.com/pay/affworldfzllc-c431ba",
+            paymentLink: "https://business.mamopay.com/pay/affworldfzllc-f8fb25",
             popular: false,
             color: "#3B82F6"
         },
@@ -65,7 +65,7 @@ const Packages = () => {
                 "Dubai Office Access",
                 "More Benefits. Ask me!"
             ],
-            paymentLink: "https://business.mamopay.com/pay/affworldfzllc-2ad088",
+            paymentLink: "https://business.mamopay.com/pay/affworldfzllc-b0fe38",
             popular: true,
             color: "#10B981"
         },
@@ -90,7 +90,7 @@ const Packages = () => {
                 "Dubai Office Access",
                 "More Benefits. Ask me!"
             ],
-            paymentLink: "https://business.mamopay.com/pay/affworldfzllc-5134df",
+            paymentLink: "https://business.mamopay.com/pay/affworldfzllc-3a57e4",
             popular: false,
             color: "#8B5CF6"
         }

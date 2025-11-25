@@ -1,4 +1,5 @@
 import React, { useState, useRef } from "react";
+import { createPortal } from "react-dom";
 import { getStaff } from "../services/apiStaff";
 import { fetchCurrentLoggedInUserAllData } from "../services/apiAllData";
 import BusinessCard from "./BusinessCard";
@@ -8,7 +9,7 @@ import toast from "react-hot-toast";
 import { pdf } from "@react-pdf/renderer";
 import * as htmlToImage from "html-to-image";
 
-const ProfileBusinessCardGenerator = ({ currentUser, colorCode }) => {
+const ProfileBusinessCardGenerator = ({ currentUser, colorCode, isLuxury = false }) => {
     const [cardData, setCardData] = useState(null);
     const [showDialog, setShowDialog] = useState(false);
     const [loading, setLoading] = useState(false);
@@ -25,6 +26,8 @@ const ProfileBusinessCardGenerator = ({ currentUser, colorCode }) => {
     const [lastTap, setLastTap] = useState(0);
 
     const fetchData = async () => {
+        console.log("Business card button clicked!", { currentUser, colorCode, isLuxury });
+        
         if (!currentUser?.id) {
             toast.error("User ID not found. Please try logging in again.");
             return;
@@ -32,11 +35,13 @@ const ProfileBusinessCardGenerator = ({ currentUser, colorCode }) => {
 
         setLoading(true);
         try {
+            console.log("Starting data fetch for business card...");
             // Fetch agent data and company data in parallel using existing API services
             const [agent, allData] = await Promise.all([
                 getStaff(currentUser.id),
                 fetchCurrentLoggedInUserAllData(),
             ]);
+            console.log("Data fetched successfully:", { agent, allData });
             const company = allData?.company_settings || {};
 
             // Prepare card data with fallbacks (removed role, address, company_tagline)
@@ -49,10 +54,14 @@ const ProfileBusinessCardGenerator = ({ currentUser, colorCode }) => {
                 company_name: safe(company?.company_name, "Your Company"),
                 company_logo_url: safe(company?.company_logo_url, ""),
             };
+            
+            console.log("Card data prepared:", cardData);
+            console.log("Agent name specifically:", agent?.name);
 
 
             setCardData(cardData);
             setShowDialog(true);
+            console.log("Business card data set and dialog should open:", cardData);
         } catch (error) {
             console.error("Error fetching data:", error);
             toast.error(
@@ -64,7 +73,12 @@ const ProfileBusinessCardGenerator = ({ currentUser, colorCode }) => {
     };
 
     const handleDownloadPDF = async () => {
-        if (!cardData) return;
+        console.log("PDF download initiated", { cardData, frontRef: frontRef.current, backRef: backRef.current });
+        if (!cardData) {
+            console.error("No card data available for PDF generation");
+            toast.error("No card data available for PDF generation");
+            return;
+        }
 
         try {
             setIsDownloading(true);
@@ -91,6 +105,7 @@ const ProfileBusinessCardGenerator = ({ currentUser, colorCode }) => {
             link.href = url;
             link.download = "business-card-a4.pdf";
             document.body.appendChild(link);
+            console.log("Triggering download...");
             link.click();
             document.body.removeChild(link);
             URL.revokeObjectURL(url);
@@ -159,31 +174,63 @@ const ProfileBusinessCardGenerator = ({ currentUser, colorCode }) => {
         }
     };
 
+    console.log("ProfileBusinessCardGenerator rendering", { currentUser, colorCode, isLuxury, loading });
+    
     return (
         <div>
             {/* Generate Business Card Button */}
-            <div className="profileActions" style={{ marginTop: "16px" }}>
+            <div className="profileActions" style={{ 
+                marginTop: isLuxury ? "0" : "16px",
+                position: "relative",
+                zIndex: 10,
+                pointerEvents: "auto"
+            }}>
                 <button
                     style={{
-                        background: colorCode,
+                        background: isLuxury ? "rgba(255, 255, 255, 0.2)" : colorCode,
+                        backdropFilter: isLuxury ? "blur(10px)" : "none",
+                        border: isLuxury ? "1px solid rgba(255, 255, 255, 0.3)" : "none",
                         width: "100%",
-                        padding: "12px",
-                        borderRadius: "5px",
+                        padding: isLuxury ? "0.8rem 1.5rem" : "12px",
+                        borderRadius: isLuxury ? "12px" : "5px",
                         color: "#fff",
                         fontWeight: 600,
-                        fontSize: "16px",
-                        border: "none",
+                        fontSize: isLuxury ? "0.95rem" : "16px",
                         cursor: "pointer",
                         transition: "all 0.3s ease",
+                        position: "relative",
+                        overflow: "hidden",
+                        minHeight: "40px", // Ensure minimum height
+                        display: "flex",
+                        alignItems: "center",
+                        justifyContent: "center",
+                        boxShadow: "0 4px 12px rgba(0, 0, 0, 0.2)",
+                        zIndex: 10,
+                        pointerEvents: "auto",
                     }}
-                    onClick={fetchData}
+                    onClick={(e) => {
+                        e.preventDefault();
+                        e.stopPropagation();
+                        console.log("Button clicked!", e);
+                        console.log("Current user:", currentUser);
+                        console.log("Color code:", colorCode);
+                        console.log("Is luxury:", isLuxury);
+                        fetchData();
+                    }}
                     disabled={loading}
                     onMouseEnter={(e) => {
-                        e.target.style.transform = "translateY(-2px)";
-                        e.target.style.boxShadow = "0 4px 12px rgba(0,0,0,0.2)";
+                        if (!isLuxury) {
+                            e.target.style.transform = "translateY(-2px)";
+                            e.target.style.boxShadow = "0 4px 12px rgba(0,0,0,0.2)";
+                        } else {
+                            e.target.style.transform = "translateY(-2px)";
+                            e.target.style.background = "rgba(255, 255, 255, 0.3)";
+                            e.target.style.boxShadow = "0 8px 24px rgba(0, 0, 0, 0.15), inset 0 1px 0 rgba(255, 255, 255, 0.2)";
+                        }
                     }}
                     onMouseLeave={(e) => {
                         e.target.style.transform = "translateY(0)";
+                        e.target.style.background = isLuxury ? "rgba(255, 255, 255, 0.2)" : colorCode;
                         e.target.style.boxShadow = "none";
                     }}
                 >
@@ -192,7 +239,7 @@ const ProfileBusinessCardGenerator = ({ currentUser, colorCode }) => {
             </div>
 
             {/* Business Card Modal */}
-            {showDialog && cardData && (
+            {showDialog && cardData && createPortal(
                 <div
                     style={{
                         position: "fixed",
@@ -204,7 +251,7 @@ const ProfileBusinessCardGenerator = ({ currentUser, colorCode }) => {
                         display: "flex",
                         alignItems: "center",
                         justifyContent: "center",
-                        zIndex: 9999,
+                        zIndex: 99999,
                         backdropFilter: "blur(4px)",
                     }}
                 >
@@ -218,6 +265,7 @@ const ProfileBusinessCardGenerator = ({ currentUser, colorCode }) => {
                             boxShadow: "0 20px 60px rgba(0,0,0,0.3)",
                             position: "relative",
                             overflow: "hidden",
+                            zIndex: 100000,
                         }}
                     >
                         {/* Close button */}
@@ -603,7 +651,8 @@ const ProfileBusinessCardGenerator = ({ currentUser, colorCode }) => {
                             </button>
                         </div>
                     </div>
-                </div>
+                </div>,
+                document.body
             )}
         </div>
     );
