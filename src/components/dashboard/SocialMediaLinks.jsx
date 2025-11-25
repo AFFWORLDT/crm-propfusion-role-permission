@@ -69,16 +69,10 @@ const SocialMediaLinks = () => {
         {
             id: "youtube",
             name: "YouTube",
-            url: "https://www.youtube.com/@onexproperties",
+            url: "https://www.youtube.com/watch?v=W237WIdUol0",
             channelId: "@onexproperties",
-            // YouTube channel embed with videos playlist
-            embedUrl: "https://www.youtube.com/embed/videoseries?list=UU" // Will be replaced with actual channel uploads
-        },
-        {
-            id: "twitter",
-            name: "X (Twitter)",
-            url: "https://x.com/1Xproperties",
-            username: "1Xproperties"
+            // YouTube video embed
+            embedUrl: "https://www.youtube.com/embed/W237WIdUol0?si=03T8L1Sh8sNz4H1O"
         },
         {
             id: "pinterest",
@@ -157,7 +151,7 @@ const SocialMediaLinks = () => {
                                     <iframe
                                         src={social.embedUrl}
                                         width="340"
-                                        height="500"
+                                        height="400"
                                         frameBorder="0"
                                         scrolling="no"
                                         allow="encrypted-media"
@@ -184,15 +178,16 @@ const SocialMediaLinks = () => {
                                     </a>
                                 </div>
                                 <div className={styles.embedContainer}>
-                                    {/* YouTube Channel Embed - Shows channel with videos */}
+                                    {/* YouTube Video Embed */}
                                     <iframe
-                                        width="100%"
-                                        height="500"
-                                        src={`https://www.youtube.com/embed?listType=user_uploads&list=${social.channelId.replace('@', '')}`}
+                                        width="560"
+                                        height="315"
+                                        src={social.embedUrl}
                                         frameBorder="0"
                                         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                                        referrerPolicy="strict-origin-when-cross-origin"
                                         allowFullScreen
-                                        title="YouTube Channel Videos"
+                                        title="YouTube video player"
                                     ></iframe>
                                 </div>
                             </div>

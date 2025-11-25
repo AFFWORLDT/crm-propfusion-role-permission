@@ -14,8 +14,6 @@ import { useNavigate } from "react-router-dom";
 import { Upload, Trash2 } from "lucide-react";
 import { uploadStaffAvatar } from "../services/apiStaff";
 import { useQueryClient } from "@tanstack/react-query";
-import ReactCrop from "react-image-crop";
-import "react-image-crop/dist/ReactCrop.css";
 import axiosInstance from "../utils/axiosInstance";
 import DummyPerson from "./../assets/dummy-person.png";
 import useAllDetails from "../features/all-details/useAllDetails";
@@ -32,49 +30,11 @@ function Profile() {
     const { data: teamData } = useTeam(userData?.team);
     const fileInputRef = useRef(null);
     const videoInputRef = useRef(null);
-    const imgRef = useRef(null);
     const queryClient = useQueryClient();
-
-    const [showCropModal, setShowCropModal] = useState(false);
-    const [selectedFile, setSelectedFile] = useState(null);
-    const [crop, setCrop] = useState({
-        unit: "%",
-        width: 100,
-        height: 100,
-        x: 0,
-        y: 0,
-        aspect: 1,
-    });
-    const [completedCrop, setCompletedCrop] = useState(null);
-    const [previewUrl, setPreviewUrl] = useState(null);
 
     useEffect(() => {
         if (error) toast.error(error.message);
     }, [error]);
-
-    // Auto-select whole image when crop modal opens
-    useEffect(() => {
-        if (showCropModal && previewUrl) {
-            // Reset crop to cover whole image
-            setCrop({
-                unit: "%",
-                width: 100,
-                height: 100,
-                x: 0,
-                y: 0,
-                aspect: 1,
-            });
-            // Set completed crop immediately so save button is enabled
-            setCompletedCrop({
-                unit: "%",
-                width: 100,
-                height: 100,
-                x: 0,
-                y: 0,
-                aspect: 1,
-            });
-        }
-    }, [showCropModal, previewUrl]);
 
     const handleGeneratePortfolio = () => {
         const agentId = currentUser?.id;
@@ -109,57 +69,9 @@ function Profile() {
             return;
         }
 
-        const previewUrl = URL.createObjectURL(file);
-        setPreviewUrl(previewUrl);
-        setSelectedFile(file);
-        setShowCropModal(true);
-    };
-
-    const getCroppedImg = (image, crop) => {
-        const canvas = document.createElement("canvas");
-        const scaleX = image.naturalWidth / image.width;
-        const scaleY = image.naturalHeight / image.height;
-        canvas.width = crop.width;
-        canvas.height = crop.height;
-        const ctx = canvas.getContext("2d");
-
-        ctx.drawImage(
-            image,
-            crop.x * scaleX,
-            crop.y * scaleY,
-            crop.width * scaleX,
-            crop.height * scaleY,
-            0,
-            0,
-            crop.width,
-            crop.height
-        );
-
-        return new Promise((resolve) => {
-            canvas.toBlob(
-                (blob) => {
-                    resolve(blob);
-                },
-                "image/jpeg",
-                0.9
-            );
-        });
-    };
-
-    const handleCropComplete = async () => {
-        if (!imgRef.current || !completedCrop) return;
-
         try {
-            const croppedBlob = await getCroppedImg(
-                imgRef.current,
-                completedCrop
-            );
-            const croppedFile = new File([croppedBlob], selectedFile.name, {
-                type: "image/jpeg",
-            });
-
             await toast.promise(
-                uploadStaffAvatar(currentUser.id, croppedFile),
+                uploadStaffAvatar(currentUser.id, file),
                 {
                     loading: "Uploading avatar...",
                     success: () => {
@@ -168,10 +80,6 @@ function Profile() {
                             queryKey: ["all-details"],
                         });
                         queryClient.invalidateQueries({ queryKey: ["team"] });
-                        setShowCropModal(false);
-                        setPreviewUrl(null);
-                        setSelectedFile(null);
-                        setCompletedCrop(null);
                         return "Avatar updated successfully!";
                     },
                     error: (err) => {
@@ -186,20 +94,6 @@ function Profile() {
         }
     };
 
-    const handleCropCancel = () => {
-        setShowCropModal(false);
-        setPreviewUrl(null);
-        setSelectedFile(null);
-        setCompletedCrop(null);
-        setCrop({
-            unit: "%",
-            width: 100,
-            height: 100,
-            x: 0,
-            y: 0,
-            aspect: 1,
-        });
-    };
 
     const handleVideoUpload = async (e) => {
         try {
@@ -733,178 +627,6 @@ function Profile() {
                                 </div>
                             </div>
                         </div>
-
-                        {/* Beautiful Crop Modal */}
-                        {showCropModal && (
-                            <div
-                                className={styles.modalOverlay}
-                                style={{
-                                    position: "fixed",
-                                    top: 0,
-                                    left: 0,
-                                    right: 0,
-                                    bottom: 0,
-                                    backgroundColor: "rgba(0, 0, 0, 0.8)",
-                                    display: "flex",
-                                    alignItems: "center",
-                                    justifyContent: "center",
-                                    zIndex: 9999,
-                                    backdropFilter: "blur(4px)",
-                                }}
-                                onClick={handleCropCancel}
-                            >
-                                <div
-                                    className={styles.cropModal}
-                                    style={{
-                                        background:
-                                            "linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%)",
-                                        borderRadius: "20px",
-                                        padding: "2rem",
-                                        maxWidth: "90vw",
-                                        maxHeight: "90vh",
-                                        width: "600px",
-                                        boxShadow:
-                                            "0 20px 60px rgba(0, 0, 0, 0.3)",
-                                        border: "1px solid rgba(255, 255, 255, 0.2)",
-                                        position: "relative",
-                                        overflow: "hidden",
-                                    }}
-                                    onClick={(e) => e.stopPropagation()}
-                                >
-                                    {/* Crop Area */}
-                                    <div
-                                        style={{
-                                            display: "flex",
-                                            justifyContent: "center",
-                                            marginBottom: "1.5rem",
-                                            background: "#f8f9fa",
-                                            borderRadius: "12px",
-                                            padding: "1rem",
-                                            border: "2px dashed #e3f2fd",
-                                        }}
-                                    >
-                                        <ReactCrop
-                                            crop={crop}
-                                            onChange={(c) => setCrop(c)}
-                                            onComplete={(c) =>
-                                                setCompletedCrop(c)
-                                            }
-                                            aspect={1}
-                                            style={{
-                                                maxWidth: "100%",
-                                                maxHeight: "400px",
-                                            }}
-                                        >
-                                            <img
-                                                ref={imgRef}
-                                                src={previewUrl}
-                                                style={{
-                                                    maxWidth: "100%",
-                                                    maxHeight: "400px",
-                                                    borderRadius: "8px",
-                                                    boxShadow:
-                                                        "0 4px 12px rgba(0,0,0,0.1)",
-                                                }}
-                                                alt="Crop preview"
-                                            />
-                                        </ReactCrop>
-                                    </div>
-
-                                    {/* Action Buttons */}
-                                    <div
-                                        style={{
-                                            display: "flex",
-                                            gap: "1rem",
-                                            justifyContent: "flex-end",
-                                        }}
-                                    >
-                                        <button
-                                            onClick={handleCropCancel}
-                                            style={{
-                                                padding: "0.75rem 1.5rem",
-                                                borderRadius: "25px",
-                                                border: "2px solid #e0e0e0",
-                                                background:
-                                                    "linear-gradient(135deg, #f5f5f5, #ffffff)",
-                                                color: "#666",
-                                                fontWeight: "600",
-                                                cursor: "pointer",
-                                                transition: "all 0.3s ease",
-                                                fontSize: "0.9rem",
-                                                display: "flex",
-                                                alignItems: "center",
-                                                gap: "0.5rem",
-                                            }}
-                                            onMouseEnter={(e) => {
-                                                e.target.style.borderColor =
-                                                    "#999";
-                                                e.target.style.color = "#333";
-                                                e.target.style.transform =
-                                                    "translateY(-2px)";
-                                                e.target.style.boxShadow =
-                                                    "0 4px 12px rgba(0,0,0,0.15)";
-                                            }}
-                                            onMouseLeave={(e) => {
-                                                e.target.style.borderColor =
-                                                    "#e0e0e0";
-                                                e.target.style.color = "#666";
-                                                e.target.style.transform =
-                                                    "translateY(0)";
-                                                e.target.style.boxShadow =
-                                                    "none";
-                                            }}
-                                        >
-                                            <span>↶</span>
-                                            Cancel
-                                        </button>
-                                        <button
-                                            onClick={handleCropComplete}
-                                            disabled={!completedCrop}
-                                            style={{
-                                                padding: "0.75rem 1.5rem",
-                                                borderRadius: "25px",
-                                                border: "none",
-                                                background: completedCrop
-                                                    ? "linear-gradient(135deg, #1976d2, #42a5f5)"
-                                                    : "linear-gradient(135deg, #ccc, #ddd)",
-                                                color: "white",
-                                                fontWeight: "700",
-                                                cursor: completedCrop
-                                                    ? "pointer"
-                                                    : "not-allowed",
-                                                transition: "all 0.3s ease",
-                                                fontSize: "0.9rem",
-                                                display: "flex",
-                                                alignItems: "center",
-                                                gap: "0.5rem",
-                                                opacity: completedCrop
-                                                    ? 1
-                                                    : 0.6,
-                                            }}
-                                            onMouseEnter={(e) => {
-                                                if (completedCrop) {
-                                                    e.target.style.transform =
-                                                        "translateY(-2px)";
-                                                    e.target.style.boxShadow =
-                                                        "0 6px 20px rgba(25, 118, 210, 0.4)";
-                                                }
-                                            }}
-                                            onMouseLeave={(e) => {
-                                                if (completedCrop) {
-                                                    e.target.style.transform =
-                                                        "translateY(0)";
-                                                    e.target.style.boxShadow =
-                                                        "none";
-                                                }
-                                            }}
-                                        >
-                                            <span>✓</span>
-                                            Save Avatar
-                                        </button>
-                                    </div>
-                                </div>
-                            </div>
-                        )}
                     </>
                 )}
             </section>
