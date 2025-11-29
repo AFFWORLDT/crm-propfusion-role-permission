@@ -1,7 +1,7 @@
 .premiumWalletBalance {
     margin: 2rem 0;
     padding: 2rem;
-    background: #2C303A;
+    background: #0f1d3e;
     border-radius: 16px;
     border: 1px solid #4A505C;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
@@ -21,7 +21,7 @@
 .headerIcon {
     width: 60px;
     height: 60px;
-    background: #4A505C;
+    background: #0f1d3e;
     border-radius: 20px;
     display: flex;
     align-items: center;
@@ -118,7 +118,7 @@
     overflow: hidden;
     transition: all 0.3s ease;
     cursor: pointer;
-    background: #4A505C;
+    background: #0f1d3e;
     border: 1px solid #6B7280;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
 }
@@ -330,22 +330,22 @@
 
 /* Card-specific styling - Clean dark theme */
 .totalBalanceCard .cardBackground {
-    background: #4A505C;
+    background: #0f1d3e;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
 }
 
 .agentWalletCard .cardBackground {
-    background: #4A505C;
+    background: #0f1d3e;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
 }
 
 .affiliateWalletCard .cardBackground {
-    background: #4A505C;
+    background: #0f1d3e;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
 }
 
 .quickActionsCard .cardBackground {
-    background: #4A505C;
+    background: #0f1d3e;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
 }
 
