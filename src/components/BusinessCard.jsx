@@ -2,8 +2,6 @@ import React, { useState, useEffect } from 'react';
 import QRCode from 'qrcode';
 
 const BusinessCard = ({ data, side = 'front' }) => {
-  console.log("BusinessCard received data:", data);
-  console.log("Agent name in BusinessCard:", data?.name);
   
   const [qrCodeDataURL, setQrCodeDataURL] = useState('');
   const [isGenerating, setIsGenerating] = useState(false);
@@ -222,31 +220,81 @@ const BusinessCard = ({ data, side = 'front' }) => {
           <div style={{
             display: 'flex',
             flexDirection: 'column',
-            gap: '12px',
+            gap: '10px',
             alignItems: 'flex-start',
             width: '100%',
           }}>
             {/* Phone Number */}
-            <div style={{
-              display: 'flex',
-              alignItems: 'center',
-              fontSize: 13,
-              color: '#ffffff',
-              gap: '10px',
-            }}>
-              <span style={{
-                fontSize: '14px',
-                lineHeight: '1',
-                flexShrink: 0,
+            {data.phone && (
+              <div style={{
+                display: 'flex',
+                alignItems: 'center',
+                fontSize: 13,
+                color: '#ffffff',
+                gap: '10px',
               }}>
-                📞
-              </span>
-              <span style={{ 
-                fontWeight: 500,
+                <span style={{
+                  fontSize: '14px',
+                  lineHeight: '1',
+                  flexShrink: 0,
+                }}>
+                  📞
+                </span>
+                <span style={{ 
+                  fontWeight: 500,
+                }}>
+                  {data.phone}
+                </span>
+              </div>
+            )}
+            
+            {/* Email */}
+            {data.email && (
+              <div style={{
+                display: 'flex',
+                alignItems: 'center',
+                fontSize: 13,
+                color: '#ffffff',
+                gap: '10px',
               }}>
-                {data.phone}
-              </span>
-            </div>
+                <span style={{
+                  fontSize: '14px',
+                  lineHeight: '1',
+                  flexShrink: 0,
+                }}>
+                  ✉️
+                </span>
+                <span style={{ 
+                  fontWeight: 500,
+                }}>
+                  {data.email}
+                </span>
+              </div>
+            )}
+            
+            {/* Job Type / Designation */}
+            {data.job_type && (
+              <div style={{
+                display: 'flex',
+                alignItems: 'center',
+                fontSize: 13,
+                color: 'rgba(255,255,255,0.9)',
+                gap: '10px',
+              }}>
+                <span style={{
+                  fontSize: '14px',
+                  lineHeight: '1',
+                  flexShrink: 0,
+                }}>
+                  💼
+                </span>
+                <span style={{ 
+                  fontWeight: 500,
+                }}>
+                  {data.job_type}
+                </span>
+              </div>
+            )}
             
             {/* Website */}
             <div style={{
@@ -255,6 +303,7 @@ const BusinessCard = ({ data, side = 'front' }) => {
               fontWeight: 500,
               letterSpacing: '0.5px',
               textShadow: '0 2px 4px rgba(0,0,0,0.3)',
+              marginTop: '4px',
             }}>
               ONEXPROPERTY.COM
             </div>

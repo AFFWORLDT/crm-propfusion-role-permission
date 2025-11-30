@@ -54,6 +54,7 @@ const ProfileBusinessCardGenerator = ({ currentUser, colorCode, isLuxury = false
                 website: safe(company?.crm_url, safe(company?.website, "example.com")),
                 company_name: safe(company?.company_name, "Your Company"),
                 company_logo_url: safe(company?.company_logo_url, ""),
+                job_type: safe(agent?.job_type, ""),
             };
             
             console.log("Card data prepared:", cardData);
