@@ -212,8 +212,9 @@ const BusinessCard = ({ data, side = 'front' }) => {
             textAlign: 'left',
             letterSpacing: '0.5px',
             width: '100%',
+            textTransform: 'uppercase',
           }}>
-            Real Estate Professional
+             {data.job_type}
           </div>
 
           {/* Contact Information */}
@@ -272,29 +273,7 @@ const BusinessCard = ({ data, side = 'front' }) => {
               </div>
             )}
             
-            {/* Job Type / Designation */}
-            {data.job_type && (
-              <div style={{
-                display: 'flex',
-                alignItems: 'center',
-                fontSize: 13,
-                color: 'rgba(255,255,255,0.9)',
-                gap: '10px',
-              }}>
-                <span style={{
-                  fontSize: '14px',
-                  lineHeight: '1',
-                  flexShrink: 0,
-                }}>
-                  💼
-                </span>
-                <span style={{ 
-                  fontWeight: 500,
-                }}>
-                  {data.job_type}
-                </span>
-              </div>
-            )}
+           
             
             {/* Website */}
             <div style={{

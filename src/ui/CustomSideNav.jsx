@@ -542,6 +542,9 @@ function CustomSideNav() {
                                     <img
                                         src="/icons/person.svg"
                                         alt="Profile Icon"
+                                        style={{
+                                            filter: "brightness(0) invert(1)",
+                                        }}
                                     />
                                     <span>Profile</span>
                                 </NavLink>
@@ -552,6 +555,9 @@ function CustomSideNav() {
                                     <img
                                         src="/icons/support.svg"
                                         alt="Support Icon"
+                                        style={{
+                                            filter: "brightness(0) invert(1)",
+                                        }}
                                     />
                                     <span>Support</span>
                                 </NavLink>
