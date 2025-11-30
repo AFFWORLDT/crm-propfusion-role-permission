@@ -5,28 +5,17 @@ const styles = StyleSheet.create({
   page: {
     flexDirection: 'column',
     backgroundColor: '#ffffff',
-    padding: 20,
+    padding: 40,
     fontFamily: 'Helvetica',
-  },
-  title: {
-    fontSize: 24,
-    fontWeight: 'bold',
-    textAlign: 'center',
-    marginBottom: 20,
-    color: '#2d4263',
-    fontFamily: 'Helvetica',
-  },
-  subtitle: {
-    fontSize: 14,
-    textAlign: 'center',
-    marginBottom: 30,
-    color: '#666666',
-    fontFamily: 'Helvetica',
+    justifyContent: 'center',
+    alignItems: 'center',
   },
   cardContainer: {
     flexDirection: 'column',
     alignItems: 'center',
-    gap: 30,
+    gap: 40,
+    justifyContent: 'center',
+    flex: 1,
   },
   cardWrapper: {
     width: '85.6mm',
@@ -200,16 +189,11 @@ const BusinessCardPDFDocument = ({ data }) => {
   return (
     <Document>
       <Page size="A4" style={styles.page}>
-        {/* Title */}
-        <Text style={styles.title}>Professional Business Card</Text>
-        <Text style={styles.subtitle}>Digital Business Card Design</Text>
-        
         {/* Business Cards Container */}
         <View style={styles.cardContainer}>
           
-          {/* Front Side */}
+          {/* First Card - Front Side */}
           <View>
-            <Text style={styles.cardLabel}>Front Side</Text>
             <View style={styles.cardWrapper}>
               {data.frontImg ? (
                 <Image src={data.frontImg} style={styles.cardImage} />
@@ -224,15 +208,15 @@ const BusinessCardPDFDocument = ({ data }) => {
             </View>
           </View>
 
-          {/* Back Side */}
+          {/* Second Card - Same Front Side */}
           <View>
-            <Text style={styles.cardLabel}>Back Side</Text>
             <View style={styles.cardWrapper}>
-              {data.backImg ? (
-                <Image src={data.backImg} style={styles.cardImage} />
+              {data.frontImg ? (
+                <Image src={data.frontImg} style={styles.cardImage} />
               ) : (
-                <View style={styles.backCard}>
-                  <View style={{...styles.backWebsite, backgroundColor: themeColor}}>
+                <View style={styles.frontCard}>
+                  <View style={{...styles.frontWaveBackground, backgroundColor: themeColor}} />
+                  <View style={{...styles.backWebsite, backgroundColor: themeColor, height: 18}}>
                     <Text style={styles.backWebsiteText}>ONEXPROPERTY.COM</Text>
                   </View>
                 </View>

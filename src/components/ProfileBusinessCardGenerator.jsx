@@ -47,6 +47,7 @@ const ProfileBusinessCardGenerator = ({ currentUser, colorCode, isLuxury = false
             // Prepare card data with fallbacks (removed role, address, company_tagline)
             const safe = (v, fb = "") => (v === null || v === undefined || v === "null" ? fb : v);
             const cardData = {
+                id: currentUser?.id || agent?.id,
                 name: safe(agent?.name, "Admin"),
                 email: safe(agent?.email, "user@example.com"),
                 phone: safe(agent?.phone, "+91 00000 00000"),

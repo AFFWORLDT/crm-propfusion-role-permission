@@ -935,6 +935,8 @@ function StaffDetails() {
                                         <option value="full_time">Full Time</option>
                                         <option value="part_time">Part Time</option>
                                         <option value="affiliate">Affiliate</option>
+                                        <option value="partner">Partner</option>
+                                        <option value="broker">Broker</option>
                                     </select>
                                 ) : (
                                     <span className={styles.detailValue}>
