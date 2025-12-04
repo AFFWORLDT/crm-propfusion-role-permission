@@ -550,7 +550,7 @@ function CustomSideNav() {
                                 </NavLink>
                             </li>
 
-                            <li>
+                            {/* <li>
                                 <NavLink to="/support">
                                     <img
                                         src="/icons/support.svg"
@@ -561,7 +561,7 @@ function CustomSideNav() {
                                     />
                                     <span>Support</span>
                                 </NavLink>
-                            </li>
+                            </li> */}
 
                         </ul>
                     </div>

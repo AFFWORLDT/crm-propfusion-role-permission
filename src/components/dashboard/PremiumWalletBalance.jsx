@@ -231,14 +231,6 @@ const PremiumWalletBalance = ({ colorCode }) => {
                                     <span>{totalLeads} Leads</span>
                                 </div>
                             </div>
-
-                            <button 
-                                className={styles.actionButton}
-                                onClick={() => navigate('/dashboard')}
-                            >
-                                <span>View Dashboard</span>
-                                <ArrowUpRight size={16} />
-                            </button>
                         </div>
                     </div>
                 </div>
