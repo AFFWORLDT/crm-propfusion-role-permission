@@ -257,13 +257,6 @@ const PremiumWalletBalance = ({ colorCode }) => {
                                     <Wallet size={18} />
                                     <span>Request Payout</span>
                                 </button>
-                                <button 
-                                    className={styles.quickActionButton}
-                                    onClick={() => navigate('/dashboard')}
-                                >
-                                    <TrendingUp size={18} />
-                                    <span>View Stats</span>
-                                </button>
                             </div>
 
                             <div className={styles.statusIndicator}>
