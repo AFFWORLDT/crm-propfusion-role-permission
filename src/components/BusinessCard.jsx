@@ -87,7 +87,7 @@ const BusinessCard = ({ data, side = 'front' }) => {
               alt="Company Logo"
               crossOrigin="anonymous"
               style={{ 
-                height: 100, 
+                height: 120, 
                 maxWidth: '100%',
                 objectFit: 'contain',
                 filter: 'brightness(0) invert(1)',
@@ -159,7 +159,7 @@ const BusinessCard = ({ data, side = 'front' }) => {
           alt="Company Logo"
           crossOrigin="anonymous"
           style={{ 
-            height: 35, 
+            height: 48, 
             maxWidth: '140px',
             objectFit: 'contain',
             filter: 'brightness(0) invert(1)',
@@ -277,14 +277,26 @@ const BusinessCard = ({ data, side = 'front' }) => {
             
             {/* Website */}
             <div style={{
+              display: 'flex',
+              alignItems: 'center',
               fontSize: 12,
               color: '#ffffff',
               fontWeight: 500,
               letterSpacing: '0.5px',
               textShadow: '0 2px 4px rgba(0,0,0,0.3)',
               marginTop: '4px',
+              gap: '8px',
             }}>
-              ONEXPROPERTY.COM
+              <span style={{
+                fontSize: '14px',
+                lineHeight: '1',
+                flexShrink: 0,
+              }}>
+                🌐
+              </span>
+              <span>
+                ONEXPROPERTY.COM
+              </span>
             </div>
           </div>
         </div>
