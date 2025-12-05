@@ -60,7 +60,7 @@ const Packages = () => {
                 'Branding kit'
             ],
             bestFor: 'UAE-based brokers seeking professional certification and local office access',
-            paymentLink: "https://business.mamopay.com/pay/affworldfzllc-b0fe38"
+            paymentLink: "https://business.mamopay.com/pay/affworldfzllc-53c101"
         },
         {
             id: 'broker-exclusive',
@@ -85,7 +85,7 @@ const Packages = () => {
                 'Additional exclusive benefits'
             ],
             bestFor: 'Mid-level brokers ready to expand internationally',
-            paymentLink: "https://business.mamopay.com/pay/affworldfzllc-3a57e4"
+            paymentLink: "https://business.mamopay.com/pay/affworldfzllc-b83acc"
         }
     ];
 
