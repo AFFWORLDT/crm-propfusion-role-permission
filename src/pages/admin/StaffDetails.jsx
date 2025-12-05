@@ -408,6 +408,16 @@ function StaffDetails() {
                                     {teamData?.name || "Not Assigned"}
                                 </span>
                             </div>
+                            {staffData.affiliate_id && (
+                                <div className={styles.detailRow}>
+                                    <span className={styles.detailLabel}>
+                                        Affiliate ID
+                                    </span>
+                                    <span className={styles.detailValue}>
+                                        {staffData.affiliate_id}
+                                    </span>
+                                </div>
+                            )}
                             <div className={styles.detailRow}>
                                 <span className={styles.detailLabel}>
                                     WhatsApp Notifications

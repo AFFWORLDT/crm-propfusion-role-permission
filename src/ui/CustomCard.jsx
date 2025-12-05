@@ -219,13 +219,24 @@ const CustomCard = ({ staffData }) => {
                 <h2 style={{
                     textAlign: "center",
                     marginTop: "15px",
-                    marginBottom: "20px",
+                    marginBottom: "10px",
                     color: "#2c3e50",
                     fontSize: "1.8rem",
                     fontWeight: "600"
                 }}>
                     {staffData.name}
                 </h2>
+                {staffData.affiliate_id && (
+                    <div style={{
+                        textAlign: "center",
+                        marginBottom: "15px",
+                        color: "#7f8c8d",
+                        fontSize: "0.9rem",
+                        fontWeight: "500"
+                    }}>
+                        Affiliate ID: <span style={{ color: "#3498db", fontWeight: "600" }}>{staffData.affiliate_id}</span>
+                    </div>
+                )}
                 <hr style={{ margin: "2px 0", opacity: "0.2" }} />
 
                 <div style={{ marginTop: "20px" }}>
