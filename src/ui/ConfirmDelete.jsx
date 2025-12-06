@@ -101,7 +101,7 @@ export function ConfirmDeleteWithAgentForm({
             {error && <p style={{ color: "red" }}>Error: {error.message}</p>}
             <p>
                 Are you sure you want to permanently delete this {resourceName}
-                {staffName && <strong style={{ color: "#dc2626", fontWeight: "600" }}> "{staffName}"</strong>}?
+                {staffName && <strong style={{ color: "#dc2626", fontWeight: "600" }}> &quot;{staffName}&quot;</strong>}?
                 This action cannot be undone. All agent data will be transferred
                 to the newly selected agent.
             </p>
