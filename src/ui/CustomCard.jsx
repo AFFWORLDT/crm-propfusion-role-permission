@@ -226,6 +226,17 @@ const CustomCard = ({ staffData }) => {
                 }}>
                     {staffData.name}
                 </h2>
+                {staffData.id && (
+                    <div style={{
+                        textAlign: "center",
+                        marginBottom: "10px",
+                        color: "#7f8c8d",
+                        fontSize: "0.9rem",
+                        fontWeight: "500"
+                    }}>
+                        Agent ID: <span style={{ color: "#3498db", fontWeight: "600" }}>{staffData.id}</span>
+                    </div>
+                )}
                 {staffData.affiliate_id && (
                     <div style={{
                         textAlign: "center",
