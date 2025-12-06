@@ -48,6 +48,7 @@ export function ConfirmDeleteWithAgentForm({
     isDeleting,
     onCloseModal,
     agentIdToReplace,
+    staffName,
 }) {
     const { control, handleSubmit } = useForm();
     const { updateBulkAgent, isPending, error } = useUpdateBulkAgent();
@@ -99,7 +100,8 @@ export function ConfirmDeleteWithAgentForm({
             <h3>⚠️ Delete {resourceName}</h3>
             {error && <p style={{ color: "red" }}>Error: {error.message}</p>}
             <p>
-                Are you sure you want to permanently delete this {resourceName}?
+                Are you sure you want to permanently delete this {resourceName}
+                {staffName && <strong style={{ color: "#dc2626", fontWeight: "600" }}> "{staffName}"</strong>}?
                 This action cannot be undone. All agent data will be transferred
                 to the newly selected agent.
             </p>

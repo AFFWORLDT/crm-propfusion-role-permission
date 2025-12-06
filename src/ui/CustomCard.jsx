@@ -289,6 +289,7 @@ const CustomCard = ({ staffData }) => {
                     agentIdToReplace={staffData.id}
                     onConfirm={() => deleteStaffMember(staffData.id)}
                     isDeleting={isDeleting}
+                    staffName={staffData.name}
                 />
             </Modal.Window>
             <Modal.Window name="uploadDocs" overflow={true}>

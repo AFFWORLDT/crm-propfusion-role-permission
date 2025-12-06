@@ -147,7 +147,7 @@ const Packages = () => {
                 'Additional exclusive benefits'
             ],
             bestFor: 'Indian influencers and leaders with established audiences',
-            paymentLink: "https://business.mamopay.com/pay/affworldfzllc-b0fe38"
+            paymentLink: "https://business.mamopay.com/pay/affworldfzllc-a061dc"
         },
         {
             id: 'partner-premium-plus',
