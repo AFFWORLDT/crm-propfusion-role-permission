@@ -89,43 +89,43 @@ const LuxuryProfileActions = ({ colorCode }) => {
                                 pointerEvents: shouldShowOnlyPackages && action.id !== "packages" ? "none" : "auto",
                             }}
                         >
-                            <div className={styles.cardBackground}>
-                                <div className={styles.cardContent}>
-                                    <div className={styles.iconContainer}>
-                                        <action.icon className={styles.actionIcon} />
-                                    </div>
-                                    
-                                    <div className={styles.textContent}>
-                                        <h3 className={styles.actionTitle}>{action.title}</h3>
-                                        <p className={styles.actionDescription}>{action.description}</p>
-                                    </div>
+                        <div className={styles.cardBackground}>
+                            <div className={styles.cardContent}>
+                                <div className={styles.iconContainer}>
+                                    <action.icon className={styles.actionIcon} />
+                                </div>
+                                
+                                <div className={styles.textContent}>
+                                    <h3 className={styles.actionTitle}>{action.title}</h3>
+                                    <p className={styles.actionDescription}>{action.description}</p>
+                                </div>
 
-                                    <div className={styles.actionButton}>
-                                        {action.id === "business-card" ? (
-                                            <ProfileBusinessCardGenerator
-                                                currentUser={currentUser}
-                                                colorCode={colorCode}
-                                                isLuxury={true}
-                                            />
-                                        ) : (
-                                            <button
-                                                className={styles.luxuryButton}
-                                                onClick={action.onClick}
-                                                style={{
-                                                    background: "rgba(255, 255, 255, 0.2)",
-                                                    backdropFilter: "blur(10px)",
-                                                    border: "1px solid rgba(255, 255, 255, 0.3)"
-                                                }}
-                                            >
-                                                <span className={styles.buttonText}>Access</span>
-                                                <div className={styles.buttonGlow}></div>
-                                            </button>
-                                        )}
-                                    </div>
+                                <div className={styles.actionButton}>
+                                    {action.id === "business-card" ? (
+                                        <ProfileBusinessCardGenerator
+                                            currentUser={currentUser}
+                                            colorCode={colorCode}
+                                            isLuxury={true}
+                                        />
+                                    ) : (
+                                        <button
+                                            className={styles.luxuryButton}
+                                            onClick={action.onClick}
+                                            style={{
+                                                background: "rgba(255, 255, 255, 0.2)",
+                                                backdropFilter: "blur(10px)",
+                                                border: "1px solid rgba(255, 255, 255, 0.3)"
+                                            }}
+                                        >
+                                            <span className={styles.buttonText}>Access</span>
+                                            <div className={styles.buttonGlow}></div>
+                                        </button>
+                                    )}
                                 </div>
                             </div>
                         </div>
-                    ))}
+                    </div>
+                ))}
             </div>
         </div>
     );

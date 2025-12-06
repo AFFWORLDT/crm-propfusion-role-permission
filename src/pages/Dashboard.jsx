@@ -491,7 +491,7 @@ function Dashboard() {
                     position: "relative",
                     zIndex: shouldShowOnlyPackages ? 20 : "auto",
                 }}>
-                    <LuxuryProfileActions colorCode={allDetailsData?.company_settings?.sidebar_color_code || "#020079"} />
+                <LuxuryProfileActions colorCode={allDetailsData?.company_settings?.sidebar_color_code || "#020079"} />
                 </div>
                 
                 {/* Social Media Links - Connect With Us - Blur if job_type is null */}
@@ -501,7 +501,7 @@ function Dashboard() {
                     position: "relative",
                     zIndex: shouldShowOnlyPackages ? 1 : "auto",
                 }}>
-                    <SocialMediaLinks />
+                <SocialMediaLinks />
                 </div>
                 
                 {/* Premium Wallet Balance - Financial Overview - Blur if job_type is null */}
@@ -512,7 +512,7 @@ function Dashboard() {
                         position: "relative",
                         zIndex: shouldShowOnlyPackages ? 1 : "auto",
                     }}>
-                        <PremiumWalletBalance colorCode={allDetailsData?.company_settings?.sidebar_color_code || "#020079"} />
+                <PremiumWalletBalance colorCode={allDetailsData?.company_settings?.sidebar_color_code || "#020079"} />
                     </div>
                 )}
                 
@@ -524,7 +524,7 @@ function Dashboard() {
                         position: "relative",
                         zIndex: shouldShowOnlyPackages ? 1 : "auto",
                     }}>
-                        <PremiumAffiliateLink colorCode={allDetailsData?.company_settings?.sidebar_color_code || "#020079"} />
+                <PremiumAffiliateLink colorCode={allDetailsData?.company_settings?.sidebar_color_code || "#020079"} />
                     </div>
                 )}
                 
@@ -536,9 +536,9 @@ function Dashboard() {
                         position: "relative",
                         zIndex: shouldShowOnlyPackages ? 1 : "auto",
                     }}>
-                        <Suspense fallback={<SectionLoader />}>
-                            <DashboardSummary data={data || {}} />
-                        </Suspense>
+                <Suspense fallback={<SectionLoader />}>
+                    <DashboardSummary data={data || {}} />
+                </Suspense>
                     </div>
                 )}
                 
@@ -551,7 +551,7 @@ function Dashboard() {
                         position: "relative",
                         zIndex: shouldShowOnlyPackages ? 1 : "auto",
                     }}>
-                        <h2 className={styles.dashboardForPropertyReportHeader}>Properties Overview</h2>
+                    <h2 className={styles.dashboardForPropertyReportHeader}>Properties Overview</h2>
                         {propertyReports && (
                             <Suspense fallback={<SectionLoader />}>
                                 <PropertyStatsSection
@@ -559,28 +559,28 @@ function Dashboard() {
                                 />
                             </Suspense>
                         )}
-                        {resultArray &&
-                            resultArray?.length > 0 &&
-                            propertyTypeData &&
-                            propertyTypeData?.length > 0 && (
-                                <Suspense fallback={<SectionLoader />}>
-                                    <ListingActivitySection
-                                        resultArray={resultArray}
-                                        propertyTypeData={propertyTypeData}
-                                    />
-                                </Suspense>
-                            )}
-                        {transformedData &&
-                            transformedData?.length > 0 &&
-                            portals &&
-                            portals?.length > 0 && (
-                                <Suspense fallback={<SectionLoader />}>
-                                    <PriceDistributionSection
-                                        transformedData={transformedData}
-                                        portals={portals}
-                                    />
-                                </Suspense>
-                            )}
+                    {resultArray &&
+                        resultArray?.length > 0 &&
+                        propertyTypeData &&
+                        propertyTypeData?.length > 0 && (
+                            <Suspense fallback={<SectionLoader />}>
+                                <ListingActivitySection
+                                    resultArray={resultArray}
+                                    propertyTypeData={propertyTypeData}
+                                />
+                            </Suspense>
+                        )}
+                    {transformedData &&
+                        transformedData?.length > 0 &&
+                        portals &&
+                        portals?.length > 0 && (
+                            <Suspense fallback={<SectionLoader />}>
+                                <PriceDistributionSection
+                                    transformedData={transformedData}
+                                    portals={portals}
+                                />
+                            </Suspense>
+                        )}
                     </div>
                 )}
 
@@ -593,31 +593,31 @@ function Dashboard() {
                         position: "relative",
                         zIndex: shouldShowOnlyPackages ? 1 : "auto",
                     }}>
-                        {leadReportsSummary && leadReportsSummary.summary && (
-                            <Suspense fallback={<SectionLoader />}>
-                                <LeadReportsSection report={leadReportsSummary} />
-                            </Suspense>
-                        )}
-                        {resultLeadArray &&
-                            resultLeadArray?.length > 0 &&
-                            leadTypeData &&
-                            leadTypeData?.length > 0 && (
-                                <Suspense fallback={<SectionLoader />}>
-                                    <LeadActivitySection
-                                        resultLeadArray={resultLeadArray}
-                                        leadTypeData={leadTypeData}
-                                        propertyLeadTypeDistribution={
-                                            propertyLeadTypeDistribution || []
-                                        }
-                                    />
-                                </Suspense>
-                            )}
-                        {stageFollowupReport && (
-                            <Suspense fallback={<SectionLoader />}>
-                                <StageFollowupSection report={stageFollowupReport} />
-                            </Suspense>
-                        )}
-                    </div>
+                    {leadReportsSummary && leadReportsSummary.summary && (
+                        <Suspense fallback={<SectionLoader />}>
+                            <LeadReportsSection report={leadReportsSummary} />
+                        </Suspense>
+                    )}
+                {resultLeadArray &&
+                    resultLeadArray?.length > 0 &&
+                    leadTypeData &&
+                    leadTypeData?.length > 0 && (
+                        <Suspense fallback={<SectionLoader />}>
+                            <LeadActivitySection
+                                resultLeadArray={resultLeadArray}
+                                leadTypeData={leadTypeData}
+                                propertyLeadTypeDistribution={
+                                    propertyLeadTypeDistribution || []
+                                }
+                            />
+                        </Suspense>
+                    )}
+                    {stageFollowupReport && (
+                        <Suspense fallback={<SectionLoader />}>
+                            <StageFollowupSection report={stageFollowupReport} />
+                        </Suspense>
+                    )}
+                </div>
                 )}
 
             </section>

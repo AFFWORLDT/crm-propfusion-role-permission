@@ -28,6 +28,7 @@ function Staff() {
     // Filter states
     const [sortBy, setSortBy] = useState("newest"); // newest, oldest
     const [packageFilter, setPackageFilter] = useState("all"); // all, Essential, Premium, Exclusive
+    const [staffLevelFilter, setStaffLevelFilter] = useState("all"); // all, Silver, Gold, Diamond
     const [showFilters, setShowFilters] = useState(false);
     const [startDate, setStartDate] = useState("");
     const [endDate, setEndDate] = useState("");
@@ -125,6 +126,13 @@ function Staff() {
             console.log(`Filtered to ${filtered.length} staff members for ${packageFilter}`);
         }
 
+        // Apply staff level filter
+        if (staffLevelFilter !== "all") {
+            filtered = filtered.filter((staff) => {
+                return staff.staff_level === staffLevelFilter;
+            });
+        }
+
         // Apply date filter
         if (startDate || endDate) {
             filtered = filtered.filter((staff) => {
@@ -161,7 +169,7 @@ function Staff() {
         });
 
         return filtered;
-    }, [allStaffData, searchTerm, sortBy, packageFilter, startDate, endDate, rolesData]);
+    }, [allStaffData, searchTerm, sortBy, packageFilter, staffLevelFilter, startDate, endDate, rolesData]);
 
     // Export to Excel function
     const handleExportToExcel = () => {
@@ -188,6 +196,7 @@ function Staff() {
                     "Phone": staff.phone || "N/A",
                     "Affiliate ID": staff.affiliate_id || "N/A",
                     "Package Level": packageLevel,
+                    "Staff Level": staff.staff_level || "N/A",
                     "Status": staff.state === "active" ? "Active" : "Inactive",
                     "Created Date": createdDate,
                     "Updated Date": updatedDate,
@@ -208,6 +217,7 @@ function Staff() {
                 { wch: 18 }, // Phone
                 { wch: 15 }, // Affiliate ID
                 { wch: 15 }, // Package Level
+                { wch: 15 }, // Staff Level
                 { wch: 12 }, // Status
                 { wch: 22 }, // Created Date
                 { wch: 22 }, // Updated Date
@@ -225,6 +235,9 @@ function Staff() {
             
             if (packageFilter !== "all") {
                 filename += `_${packageFilter.toLowerCase()}`;
+            }
+            if (staffLevelFilter !== "all") {
+                filename += `_${staffLevelFilter.toLowerCase()}`;
             }
             if (searchTerm.trim()) {
                 filename += `_filtered`;
@@ -504,7 +517,7 @@ function Staff() {
                             >
                                 <Filter size={16} />
                                 Filters
-                                {(sortBy !== "newest" || packageFilter !== "all" || startDate || endDate) && (
+                                {(sortBy !== "newest" || packageFilter !== "all" || staffLevelFilter !== "all" || startDate || endDate) && (
                                     <div
                                         style={{
                                             width: "8px",
@@ -660,6 +673,83 @@ function Staff() {
                                     ))}
                                 </div>
 
+                                {/* Staff Level Filter Section */}
+                                <div
+                                    style={{
+                                        marginTop: "1.5rem",
+                                        paddingTop: "1.5rem",
+                                        borderTop: "1px solid #e5e7eb",
+                                    }}
+                                >
+                                    <div
+                                        style={{
+                                            display: "flex",
+                                            alignItems: "center",
+                                            gap: "0.5rem",
+                                            marginBottom: "1rem",
+                                        }}
+                                    >
+                                        <Package size={18} color="#6b7280" />
+                                        <h3
+                                            style={{
+                                                margin: 0,
+                                                fontSize: "16px",
+                                                fontWeight: "600",
+                                                color: "#374151",
+                                            }}
+                                        >
+                                            Filter by Staff Level
+                                        </h3>
+                                    </div>
+
+                                    <div
+                                        style={{
+                                            display: "flex",
+                                            gap: "0.75rem",
+                                            flexWrap: "wrap",
+                                        }}
+                                    >
+                                        {[
+                                            { value: "all", label: "All Levels", color: "#6b7280" },
+                                            { value: "Silver", label: "Silver", color: "#7b1fa2" },
+                                            { value: "Gold", label: "Gold", color: "#f57c00" },
+                                            { value: "Diamond", label: "Diamond", color: "#1976d2" },
+                                        ].map((option) => (
+                                            <button
+                                                key={option.value}
+                                                onClick={() => setStaffLevelFilter(option.value)}
+                                                style={{
+                                                    padding: "8px 16px",
+                                                    backgroundColor: staffLevelFilter === option.value ? option.color : "white",
+                                                    color: staffLevelFilter === option.value ? "white" : option.color,
+                                                    border: `2px solid ${option.color}`,
+                                                    borderRadius: "20px",
+                                                    fontSize: "14px",
+                                                    fontWeight: "600",
+                                                    cursor: "pointer",
+                                                    transition: "all 0.2s ease",
+                                                    textTransform: "uppercase",
+                                                    letterSpacing: "0.5px",
+                                                }}
+                                                onMouseEnter={(e) => {
+                                                    if (staffLevelFilter !== option.value) {
+                                                        e.target.style.backgroundColor = option.color;
+                                                        e.target.style.color = "white";
+                                                    }
+                                                }}
+                                                onMouseLeave={(e) => {
+                                                    if (staffLevelFilter !== option.value) {
+                                                        e.target.style.backgroundColor = "white";
+                                                        e.target.style.color = option.color;
+                                                    }
+                                                }}
+                                            >
+                                                {option.label}
+                                            </button>
+                                        ))}
+                                    </div>
+                                </div>
+
                                 {/* Date Filter Section */}
                                 <div
                                     style={{
@@ -813,6 +903,7 @@ function Staff() {
                                             onClick={() => {
                                                 setSortBy("newest");
                                                 setPackageFilter("all");
+                                                setStaffLevelFilter("all");
                                                 setStartDate("");
                                                 setEndDate("");
                                             }}

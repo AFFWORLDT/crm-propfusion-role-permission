@@ -251,12 +251,46 @@ const CustomCard = ({ staffData }) => {
                 {staffData.created_at && (
                     <div style={{
                         textAlign: "center",
-                        marginBottom: "15px",
+                        marginBottom: "10px",
                         color: "#7f8c8d",
                         fontSize: "0.9rem",
                         fontWeight: "500"
                     }}>
                         Created: <span style={{ color: "#95a5a6", fontWeight: "600" }}>{new Date(staffData.created_at).toLocaleString()}</span>
+                    </div>
+                )}
+                {staffData.staff_level && (
+                    <div style={{
+                        textAlign: "center",
+                        marginBottom: "15px"
+                    }}>
+                        {(() => {
+                            const isDiamond = staffData.staff_level === 'Diamond';
+                            const isGold = staffData.staff_level === 'Gold';
+                            return (
+                                <span 
+                                    style={{ 
+                                        background: isDiamond ? 'linear-gradient(135deg, #e3f2fd, #bbdefb)' : 
+                                                   isGold ? 'linear-gradient(135deg, #fff3e0, #ffcc80)' : 
+                                                   'linear-gradient(135deg, #f3e5f5, #e1bee7)',
+                                        color: isDiamond ? '#1976d2' : 
+                                               isGold ? '#f57c00' : '#7b1fa2',
+                                        border: isDiamond ? '2px solid #1976d2' : 
+                                                isGold ? '2px solid #f57c00' : '2px solid #7b1fa2',
+                                        padding: '0.5rem 1rem',
+                                        borderRadius: '20px',
+                                        fontWeight: '600',
+                                        fontSize: '0.85rem',
+                                        textTransform: 'uppercase',
+                                        letterSpacing: '0.5px',
+                                        display: 'inline-block',
+                                        boxShadow: '0 2px 6px rgba(0,0,0,0.1)',
+                                    }}
+                                >
+                                    {staffData.staff_level}
+                                </span>
+                            );
+                        })()}
                     </div>
                 )}
                 <hr style={{ margin: "2px 0", opacity: "0.2" }} />
