@@ -229,12 +229,23 @@ const CustomCard = ({ staffData }) => {
                 {staffData.affiliate_id && (
                     <div style={{
                         textAlign: "center",
-                        marginBottom: "15px",
+                        marginBottom: "10px",
                         color: "#7f8c8d",
                         fontSize: "0.9rem",
                         fontWeight: "500"
                     }}>
                         Affiliate ID: <span style={{ color: "#3498db", fontWeight: "600" }}>{staffData.affiliate_id}</span>
+                    </div>
+                )}
+                {staffData.created_at && (
+                    <div style={{
+                        textAlign: "center",
+                        marginBottom: "15px",
+                        color: "#7f8c8d",
+                        fontSize: "0.9rem",
+                        fontWeight: "500"
+                    }}>
+                        Created: <span style={{ color: "#95a5a6", fontWeight: "600" }}>{new Date(staffData.created_at).toLocaleString()}</span>
                     </div>
                 )}
                 <hr style={{ margin: "2px 0", opacity: "0.2" }} />

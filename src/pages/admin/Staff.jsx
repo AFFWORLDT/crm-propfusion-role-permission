@@ -9,7 +9,7 @@ import { useState, useMemo } from "react";
 import { useMyPermissions } from "../../hooks/useHasPermission";
 import toast from "react-hot-toast";
 import { useAuth } from "../../context/AuthContext";
-import { X, Check, Download, Search, Filter, SortAsc, SortDesc, Package } from "lucide-react";
+import { X, Check, Download, Search, Filter, SortAsc, SortDesc, Package, Calendar } from "lucide-react";
 import axiosInstance from "../../utils/axiosInstance";
 import QRCode from "qrcode";
 import useStaff from "../../features/admin/staff/useStaff";
@@ -27,6 +27,8 @@ function Staff() {
     const [sortBy, setSortBy] = useState("newest"); // newest, oldest
     const [packageFilter, setPackageFilter] = useState("all"); // all, Essential, Premium, Exclusive
     const [showFilters, setShowFilters] = useState(false);
+    const [startDate, setStartDate] = useState("");
+    const [endDate, setEndDate] = useState("");
 
     // Fetch staff data and roles
     const { isLoading, data: allStaffData, error } = useStaff();
@@ -116,6 +118,29 @@ function Staff() {
             console.log(`Filtered to ${filtered.length} staff members for ${packageFilter}`);
         }
 
+        // Apply date filter
+        if (startDate || endDate) {
+            filtered = filtered.filter((staff) => {
+                const staffDate = new Date(staff.created_at || staff.updated_at || 0);
+                const start = startDate ? new Date(startDate) : null;
+                const end = endDate ? new Date(endDate) : null;
+                
+                // Set time to start/end of day for proper comparison
+                if (start) {
+                    start.setHours(0, 0, 0, 0);
+                }
+                if (end) {
+                    end.setHours(23, 59, 59, 999);
+                }
+                staffDate.setHours(0, 0, 0, 0);
+                
+                const afterStart = !start || staffDate >= start;
+                const beforeEnd = !end || staffDate <= end;
+                
+                return afterStart && beforeEnd;
+            });
+        }
+
         // Apply sorting
         filtered.sort((a, b) => {
             const dateA = new Date(a.created_at || a.updated_at || 0);
@@ -129,7 +154,7 @@ function Staff() {
         });
 
         return filtered;
-    }, [allStaffData, searchTerm, sortBy, packageFilter, rolesData]);
+    }, [allStaffData, searchTerm, sortBy, packageFilter, startDate, endDate, rolesData]);
 
     // Role selection modal state
     const [showRoleModal, setShowRoleModal] = useState(false);
@@ -388,7 +413,7 @@ function Staff() {
                             >
                                 <Filter size={16} />
                                 Filters
-                                {(sortBy !== "newest" || packageFilter !== "all") && (
+                                {(sortBy !== "newest" || packageFilter !== "all" || startDate || endDate) && (
                                     <div
                                         style={{
                                             width: "8px",
@@ -544,8 +569,148 @@ function Staff() {
                                     ))}
                                 </div>
 
+                                {/* Date Filter Section */}
+                                <div
+                                    style={{
+                                        marginTop: "1.5rem",
+                                        paddingTop: "1.5rem",
+                                        borderTop: "1px solid #e5e7eb",
+                                    }}
+                                >
+                                    <div
+                                        style={{
+                                            display: "flex",
+                                            alignItems: "center",
+                                            gap: "0.5rem",
+                                            marginBottom: "1rem",
+                                        }}
+                                    >
+                                        <Calendar size={18} color="#6b7280" />
+                                        <h3
+                                            style={{
+                                                margin: 0,
+                                                fontSize: "16px",
+                                                fontWeight: "600",
+                                                color: "#374151",
+                                            }}
+                                        >
+                                            Filter by Created Date
+                                        </h3>
+                                    </div>
+
+                                    <div
+                                        style={{
+                                            display: "flex",
+                                            gap: "1rem",
+                                            flexWrap: "wrap",
+                                            alignItems: "center",
+                                        }}
+                                    >
+                                        <div style={{ flex: 1, minWidth: "200px" }}>
+                                            <label
+                                                style={{
+                                                    display: "block",
+                                                    fontSize: "13px",
+                                                    fontWeight: "500",
+                                                    color: "#6b7280",
+                                                    marginBottom: "6px",
+                                                }}
+                                            >
+                                                Start Date
+                                            </label>
+                                            <input
+                                                type="date"
+                                                value={startDate}
+                                                onChange={(e) => setStartDate(e.target.value)}
+                                                style={{
+                                                    width: "100%",
+                                                    padding: "8px 12px",
+                                                    border: "1px solid #d1d5db",
+                                                    borderRadius: "6px",
+                                                    fontSize: "14px",
+                                                    backgroundColor: "white",
+                                                    outline: "none",
+                                                    transition: "border-color 0.2s ease",
+                                                }}
+                                                onFocus={(e) => {
+                                                    e.target.style.borderColor = "#3b82f6";
+                                                }}
+                                                onBlur={(e) => {
+                                                    e.target.style.borderColor = "#d1d5db";
+                                                }}
+                                            />
+                                        </div>
+                                        <div style={{ flex: 1, minWidth: "200px" }}>
+                                            <label
+                                                style={{
+                                                    display: "block",
+                                                    fontSize: "13px",
+                                                    fontWeight: "500",
+                                                    color: "#6b7280",
+                                                    marginBottom: "6px",
+                                                }}
+                                            >
+                                                End Date
+                                            </label>
+                                            <input
+                                                type="date"
+                                                value={endDate}
+                                                onChange={(e) => setEndDate(e.target.value)}
+                                                min={startDate || undefined}
+                                                style={{
+                                                    width: "100%",
+                                                    padding: "8px 12px",
+                                                    border: "1px solid #d1d5db",
+                                                    borderRadius: "6px",
+                                                    fontSize: "14px",
+                                                    backgroundColor: "white",
+                                                    outline: "none",
+                                                    transition: "border-color 0.2s ease",
+                                                }}
+                                                onFocus={(e) => {
+                                                    e.target.style.borderColor = "#3b82f6";
+                                                }}
+                                                onBlur={(e) => {
+                                                    e.target.style.borderColor = "#d1d5db";
+                                                }}
+                                            />
+                                        </div>
+                                        {(startDate || endDate) && (
+                                            <button
+                                                onClick={() => {
+                                                    setStartDate("");
+                                                    setEndDate("");
+                                                }}
+                                                style={{
+                                                    padding: "8px 12px",
+                                                    backgroundColor: "transparent",
+                                                    color: "#6b7280",
+                                                    border: "1px solid #d1d5db",
+                                                    borderRadius: "6px",
+                                                    fontSize: "13px",
+                                                    cursor: "pointer",
+                                                    transition: "all 0.2s ease",
+                                                    alignSelf: "flex-end",
+                                                    marginTop: "24px",
+                                                }}
+                                                onMouseEnter={(e) => {
+                                                    e.target.style.backgroundColor = "#f9fafb";
+                                                    e.target.style.borderColor = "#9ca3af";
+                                                }}
+                                                onMouseLeave={(e) => {
+                                                    e.target.style.backgroundColor = "transparent";
+                                                    e.target.style.borderColor = "#d1d5db";
+                                                }}
+                                            >
+                                                <X size={14} style={{ display: "inline", marginRight: "4px" }} />
+                                                Clear Dates
+                                            </button>
+                                        )}
+                                    </div>
+                                </div>
+
                                 {/* Clear Filters */}
-                                {(sortBy !== "newest" || packageFilter !== "all") && (
+                                {(sortBy !== "newest" || packageFilter !== "all" || startDate || endDate) && (
                                     <div
                                         style={{
                                             marginTop: "1rem",
@@ -557,6 +722,8 @@ function Staff() {
                                             onClick={() => {
                                                 setSortBy("newest");
                                                 setPackageFilter("all");
+                                                setStartDate("");
+                                                setEndDate("");
                                             }}
                                             style={{
                                                 padding: "6px 12px",
