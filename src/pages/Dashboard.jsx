@@ -56,6 +56,11 @@ function Dashboard() {
     const { currentUser } = useAuth();
     const { data: allDetailsData } = useAllDetails();
     const currentUserDetails = allDetailsData?.current_user_details;
+    const jobType = currentUserDetails?.job_type;
+    
+    // Check if user should only see packages (job_type is null)
+    const shouldShowOnlyPackages = jobType === null || jobType === undefined || jobType === "";
+    const shouldShowFullPortal = !shouldShowOnlyPackages;
     
     // Filter dashboard tabs based on role_id 108
     const filteredDashboardTabs = useMemo(() => {
@@ -404,28 +409,149 @@ function Dashboard() {
                 className="sectionStyles"
                 style={{
                     backgroundColor: "#ffffff",
+                    position: "relative",
                 }}
             >
+                {/* Blur overlay for restricted content when job_type is null */}
+                {shouldShowOnlyPackages && (
+                    <>
+                        <div style={{
+                            position: "absolute",
+                            top: 0,
+                            left: 0,
+                            right: 0,
+                            bottom: 0,
+                            backdropFilter: "blur(8px)",
+                            WebkitBackdropFilter: "blur(8px)",
+                            backgroundColor: "rgba(255, 255, 255, 0.3)",
+                            zIndex: 10,
+                            pointerEvents: "none",
+                        }} />
+                        <div style={{
+                            position: "absolute",
+                            top: "50%",
+                            left: "50%",
+                            transform: "translate(-50%, -50%)",
+                            zIndex: 30,
+                            backgroundColor: "rgba(255, 255, 255, 0.95)",
+                            padding: "2rem 3rem",
+                            borderRadius: "16px",
+                            boxShadow: "0 8px 32px rgba(0, 0, 0, 0.1)",
+                            textAlign: "center",
+                            maxWidth: "500px",
+                            border: "2px solid rgba(2, 0, 121, 0.2)",
+                        }}>
+                            <h3 style={{
+                                margin: "0 0 1rem 0",
+                                color: "#020079",
+                                fontSize: "1.5rem",
+                                fontWeight: "600",
+                            }}>
+                                Select a Package
+                            </h3>
+                            <p style={{
+                                margin: "0 0 1.5rem 0",
+                                color: "#6b7280",
+                                fontSize: "1rem",
+                                lineHeight: "1.6",
+                            }}>
+                                Please select a package to access the full portal features. Choose a package that best fits your needs.
+                            </p>
+                            <button
+                                onClick={() => navigate('/packages')}
+                                style={{
+                                    backgroundColor: allDetailsData?.company_settings?.sidebar_color_code || "#020079",
+                                    color: "white",
+                                    border: "none",
+                                    padding: "12px 24px",
+                                    borderRadius: "8px",
+                                    fontSize: "1rem",
+                                    fontWeight: "600",
+                                    cursor: "pointer",
+                                    transition: "all 0.3s ease",
+                                }}
+                                onMouseEnter={(e) => {
+                                    e.target.style.opacity = "0.9";
+                                    e.target.style.transform = "scale(1.05)";
+                                }}
+                                onMouseLeave={(e) => {
+                                    e.target.style.opacity = "1";
+                                    e.target.style.transform = "scale(1)";
+                                }}
+                            >
+                                View Packages
+                            </button>
+                        </div>
+                    </>
+                )}
+
                 {/* Luxury Profile Actions - Quick Access Tools */}
-                <LuxuryProfileActions colorCode={allDetailsData?.company_settings?.sidebar_color_code || "#020079"} />
+                <div style={{
+                    filter: shouldShowOnlyPackages ? "blur(0px)" : "none",
+                    position: "relative",
+                    zIndex: shouldShowOnlyPackages ? 20 : "auto",
+                }}>
+                    <LuxuryProfileActions colorCode={allDetailsData?.company_settings?.sidebar_color_code || "#020079"} />
+                </div>
                 
-                {/* Social Media Links - Connect With Us */}
-                <SocialMediaLinks />
+                {/* Social Media Links - Connect With Us - Blur if job_type is null */}
+                <div style={{
+                    filter: shouldShowOnlyPackages ? "blur(8px)" : "none",
+                    pointerEvents: shouldShowOnlyPackages ? "none" : "auto",
+                    position: "relative",
+                    zIndex: shouldShowOnlyPackages ? 1 : "auto",
+                }}>
+                    <SocialMediaLinks />
+                </div>
                 
-                {/* Premium Wallet Balance - Financial Overview */}
-                <PremiumWalletBalance colorCode={allDetailsData?.company_settings?.sidebar_color_code || "#020079"} />
+                {/* Premium Wallet Balance - Financial Overview - Blur if job_type is null */}
+                {shouldShowFullPortal && (
+                    <div style={{
+                        filter: shouldShowOnlyPackages ? "blur(8px)" : "none",
+                        pointerEvents: shouldShowOnlyPackages ? "none" : "auto",
+                        position: "relative",
+                        zIndex: shouldShowOnlyPackages ? 1 : "auto",
+                    }}>
+                        <PremiumWalletBalance colorCode={allDetailsData?.company_settings?.sidebar_color_code || "#020079"} />
+                    </div>
+                )}
                 
-                {/* Premium Affiliate Link - Network Growth */}
-                <PremiumAffiliateLink colorCode={allDetailsData?.company_settings?.sidebar_color_code || "#020079"} />
+                {/* Premium Affiliate Link - Network Growth - Blur if job_type is null */}
+                {shouldShowFullPortal && (
+                    <div style={{
+                        filter: shouldShowOnlyPackages ? "blur(8px)" : "none",
+                        pointerEvents: shouldShowOnlyPackages ? "none" : "auto",
+                        position: "relative",
+                        zIndex: shouldShowOnlyPackages ? 1 : "auto",
+                    }}>
+                        <PremiumAffiliateLink colorCode={allDetailsData?.company_settings?.sidebar_color_code || "#020079"} />
+                    </div>
+                )}
                 
-                {/* Dashboard Summary - show for all users */}
-                <Suspense fallback={<SectionLoader />}>
-                    <DashboardSummary data={data || {}} />
-                </Suspense>
+                {/* Dashboard Summary - Blur if job_type is null */}
+                {shouldShowFullPortal && (
+                    <div style={{
+                        filter: shouldShowOnlyPackages ? "blur(8px)" : "none",
+                        pointerEvents: shouldShowOnlyPackages ? "none" : "auto",
+                        position: "relative",
+                        zIndex: shouldShowOnlyPackages ? 1 : "auto",
+                    }}>
+                        <Suspense fallback={<SectionLoader />}>
+                            <DashboardSummary data={data || {}} />
+                        </Suspense>
+                    </div>
+                )}
                 
-                {/* Properties Section - show for all users */}
-                <div style={{ marginBottom: '3rem' }}>
-                    <h2 className={styles.dashboardForPropertyReportHeader}>Properties Overview</h2>
+                {/* Properties Section - Blur if job_type is null */}
+                {shouldShowFullPortal && (
+                    <div style={{
+                        marginBottom: '3rem',
+                        filter: shouldShowOnlyPackages ? "blur(8px)" : "none",
+                        pointerEvents: shouldShowOnlyPackages ? "none" : "auto",
+                        position: "relative",
+                        zIndex: shouldShowOnlyPackages ? 1 : "auto",
+                    }}>
+                        <h2 className={styles.dashboardForPropertyReportHeader}>Properties Overview</h2>
                         {propertyReports && (
                             <Suspense fallback={<SectionLoader />}>
                                 <PropertyStatsSection
@@ -433,58 +559,66 @@ function Dashboard() {
                                 />
                             </Suspense>
                         )}
-                    {resultArray &&
-                        resultArray?.length > 0 &&
-                        propertyTypeData &&
-                        propertyTypeData?.length > 0 && (
+                        {resultArray &&
+                            resultArray?.length > 0 &&
+                            propertyTypeData &&
+                            propertyTypeData?.length > 0 && (
+                                <Suspense fallback={<SectionLoader />}>
+                                    <ListingActivitySection
+                                        resultArray={resultArray}
+                                        propertyTypeData={propertyTypeData}
+                                    />
+                                </Suspense>
+                            )}
+                        {transformedData &&
+                            transformedData?.length > 0 &&
+                            portals &&
+                            portals?.length > 0 && (
+                                <Suspense fallback={<SectionLoader />}>
+                                    <PriceDistributionSection
+                                        transformedData={transformedData}
+                                        portals={portals}
+                                    />
+                                </Suspense>
+                            )}
+                    </div>
+                )}
+
+                {/* Leads Section - Blur if job_type is null */}
+                {shouldShowFullPortal && (
+                    <div style={{
+                        marginBottom: '3rem',
+                        filter: shouldShowOnlyPackages ? "blur(8px)" : "none",
+                        pointerEvents: shouldShowOnlyPackages ? "none" : "auto",
+                        position: "relative",
+                        zIndex: shouldShowOnlyPackages ? 1 : "auto",
+                    }}>
+                        {leadReportsSummary && leadReportsSummary.summary && (
                             <Suspense fallback={<SectionLoader />}>
-                                <ListingActivitySection
-                                    resultArray={resultArray}
-                                    propertyTypeData={propertyTypeData}
-                                />
+                                <LeadReportsSection report={leadReportsSummary} />
                             </Suspense>
                         )}
-                    {transformedData &&
-                        transformedData?.length > 0 &&
-                        portals &&
-                        portals?.length > 0 && (
+                        {resultLeadArray &&
+                            resultLeadArray?.length > 0 &&
+                            leadTypeData &&
+                            leadTypeData?.length > 0 && (
+                                <Suspense fallback={<SectionLoader />}>
+                                    <LeadActivitySection
+                                        resultLeadArray={resultLeadArray}
+                                        leadTypeData={leadTypeData}
+                                        propertyLeadTypeDistribution={
+                                            propertyLeadTypeDistribution || []
+                                        }
+                                    />
+                                </Suspense>
+                            )}
+                        {stageFollowupReport && (
                             <Suspense fallback={<SectionLoader />}>
-                                <PriceDistributionSection
-                                    transformedData={transformedData}
-                                    portals={portals}
-                                />
+                                <StageFollowupSection report={stageFollowupReport} />
                             </Suspense>
                         )}
                     </div>
-
-                {/* Leads Section - show for all users */}
-                <div style={{ marginBottom: '3rem' }}>
-                    {leadReportsSummary && leadReportsSummary.summary && (
-                        <Suspense fallback={<SectionLoader />}>
-                            <LeadReportsSection report={leadReportsSummary} />
-                        </Suspense>
-                    )}
-                {resultLeadArray &&
-                    resultLeadArray?.length > 0 &&
-                    leadTypeData &&
-                    leadTypeData?.length > 0 && (
-                        <Suspense fallback={<SectionLoader />}>
-                            <LeadActivitySection
-                                resultLeadArray={resultLeadArray}
-                                leadTypeData={leadTypeData}
-                                propertyLeadTypeDistribution={
-                                    propertyLeadTypeDistribution || []
-                                }
-                            />
-                        </Suspense>
-                    )}
-                    {stageFollowupReport && (
-                        <Suspense fallback={<SectionLoader />}>
-                            <StageFollowupSection report={stageFollowupReport} />
-                        </Suspense>
-                    )}
-                </div>
-
+                )}
 
             </section>
            
