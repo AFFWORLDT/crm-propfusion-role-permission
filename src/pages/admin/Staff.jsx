@@ -9,11 +9,13 @@ import { useState, useMemo } from "react";
 import { useMyPermissions } from "../../hooks/useHasPermission";
 import toast from "react-hot-toast";
 import { useAuth } from "../../context/AuthContext";
-import { X, Check, Download, Search, Filter, SortAsc, SortDesc, Package, Calendar } from "lucide-react";
+import { X, Check, Download, Search, Filter, SortAsc, SortDesc, Package, Calendar, FileSpreadsheet } from "lucide-react";
 import axiosInstance from "../../utils/axiosInstance";
 import QRCode from "qrcode";
 import useStaff from "../../features/admin/staff/useStaff";
 import useRoles from "../../features/admin/teams/useRoles";
+import * as XLSX from "xlsx";
+import { saveAs } from "file-saver";
 
 function Staff() {
     const [activeView, setActiveView] = useState("grid");
@@ -90,15 +92,20 @@ function Staff() {
         // Apply search filter
         if (searchTerm.trim()) {
             const searchLower = searchTerm.toLowerCase().trim();
+            const searchNumber = searchTerm.trim(); // For numeric searches (ID, affiliate_id)
             filtered = filtered.filter((staff) => {
                 const name = staff.name?.toLowerCase() || "";
                 const email = staff.email?.toLowerCase() || "";
                 const phone = staff.phone?.toLowerCase() || "";
+                const id = staff.id?.toString() || "";
+                const affiliateId = staff.affiliate_id?.toString() || "";
 
                 return (
                     name.includes(searchLower) ||
                     email.includes(searchLower) ||
-                    phone.includes(searchLower)
+                    phone.includes(searchLower) ||
+                    id.includes(searchNumber) ||
+                    affiliateId.includes(searchNumber)
                 );
             });
         }
@@ -155,6 +162,90 @@ function Staff() {
 
         return filtered;
     }, [allStaffData, searchTerm, sortBy, packageFilter, startDate, endDate, rolesData]);
+
+    // Export to Excel function
+    const handleExportToExcel = () => {
+        if (!filteredStaffData || filteredStaffData.length === 0) {
+            toast.error("No data to export");
+            return;
+        }
+
+        try {
+            // Prepare data for export with formatted columns
+            const exportData = filteredStaffData.map((staff) => {
+                const packageLevel = getStaffPackageLevel(staff);
+                const createdDate = staff.created_at 
+                    ? new Date(staff.created_at).toLocaleString() 
+                    : "N/A";
+                const updatedDate = staff.updated_at 
+                    ? new Date(staff.updated_at).toLocaleString() 
+                    : "N/A";
+
+                return {
+                    "Agent ID": staff.id || "N/A",
+                    "Name": staff.name || "N/A",
+                    "Email": staff.email || "N/A",
+                    "Phone": staff.phone || "N/A",
+                    "Affiliate ID": staff.affiliate_id || "N/A",
+                    "Package Level": packageLevel,
+                    "Status": staff.state === "active" ? "Active" : "Inactive",
+                    "Created Date": createdDate,
+                    "Updated Date": updatedDate,
+                    "Team": staff.team_name || staff.team?.name || "Not Assigned",
+                    "Role ID": staff.role_id || "N/A",
+                };
+            });
+
+            // Create workbook and worksheet
+            const wb = XLSX.utils.book_new();
+            const ws = XLSX.utils.json_to_sheet(exportData);
+
+            // Set column widths for better readability
+            const colWidths = [
+                { wch: 12 }, // Agent ID
+                { wch: 25 }, // Name
+                { wch: 30 }, // Email
+                { wch: 18 }, // Phone
+                { wch: 15 }, // Affiliate ID
+                { wch: 15 }, // Package Level
+                { wch: 12 }, // Status
+                { wch: 22 }, // Created Date
+                { wch: 22 }, // Updated Date
+                { wch: 20 }, // Team
+                { wch: 10 }, // Role ID
+            ];
+            ws['!cols'] = colWidths;
+
+            // Add worksheet to workbook
+            XLSX.utils.book_append_sheet(wb, ws, "Staff Members");
+
+            // Generate filename with current date and filter info
+            const dateStr = new Date().toISOString().split('T')[0];
+            let filename = `staff_export_${dateStr}`;
+            
+            if (packageFilter !== "all") {
+                filename += `_${packageFilter.toLowerCase()}`;
+            }
+            if (searchTerm.trim()) {
+                filename += `_filtered`;
+            }
+            if (startDate || endDate) {
+                filename += `_dated`;
+            }
+            
+            filename += `.xlsx`;
+
+            // Write file and trigger download
+            const excelBuffer = XLSX.write(wb, { bookType: 'xlsx', type: 'array' });
+            const blob = new Blob([excelBuffer], { type: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet' });
+            saveAs(blob, filename);
+
+            toast.success(`Exported ${filteredStaffData.length} staff member(s) to Excel`);
+        } catch (error) {
+            console.error("Export error:", error);
+            toast.error("Failed to export data. Please try again.");
+        }
+    };
 
     // Role selection modal state
     const [showRoleModal, setShowRoleModal] = useState(false);
@@ -311,7 +402,7 @@ function Staff() {
                                 />
                                 <input
                                     type="text"
-                                    placeholder="Search by name, email, or phone..."
+                                    placeholder="Search by name, email, phone, ID, or affiliate ID..."
                                     value={searchTerm}
                                     onChange={(e) => setSearchTerm(e.target.value)}
                                     style={{
@@ -765,6 +856,45 @@ function Staff() {
                             activeView={activeView}
                             onViewChange={setActiveView}
                         />
+
+                        {/* Export to Excel Button */}
+                        <button
+                            onClick={handleExportToExcel}
+                            disabled={!filteredStaffData || filteredStaffData.length === 0}
+                            style={{
+                                backgroundColor: filteredStaffData && filteredStaffData.length > 0 ? "#10b981" : "#d1d5db",
+                                color: filteredStaffData && filteredStaffData.length > 0 ? "white" : "#9ca3af",
+                                border: "none",
+                                borderRadius: "8px",
+                                padding: "8px 16px",
+                                display: "flex",
+                                alignItems: "center",
+                                gap: "8px",
+                                cursor: filteredStaffData && filteredStaffData.length > 0 ? "pointer" : "not-allowed",
+                                transition: "all 0.2s ease",
+                                fontSize: "14px",
+                                fontWeight: "500",
+                                boxShadow: filteredStaffData && filteredStaffData.length > 0 ? "0 2px 4px rgba(16, 185, 129, 0.2)" : "none",
+                            }}
+                            onMouseEnter={(e) => {
+                                if (filteredStaffData && filteredStaffData.length > 0) {
+                                    e.currentTarget.style.backgroundColor = "#059669";
+                                    e.currentTarget.style.transform = "translateY(-1px)";
+                                    e.currentTarget.style.boxShadow = "0 4px 8px rgba(16, 185, 129, 0.3)";
+                                }
+                            }}
+                            onMouseLeave={(e) => {
+                                if (filteredStaffData && filteredStaffData.length > 0) {
+                                    e.currentTarget.style.backgroundColor = "#10b981";
+                                    e.currentTarget.style.transform = "translateY(0)";
+                                    e.currentTarget.style.boxShadow = "0 2px 4px rgba(16, 185, 129, 0.2)";
+                                }
+                            }}
+                            title={`Export ${filteredStaffData?.length || 0} staff member(s) to Excel`}
+                        >
+                            <FileSpreadsheet size={18} />
+                            Export Excel
+                        </button>
 
                         {/* Invitation Link Icon */}
                         <button
