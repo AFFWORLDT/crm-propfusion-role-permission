@@ -130,6 +130,7 @@ const Packages = () => {
             region: 'India',
             features: [
                 'Recognition certificate from OneX',
+                'Award ceremony with Bollywood celebrity',
                 'Up to 50% commission on property sales',
                 'Weekly commission payout',
                 'Membership Package Refund after your first property sale',
