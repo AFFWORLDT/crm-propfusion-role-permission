@@ -5,7 +5,7 @@ function useUpdateBlog() {
     const queryClient = useQueryClient();
 
     const { mutate: updateBlog, isPending} = useMutation({
-        mutationFn: ({ blogId, queryParams }) => updateBlogApi(blogId, queryParams),
+        mutationFn: ({ blogId, payload }) => updateBlogApi(blogId, payload),
         onSuccess: () => {
             toast.success("Blog updated successfully!");
             queryClient.invalidateQueries({ queryKey: ["blog"] }); 
