@@ -137,7 +137,7 @@ import RentalAgreementDetails from "./pages/rental-agreement/RentalAgreementDeta
 import Whatsapp from "./pages/Whatsapp";
 import Transactions from "./pages/Transactions";
 import EditNewBuilding from "./pages/building/EditNewBuilding";
-import PremiumShareProperty from "./pages/properties/share-premium/PremiumShareProperty"; 
+import PremiumShareProperty from "./pages/properties/share-premium/PremiumShareProperty";
 import BulkSharePremium from "./pages/properties/bulk-share-premium/BulkSharePremium";
 import PropertyGalleryDemo from "./pages/PropertyGalleryDemo";
 import UserManual from "./pages/UserManual/UserManual";
@@ -209,6 +209,7 @@ import Ledger from "./pages/ledger";
 import PayoutList from "./pages/payoutList";
 import AllAgentWallet from "./pages/allAgentWallet";
 import Alltransaction from "./pages/Alltransaction";
+import BlogFormPage from "./pages/BlogFormPage";
 
 delete L.Icon.Default.prototype._getIconUrl;
 
@@ -256,8 +257,14 @@ function App() {
                                 path="/tenant-registration"
                                 element={<TenantRegistration />}
                             />
-                            <Route path="/password-reset/request" element={<ForgetPassword />} />
-                            <Route path="/password-reset/verify" element={<ResetPassword />} />
+                            <Route
+                                path="/password-reset/request"
+                                element={<ForgetPassword />}
+                            />
+                            <Route
+                                path="/password-reset/verify"
+                                element={<ResetPassword />}
+                            />
                             <Route element={<AuthProvider />}>
                                 <Route path="/login" element={<Login />} />
                                 <Route element={<SubscriptionCheck />}>
@@ -1197,6 +1204,14 @@ function App() {
                                                             <Blog />
                                                         </RoleGuard>
                                                     }
+                                                ></Route>
+                                                <Route
+                                                    path="blog/add"
+                                                    element={<BlogFormPage />}
+                                                ></Route>
+                                                <Route
+                                                    path="blog/:id/edit"
+                                                    element={<BlogFormPage />}
                                                 ></Route>
                                                 <Route
                                                     path="blog/:id"

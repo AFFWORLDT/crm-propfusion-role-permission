@@ -1,56 +1,36 @@
 import { useState } from "react";
 import { PlusCircleIcon } from "lucide-react";
 import styles from "./Blog.module.css";
-import BlogForm from "../features/Blog/BlogFrom";
 import BlogList from "../features/Blog/BlogList";
 import { DeleteModal } from "../features/SmtpSetting/DeleteModal";
 import SectionTop from "../ui/SectionTop";
-import useCreateBlog from "../features/Blog/useCreate";
-import useUpdateBlog from "../features/Blog/useUpdate";
 import useDeleteBlog from "../features/Blog/useDelete";
 import TabBar from "../ui/TabBar";
+import { useNavigate } from "react-router-dom";
 
 const Blog = () => {
-    const [showAddModal, setShowAddModal] = useState(false);
-    const [showEditModal, setShowEditModal] = useState(false);
+    const navigate = useNavigate();
     const [showDeleteModal, setShowDeleteModal] = useState(false);
     const [selectedBlog, setSelectedBlog] = useState(null);
-    const {addBlog}=useCreateBlog()
-    const { updateBlog } = useUpdateBlog()
-    const { deleteing } =useDeleteBlog()
+    const { deleteing } = useDeleteBlog();
 
     const handleAddBlog = () => {
-        setShowAddModal(true);
+        navigate("/admin/blog/add");
     };
 
-    const handleEditBlog = (blog) => {
-        setSelectedBlog(blog);
-        setShowEditModal(true);
+    const handleEditBlog = (blogId) => {
+        navigate(`/admin/blog/${blogId}/edit`);
     };
 
-    const handleDeleteBlog = (blog) => {
-        setSelectedBlog(blog);
+    const handleDeleteBlog = (blogId) => {
+        setSelectedBlog(blogId);
         setShowDeleteModal(true);
     };
 
     const handleConfirmDelete = () => {
-        deleteing(selectedBlog)
+        deleteing(selectedBlog);
         setShowDeleteModal(false);
         setSelectedBlog(null);
-    };
-
-    const onAddBlogSubmit = (data) => {
-      addBlog(data)
-       setShowAddModal(false)
-    };
-
-    const onEditBlogSubmit = (data) => {
-        updateBlog({
-            blogId:selectedBlog,
-            queryParams: data,
-        })
-        setShowEditModal(false);
-        setSelectedBlog(null)
     };
 
     return (
@@ -94,36 +74,6 @@ const Blog = () => {
                         handleEditBlog={handleEditBlog}
                         handleDeleteBlog={handleDeleteBlog}
                     />
-
-                    {showAddModal && (
-                        <div className={styles.modal}>
-                            <div className={styles.modalContent}>
-                                <h2 className={styles.modalTitle}>Add Blog</h2>
-                                <BlogForm
-                                    setShowAddModal={setShowAddModal}
-                                    onSubmit={(data) => {
-                                      onAddBlogSubmit(data)
-                                    }}
-                                />
-                            </div>
-                        </div>
-                    )}
-
-                    {showEditModal && selectedBlog && (
-                        <div className={styles.modal}>
-                            <div className={styles.modalContent}>
-                                <h2 className={styles.modalTitle}>Edit Blog</h2>
-                                <BlogForm
-                                    onSubmit={(data)=>{
-                                        onEditBlogSubmit(data)
-                                    }}
-                                    setShowEditModal={setShowEditModal}
-                                    id={selectedBlog}
-                                    setId={setSelectedBlog}
-                                />
-                            </div>
-                        </div>
-                    )}
 
                     {showDeleteModal && selectedBlog && (
                         <DeleteModal
