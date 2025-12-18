@@ -90,6 +90,7 @@ import OwnerRegistration from "./pages/OwnerRegistration/OwnerRegistration";
 import TenantRegistration from "./pages/TenantRegistration/TenantRegistration";
 import ForgetPassword from "./pages/ForgetPassword";
 import ResetPassword from "./pages/ResetPassword";
+import ClientRegistrationForm from "./components/ClientRegistrationForm";
 
 import Updates from "./pages/general/Updates";
 import WebApis from "./pages/general/WebApis";
@@ -256,6 +257,10 @@ function App() {
                             <Route
                                 path="/tenant-registration"
                                 element={<TenantRegistration />}
+                            />
+                            <Route
+                                path="/registration-form"
+                                element={<ClientRegistrationForm />}
                             />
                             <Route
                                 path="/password-reset/request"

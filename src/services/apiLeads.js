@@ -3,6 +3,37 @@ import { buildUrl, buildUrlforLeads, checkUnauthorized } from "../utils/utils";
 import { getApiUrl } from "../utils/getApiUrl";
 
 const cookies = new Cookies();
+
+/**
+ * Create a lead from public website form (no authentication required)
+ * @param {Object} payload - Lead data
+ * @returns {Promise} API response
+ */
+export async function createLeadsForWebsite(payload) {
+    const url = `${getApiUrl()}/properties/public/add_lead`;
+
+    try {
+        const res = await fetch(url, {
+            method: "POST",
+            headers: {
+                Accept: "application/json",
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify(payload),
+            // Note: No Authorization header for public endpoint
+        });
+
+        if (!res.ok) {
+            const errorData = await res.json().catch(() => ({ message: "Could not create lead!" }));
+            throw new Error(errorData.message || "Could not create lead!");
+        }
+
+        const responseData = await res.json();
+        return responseData;
+    } catch (err) {
+        throw new Error(err.message);
+    }
+}
 export async function getLeadLogs(filters, signal) {
     const url = buildUrl("lead_logs", filters, true);
 
