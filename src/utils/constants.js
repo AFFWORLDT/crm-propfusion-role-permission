@@ -705,7 +705,7 @@ export const CHEQUE_OPTIONS = [
 export const LEAD_TYPE_OPTIONS = [
     // { label: "Select", value: "" },
     {
-        label: "SELL Lead",
+        label: "Sell Lead",
         value: "SELL",
         bgColor: "#EDE7F6", // Matching SELL leads color
         fontColor: "#4527A0",
@@ -723,14 +723,8 @@ export const LEAD_TYPE_OPTIONS = [
         fontColor: "#4527A0",
     },
     {
-        label: "EDUCATION",
+        label: "Education",
         value: "EDUCATION",
-        bgColor: "#EDE7F6", // Matching SELL leads color
-        fontColor: "#4527A0",
-    },
-    {
-        label: "PROPERTY",
-        value: "PROPERTY",
         bgColor: "#EDE7F6", // Matching SELL leads color
         fontColor: "#4527A0",
     },

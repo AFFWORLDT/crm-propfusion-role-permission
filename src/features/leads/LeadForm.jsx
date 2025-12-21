@@ -271,13 +271,13 @@ function LeadForm({ leadType }) {
                         required={true}
                         label="Name"
                     />
-                    {clientType === "SELL" && (
+                    {/* {clientType === "SELL" && (
                         <MultiStepForm.InputSelect
                             registerName="projectType"
                             options={PROJECT_OPTIONS}
                             label="Project Type"
                         />
-                    )}
+                    )} */}
                     <div className={styles.splitInput}>
                         <div className={styles.inputContainer}>
                             <label>Phone</label>
@@ -376,7 +376,7 @@ function LeadForm({ leadType }) {
                         />
                     </div>
                      */}
-                    <div style={{ position: 'relative' }}>
+                    {/* <div style={{ position: 'relative' }}>
                         <MultiStepForm.InputDataList
                             registerName="property_type"
                             data={PROPERTY_TYPES}
@@ -451,7 +451,7 @@ function LeadForm({ leadType }) {
                                 )}
                             </div>
                         )}
-                    </div>
+                    </div> */}
 
                     <MultiStepForm.InputSelect
                         registerName="payMethod"
@@ -464,7 +464,7 @@ function LeadForm({ leadType }) {
                         label="Source of Lead"
                     />
                     
-                    <div style={{ position: 'relative' }}>
+                    {/* <div style={{ position: 'relative' }}>
                         <div className={styles.inputGroup}>
                             <FormInputPropertySearch
                                 control={control}
@@ -542,7 +542,7 @@ function LeadForm({ leadType }) {
                                 )}
                             </div>
                         )}
-                    </div>
+                    </div> */}
 {/*                     
                     <div style={{ position: 'relative' }}>
                         <div className={styles.inputGroup}>
