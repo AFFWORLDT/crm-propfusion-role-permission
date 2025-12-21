@@ -26,20 +26,28 @@ export async function getBlog(page, size) {
 
 export async function CreateBlog(payload) {
     const url = `${getApiUrl()}/blogs`;
-    const formData = new FormData();
-    for (const key in payload) {
-        if (key === "photos" && Array.isArray(payload.photos)) {
-            payload.photos.forEach((photo, index) => {
-                if (photo instanceof File) {
-                    formData.append(`photos[${index}]`, photo);
-                } else {
-                    console.error("Invalid file detected in photos array");
-                }
-            });
-        } else if (payload[key] instanceof File) {
-            formData.append(key, payload[key]);
-        } else {
-            formData.append(key, payload[key]);
+    
+    // Check if payload is already FormData
+    let formData;
+    if (payload instanceof FormData) {
+        formData = payload;
+    } else {
+        // Convert plain object to FormData
+        formData = new FormData();
+        for (const key in payload) {
+            if (key === "photos" && Array.isArray(payload.photos)) {
+                payload.photos.forEach((photo, index) => {
+                    if (photo instanceof File) {
+                        formData.append(`photos[${index}]`, photo);
+                    } else {
+                        console.error("Invalid file detected in photos array");
+                    }
+                });
+            } else if (payload[key] instanceof File) {
+                formData.append(key, payload[key]);
+            } else {
+                formData.append(key, payload[key]);
+            }
         }
     }
 
@@ -93,31 +101,56 @@ export async function getBlogById(Id) {
 }
 
 
-export const updateBlogApi = async (blogId, queryParams) => {
+export const updateBlogApi = async (blogId, payload) => {
     try {
         const baseUrl = `${getApiUrl()}/blogs/${blogId}`;
+        
+        // Check if payload is FormData
+        if (payload instanceof FormData) {
+            const response = await fetch(baseUrl, {
+                method: "PUT",
+                headers: {
+                    Accept: "application/json",
+                    Authorization: `Bearer ${cookies.get("USER")?.access_token}`,
+                },
+                body: payload,
+            });
+            
+            checkUnauthorized(response.status, cookies);
+            
+            if (!response.ok) {
+                const errorData = await response.json();
+                throw new Error(`Update failed: ${errorData?.message || response.statusText}`);
+            }
+            
+            const data = await response.json();
+            return data;
+        } else {
+            // Handle JSON payload (backward compatibility)
+            const filteredParams = Object.fromEntries(
+                // eslint-disable-next-line no-unused-vars
+                Object.entries(payload).filter(([_, value]) => value != null && value !== "")
+            );
 
-        const filteredParams = Object.fromEntries(
-            // eslint-disable-next-line no-unused-vars
-            Object.entries(queryParams).filter(([_, value]) => value != null && value !== "")
-        );
-
-        const queryString = new URLSearchParams(filteredParams).toString();
-        const fullUrl = `${baseUrl}?${queryString}`;
-        const response = await fetch(fullUrl, {
-            method: "PUT", 
-            headers: {
-                "Content-Type": "application/json",
-                Authorization: `Bearer ${cookies.get("USER")?.access_token}`, 
-            },
-        });
-        if (!response.ok) {
-            const errorData = await response.json();
-            throw new Error(`Update failed: ${errorData?.message || response.statusText}`);
+            const queryString = new URLSearchParams(filteredParams).toString();
+            const fullUrl = `${baseUrl}?${queryString}`;
+            const response = await fetch(fullUrl, {
+                method: "PUT", 
+                headers: {
+                    "Content-Type": "application/json",
+                    Authorization: `Bearer ${cookies.get("USER")?.access_token}`, 
+                },
+            });
+            
+            checkUnauthorized(response.status, cookies);
+            
+            if (!response.ok) {
+                const errorData = await response.json();
+                throw new Error(`Update failed: ${errorData?.message || response.statusText}`);
+            }
+            const data = await response.json();
+            return data;
         }
-        const data = await response.json();
-        console.log("Blog updated successfully:", data); 
-        return data;
     } catch (error) {
         console.error("Error updating blog:", error);
         throw new Error(error.message);

@@ -632,8 +632,10 @@ export const SOURCE_OPTIONS = [
     { label: "Company Website", value: "Company Website" },
     { label: "Company Database", value: "Company Database" },
     { label: "Facebook", value: "Facebook" },
+    { label: "Meta", value: "Meta" },
     { label: "Meta Ads", value: "Meta Ads" },
     { label: "Google", value: "Google" },
+    { label: "Ad-Words", value: "Ad-Words" },
     { label: "YouTube", value: "YouTube" },
     { label: "LinkedIn", value: "LinkedIn" },
     { label: "Instagram", value: "Instagram" },
@@ -644,7 +646,15 @@ export const SOURCE_OPTIONS = [
         bgColor: "#C8E6C9", // Matching whatsapp-leads color
         fontColor: "#1B5E20",
     },
+    { label: "WA Campaign", value: "WA Campaign" },
+    { label: "Email Campaign", value: "Email Campaign" },
     { label: "Telegram", value: "Telegram" },
+    { label: "Website", value: "Website" },
+    { label: "Call Centre", value: "Call Centre" },
+    { label: "Cold Calling", value: "Cold Calling" },
+    { label: "Reference", value: "Reference" },
+    { label: "Vendor/Agency", value: "Vendor/Agency" },
+    { label: "Self", value: "Self" },
     { label: "Other", value: "Other" },
 ];
 
@@ -708,7 +718,19 @@ export const LEAD_TYPE_OPTIONS = [
     },
     {
         label: "UNDEFINED",
-        value: "",
+        value: "UNDEFINED",
+        bgColor: "#EDE7F6", // Matching SELL leads color
+        fontColor: "#4527A0",
+    },
+    {
+        label: "EDUCATION",
+        value: "EDUCATION",
+        bgColor: "#EDE7F6", // Matching SELL leads color
+        fontColor: "#4527A0",
+    },
+    {
+        label: "PROPERTY",
+        value: "PROPERTY",
         bgColor: "#EDE7F6", // Matching SELL leads color
         fontColor: "#4527A0",
     },
