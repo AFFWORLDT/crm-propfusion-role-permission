@@ -139,6 +139,16 @@ function LeadsBase() {
                             label: "Enquiry Leads",
                             bgColor: "#f5f5f5",
                         },
+                        {
+                            id: "EDUCATION",
+                            label: "Education Leads",
+                            bgColor: "#f5f5f5",
+                        },
+                        {
+                            id: "PROPERTY",
+                            label: "Property Leads",
+                            bgColor: "#f5f5f5",
+                        },
                         { id: "", label: "All Leads", bgColor: "#f5f5f5" },
                     ]}
                     activeTab={leadType}

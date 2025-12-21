@@ -169,7 +169,7 @@ function LeadForm({ leadType }) {
                         placeholder="Select Agent"
                         label="Agent"
                         required={true}
-                        isDisabled={true}
+                        isMulti={true}
                     />
                 </div>
             </div>
@@ -318,7 +318,7 @@ function LeadForm({ leadType }) {
                         label="Gender"
                     />
 
-                    <div className={styles.splitInput}>
+                    {/* <div className={styles.splitInput}>
                         <MultiStepForm.InputSelect
                             registerName="roomsFrom"
                             valueAsNumber={true}
@@ -337,8 +337,8 @@ function LeadForm({ leadType }) {
                                 ...BEDROOM_NUM_OPTIONS.slice(1),
                             ]}
                         />
-                    </div>
-                    <div className={styles.splitInput}>
+                    </div> */}
+                    {/* <div className={styles.splitInput}>
                         <MultiStepForm.InputSelect
                             registerName="from_bathroom"
                             valueAsNumber={true}
@@ -357,9 +357,9 @@ function LeadForm({ leadType }) {
                                 ...NUM_OPTIONS.slice(1),
                             ]}
                         />
-                    </div>
+                    </div> */}
 
-                    <div className={styles.splitInput}>
+                    {/* <div className={styles.splitInput}>
                         <MultiStepForm.Input
                             type="number"
                             registerName="budgetFrom"
@@ -375,7 +375,7 @@ function LeadForm({ leadType }) {
                             placeholder="To (in AED)"
                         />
                     </div>
-                    
+                     */}
                     <div style={{ position: 'relative' }}>
                         <MultiStepForm.InputDataList
                             registerName="property_type"
@@ -543,7 +543,7 @@ function LeadForm({ leadType }) {
                             </div>
                         )}
                     </div>
-                    
+{/*                     
                     <div style={{ position: 'relative' }}>
                         <div className={styles.inputGroup}>
                             <label className={styles.label}>Preferred Developers</label>
@@ -621,9 +621,9 @@ function LeadForm({ leadType }) {
                                 )}
                             </div>
                         )}
-                    </div>
+                    </div> */}
                     
-                    <div style={{ position: 'relative' }}>
+                    {/* <div style={{ position: 'relative' }}>
                         <div className={styles.inputGroup}>
                             <label className={styles.label}>Preferred Project</label>
                             <FormInputProjectSearch
@@ -700,7 +700,7 @@ function LeadForm({ leadType }) {
                                 )}
                             </div>
                         )}
-                    </div>
+                    </div> */}
 
                     {clientType === "RENT" &&
                         <MultiStepForm.InputSelect
