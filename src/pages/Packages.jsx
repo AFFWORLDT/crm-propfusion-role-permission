@@ -2,7 +2,7 @@ import { useState } from 'react';
 import SectionTop from '../ui/SectionTop';
 import useAllDetails from '../features/all-details/useAllDetails';
 import { useAuth } from '../context/AuthContext';
-import { CreditCard, CheckCircle, ExternalLink, Copy, Banknote, Building2, Users, Check, ArrowRight } from 'lucide-react';
+import { CreditCard, CheckCircle, ExternalLink, Copy, Banknote, Building2, Users, Check, ArrowRight, X } from 'lucide-react';
 import toast from 'react-hot-toast';
 import styles from './Packages.module.css';
 
@@ -12,6 +12,8 @@ const Packages = () => {
     const [selectedPackage, setSelectedPackage] = useState(null);
     const [selectedType, setSelectedType] = useState('partners'); // 'brokers' or 'partners' - default to 'partners'
     const [showPaymentDetails, setShowPaymentDetails] = useState(false);
+    const [showDetailsModal, setShowDetailsModal] = useState(false);
+    const [modalPlan, setModalPlan] = useState(null);
     
     const companySettings = data?.company_settings || {};
     const colorCode = companySettings.sidebar_color_code || "#020079";
@@ -89,19 +91,23 @@ const Packages = () => {
         }
     ];
 
-    // Common features for all partner plans
-    const commonPartnerFeatures = [
-        'Multiple Income Streams & High Commission Potential',
+    // Common features for all partner plans - Multiple Income Streams & High Commission Payouts
+    const commonIncomeFeatures = [
         'Earn on both membership packages and property sales',
         'Up to 80% commission on property sales',
         'Up to 15% commission on membership package referrals',
         '3-level team income',
-        'Weekly commission payout',
+        'Weekly commission payout'
+    ];
+
+    // Common features for all partner plans - Advanced Platform Access
+    const commonPlatformFeatures = [
         'Full access to OneX CRM and advanced client management tools',
         'Advance AI tools',
         'Real-time commission tracking with transparent payout system',
         'Instant access to elite profile and exclusive property portfolio',
         'Company Branding Kit',
+        'Dubai office access',
         'Additional exclusive benefits'
     ];
 
@@ -116,11 +122,10 @@ const Packages = () => {
             popular: false,
             bonus: 'Fee Scholarship After the First Property Sale',
             region: null,
-            commonFeatures: commonPartnerFeatures,
-            specificFeatures: [
-                'Real Estate Basic Awareness - Recognition certification from OneX',
-                '5 Leads Yearly'
-            ],
+            certification: 'Real Estate Basic Awareness - Recognition certification from OneX',
+            internationalTour: null,
+            awardCeremony: null,
+            additionalBenefit: '5 Leads Yearly',
             bestFor: 'New partners testing the real estate model',
             paymentLink: "https://business.mamopay.com/pay/affworldfzllc-f8fb25"
         },
@@ -128,56 +133,47 @@ const Packages = () => {
             id: 'partner-premium',
             name: 'Premium',
             price: '500',
-            originalPrice: '1000',
-            discount: '50% off',
+            originalPrice: null,
+            discount: null,
             popular: false,
             bonus: 'Fee Scholarship After the First Property Sale',
-            region: 'India',
-            commonFeatures: [...commonPartnerFeatures, 'Dubai office access'],
-            specificFeatures: [
-                'Kings Global Academy (UK) - Real Estate Professional Certified Course',
-                'Fully sponsored international tour: 3 nights/4 days (Dubai)',
-                'Award ceremony with Bollywood celebrity',
-                'Broker Club'
-            ],
+            region: null,
+            certification: 'Kings Global Academy (UK) - Real Estate Professional Certified Course',
+            internationalTour: null,
+            awardCeremony: null,
+            additionalBenefit: 'Broker Club',
             bestFor: 'Indian influencers and leaders with established audiences',
             paymentLink: "https://business.mamopay.com/pay/affworldfzllc-a061dc"
         },
         {
             id: 'partner-premium-plus',
             name: 'Premium Plus',
-            price: '1500',
+            price: '3000',
             originalPrice: null,
             discount: null,
             popular: true,
             bonus: 'Fee Scholarship After the First Property Sale',
-            region: 'Asia',
-            commonFeatures: [...commonPartnerFeatures, 'Dubai office access'],
-            specificFeatures: [
-                'Kings Global Academy (UK) - Real Estate Manager Certified Course',
-                'Fully sponsored international tour: 3 nights/4 days Dubai/Europe/UK',
-                'Award ceremony with Bollywood celebrity',
-                'Job Assurance'
-            ],
+            region: null,
+            certification: 'Kings Global Academy (UK) - Real Estate Manager Certified Course',
+            internationalTour: 'Fully sponsored international tour: 3 nights/4 days (Dubai)',
+            awardCeremony: 'Award ceremony with Bollywood celebrity',
+            additionalBenefit: 'Job Assurance',
             bestFor: 'Asian partners ready to scale their network internationally',
             paymentLink: "https://business.mamopay.com/pay/affworldfzllc-b0fe38"
         },
         {
             id: 'partner-exclusive',
             name: 'Exclusive',
-            price: '3000',
+            price: '4500',
             originalPrice: null,
             discount: null,
             popular: false,
             bonus: 'Fee Scholarship After the First Property Sale',
-            region: 'Asia',
-            commonFeatures: [...commonPartnerFeatures, 'Dubai office access'],
-            specificFeatures: [
-                'Kings Global Academy (UK) - Real Estate Expert Certified Course',
-                'Fully sponsored international tour: 3 nights/4 days Dubai/Europe/UK',
-                'Award ceremony with Bollywood celebrity',
-                'Job Assurance'
-            ],
+            region: null,
+            certification: 'Kings Global Academy (UK) - Real Estate Expert Certified Course',
+            internationalTour: 'Fully sponsored international tour: 3 nights/4 days Dubai/Europe/UK',
+            awardCeremony: 'Award ceremony with Bollywood celebrity',
+            additionalBenefit: 'Job Assurance',
             bestFor: 'Elite partners building large-scale international networks',
             paymentLink: "https://business.mamopay.com/pay/affworldfzllc-3a57e4"
         }
@@ -245,6 +241,21 @@ const Packages = () => {
     const handleSelectPlan = (plan) => {
         setSelectedPackage(plan);
         setShowPaymentDetails(true);
+    };
+
+    const handleViewDetails = (plan) => {
+        setModalPlan(plan);
+        setShowDetailsModal(true);
+    };
+
+    const handleCloseModal = () => {
+        setShowDetailsModal(false);
+        setModalPlan(null);
+    };
+
+    const handleChooseFromModal = (plan) => {
+        handleCloseModal();
+        handleSelectPlan(plan);
     };
 
     const handleBackToPlans = () => {
@@ -402,57 +413,18 @@ const Packages = () => {
                                         {plan.bonus}
                                     </div>
                                     
-                                    {plan.region && (
-                                        <div className={styles.regionBadge}>
-                                            ({plan.region})
-                                        </div>
-                                    )}
-                                    
-                                    <div className={styles.featuresList}>
-                                        {plan.commonFeatures && plan.commonFeatures.length > 0 && (
-                                            <>
-                                                <div className={styles.commonFeaturesSection}>
-                                                    <h4 className={styles.sectionTitle}>Common Features (All Plans):</h4>
-                                                    {plan.commonFeatures.map((feature, index) => (
-                                                        <div key={`common-${index}`} className={styles.featureItem}>
-                                                            <CheckCircle size={18} className={styles.checkIcon} />
-                                                            <span>{feature}</span>
-                                                        </div>
-                                                    ))}
-                                                </div>
-                                            </>
-                                        )}
-                                        
-                                        {plan.specificFeatures && plan.specificFeatures.length > 0 && (
-                                            <>
-                                                <div className={styles.specificFeaturesSection}>
-                                                    <h4 className={styles.sectionTitle}>Plan-Specific Features:</h4>
-                                                    {plan.specificFeatures.map((feature, index) => (
-                                                        <div key={`specific-${index}`} className={`${styles.featureItem} ${styles.specificFeature}`}>
-                                                            <CheckCircle size={18} className={styles.checkIcon} />
-                                                            <span>{feature}</span>
-                                                        </div>
-                                                    ))}
-                                                </div>
-                                            </>
-                                        )}
-                                        
-                                        {/* Fallback for plans that still use the old features array */}
-                                        {!plan.commonFeatures && !plan.specificFeatures && plan.features && (
-                                            <>
-                                                {plan.features.map((feature, index) => (
-                                                    <div key={index} className={styles.featureItem}>
-                                                        <CheckCircle size={18} className={styles.checkIcon} />
-                                                        <span>{feature}</span>
-                                                    </div>
-                                                ))}
-                                            </>
-                                        )}
+                                    <div className={styles.cardSummary}>
+                                        <p className={styles.summaryText}>
+                                            {plan.certification}
+                                        </p>
                                     </div>
                                     
-                                    <div className={styles.bestFor}>
-                                        <strong>Best For:</strong> {plan.bestFor}
-                                    </div>
+                                    <button 
+                                        className={styles.viewDetailsButton}
+                                        onClick={() => handleViewDetails(plan)}
+                                    >
+                                        View Full Details
+                                    </button>
                                     
                                     <button 
                                         className={styles.chooseButton}
@@ -464,8 +436,113 @@ const Packages = () => {
                                 </div>
                             ))}
                         </div>
+
+                        {/* Common Features Section */}
+                        <div className={styles.commonBenefitsSection}>
+                            <h3 className={styles.commonBenefitsTitle}>Additional Benefits for all packages</h3>
+                            
+                            <div className={styles.commonBenefitsGrid}>
+                                <div className={styles.benefitCategory}>
+                                    <h4 className={styles.categoryTitle}>Multiple Income Streams & High Commission Payouts:</h4>
+                                    <ul className={styles.benefitList}>
+                                        {commonIncomeFeatures.map((feature, index) => (
+                                            <li key={index} className={styles.benefitItem}>
+                                                <CheckCircle size={16} className={styles.checkIcon} />
+                                                {feature}
+                                            </li>
+                                        ))}
+                                    </ul>
+                                </div>
+                                
+                                <div className={styles.benefitCategory}>
+                                    <h4 className={styles.categoryTitle}>Advanced Platform Access and Exclusive Member Privileges:</h4>
+                                    <ul className={styles.benefitList}>
+                                        {commonPlatformFeatures.map((feature, index) => (
+                                            <li key={index} className={styles.benefitItem}>
+                                                <CheckCircle size={16} className={styles.checkIcon} />
+                                                {feature}
+                                            </li>
+                                        ))}
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
+
+                {/* Details Modal */}
+                {showDetailsModal && modalPlan && (
+                    <div className={styles.modalOverlay} onClick={handleCloseModal}>
+                        <div className={styles.modalContent} onClick={(e) => e.stopPropagation()}>
+                            <button className={styles.modalCloseButton} onClick={handleCloseModal}>
+                                <X size={24} />
+                            </button>
+                            
+                            <div className={styles.modalHeader}>
+                                <h2 className={styles.modalTitle}>{modalPlan.name} Plan</h2>
+                                <div className={styles.modalPrice}>
+                                    ${modalPlan.price}
+                                </div>
+                                {modalPlan.popular && (
+                                    <div className={styles.modalPopularBadge}>Most Popular</div>
+                                )}
+                            </div>
+
+                            <div className={styles.modalBody}>
+                                <div className={styles.modalBonusBadge}>
+                                    {modalPlan.bonus}
+                                </div>
+
+                                <div className={styles.modalFeaturesSection}>
+                                    <h3 className={styles.modalSectionTitle}>Plan Details</h3>
+                                    
+                                    <div className={styles.modalFeatureRow}>
+                                        <div className={styles.modalFeatureLabel}>Certification/Course:</div>
+                                        <div className={styles.modalFeatureValue}>{modalPlan.certification}</div>
+                                    </div>
+                                    
+                                    <div className={styles.modalFeatureRow}>
+                                        <div className={styles.modalFeatureLabel}>International Tour:</div>
+                                        <div className={styles.modalFeatureValue}>
+                                            {modalPlan.internationalTour || '-'}
+                                        </div>
+                                    </div>
+                                    
+                                    <div className={styles.modalFeatureRow}>
+                                        <div className={styles.modalFeatureLabel}>Award Ceremony:</div>
+                                        <div className={styles.modalFeatureValue}>
+                                            {modalPlan.awardCeremony || '-'}
+                                        </div>
+                                    </div>
+                                    
+                                    <div className={styles.modalFeatureRow}>
+                                        <div className={styles.modalFeatureLabel}>Fee Scholarship:</div>
+                                        <div className={styles.modalFeatureValue}>{modalPlan.bonus}</div>
+                                    </div>
+                                    
+                                    <div className={styles.modalFeatureRow}>
+                                        <div className={styles.modalFeatureLabel}>Additional Benefit:</div>
+                                        <div className={styles.modalFeatureValue}>{modalPlan.additionalBenefit}</div>
+                                    </div>
+                                </div>
+
+                                <div className={styles.modalBestFor}>
+                                    <strong>Best For:</strong> {modalPlan.bestFor}
+                                </div>
+
+                                <div className={styles.modalActions}>
+                                    <button 
+                                        className={styles.modalChooseButton}
+                                        onClick={() => handleChooseFromModal(modalPlan)}
+                                        style={{ background: colorCode }}
+                                    >
+                                        Choose {modalPlan.name} <ArrowRight size={20} />
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                )}
             </div>
         );
     }
