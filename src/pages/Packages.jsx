@@ -10,7 +10,7 @@ const Packages = () => {
     const { data } = useAllDetails();
     const { currentUser } = useAuth();
     const [selectedPackage, setSelectedPackage] = useState(null);
-    const [selectedType, setSelectedType] = useState(null); // 'brokers' or 'partners'
+    const [selectedType, setSelectedType] = useState('partners'); // 'brokers' or 'partners' - default to 'partners'
     const [showPaymentDetails, setShowPaymentDetails] = useState(false);
     
     const companySettings = data?.company_settings || {};
@@ -403,12 +403,6 @@ const Packages = () => {
                 <div className="sectionStyles">
                     <div className={styles.packagesContainer}>
                         <div className={styles.packagesHeader}>
-                            <button 
-                                className={styles.backToTypesButton}
-                                onClick={handleBackToTypes}
-                            >
-                                ← Back to Partnership Types
-                            </button>
                             <h2>Choose Your Plan</h2>
                             <p>All plans include full refund after your first property sale</p>
                         </div>
