@@ -89,6 +89,22 @@ const Packages = () => {
         }
     ];
 
+    // Common features for all partner plans
+    const commonPartnerFeatures = [
+        'Multiple Income Streams & High Commission Potential',
+        'Earn on both membership packages and property sales',
+        'Up to 80% commission on property sales',
+        'Up to 15% commission on membership package referrals',
+        '3-level team income',
+        'Weekly commission payout',
+        'Full access to OneX CRM and advanced client management tools',
+        'Advance AI tools',
+        'Real-time commission tracking with transparent payout system',
+        'Instant access to elite profile and exclusive property portfolio',
+        'Company Branding Kit',
+        'Additional exclusive benefits'
+    ];
+
     // Partner plans
     const partnerPlans = [
         {
@@ -98,23 +114,12 @@ const Packages = () => {
             originalPrice: null,
             discount: null,
             popular: false,
-            bonus: 'Bonus: $100 refund after your first property sale',
+            bonus: 'Fee Scholarship After the First Property Sale',
             region: null,
-            features: [
-                'Up to 50% commission on property sales',
-                'Weekly commission payout',
-                'Membership Package Refund after your first property sale',
-                'Earn on both membership packages and property sales',
-                '6-level income structure on team property sales',
-                '3-level team income on membership package sales',
-                'Up to 15% commission on membership package referrals',
-                'Real-time commission tracking with transparent payout system',
-                'Limited access to OneX CRM and advanced client management tools',
-                'Instant access to elite profile and exclusive property portfolio',
-                'Company Branding Kit',
-                'Comprehensive training through OneX Academy (webinars & recorded sessions)',
-                'Global team building - Recruit from Canada, UAE, India, Thailand, Philippines & beyond',
-                '2 qualified leads per year'
+            commonFeatures: commonPartnerFeatures,
+            specificFeatures: [
+                'Real Estate Basic Awareness - Recognition certification from OneX',
+                '5 Leads Yearly'
             ],
             bestFor: 'New partners testing the real estate model',
             paymentLink: "https://business.mamopay.com/pay/affworldfzllc-f8fb25"
@@ -126,26 +131,14 @@ const Packages = () => {
             originalPrice: '1000',
             discount: '50% off',
             popular: false,
-            bonus: 'Bonus: Full $500 refund after first property sale',
+            bonus: 'Fee Scholarship After the First Property Sale',
             region: 'India',
-            features: [
-                'Recognition certificate from OneX',
+            commonFeatures: [...commonPartnerFeatures, 'Dubai office access'],
+            specificFeatures: [
+                'Kings Global Academy (UK) - Real Estate Professional Certified Course',
+                'Fully sponsored international tour: 3 nights/4 days (Dubai)',
                 'Award ceremony with Bollywood celebrity',
-                'Up to 50% commission on property sales',
-                'Weekly commission payout',
-                'Membership Package Refund after your first property sale',
-                'Earn on both membership packages and property sales',
-                '6-level income structure on team property sales',
-                '3-level team income on membership package sales',
-                'Up to 15% commission on membership package referrals',
-                'Real-time commission tracking with transparent payout system',
-                'Full access to OneX CRM and advanced client management tools',
-                'Instant access to elite profile and exclusive property portfolio',
-                'Company Branding Kit',
-                'Comprehensive training through OneX Academy (webinars & recorded sessions)',
-                'Global team building - Recruit from Canada, UAE, India, Thailand, Philippines & beyond',
-                '4 qualified leads per year',
-                'Additional exclusive benefits'
+                'Broker Club'
             ],
             bestFor: 'Indian influencers and leaders with established audiences',
             paymentLink: "https://business.mamopay.com/pay/affworldfzllc-a061dc"
@@ -157,29 +150,14 @@ const Packages = () => {
             originalPrice: null,
             discount: null,
             popular: true,
-            bonus: 'Bonus: Full $1,500 refund after first property sale',
+            bonus: 'Fee Scholarship After the First Property Sale',
             region: 'Asia',
-            features: [
+            commonFeatures: [...commonPartnerFeatures, 'Dubai office access'],
+            specificFeatures: [
                 'Kings Global Academy (UK) - Real Estate Manager Certified Course',
-                'Fully sponsored international tour: 3 nights/4 days (Dubai or Thailand)',
+                'Fully sponsored international tour: 3 nights/4 days Dubai/Europe/UK',
                 'Award ceremony with Bollywood celebrity',
-                'Up to 50% commission on property sales',
-                'Weekly commission payout',
-                'Membership Package Refund after your first property sale',
-                'Earn on both membership packages and property sales',
-                '6-level income structure on team property sales',
-                '3-level team income on membership package sales',
-                'Up to 15% commission on membership package referrals',
-                'Real-time commission tracking with transparent payout system',
-                'Full access to OneX CRM and advanced client management tools',
-                'Instant access to elite profile and exclusive property portfolio',
-                'Company Branding Kit',
-                'Comprehensive training through OneX Academy (webinars, recorded & Live sessions)',
-                'Access to Kings Global Academy (UK) certifications - Internationally recognized professional development programs',
-                'Global team building - Recruit from Canada, UAE, India, Thailand, Philippines & beyond',
-                'Dubai office access',
-                '8 qualified leads per year',
-                'Additional exclusive benefits'
+                'Job Assurance'
             ],
             bestFor: 'Asian partners ready to scale their network internationally',
             paymentLink: "https://business.mamopay.com/pay/affworldfzllc-b0fe38"
@@ -191,29 +169,14 @@ const Packages = () => {
             originalPrice: null,
             discount: null,
             popular: false,
-            bonus: 'Bonus: Full $3,000 refund after first property sale',
+            bonus: 'Fee Scholarship After the First Property Sale',
             region: 'Asia',
-            features: [
+            commonFeatures: [...commonPartnerFeatures, 'Dubai office access'],
+            specificFeatures: [
                 'Kings Global Academy (UK) - Real Estate Expert Certified Course',
-                'Fully sponsored international tour: 3 nights/4 days (Europe)',
+                'Fully sponsored international tour: 3 nights/4 days Dubai/Europe/UK',
                 'Award ceremony with Bollywood celebrity',
-                'Up to 50% commission on property sales',
-                'Weekly commission payout',
-                'Membership Package Refund after your first property sale',
-                'Earn on both membership packages and property sales',
-                '6-level income structure on team property sales',
-                '3-level team income on membership package sales',
-                'Up to 15% commission on membership package referrals',
-                'Real-time commission tracking with transparent payout system',
-                'Full access to OneX CRM and advanced client management tools',
-                'Instant access to elite profile and exclusive property portfolio',
-                'Company Branding Kit',
-                'Comprehensive training through OneX Academy (webinars, recorded & Live sessions)',
-                'Access to Kings Global Academy (UK) certifications - Internationally recognized professional development programs',
-                'Global team building - Recruit from Canada, UAE, India, Thailand, Philippines & beyond',
-                'Dubai office access',
-                '12 qualified leads per year',
-                'Additional exclusive benefits'
+                'Job Assurance'
             ],
             bestFor: 'Elite partners building large-scale international networks',
             paymentLink: "https://business.mamopay.com/pay/affworldfzllc-3a57e4"
@@ -446,12 +409,45 @@ const Packages = () => {
                                     )}
                                     
                                     <div className={styles.featuresList}>
-                                        {plan.features.map((feature, index) => (
-                                            <div key={index} className={styles.featureItem}>
-                                                <CheckCircle size={18} className={styles.checkIcon} />
-                                                <span>{feature}</span>
-                                            </div>
-                                        ))}
+                                        {plan.commonFeatures && plan.commonFeatures.length > 0 && (
+                                            <>
+                                                <div className={styles.commonFeaturesSection}>
+                                                    <h4 className={styles.sectionTitle}>Common Features (All Plans):</h4>
+                                                    {plan.commonFeatures.map((feature, index) => (
+                                                        <div key={`common-${index}`} className={styles.featureItem}>
+                                                            <CheckCircle size={18} className={styles.checkIcon} />
+                                                            <span>{feature}</span>
+                                                        </div>
+                                                    ))}
+                                                </div>
+                                            </>
+                                        )}
+                                        
+                                        {plan.specificFeatures && plan.specificFeatures.length > 0 && (
+                                            <>
+                                                <div className={styles.specificFeaturesSection}>
+                                                    <h4 className={styles.sectionTitle}>Plan-Specific Features:</h4>
+                                                    {plan.specificFeatures.map((feature, index) => (
+                                                        <div key={`specific-${index}`} className={`${styles.featureItem} ${styles.specificFeature}`}>
+                                                            <CheckCircle size={18} className={styles.checkIcon} />
+                                                            <span>{feature}</span>
+                                                        </div>
+                                                    ))}
+                                                </div>
+                                            </>
+                                        )}
+                                        
+                                        {/* Fallback for plans that still use the old features array */}
+                                        {!plan.commonFeatures && !plan.specificFeatures && plan.features && (
+                                            <>
+                                                {plan.features.map((feature, index) => (
+                                                    <div key={index} className={styles.featureItem}>
+                                                        <CheckCircle size={18} className={styles.checkIcon} />
+                                                        <span>{feature}</span>
+                                                    </div>
+                                                ))}
+                                            </>
+                                        )}
                                     </div>
                                     
                                     <div className={styles.bestFor}>
