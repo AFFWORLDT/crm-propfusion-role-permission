@@ -291,7 +291,7 @@ const Packages = () => {
                                 ← Back to Plans
                             </button>
                             <h2>Complete Your Payment</h2>
-                            <div className={styles.selectedPackage}>
+                                <div className={styles.selectedPackage}>
                                 <h3>{selectedPackage.name}</h3>
                                 <div className={styles.price}>
                                     ${selectedPackage.price}
