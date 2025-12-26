@@ -148,9 +148,9 @@ const Packages = () => {
         {
             id: 'partner-premium-plus',
             name: 'Premium Plus',
-            price: '3000',
-            originalPrice: null,
-            discount: null,
+            price: '1500',
+            originalPrice: '3000',
+            discount: '50% OFF',
             popular: true,
             bonus: 'Fee Scholarship After the First Property Sale',
             region: null,
@@ -164,9 +164,9 @@ const Packages = () => {
         {
             id: 'partner-exclusive',
             name: 'Exclusive',
-            price: '4500',
-            originalPrice: null,
-            discount: null,
+            price: '3000',
+            originalPrice: '4500',
+            discount: '33% OFF',
             popular: false,
             bonus: 'Fee Scholarship After the First Property Sale',
             region: null,
@@ -480,8 +480,20 @@ const Packages = () => {
                             
                             <div className={styles.modalHeader}>
                                 <h2 className={styles.modalTitle}>{modalPlan.name} Plan</h2>
-                                <div className={styles.modalPrice}>
-                                    ${modalPlan.price}
+                                {modalPlan.discount && (
+                                    <div className={styles.modalDiscountBadge}>
+                                        {modalPlan.discount}
+                                    </div>
+                                )}
+                                <div className={styles.modalPriceSection}>
+                                    {modalPlan.originalPrice && (
+                                        <div className={styles.modalOriginalPrice}>
+                                            ${modalPlan.originalPrice}
+                                        </div>
+                                    )}
+                                    <div className={styles.modalPrice}>
+                                        ${modalPlan.price}
+                                    </div>
                                 </div>
                                 {modalPlan.popular && (
                                     <div className={styles.modalPopularBadge}>Most Popular</div>

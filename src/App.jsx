@@ -170,6 +170,7 @@ import GeminiChat from "./pages/GeminiChat";
 import FAQ from "./components/FAQ/FAQ";
 import "./i18n/i18n";
 import PropertiesMapView from "./pages/PropertiesMapView";
+import LinkTree from "./pages/LinkTree";
 import SubCommunityList from "./pages/SubCommunityList";
 import PropertiesInSubCommunity from "./pages/PropertiesInSubCommunity";
 import L from "leaflet";
@@ -270,6 +271,11 @@ function App() {
                                 path="/password-reset/verify"
                                 element={<ResetPassword />}
                             />
+                            
+                            {/* Public Link Tree Routes */}
+                            <Route path="/links" element={<LinkTree />} />
+                            <Route path="/linktree" element={<LinkTree />} />
+                            
                             <Route element={<AuthProvider />}>
                                 <Route path="/login" element={<Login />} />
                                 <Route element={<SubscriptionCheck />}>

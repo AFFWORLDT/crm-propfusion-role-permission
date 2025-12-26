@@ -1,0 +1,311 @@
+.linkTreeContainer {
+    min-height: 100vh !important;
+    width: 100% !important;
+    background: linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 50%, #16213e 100%) !important;
+    position: relative;
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+    padding: 40px 20px;
+    overflow-y: auto;
+    overflow-x: hidden;
+    margin: 0 !important;
+    box-sizing: border-box !important;
+}
+
+.background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: 
+        radial-gradient(circle at 80% 20%, rgba(59, 130, 246, 0.15) 0%, transparent 50%),
+        radial-gradient(circle at 20% 80%, rgba(16, 185, 129, 0.1) 0%, transparent 50%);
+    pointer-events: none;
+}
+
+.glowEffect {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 50%;
+    height: 100%;
+    background: 
+        radial-gradient(circle at center, rgba(59, 130, 246, 0.1) 0%, transparent 70%);
+    animation: pulse 4s ease-in-out infinite;
+}
+
+@keyframes pulse {
+    0%, 100% {
+        opacity: 0.5;
+    }
+    50% {
+        opacity: 1;
+    }
+}
+
+.content {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    max-width: 500px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 40px;
+    margin: 0 auto;
+    visibility: visible !important;
+    opacity: 1 !important;
+}
+
+.header {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.slogan {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #10b981;
+    font-family: 'Inter', sans-serif;
+    letter-spacing: 0.5px;
+}
+
+.slogan .italic {
+    font-style: italic;
+    font-weight: 800;
+}
+
+.menuCard {
+    background: #f8fafc;
+    border-radius: 24px;
+    padding: 40px 32px;
+    width: 100%;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(10px);
+}
+
+.logoSection {
+    margin-bottom: 32px;
+    text-align: center;
+}
+
+.logo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+}
+
+.logoOneX {
+    font-size: 3rem;
+    font-weight: 900;
+    color: #2563eb;
+    font-family: 'Inter', sans-serif;
+    letter-spacing: -0.02em;
+    position: relative;
+}
+
+.logoOneX::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) rotate(-45deg);
+    width: 120%;
+    height: 3px;
+    background: #2563eb;
+    opacity: 0.8;
+}
+
+.logoProperties {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: #2563eb;
+    font-family: 'Inter', sans-serif;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+
+.linksList {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.linkButton {
+    width: 100%;
+    padding: 16px 20px;
+    background: #e5e7eb;
+    border: none;
+    border-radius: 12px;
+    font-size: 1rem;
+    font-weight: 600;
+    color: #1f2937;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-family: 'Inter', sans-serif;
+    text-align: left;
+}
+
+.linkButton:hover {
+    background: #2563eb;
+    color: white;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);
+}
+
+.linkIcon {
+    opacity: 0.6;
+    transition: opacity 0.3s ease;
+}
+
+.linkButton:hover .linkIcon {
+    opacity: 1;
+}
+
+.socialSection {
+    text-align: center;
+    width: 100%;
+}
+
+.socialTitle {
+    font-size: 1.1rem;
+    color: #e5e7eb;
+    margin-bottom: 24px;
+    font-family: 'Inter', sans-serif;
+    font-weight: 500;
+}
+
+.socialTitle .highlight {
+    color: #10b981;
+    font-weight: 700;
+}
+
+.socialIcons {
+    display: flex;
+    justify-content: center;
+    gap: 16px;
+    flex-wrap: wrap;
+}
+
+.socialIcon {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--icon-color, #1f2937);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.socialIcon:hover {
+    transform: translateY(-4px) scale(1.1);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+    background: var(--icon-color, #2563eb);
+    color: white;
+}
+
+.qrCodeSection {
+    display: flex;
+    justify-content: flex-end;
+    width: 100%;
+    max-width: 500px;
+}
+
+.qrCodeBox {
+    background: white;
+    border-radius: 12px;
+    padding: 24px;
+    width: 150px;
+    height: 150px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+}
+
+.qrCodeText {
+    font-size: 0.9rem;
+    color: #6b7280;
+    font-weight: 600;
+    text-align: center;
+    font-family: 'Inter', sans-serif;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .linkTreeContainer {
+        padding: 20px 16px;
+    }
+
+    .slogan {
+        font-size: 2rem;
+    }
+
+    .menuCard {
+        padding: 32px 24px;
+    }
+
+    .logoOneX {
+        font-size: 2.5rem;
+    }
+
+    .logoProperties {
+        font-size: 1rem;
+    }
+
+    .linkButton {
+        padding: 14px 18px;
+        font-size: 0.95rem;
+    }
+
+    .socialIcon {
+        width: 45px;
+        height: 45px;
+    }
+
+    .qrCodeBox {
+        width: 120px;
+        height: 120px;
+        padding: 16px;
+    }
+}
+
+@media (max-width: 480px) {
+    .slogan {
+        font-size: 1.75rem;
+    }
+
+    .menuCard {
+        padding: 24px 20px;
+    }
+
+    .logoOneX {
+        font-size: 2rem;
+    }
+
+    .linkButton {
+        padding: 12px 16px;
+        font-size: 0.9rem;
+    }
+
+    .socialIcons {
+        gap: 12px;
+    }
+
+    .socialIcon {
+        width: 40px;
+        height: 40px;
+    }
+}
+
